@@ -1,0 +1,70 @@
+<div class="user-show-wrapper">
+  <div class="user-show-higher-wrapper">
+    <div class="user-title">Street Corner Symphony</div>
+    <div class="user-sub-title">Web版SCSポータル</div>
+    <div class="user-show-box">
+      <div class="user-show-contents">
+        <div class="user-show-image">
+        </div>
+        <div class="user-show-informations">
+          <div class="user-show-content"><%= @user.name + "(#{@user.year}年度入会)" %></div>
+          <div class="user-show-content"><%= @user.email %></div>
+          <div class="user-show-logout"><%= link_to("ログアウト","/user/logout",{method: :post})%></div>
+          <div class="user-show-logout"><%= link_to("ユーザー情報編集","/user/logout")%></div>
+          <div class="user-show-logout"><%= link_to("管理画面へ","/database")%></div>
+        </div>
+      </div>
+    </div>
+    <div class="notice-wrapper">
+      <div class="user-menu-title notice-title">お知らせ</div>
+      <% @notifs.each do |notif|%>
+        <div class="notice-content">
+          <%= notif.date.year.to_s + "/" + notif.date.month.to_s + "/" + notif.date.day.to_s + "  " + notif.time.hour.to_s + ":" + notif.time.min.to_s + "    " + notif.content %>
+        </div>
+      <% end %>
+      </div>
+    <div class="user-menu-wrapper">
+    <div class="user-menu-title">メニュー</div>
+      <%= link_to("/submit/mic") do %>
+      <div class="user-menu-content">
+        <div class="menu-content-img"></div>
+        <div class="menu-content-title">マイク練予約</div>
+        <div class="menu-content-description">マイク練の予約はこちらから</div>
+      </div>
+      <% end %>
+      <%= link_to("/submit/room") do %>
+      <div class="user-menu-content">
+        <div class="menu-content-img"></div>
+        <div class="menu-content-title">部屋利用掲示板</div>
+        <div class="menu-content-description">練習室や部室など、練習場所に関する掲示板です</div>
+      </div>
+      <% end %>
+      <div class="user-menu-content">
+        <div class="menu-content-img"></div>
+        <div class="menu-content-title">各種エントリー</div>
+        <div class="menu-content-description">ライブやイベントにエントリーできます</div>
+      </div>
+      <%= link_to("/submit/comment") do %>
+      <div class="user-menu-content">
+        <div class="menu-content-img"></div>
+        <div class="menu-content-title">講評・コメント入力</div>
+        <div class="menu-content-description">オーディション講評・総会プレゼンへのコメントはこちら</div>
+      </div>
+      <% end %>
+      <%= link_to("/submit/regular-band") do %>
+      <div class="user-menu-content">
+        <div class="menu-content-img"></div>
+        <div class="menu-content-title">正規バンドの申請</div>
+        <div class="menu-content-description">正規バンドの申請はこちらから</div>
+      </div>
+      <% end %>
+      <%= link_to("/submit/temporal-band") do %>
+      <div class="user-menu-content">
+        <div class="menu-content-img"></div>
+        <div class="menu-content-title">企画バンドの申請</div>
+        <div class="menu-content-description">企画バンドの申請はこちらから</div>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>

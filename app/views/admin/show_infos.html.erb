@@ -1,0 +1,13 @@
+<div class="show-infos-wrapper">
+  <div class="new-info-wrapper">
+    <div class="new-info-title">
+      <h1>新しいお知らせを作成</h1>
+    </div>
+    <div class="new-info-contents">
+      <%= form_tag("/database/notifications/new") do%>
+        <input type="text" name="content" id="new-info-content" placeholder="お知らせの内容を入力して下さい" value="<%= @notif.content %>">
+        <input type="submit">
+      <% end %>
+    </div>
+  </div>
+</div>

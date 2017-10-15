@@ -1,0 +1,33 @@
+<div class="mic-admin-wrapper">
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>バンド</th>
+      <th>PA</th>
+      <th>PAの参加可否</th>
+      <th>送信者</th>
+      <th>日付</th>
+      <th>時限</th>
+      <th>ステータス</th>
+      <th>承認/拒否</th>
+    </tr>
+  </thead>
+    <tbody>
+      <% @mics.each do |mic|%>
+      <tr>
+        <div class="mic-show">
+          <th><%= mic.id %></th>
+          <th><%= mic.band %></th>
+          <th><%= mic.pa %></th>
+          <th><%= mic.paattendance %></th>
+          <th><%= mic.sender %></th>
+          <th><%= mic.date %></th>
+          <th><%= mic.time %></th>
+          <th><</th>
+        </div>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,27 @@
+
+<div class="band-show-wrapper">
+  <table>
+    <thead>
+      <tr>
+        <th>バンド名</th>
+        <th>バンマス</th>
+        <th>メンバー</th>
+        <th>PA</th>
+        <th>結成年</th>
+        <th>説明</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @bands.each do |band|%>
+        <tr>
+          <td><%= band.name %></td>
+          <td><%= band.master %></td>
+          <td><%= band.members %></td>
+          <td><%= band.pa %></td>
+          <td><%= band.year %></td>
+          <td><%= band.description %></td>
+        </tr>
+      <%end%>
+    </tbody>
+  </table>
+</div>

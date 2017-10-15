@@ -1,0 +1,47 @@
+<div class="database-users-wrapper">
+<div class="user-show-description">
+  <h1>ユーザー管理画面</h1>
+  <div class="user-description-box">ユーザーの管理ができます。データベースにアクセスできる管理者の権限を更新する場合管理者権限のセル内の「編集」ボタンを押してください。</div>
+</div>
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>氏名</th>
+      <th>入会年度</th>
+      <th>Email</th>
+      <th>携帯番号</th>
+      <th>大学</th>
+      <th>更新日時</th>
+      <th>管理権限 </th>
+      <th>編集</th>
+
+    </tr>
+  </thead>
+    <tbody>
+      <% @users.each do |user|%>
+      <tr>
+        <div class="user-show">
+          <th><%= user.id %></th>
+          <th><%= user.name %></th>
+          <th><%= user.year %></th>
+          <th><%= user.email %></th>
+          <th><%= user.tel %></th>
+          <th><%= user.univ %></th>
+          <th><%= user.created_at %></th>
+          <th>
+            <% if user.authority %>
+              <%= user.authority %>
+            <% else %>
+              <%= "なし "%>
+            <% end %>
+            <a href="#">編集</a>
+          </th>
+          <th><a href="user/<%= user.id %>/edit" class="user-edit">情報の編集</a><a href="user/<%= user.id %>/delete" class="user-edit">ユーザーの削除</a></th>
+
+        </div>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

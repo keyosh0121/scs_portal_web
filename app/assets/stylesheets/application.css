@@ -1,0 +1,129 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+*{
+  box-sizing: border-box;
+
+}
+
+body {
+  margin: 0;
+}
+
+/*      ヘッダーここから    */
+header{
+  background-color: #00ced1;
+  color: #fff;
+  margin-top: 0 auto;
+  height: 50px;
+  top: 0;
+  z-index: 8;
+  position: fixed;
+  width:100%;
+}
+a {
+  text-decoration: none;
+}
+input :not(input[type="checkbox"]){
+  -webkit-appearance: none;
+}
+.header-title{
+  font-family: "Avenir next";
+  font-size: 30px;
+  padding: 5px 20px;
+  height: 95%;
+  color: white;
+}
+
+#title:hover{
+  background-color:lightseagreen;
+  transition: all 300ms ease;
+}
+.header-left{
+  float: left;
+}
+/*画面サイズが小さくなったらheader-rightは非表示にする*/
+.header-right{
+  float: left;
+  width: 80%%;
+}
+@media(max-width: 920px){
+  .header-right{
+    display: none;
+  }
+  .header-end{
+    display: block;
+  }
+}
+.button-wrapper{
+  height: 50px;
+  width: 100%;
+
+  display: block;
+  float: left;
+}
+header .menu-button{
+  display: block;
+  margin:  0 10px;
+  padding: 0 0;
+  height: 100%;
+  font-size: 13px;
+  z-index: 10;
+}
+header .menu-button:hover{
+  background-color: lightseagreen;
+  transition: all 500ms;
+}
+header li {
+  display: block;
+  list-style: none;
+  float: left;
+  padding: 0px 14px;
+  height: 100%;
+  z-index: 9;
+}
+.header-end{
+  float: right;
+  display: block;
+  height: 50px;
+  width: 100px;
+  }
+.header-end a{
+  display: inline-block;
+  text-align: center;
+  width: 100%;
+  padding-top: 15px;
+  padding-bottom: 10px;
+  color: #fff;
+  vertical-align: middle;
+  z-index: 10;
+}
+header .btn:hover{
+  background-color: lightseagreen;
+  transition: all 500ms;
+}
+/*      ヘッダーここまで    */
+.flash-notice{
+  float: top;
+  margin-top: 50px;
+  text-align: center;
+  width: 100%;
+  height: 20px;
+  background-color: lightsalmon;
+  color: white;
+  font-size: 10px;
+  padding: 3px 0;
+}
+

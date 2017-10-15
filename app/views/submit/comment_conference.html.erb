@@ -1,0 +1,46 @@
+<div class="comment-wrapper">
+  <div class="comment-title">
+    <h1>総会へのコメント・バンドへの講評</h1>
+    <span>各総会やオーディション・演奏会への講評やコメントを送信できます。<br>メニューから講評を送信したい項目を選択後、入力画面から送信してください。</span>
+  </div>
+
+  <div class="comment-form">
+    <table>
+      <tbody>
+        <tr>
+          <td>総会</td>
+          <td>
+            <select name="object1" id="conference-selecter">
+              <% @conferences.each do |con|%>
+                <option value="<%= con.name %>"><%= con.name %></option>
+              <% end %>
+              <option value="">その他</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td>コメント先</td>
+          <td>
+            <select name="object2" id="conference-selecter">
+              <% if @object1 %>
+                <% @conference.contents.each do |content|%>
+                  <option value="<%= content %>"><%= content %></option>
+                <% end %>
+              <% else %>
+                <option value="">総会を選択してください</option>
+              <% end %>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td><input type="checkbox" name="" value="" id="anonimity-checkbox"><span id="anonimity-caution">匿名で送信する</span></td>
+        </tr>
+        <tr>
+          <td>コメント</td>
+          <td><textarea></textarea></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,32 @@
+<div class="showtemp-wrapper">
+  <h1>企画バンド管理</h1>
+  <div class="add-event-form">
+    <div class="add-event-content">
+      <%= form_tag("add-event") do %>
+        <input type="text" name="name" placeholder="イベント名を入力">
+        <input type="date" name="date">
+        <input type="submit" name="">
+      <% end %>
+    </div>
+  </div>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>企画名</th>
+        <th>イベント</th>
+        <th>メンバー</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @temporal_bands.each do |band| %>
+      <tr>
+        <td><%=band.id %></td>
+        <td><%=band.name%></td>
+        <td><%=band.event%></td>
+        <td><%=band.members%></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>

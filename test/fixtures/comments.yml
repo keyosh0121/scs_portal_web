@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  sender: MyString
+  atevent: MyString
+  atcontent: MyString
+  comment: MyText
+
+two:
+  sender: MyString
+  atevent: MyString
+  atcontent: MyString
+  comment: MyText

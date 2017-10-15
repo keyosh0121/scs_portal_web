@@ -1,0 +1,25 @@
+<div class="main-wrapper-login">
+<div class="login-wrapper">
+  <h1>ログイン</h1>
+  <div class="login-content-wrapper">
+    <div class="login-content login-title">
+      <h1>SCS Portal</h1>
+    </div>
+    <div class="login-content signin-box">
+      <p id="login-with-account">SCSアカウントでログイン</p>
+
+      <%= form_tag("/login/send") do %>
+        <input type="" name="email" class="login-input login-email-input" value="<%= @email %>">
+        <input type="password" name="password" class="login-input">
+        <p id="show-pass"><input id="pass-checkbox" type="checkbox" name="">パスワードを表示する</p>
+        <% if @error != nil %>
+          <div class="login-error-message"><%= @error %></div>
+        <% end %>
+        <input type="submit" id="login-btn" value="ログイン">
+      <% end %>
+      <a href="/signup" class="btn" id="signup-btn">新規会員登録はこちら</a>
+      <a href="/signup" class="btn" id="forgotten-btn">パスワードをお忘れの方へ</a>
+    </div>
+  </div>
+</div>
+</div>

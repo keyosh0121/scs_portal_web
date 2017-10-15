@@ -1,0 +1,77 @@
+<div class="mic-sub-wrapper">
+  <h1>マイク練申請</h1>
+  <div class="mic-sub-form">
+    <%= form_tag("/submit/mic/send") do %>
+    <table>
+      <tbody>
+        <tr>
+          <td>バンド</td>
+          <td class="input-table-cell"><select class="mic-input"placeholder="リストから選択" name="band">
+            <% @user_bands.each do |band|%>
+              <option value="<%= band.name %>"><%= band.name %></option>
+            <% end %>
+            <option value="企画バンド">企画バンド</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td>日時</td>
+          <td class="input-table-cell"><input type="date" name="date" class="mic-input"></td>
+        </tr>
+        <tr>
+          <td>時限</td>
+          <td class="input-table-cell"><select type="" placeholder="リストから選択" name="time" class="mic-input">
+              <option value="1限">1限</option>
+              <option value="2限">2限</option>
+              <option value="昼限">昼限</option>
+              <option value="3限">3限</option>
+              <option value="4限">4限</option>
+              <option value="5限">5限</option>
+              <option value="6限">6限</option>
+              <option value="7限">7限</option>
+              <option value="0限">0限</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td>PA参加</td>
+          <td class="input-table-cell"><input type="checkbox" value="参加" name="paattendance" class="mic-input-check"></td>
+        </tr>
+
+      </tbody>
+    </table>
+      <% @mic.errors.full_messages.each do |message| %>
+        <div class="error-mic">
+          <%= message %>
+        </div>
+      <% end %>
+    <input type="submit" name="" value="送信" id="send-btn">
+    <% end %>
+  </div>
+
+  <div class="mic-history-wrapper">
+    <h3>申請中のマイク練</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>バンド</th>
+          <th>送信者</th>
+          <th>日時</th>
+          <th>時限</th>
+          <th>PA参加可否</th>
+        </tr>
+      </thead>
+      <tbody>
+      <% @mics.each do |mic|%>
+        <tr>
+          <td><%= mic.band %></td>
+          <td><%= mic.sender %></td>
+          <td><%= mic.date %></td>
+          <td><%= mic.time %></td>
+          <td><%= mic.paattendance %></td>
+        </tr>
+      <%end%>
+      </tbody>
+    </table>
+  </div>
+</div>

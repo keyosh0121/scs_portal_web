@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ScsPortalWeb</title>
+    <%= csrf_meta_tags %>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+
+  </head>
+
+  <body>
+  <!--       ヘッダーここから     -->
+
+  <header>
+    <div class="header-wrapper">
+      <div class="header-left">
+      <% if session[:user_id] == nil%>
+        <div id="title"><%= link_to("SCS Portal","/",{class:"header-title"}) %></div>
+      <% else %>
+        <div id="title"><%= link_to("SCS Portal","/user/#{session[:user_id]}/show",{class:"header-title"}) %></div>
+      <% end %>
+        <div class="selectColor"></div>
+      </div>
+      <div class="header-right">
+        <div class="button-wrapper">
+          <ul>
+            <li class="menu-button"><a>コメント・講評</a></li>
+            <li class="menu-button"><a>各種イベントエントリー</a></li>
+            <li class="menu-button"><a>マイク練・練習室</a></li>
+            <li class="menu-button"><a>スケジュール</a></li>
+          </ul>
+        </div>
+
+      </div>
+      <div class="header-end">
+
+        <% if session[:user_id] == nil %>
+          <a href="/login" class="btn login">ログイン</a>
+        <% else %>
+          <a href="/user/<%= @current_user.id %>/show" class="btn login"><%= @current_user.name %></a>
+        <% end%>
+      </div>
+    </div>
+  <% if flash[:notice]%>
+    <div class="flash-notice">
+        <%= flash[:notice] %>
+    </div>
+  <% end %>
+
+  </header>
+
+<!--       ヘッダーここまで     -->
+    <%= yield %>
+  </body>
+</html>

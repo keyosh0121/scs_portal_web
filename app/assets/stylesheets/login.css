@@ -1,0 +1,90 @@
+.main-wrapper-login{
+  background-image: url('gakkan.jpg');
+  background-size: cover;
+  overflow: auto;
+}
+.login-wrapper{
+  margin-left: 10%;
+  margin-right: 10%;
+
+  margin-top: 50px;
+}
+.login-content-wrapper{
+  width: 100%;
+  border: 1px solid gray;
+  overflow: auto;
+  background-color: rgba(0, 150, 200, 0.3);
+  margin-bottom: 70px;
+}
+.login-content{
+  float: left;
+  height: 100%;
+  padding: 5px;
+}
+.login-content p,a,input{
+  font-size: 13px;
+  display: block;
+}
+.login-content p{
+  color: #333333;
+  display: block;
+}
+.login-title{
+  width: 60%;
+}
+.login-title h1{
+  padding: 20px;
+  font-family: "Avenir";
+  font-size: 50px;
+}
+.signin-box{
+  width: 40%;
+}
+
+@media (max-width: 700px) {
+  .login-content{
+    width: 100%;
+  }
+}
+.login-input{
+  height: 32px;
+  float: top;
+  width: 90%;
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-top: 5px;
+}
+#login-with-account{
+  border-bottom: 1px solid #333333;
+  padding: 5px;
+}
+#pass-checkbox{
+  background-color: blue;
+  float: left;
+}
+#show-pass{
+  display: block;
+}
+.login-email-input{
+  margin-top: 15px;
+}
+#login-btn{
+  text-align: center;
+  color: #fff;
+  background-color: salmon;
+  height: 40px;
+  padding: 10px;
+  margin-bottom: 10px;
+  margin: 0 auto;
+  border-style: none;
+  width: 88%;
+  opacity: 0.8;
+}
+#login-btn:hover{
+  opacity: 1;
+}
+.btn{
+  text-align: center;
+  font-size: 12px;
+  padding: 5px;
+}
