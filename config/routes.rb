@@ -26,6 +26,7 @@ Rails.application.routes.draw do
   get "database/temporal-bands" => "admin#show_temporal_bands"
   post "database/add-event" => "admin#add_event"
   get "/database/users" => "admin#show_users"
+  post "/database/users/authority_edit/:id" => "admin#user_authority_edit"
   get "/database/notifications" => "admin#show_infos"
   post "/database/notifications/new" => "admin#add_infos"
   get "/database/mic-practice" => "admin#show_mic"

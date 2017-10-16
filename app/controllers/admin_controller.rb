@@ -39,6 +39,28 @@ class AdminController < ApplicationController
     @users = User.all
   end
 
+  def user_authority_edit
+    user = User.find_by(id: params[:id])
+    if params[:authority] == "nil"
+      authority = nil
+    else
+      authority = params[:authority]
+    end
+    if user
+      user.authority = authority
+      if user.save
+        flash[:notice] = "変更が完了しました"
+        redirect_to('/database/users')
+      else
+        flash[:notice] = "変更できませんでした"
+        redirect_to('/database/users')
+      end
+    else
+      flash[:notice] = "変更できませんでした"
+      redirect_to('/database/users')
+    end
+  end
+
   def show_mic
     self.user_authentificate
     @mics = Mic.all.order("date")
