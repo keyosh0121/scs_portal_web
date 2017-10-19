@@ -87,6 +87,7 @@ class SubmitController < ApplicationController
       )
     if @band.save
       redirect_to("/user/#{session[:user_id]}/show")
+      flash[:notice] = "正規バンドの申請を受け付けました"
     else
       flash[:notice] = "保存に失敗しました。入力内容を確認してください。"
       render("submit/regular_band")
