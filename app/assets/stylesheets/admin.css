@@ -185,6 +185,13 @@
 .user-display-authority{
   font-size: 14px;
 }
+
+@media only screen and (min-device-width: 200px) and (max-device-width: 700px){
+  .user-display-grid{
+    grid-template-columns: 100%;
+    padding: 5px;
+  }
+}
 /* マイク練管理画面 */
 
 
