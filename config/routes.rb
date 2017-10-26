@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   post "submit/mic/send" => "submit#mic_submit"
   get "submit/comment" => "submit#comment"
   get "submit/comment/conference" => "submit#comment_conference"
+  get "submit/comment/performance" => "submit#comment_performance"
   post "submit/regular-band/send" => "submit#regular_band_submit"
   get "submit/regular-band" => "submit#regular_band"
   post "submit/temporal-band/send" => "submit#temporal_band_submit"

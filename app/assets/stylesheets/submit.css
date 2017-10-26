@@ -245,12 +245,15 @@
   margin-top: 50px;
 }
 .comment-title{
-  width: 100%;
+  width: 50%;
+  margin: auto;
   padding: 10px;
-  text-align: center;
+  text-align: left;
 }
 .comment-title h1 {
-  font-weight: normal;
+  font-weight: bold;
+  background-color: #CCC;
+  padding:  10px;
 }
 .comment-title span{
   font-size: 14px;
@@ -264,6 +267,13 @@
 }
 .comment-form table{
   margin: auto;
+  margin-bottom: 20px;
+}
+.comment-form td{
+  padding: 5px;
+}
+.comment-form td h2{
+  border-bottom: solid 1px;
 }
 .comment-menu-content{
   height: 40px;
@@ -286,6 +296,40 @@
 #anonimity-caution{
   float: left;
   font-size: 12px;
+}
+.content-designate{
+  background-color: #40404F;
+  color: white;
+  height: 50px;
+  font-size: 12px;
+  width: 150px;
+  padding-left: 10px;
+}
+.comment-content{
+  width: 500px;
+  background-color: #DDD;
+}
+.comment-content textarea, input:not([type="checkbox"]){
+  width: 98%;
+}
+.comment-content textarea{
+  height: 250px;
+  resize: none;
+}
+.submit-td{
+  height: 50px;
+}
+ #conference-comment-send-btn{
+  border: none;
+  background-color: salmon;
+  height: 99%;
+  width: 99%;
+  color: white;
+}
+@media only screen and (min-device-width:200px) and (max-device-width:700px){
+  .comment-title{
+    width: 100%;
+  }
 }
 
 

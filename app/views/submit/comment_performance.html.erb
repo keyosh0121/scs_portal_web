@@ -7,26 +7,26 @@
   <div class="comment-form">
     <table>
       <tbody>
-        <tr><td colspan="2" ><h2>総会コメント</h2></td>
+        <tr><td colspan="2" ><h2>バンドへの講評</h2></td>
         </tr>
         <tr>
-          <td class="content-designate">総会</td>
+          <td class="content-designate">講評イベント</td>
           <td class="comment-content">
             <select name="object1" id="conference-selecter">
-              <% @conferences.each do |con|%>
-                <option value="<%= con.name %>"><%= con.name %></option>
+              <% @performances.each do |per|%>
+                <option value="<%= per.at %>"><%= per.at %></option>
               <% end %>
               <option value="">その他</option>
             </select>
           </td>
         </tr>
         <tr>
-          <td class="content-designate">コメント先</td>
+          <td class="content-designate">バンド</td>
           <td class="comment-content">
             <select name="object2" id="conference-selecter">
               <% if @object1 %>
-                <% @conference.contents.each do |content|%>
-                  <option value="<%= content %>"><%= content %></option>
+                <% @performances.each do |per|%>
+                  <option value="<%= per %>"><%= per %></option>
                 <% end %>
               <% else %>
                 <option value="">総会を選択してください</option>

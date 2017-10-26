@@ -3,47 +3,35 @@
   <h1>ユーザー管理画面</h1>
   <div class="user-description-box">ユーザーの管理ができます。データベースにアクセスできる管理者の権限を更新する場合管理者権限のセル内の「編集」ボタンを押してください。</div>
 </div>
-<table>
-  <thead>
-    <tr>
-      <th>ID</th>
-      <th>氏名</th>
-      <th>入会年度</th>
-      <th>Email</th>
-      <th>携帯番号</th>
-      <th>大学</th>
-      <th>更新日時</th>
-      <th>管理権限 </th>
-      <th>編集</th>
-
-    </tr>
-  </thead>
-    <tbody>
-      <% @users.each do |user|%>
-      <tr>
-        <div class="user-show">
-          <th><%= user.id %></th>
-          <th><%= user.name %></th>
-          <th><%= user.year %></th>
-          <th><%= user.email %></th>
-          <th><%= user.tel %></th>
-          <th><%= user.univ %></th>
-          <th><%= user.created_at %></th>
-          <th>
-            <% if user.authority %>
-              <%= user.authority %>
-            <% else %>
-              <%= "なし "%>
-            <% end %>
-            <button class="open-modal" type="button" data-toggle="modal" data-target=".modal" data-id="<%= user.id %>" data-name="<%= user.name %>">編集</button>
-          </th>
-          <th><a href="user/<%= user.id %>/edit" class="user-edit">情報の編集</a><a href="user/<%= user.id %>/delete" class="user-edit">ユーザーの削除</a></th>
-
-        </div>
-      </tr>
-      <% end %>
-    </tbody>
-  </table>
+<div class="user-display-grid">
+  <% @users.each do |user|%>
+  <div class="user-display">
+    <div class="user-display-inner">
+      <div class="user-display-basic">
+        <div class="user-display-name"><%= user.name %></div>
+        <div class="user-display-univ"><%= user.univ %></div>
+        <div class="user-display-year"><%= user.year %>年度入会(<%= Date.today.year - user.year + 1%>年目)</div>
+      </div>
+      <div class="user-display-contact">
+        <div class="user-display-tel"><i class="fa fa-phone"></i> <%= user.tel %></div>
+        <div class="user-display-email"><i class="fa fa-envelope-o"></i><%= user.email %></div>
+        <div class="user-display-authority"><i class="fa fa-user-plus"></i>
+        <% if user.authority == nil %>
+          一般サークル員
+        <% elsif user.authority == "admin"%>
+          ポータル管理者
+        <% elsif user.authority == "producer"%>
+          サークルライブプロデューサー
+        <% elsif user.authority == "mic"%>
+          音響セクション員(マイク練管理者)
+        <% end %>
+        <button class="open-modal" type="button" data-toggle="modal" data-target=".modal" data-id="<%= user.id %>" data-name="<%= user.name %>">編集</button>
+      </div>
+      </div>
+    </div>
+  </div>
+  <% end %>
+</div>
 
   <div class="modal">
     <div class="modal-close"><i class="fa fa-times"></i></div>

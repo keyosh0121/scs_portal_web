@@ -44,6 +44,11 @@ class SubmitController < ApplicationController
     @conference = Conference.find_by(name:@object1)
   end
 
+  def comment_performance
+    self.user_authentificate
+    @performances = Performance.all
+  end
+
   def regular_band
     self.user_authentificate
     @band = Band.new()
@@ -144,7 +149,6 @@ class SubmitController < ApplicationController
 
   def room
     self.user_authentificate
-
   end
 
   def show_infos
