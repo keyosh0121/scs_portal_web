@@ -1,7 +1,73 @@
 <div class="room-wrapper">
   <div class="room-title">
-    <h1>部屋利用掲示板</h1>
-    <span>練習室などを利用する場合、こちらの掲示板に登録してください</span><br>
-    <span class="room-caution">※部屋利用の事前予約をするものではありません。事前に練習室の予約などを取ることはできません。</span>
+    <div class="room-title-box">
+      <h1>部屋利用掲示板</h1>
+    </div>
   </div>
+  <%= form_tag('/submit/room/send', method: "post") do %>
+  <div class="room-contents-container">
+
+    <% if @usage.errors.any? %>
+      <div class="error-messages">
+        <% @usage.errors.full_messages.each do |message|%>
+          <%= message %><br>
+        <% end %>
+      </div>
+    <% end %>
+
+    <div class="room-about">練習室利用は現役正規バンドのみ可能です。<br>
+      自分の正規バンドが表示されない場合、申請に誤りがあるか、ユーザーの登録が正しく完了していない場合があります。</div>
+    <div class="room-current">
+      <div class="rcurrent-title">   <%= Date.today.strftime("%m月%d日")%>の利用状況</div>
+  <% if @usages %>
+        <% RoomUsage.all.each do |usage| %>
+          <%= usage.room %>
+          <%= usage.band %>
+          <%= usage.period.join(",")%>限
+          <% if @current_user.band_names.include?(usage.band)%>
+            <a href="">削除</a>
+          <% end %>
+          <br>
+        <% end %>
+      <% else %>
+        現在の利用申請はまだありません。
+      <% end %>
+    </div>
+  <div class="room-content-title">利用部屋</div>
+  <div class="room-content-wrap">
+    <input type="radio" class="room-radio" id="E1016" name="room" value="E1016"><label for="E1016">E1016</label>
+    <input type="radio" class="room-radio" id="E1116" name="room" value="E1116"><label for="E1116" >E1116</label>
+    <input type="radio" class="room-radio" id="会議スペース" name="room" value="会議スペース"><label for="会議スペース">会議スペース</label>
+    <input type="radio" class="room-radio" id="個人ブース" name="room" value="個人ブース"><label for="個人ブース">個人ブース</label>
+  </div>
+  <div class="room-content-title">利用日</div>
+  <div class="room-content-wrap">
+    <input type="radio" class="room-radio" id="today" name="date" value="<%= Date.today%>"><label for="today" id="today"><%= Date.today.strftime("%m/%d") %>(本日)</label>
+    <input type="radio" class="room-radio" id="tomorrow" name="date" value="<%= Date.today + 1%>"><label for="tomorrow"><%= (Date.today + 1).strftime("%m/%d")  %>(<%= %w(日 月 火 水 木 金 土)[(Date.today + 1).wday] %>)</label>
+    <input type="radio" class="room-radio" id="tomorrow1" name="date" value="<%= Date.today + 2%>"><label for="tomorrow1"><%= (Date.today + 2).strftime("%m/%d")  %>(<%= %w(日 月 火 水 木 金 土)[(Date.today + 2).wday] %>)</label>
+    <input type="radio" class="room-radio" id="tomorrow2" name="date" value="<%= Date.today + 3%>"><label for="tomorrow2"><%= (Date.today + 3).strftime("%m/%d")  %>(<%= %w(日 月 火 水 木 金 土)[(Date.today + 3).wday] %>)</label>
+    <input type="radio" class="room-radio" id="tomorrow3" name="date" value="<%= Date.today + 4%>"><label for="tomorrow3"><%= (Date.today + 4).strftime("%m/%d")  %>(<%= %w(日 月 火 水 木 金 土)[(Date.today + 4).wday] %>)</label>
+  </div>
+  <div class="room-content-title">利用時間</div>
+  <div class="room-content-wrap">
+  <input type="checkbox" class="room-radio" id="1-gen" name="time[]" value="1"><label for="1-gen">1限</label>
+  <input type="checkbox" class="room-radio" id="2-gen" name="time[]" value="2"><label for="2-gen">2限</label>
+  <input type="checkbox" class="room-radio" id="3-gen" name="time[]" value="3"><label for="3-gen">3限</label>
+  <input type="checkbox" class="room-radio" id="hiru-gen" name="time[]" value="昼"><label for="hiru-gen">昼限</label>
+  <input type="checkbox" class="room-radio" id="4-gen" name="time[]" value="4"><label for="4-gen">4限</label>
+  <input type="checkbox" class="room-radio" id="5-gen" name="time[]" value="5"><label for="5-gen">5限</label>
+  <input type="checkbox" class="room-radio" id="6-gen" name="time[]" value="6"><label for="6-gen">6限</label>
+  <input type="checkbox" class="room-radio" id="7-gen" name="time[]" value="7"><label for="7-gen">7限</label>
+  </div>
+  <div class="room-content-title">利用するバンド</div>
+    <select name="band" class="band-select">
+        <option value="" disabled selected>選択してください</option>
+        option
+      <%= @current_user.bands.each do |band| %>
+        <option value="<%=band.name%>"><%= band.name %></option>
+      <% end %>
+    </select>
+  </div>
+  <input type="submit" name="" value=利用申請する id="room-submit">
+ <% end %>
 </div>

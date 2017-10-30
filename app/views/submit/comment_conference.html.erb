@@ -5,6 +5,7 @@
   </div>
 
   <div class="comment-form">
+    <%= form_tag('/submit/comment/conference/send') do%>
     <table>
       <tbody>
         <tr><td colspan="2" ><h2>総会コメント</h2></td>
@@ -49,5 +50,6 @@
         </tr>
       </tbody>
     </table>
+    <% end %>
   </div>
 </div>

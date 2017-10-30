@@ -20,6 +20,18 @@ class User < ApplicationRecord
     return user_bands
   end
 
+  def band_names
+    user_bands = Array.new()
+    Band.all.each do |band|
+      if band.members.include?(self.name)
+        if band.registration
+          user_bands.push(band.name)
+        end
+      end
+    end
+    return user_bands
+  end
+
   def mics
     user_mics = Array.new()
 

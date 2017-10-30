@@ -22,7 +22,8 @@ class SubmitController < ApplicationController
       sender: @current_user.name,
       date: params[:date],
       time: params[:time],
-      paattendance: attendance
+      paattendance: attendance,
+      status: "未承認"
       )
     params[:paattendance]
     if @mic.save
@@ -44,9 +45,16 @@ class SubmitController < ApplicationController
     @conference = Conference.find_by(name:@object1)
   end
 
+  def comment_conference_send
+
+  end
+
   def comment_performance
     self.user_authentificate
     @performances = Performance.all
+  end
+
+  def comment_performance_send
   end
 
   def regular_band
@@ -148,7 +156,29 @@ class SubmitController < ApplicationController
   end
 
   def room
+    @usages = RoomUsage.all
+    @usage = RoomUsage.new()
     self.user_authentificate
+  end
+
+  def room_send
+    @usages = RoomUsage.all
+    puts
+    @usage = RoomUsage.new(
+      room: params[:room],
+      band: params[:band],
+      sender: @current_user.name,
+      date: params[:date],
+      period: params[:time]
+      )
+    if @usage.save
+      flash[:notice] = "申請しました。"
+      render('submit/room')
+    else
+      flash[:notice] = "申請できませんでした。再度試してください。"
+      @errors = @usage.errors.full_messages
+      render('submit/room')
+    end
   end
 
   def show_infos

@@ -339,14 +339,89 @@
   margin-top: 50px;
 }
 .room-title{
-  width: 90%;
   margin: auto;
   padding-top: 20px;
   text-align: center;
+  font-weight: normal;
+  color: #66808f;
 }
-.room-title h1{
-    font-weight: normal;
+.room-title-box{
+  margin: 5px;
+  border: solid 8px #66808F;
 }
-.room-caution{
+.error-messages{
+  color: red;
+  border: solid 2px red;
   font-size: 13px;
+  padding: 20px 5px;
+  margin-top: 10px;
+}
+
+.room-about{
+  font-size: 13px;
+  color: #66808f;
+  padding: 20px 0;
+}
+.room-current{
+  border: solid 1px #66808F;
+  color: #66808F;
+  font-size: 13px;
+  padding: 4px;
+}
+.room-current a{
+  display: block;
+  float: right;
+}
+.rcurrent-title{
+  padding: 3px 0;
+  font-size: 15px;
+  font-weight: bold;
+}
+.room-radio{
+  display: none;
+}
+.room-contents-container{
+  margin: 5px;
+}
+.room-content-wrap{
+  overflow: auto;
+}
+.room-content-title{
+  color: #66808F;
+  font-size: 13px;
+  margin: 15px 0;
+  border-bottom:  solid 1px #66808F;
+}
+.room-content-wrap label{
+  display: block;
+  height: 33px;
+  text-align: center;
+  padding: 5px;
+  background-color: #66808F;
+  color: white;
+  width: 49%;
+  margin: 1px;
+  float: left;
+}
+.room-radio:checked + label {
+  background: #44a0aE;
+  color: yellow;
+  transition:  100ms ease;
+}
+#today {
+  width: 98.5%;
+}
+.band-select{
+  height: 35px;
+  background-color: #44707f;
+  color: white;
+  font-size: 15px;
+}
+#room-submit{
+  -webkit-appearance: none;
+  height: 45px;
+  color: white;
+  background-color: salmon;
+  margin: 15px 2px;
+  border: none;
 }

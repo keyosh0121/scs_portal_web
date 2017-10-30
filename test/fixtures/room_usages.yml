@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  band: MyString
+  sender: MyString
+  date: 2017-10-31
+  period: 1
+  time: 2017-10-31 01:01:32
+
+two:
+  band: MyString
+  sender: MyString
+  date: 2017-10-31
+  period: 1
+  time: 2017-10-31 01:01:32
