@@ -1,7 +1,7 @@
 <div class="room-wrapper">
   <div class="room-title">
     <div class="room-title-box">
-      <h1>部屋利用掲示板</h1>
+      <h1>練習室利用</h1>
     </div>
   </div>
   <%= form_tag('/submit/room/send', method: "post") do %>
@@ -19,7 +19,7 @@
       自分の正規バンドが表示されない場合、申請に誤りがあるか、ユーザーの登録が正しく完了していない場合があります。</div>
     <div class="room-current">
       <div class="rcurrent-title">   <%= Date.today.strftime("%m月%d日")%>の利用状況</div>
-  <% if @usages %>
+  <% if @usages.count != 0 %>
         <% RoomUsage.all.each do |usage| %>
           <%= usage.room %>
           <%= usage.band %>

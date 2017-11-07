@@ -110,7 +110,7 @@ class SubmitController < ApplicationController
   def temporal_band
     self.user_authentificate
     @temporal_band = TemporalBand.new()
-    @events = Event.all
+    @events = Event.where(entry_required: true)
   end
 
   def temporal_band_submit

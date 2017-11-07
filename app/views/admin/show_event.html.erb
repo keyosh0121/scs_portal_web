@@ -1,0 +1,46 @@
+<div class="show-event-wrap">
+  <div class="show-event-title">サークルイベント一覧/追加</div>
+  <div class="event-add-wrap">
+    <%= form_tag('/database/add-event') do %>
+    <div class="event-add-input-box">
+      <input type="text" name="name" placeholder="イベント名">
+      <select name="category">
+        <option value="" disabled selected>選択してください(イベントの種類)</option>
+        <option value="live">サークルライブ</option>
+        <option value="audition">オーディション</option>
+        <option value="stage">ステージイベント</option>
+        <option value="conference">総会</option>
+        <option value="singalong">歌う会</option>
+        <option value="eigyo">営業</option>
+        <option value="box-live">箱ライブ</option>
+        <option value="nomikai">宴会</option>
+        <option value="other">その他</option>
+      </select>
+      <input type="date" name="date" placeholder="日程">
+      <input type="time" name="time">
+      <select name="entry_required">
+        <option value=false disabled selected>選択してください(エントリーの有無)</option>
+        <option value=true>エントリー必要</option>
+        <option value=false>エントリー不要</option>
+      </select>
+      <select name="able_to_comment">
+        <option value="" disabled selected>選択してください(コメントの可否)</option>
+        <option value="true">講評/コメント可能</option>
+        <option value="false">講評/コメント不可</option>
+      </select>
+      <input type="submit" name="" class="event-submit-btn" value="イベントを追加する">
+    </div>
+    <% end %>
+  </div>
+  <div class="event-list">
+    <% @events.each do |event|%>
+    <div class="event-box">
+      <div class="event-title"><%= event.name %></div>
+      <div class="event-dt"><%= event.date.year %>年 <%= event.date.month %>月<%= event.date.day %>日   <%= event.start_time.hour %>時〜</div>
+      <div class="cancel-btn"><%= form_tag("/database/event-delete/#{event.id}") do %>
+        <input type="submit" value="削除">
+        <%end%></div>
+    </div>
+    <% end %>
+  </div>
+</div>

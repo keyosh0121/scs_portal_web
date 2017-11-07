@@ -15,6 +15,7 @@
 
   <header>
     <div class="header-wrapper">
+      <div class="sidemenu-open-btn"><i class="fa fa-bars"></i></div>
       <div class="header-left">
       <% if session[:user_id] == nil%>
         <div id="title"><%= link_to("SCS Portal","/",{class:"header-title"}) %></div>
@@ -24,22 +25,13 @@
         <div class="selectColor"></div>
       </div>
       <div class="header-right">
-        <div class="button-wrapper">
-          <ul>
-            <li class="menu-button"><a>コメント・講評</a></li>
-            <li class="menu-button"><a>各種イベントエントリー</a></li>
-            <li class="menu-button"><a>マイク練・練習室</a></li>
-            <li class="menu-button"><a>スケジュール</a></li>
-          </ul>
-        </div>
-
       </div>
       <div class="header-end">
 
         <% if session[:user_id] == nil %>
           <a href="/login" class="btn login">ログイン</a>
         <% else %>
-          <a href="/user/<%= @current_user.id %>/show" class="btn login"><%= @current_user.name %></a>
+
         <% end%>
       </div>
     </div>
@@ -48,11 +40,63 @@
         <%= flash[:notice] %>
     </div>
   <% end %>
-
   </header>
 
+  <div id="sidemenu">
+    <% if @current_user %>
+    <div class="side-user">
+      <div class="side-user-img"><i class="fa fa-user-circle-o"></i></div>
+      <div class="side-user-info">
+        <div class="side-user-name"><%= @current_user.name %></div>
+        <div class="side-user-other">
+          <%= @current_user.email %><br>
+          <%= @current_user.year%>年度入会
+        </div>
+      </div>
+    </div>
+    <% end %>
+    <div class="sidemenu-menu">
+      <div class="sidemenu-category">ポータル</div>
+      <div class="sidemenu-content">
+        <div class="side-content-img"><i class="fa fa-microphone"></i></div>
+        <div class="side-content-title">マイク練予約</div>
+      </div>
+      <div class="sidemenu-content">
+        <div class="side-content-img"><i class="fa fa-pencil"></i></div>
+        <div class="side-content-title">練習室利用</div>
+      </div>
+      <div class="sidemenu-content">
+        <div class="side-content-img"><i class="fa fa-pencil-square-o"></i></div>
+        <div class="side-content-title">エントリー</div>
+      </div>
+      <div class="sidemenu-content">
+        <div class="side-content-img"><i class="fa fa-commenting-o"></i></div>
+        <div class="side-content-title">講評・コメント</div>
+      </div>
+      <div class="sidemenu-content">
+        <div class="side-content-img"><i class="fa fa-address-card-o"></i></div>
+        <div class="side-content-title">バンド登録</div>
+      </div>
+      <div class="sidemenu-category">その他</div>
+      <div class="sidemenu-content">
+        <div class="side-content-img"><i class="fa fa-cogs"></i></div>
+        <div class="side-content-title">アカウント管理</div>
+      </div>
+      <div class="sidemenu-content">
+        <div class="side-content-img"><i class="fa fa-question"></i></div>
+        <div class="side-content-title">お問い合わせ・ご意見</div>
+      </div>
+      <div class="sidemenu-content">
+        <div class="side-content-img"><i class="fa fa-users"></i></div>
+        <div class="side-content-title">管理者画面へ</div>
+      </div>
+    </div>
+  </div>
+
 <!--       ヘッダーここまで     -->
+  <main>
     <%= yield %>
+  </main>
 <!--       フッターここから     -->
     <footer>
 

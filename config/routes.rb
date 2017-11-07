@@ -29,12 +29,15 @@ Rails.application.routes.draw do
   post "/database/bands/register/:id" => "admin#register_band"
   get "/database/registered-bands" => "admin#show_registered_bands"
   get "database/temporal-bands" => "admin#show_temporal_bands"
-  post "database/add-event" => "admin#add_event"
+  get "/database/show-event" => "admin#show_event"
+  post "/database/add-event" => "admin#add_event"
+  post "/database/event-delete/:id" => "admin#delete_event"
   get "/database/users" => "admin#show_users"
   post "/database/users/authority_edit/:id" => "admin#user_authority_edit"
   get "/database/notifications" => "admin#show_infos"
   post "/database/notifications/new" => "admin#add_infos"
   get "/database/mic-practice" => "admin#show_mic"
   get "/database" => "admin#top"
+
 
 end

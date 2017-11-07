@@ -365,7 +365,7 @@
 .room-current{
   border: solid 1px #66808F;
   color: #66808F;
-  font-size: 13px;
+  font-size: 15px;
   padding: 4px;
 }
 .room-current a{
@@ -374,7 +374,7 @@
 }
 .rcurrent-title{
   padding: 3px 0;
-  font-size: 15px;
+  font-size: 18px;
   font-weight: bold;
 }
 .room-radio{
@@ -394,7 +394,7 @@
 }
 .room-content-wrap label{
   display: block;
-  height: 33px;
+  height: 40px;
   text-align: center;
   padding: 5px;
   background-color: #66808F;

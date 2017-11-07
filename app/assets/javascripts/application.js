@@ -14,3 +14,24 @@
 //= require jquery
 //= require turbolinks
 //= require_tree .
+$(function(){
+  var sideMenu = $('#sidemenu');
+  var sideBarOpenButton = $('.sidemenu-open-btn');
+  var open = false;
+  var main = $('main');
+
+    sideBarOpenButton.on('click', function(){
+      if (open == false) {
+        sideMenu.fadeIn();
+        main.addClass('blured');
+        open = true
+      } else if (open == true) {
+        sideMenu.fadeOut();
+        main.removeClass('blured');
+        open = false;
+      }
+    });
+
+
+
+});

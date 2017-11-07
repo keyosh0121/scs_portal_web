@@ -20,6 +20,7 @@
 
 body {
   margin: 0;
+  font-family:Avenir , "Open Sans" , "Helvetica Neue" , Helvetica , Arial , Verdana , Roboto , "游ゴシック" , "Yu Gothic" , "游ゴシック体" , "YuGothic" , "ヒラギノ角ゴ Pro W3" , "Hiragino Kaku Gothic Pro" , "Meiryo UI" , "メイリオ" , Meiryo , "ＭＳ Ｐゴシック" , "MS PGothic" , sans-serif;
 }
 
 /*      ヘッダーここから    */
@@ -27,9 +28,9 @@ header{
   background-color: #00ced1;
   color: #fff;
   margin-top: 0 auto;
-  height: 50px;
+  height: 55px;
   top: 0;
-  z-index: 8;
+  z-index: 1000;
   position: fixed;
   width:100%;
 }
@@ -38,6 +39,10 @@ a {
 }
 input :not(input[type="checkbox"]){
   -webkit-appearance: none;
+}
+.blured{
+  filter: brightness(50%);
+  transition: 300ms ease-in-out;
 }
 .header-title{
   font-family: "Avenir next";
@@ -51,20 +56,103 @@ input :not(input[type="checkbox"]){
   background-color:lightseagreen;
   transition: all 300ms ease;
 }
+.sidemenu-open-btn{
+  position: absolute;
+  top: 0;
+  height: 100%;
+  left: 80px;
+  width: 55px;
+  padding: 10px 15px;
+  font-size: 25px;
+}
 .header-left{
-  float: left;
+  position: absolute;
+  margin: 0 auto;
+  height: 100%;
+  right: 20%;
+  left: 20%;
+  text-align: center;
 }
 /*画面サイズが小さくなったらheader-rightは非表示にする*/
 .header-right{
-  float: left;
-  width: 80%%;
+  width: 80%;
 }
+#sidemenu{
+  position: fixed;
+  top: 55px;
+  left: 0px;
+  width: 300px;
+  height: 100%;
+  z-index: 999;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: none;
+}
+.side-user{
+  width: 100%;
+  color: #999;
+  border-bottom: solid 1px #999;
+  padding: 10px;
+}
+.side-user-img{
+  float: left;
+  height: 100%;
+  width: 80px;
+  font-size: 30px;
+  padding: 15px;
+}
+.side-user-name{
+  padding: 5px;
+  font-size: 18px;
+}
+.side-user-other{
+  font-size: 12px;
+}
+.sidemenu-category{
+  background-color: #999;
+  color: #222;
+  height: 25px;
+  width: 100%;
+  font-size: 13px;
+  padding: 2px 5px;
+  font-weight: bold;
+}
+.sidemenu-content{
+  height: 60px;
+  width: 100%;
+  border-bottom: 1px solid #999;
+  color: #bbb;
+}
+.sidemenu-content:hover{
+  color: #222;
+  background-color: #bbb;
+  transition: 300ms ease;
+}
+.side-content-img{
+  height: 100%;
+  width: 80px;
+  float: left;
+  font-size: 30px;
+  padding: 10px 15px;
+  text-align: center;
+}
+.side-content-title{
+  float: left;
+  height: 100%;
+  padding: 15px 0;
+  font-size: 16px;
+  font-weight: lighter;
+}
+
+
 @media(max-width: 920px){
   .header-right{
     display: none;
   }
   .header-end{
     display: block;
+  }
+  .sidemenu-open-btn{
+    left: 5px;
   }
 }
 .button-wrapper{

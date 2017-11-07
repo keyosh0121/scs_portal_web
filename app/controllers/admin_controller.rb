@@ -91,17 +91,38 @@ class AdminController < ApplicationController
     @temporal_bands = TemporalBand.all
   end
 
+  def show_event
+    @events = Event.all
+    @event = Event.new()
+  end
+
   def add_event
     @event = Event.new(
       name: params[:name],
-      date: params[:date]
+      date: params[:date],
+      start_time: params[:time],
+      entry_required: params[:entry_required],
+      able_to_comment: params[:able_to_comment],
+      category: params[:category]
       )
     if @event.save
       flash[:notice] = "イベントを登録しました"
-      redirect_to("/database/temporal-bands")
+      redirect_to("/database/show-event")
     else
       flash[:notice] = "イベント登録に失敗しました。再度試してください。"
     end
   end
+
+  def delete_event
+    event = Event.find_by(id: params[:id])
+    if event.destroy
+      flash[:notice] = "イベントを削除しました"
+      redirect_to("/database/show-event")
+    else
+      flash[:notice] = "イベントの削除に失敗しました。再度試してください"
+      redirect_to("/database/show-event")
+    end
+  end
+
 end
 

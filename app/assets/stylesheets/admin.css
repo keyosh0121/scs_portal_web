@@ -145,6 +145,7 @@
   display: grid;
   grid-template-columns: 33% 33% 33%;
   padding: 50px 100px;
+  grid-gap: 5px;
 }
 .user-display{
   height: 130px;
@@ -292,4 +293,68 @@
   margin-top: 50px;
   text-align: center;
 }
+
+/* イベント管理 */
+
+.show-event-wrap{
+  margin: 0 5px;
+  margin-top: 60px;
+}
+.event-add-wrap{
+  margin: 10px ;
+  overflow: auto;
+  background-color: #ccc;
+}
+.event-add-wrap input, select{
+  height: 40px;
+  float: left;
+  width: 100%;
+  margin: 5px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  padding: 5px;
+  border: solid 1px gray;
+}
+.event-submit-btn{
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  height: 40px;
+  background-color: salmon;
+  border: none;
+}
+.event-add-input-box{
+  width: 400px;
+  margin: 10px auto;
+}
+.show-event-title{
+  border: solid 10px #9f9033;
+  margin: 10px 0;
+  padding: 10px;
+  color: #9f9033;
+  font-size: 20px;
+  font-weight: bold;
+}
+.event-list{
+  margin: 10px;
+}
+.event-box{
+  padding: 5px;
+  margin: 5px;
+  background-color: #fff;
+  border: 1px solid #888;
+}
+.event-title{
+  font-weight: bold;
+  font-size: 20px;
+}
+.event-dt{
+  font-size: 14px;
+}
+.cancel-btn{
+
+}
+
+
 
