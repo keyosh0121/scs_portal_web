@@ -28,6 +28,7 @@ class SubmitController < ApplicationController
     params[:paattendance]
     if @mic.save
       redirect_to("/user/#{session[:user_id]}/show")
+      flash[:notice] = "マイク練申請が完了しました。"
     else
       flash[:notice] = "保存に失敗しました。入力内容を確認してください。"
       render("/submit/mic")

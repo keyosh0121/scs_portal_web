@@ -1,27 +1,22 @@
 
 <div class="band-show-wrapper">
-  <table>
-    <thead>
-      <tr>
-        <th>バンド名</th>
-        <th>バンマス</th>
-        <th>メンバー</th>
-        <th>PA</th>
-        <th>結成年</th>
-        <th>説明</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @bands.each do |band|%>
-        <tr>
-          <td><%= band.name %></td>
-          <td><%= band.master %></td>
-          <td><%= band.members %></td>
-          <td><%= band.pa %></td>
-          <td><%= band.year %></td>
-          <td><%= band.description %></td>
-        </tr>
-      <%end%>
-    </tbody>
-  </table>
+  <div class="band-show-inner">
+    <div class="band-show-title">正規バンド一覧</div>
+    <div class="band-show-description">
+      正規登録されたバンドです。正規申請の取り消し・情報の変更などはここから行ってください。
+    </div>
+    <div class="band-show-container">
+    <% @bands.each do |band|%>
+      <div class="band-show-content">
+        <div class="band-name"><%= band.name%></div>
+        <div class="band-edit">編集
+        </div>
+        <div class="band-members"><%= band.members.join(" ") %>
+        </div>
+        <img src="/assets/back-mic.jpg" class="band-img">
+        <div class="band-description"><%= band.description %></div>
+      </div>
+    <% end %>
+    </div>
+  </div>
 </div>

@@ -12,8 +12,10 @@
 //
 //= require rails-ujs
 //= require jquery
+//= require jquery.turbolinks
 //= require turbolinks
 //= require_tree .
+$(document).on('turbolinks:load', function() {
 $(function(){
   var sideMenu = $('#sidemenu');
   var sideBarOpenButton = $('.sidemenu-open-btn');
@@ -32,6 +34,14 @@ $(function(){
       }
     });
 
+    main.on('click', function() {
+      if (open == true) {
+        sideMenu.fadeOut();
+        main.removeClass('blured');
+        open = false;
+      }
+    });
 
 
+});
 });

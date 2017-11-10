@@ -15,11 +15,13 @@ class MicDateValidator < ActiveModel::Validator
     if record.full?
       record.errors[:base] << "既にマイク練が3バンド入っています。"
     end
+    if record.band == nil
+      record.errors[:base] << "バンドが選択されていません"
+    end
   end
 end
 
 class Mic < ApplicationRecord
-  validates :band, {presence: true}
   validates_with MicDateValidator
   def full?
     count = Mic.where(date: self.date, time: self.time).count

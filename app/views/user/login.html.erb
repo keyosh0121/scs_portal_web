@@ -9,8 +9,8 @@
       <p id="login-with-account">SCSアカウントでログイン</p>
 
       <%= form_tag("/login/send") do %>
-        <input type="" name="email" class="login-input login-email-input" value="<%= @email %>">
-        <input type="password" name="password" class="login-input">
+        <input type="email" name="email" class="login-input login-email-input" value="<%= @email %>" placeholder="Emailアドレスを入力">
+        <input type="password" name="password" class="login-input" placeholder="パスワードを入力">
         <p id="show-pass"><input id="pass-checkbox" type="checkbox" name="">パスワードを表示する</p>
         <% if @error != nil %>
           <div class="login-error-message"><%= @error %></div>

@@ -84,7 +84,7 @@ input :not(input[type="checkbox"]){
   width: 300px;
   height: 100%;
   z-index: 999;
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: rgba(0, 0, 0, 0.9);
   display: none;
 }
 .side-user{

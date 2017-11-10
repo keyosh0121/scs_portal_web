@@ -213,17 +213,72 @@
 /* バンド管理 */
 
 .band-show-wrapper{
-  margin-top: 50px;
-  border-collapse: collapse;
+  margin-top: 55px;
 }
-.band-show-wrapper table{
-  margin: 10px auto;
+.band-show-inner{
+  margin: 0 80px;
+  background-color: #EEE;
 }
-.band-show-wrapper td,th{
-  border: solid 1px gray;
+.band-show-title{
+  font-size: 25px;
+  font-weight: bold;
+  margin:  10px 0;
+}
+.band-show-description{
+  font-size: 14px;
 
-  padding: 2px 15px;
+}
+.band-show-container{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: auto;
+}
+.band-show-content{
+  background-color: white;
+  margin: 10px;
+  padding: 5px;
+  position: relative;
+}
+.band-name{
+  font-size: 25px;
+  width: 100%;
+  height: 30px;
+}
+.band-edit{
+  background-color: #999;
+  height: 30px;
+  width: 10%;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  padding: 3px;
   font-size: 12px;
+  font-weight: bold;
+  color: white;
+}
+.band-members{
+  font-size: 12px;
+  margin: 10px 0;
+  width: 100%;
+
+}
+.band-img{
+  float: left;
+  width: 40%;
+}
+.band-description{
+  font-size: 12px;
+  width: 60%;
+  float: left;
+  padding: 5px;
+}
+@media only screen and (min-device-width: 200px) and (max-device-width: 700px){
+  .band-show-inner{
+    margin: 5px;
+  }
+  .band-show-container{
+    grid-template-columns: 100%;
+  }
 }
 
 /* お知らせ管理 */

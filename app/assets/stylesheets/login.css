@@ -24,6 +24,7 @@
 .login-content p,a,input{
   font-size: 13px;
   display: block;
+  -webkit-appearance: none;
 }
 .login-content p{
   color: #333333;
@@ -41,17 +42,11 @@
   width: 40%;
 }
 
-@media (max-width: 700px) {
-  .login-content{
-    width: 100%;
-  }
-}
+
 .login-input{
   height: 32px;
   float: top;
-  width: 90%;
-  margin-left: 5%;
-  margin-right: 5%;
+  width: 80%;
   margin-top: 5px;
 }
 #login-with-account{
@@ -87,4 +82,19 @@
   text-align: center;
   font-size: 12px;
   padding: 5px;
+}
+@media (max-width: 700px) {
+  .login-wrapper{
+    margin: 5px;
+  }
+  .login-content{
+    width: 100%;
+  }
+  .login-input{
+    height: 40px;
+    width: 100%;
+    border: none;
+    border-radius: 0;
+    margin: 10px 0;
+  }
 }

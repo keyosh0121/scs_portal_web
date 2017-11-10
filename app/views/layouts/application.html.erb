@@ -57,10 +57,12 @@
     <% end %>
     <div class="sidemenu-menu">
       <div class="sidemenu-category">ポータル</div>
+      <%= link_to('/submit/mic') do %>
       <div class="sidemenu-content">
         <div class="side-content-img"><i class="fa fa-microphone"></i></div>
         <div class="side-content-title">マイク練予約</div>
       </div>
+      <% end %>
       <div class="sidemenu-content">
         <div class="side-content-img"><i class="fa fa-pencil"></i></div>
         <div class="side-content-title">練習室利用</div>
@@ -86,10 +88,12 @@
         <div class="side-content-img"><i class="fa fa-question"></i></div>
         <div class="side-content-title">お問い合わせ・ご意見</div>
       </div>
+      <%= link_to('/database') do %>
       <div class="sidemenu-content">
         <div class="side-content-img"><i class="fa fa-users"></i></div>
         <div class="side-content-title">管理者画面へ</div>
       </div>
+      <% end %>
     </div>
   </div>
 
