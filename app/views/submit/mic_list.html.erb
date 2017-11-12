@@ -1,0 +1,31 @@
+<div class="mic-list-wrap">
+  <div class="mic-list-inner">
+    <div class="mic-sub-side">
+      <p class="display-small-title">マイク練申請画面</p>
+      <div class="mic-sub-side-title">マイク練申請</div>
+      <div class="mic-sub-side-category">メニュー</div>
+      <div class="mic-sub-side-content"><a href="/submit/mic">申請</a></div>
+      <div class="mic-sub-side-content"><a href="/submit/mic-list">申請済みリスト</a></div>
+      <div class="mic-sub-side-content">管理</div>
+    </div>
+    <div class="mic-sub-main mic-main2">
+      <h1>マイク練申請済みリスト</h1>
+      <div class="mic-list-contents">
+        <div class="mic-list-content mic-list-content-title">バンド名</div>
+        <div class="mic-list-content mic-list-content-date">11月16日(水)</div>
+        <div class="mic-list-content mic-list-content-time">4限</div>
+        <div class="mic-list-content mic-list-content-status">未承認</div>
+        <div class="mic-list-content mic-list-content-cancel"><a href="">申請取消</a></div>
+      </div>
+      <% @mics.each do |mic| %>
+      <div class="mic-list-contents">
+        <div class="mic-list-content mic-list-content-title"><%= mic.band %></div>
+        <div class="mic-list-content mic-list-content-date"><%= mic.date %></div>
+        <div class="mic-list-content mic-list-content-time"><%= mic.time %></div>
+        <div class="mic-list-content mic-list-content-status"><%= mic.status %></div>
+        <div class="mic-list-content mic-list-content-cancel"><a href="">申請取消</a></div>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>

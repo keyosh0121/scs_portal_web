@@ -9,6 +9,15 @@ class SubmitController < ApplicationController
     end
   end
 
+  def mic_list
+    self.user_authentificate
+    @mic = Mic.new()
+    if @current_user
+      @mics = @current_user.mics
+      @user_bands = @current_user.bands
+    end
+  end
+
   def mic_submit
     @mics = @current_user.mics
     @user_bands = @current_user.bands
@@ -27,7 +36,7 @@ class SubmitController < ApplicationController
       )
     params[:paattendance]
     if @mic.save
-      redirect_to("/user/#{session[:user_id]}/show")
+      redirect_to("/submit/mic-list")
       flash[:notice] = "マイク練申請が完了しました。"
     else
       flash[:notice] = "保存に失敗しました。入力内容を確認してください。"
@@ -37,6 +46,10 @@ class SubmitController < ApplicationController
 
   def comment
     self.user_authentificate
+  end
+
+  def comment_list
+    @sent_comments = Comment.where(sender:@current_user.name)
   end
 
   def comment_conference

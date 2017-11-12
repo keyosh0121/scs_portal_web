@@ -1,9 +1,9 @@
 /********** マイク練申請画面 **********/
 .mic-submit-wrap{
-
+  background-color: #fff;
 }
 .mic-submit-inner{
-  height: 1000px;
+  overflow: auto;
   margin: 0 250px;
   margin-top: 55px;
 }
@@ -126,6 +126,36 @@
   }
   .mic-sub-form select{
     width: 100%;
+  }
+}
+
+.mic-list-wrap{
+  overflow: auto;
+  background-color: #fff;
+}
+.mic-list-inner{
+  margin: 50px 250px;
+}
+.mic-list-contents{
+  width: 100%;
+  overflow: auto;
+  box-shadow: 3px 3px 10px #666;
+  margin: 15px 0;
+}
+.mic-list-content-title{
+  width: 50%;
+}
+.mic-list-content{
+  float: left;
+  padding: 10px 15px;
+}
+.mic-list-content-title{
+  font-size: 18px;
+  font-weight: bold;
+}
+@media only screen and (min-device-width:200px) and (max-device-width:700px){
+  .mic-list-inner{
+    margin: 5px;
   }
 }
 /********** 正規バンド申請画面 **********/
@@ -279,93 +309,91 @@
 
 .comment-wrapper{
   margin-top: 50px;
+  background-color: #fff;
 }
-.comment-title{
-  width: 50%;
-  margin: auto;
-  padding: 10px;
-  text-align: left;
-}
-.comment-title h1 {
-  font-weight: bold;
-  background-color: #CCC;
-  padding:  10px;
-}
-.comment-title span{
-  font-size: 14px;
-}
-.comment-menu{
-  width: 100%;
+.comment-inner{
+  margin: 100px 200px;
   overflow: auto;
 }
-.comment-form{
-  margin: auto;
+.comment-side{
+  width: 300px;
+  float: left;
+  height: 100%;
 }
-.comment-form table{
-  margin: auto;
-  margin-bottom: 20px;
+.comment-side-title{
+  font-size: 20px;
+  font-weight: bold;
+  color: #939;
+  padding: 15px 5px;
 }
-.comment-form td{
+.comment-side-category{
+  background-color: #999;
+  padding: 5px;
+  font-size: 13px;
+  font-weight: bold;
+}
+.comment-side-content{
+  padding: 15px 5px;
+  border-bottom: solid 1px #666;
+}
+.comment-side-content:hover{
+  color: #939;
+}
+.comment-main{
+  width: 70%;
+  float: left;
+  overflow: auto;
+  padding: 15px;
+}
+.comment-main h1{
+  padding: 5px 15px;
+  width: 100%;
+}
+.com-cof-content{
+  width: 100%;
   padding: 5px;
 }
-.comment-form td h2{
-  border-bottom: solid 1px;
+.com-cof-input{
+  width: 100%;
+  height: 50px
 }
-.comment-menu-content{
-  height: 40px;
-  width: 90%;
-  background-color: lightpink;
-  margin: 10px auto;
-  text-align: center;
+.com-cof-input textarea{
+  height: 200px;
 }
-.comment-menu-content-name{
-  margin: auto;
-  padding: 10px;
+.textarea-comcof{
+  height: 220px;
 }
-#conference-selecter{
-
+.comment-main select{
+  width: 300px;
 }
-#anonimity-checkbox{
-  float: left;
-  display: inline-block;
-}
-#anonimity-caution{
-  float: left;
-  font-size: 12px;
-}
-.content-designate{
-  background-color: #40404F;
-  color: white;
-  height: 50px;
-  font-size: 12px;
-  width: 150px;
-  padding-left: 10px;
-}
-.comment-content{
-  width: 500px;
-  background-color: #DDD;
-}
-.comment-content textarea, input:not([type="checkbox"]){
-  width: 98%;
-}
-.comment-content textarea{
-  height: 250px;
-  resize: none;
-}
-.submit-td{
-  height: 50px;
-}
- #conference-comment-send-btn{
-  border: none;
+#com-submit-btn{
   background-color: salmon;
-  height: 99%;
-  width: 99%;
-  color: white;
+  height: 40px;
+  width: 300px;
+  -webkit-appearance: none;
+  margin: auto;
+}
+.sent-comment-object{
+  font-weight: bold;
+  padding: 5px;
+}
+.sent-comment-content{
+  font-size: 13px;
+  padding: 5px;
 }
 @media only screen and (min-device-width:200px) and (max-device-width:700px){
-  .comment-title{
+  .comment-inner{
+    margin: 5px;
+
+  }
+  .comment-side{
     width: 100%;
   }
+  .comment-main{
+    width: 100%;
+    padding: 0;
+  }
+  .com-cof-input textarea{width:90%}
 }
 
 

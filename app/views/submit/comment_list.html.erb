@@ -1,0 +1,27 @@
+<div class="comment-wrapper">
+  <div class="comment-inner">
+    <div class="comment-side">
+      <div class="comment-side-title">コメント/講評送信画面</div>
+      <div class="comment-side-category">メニュー
+      </div>
+      <div class="comment-side-content"><a href="/submit/comment/conference">総会コメント</a></div>
+      <div class="comment-side-content"><a href="/submit/comment/performance">オーディション講評など</a></div>
+      <div class="comment-side-content"><a href="/submit/comment/list">送信コメント一覧</a></div>
+    </div>
+    <div class="comment-main">
+      <h1>送信済みコメント一覧</h1>
+      <div class="sent-comment">
+        <div class="sent-comment-object">11月総会 幹部選挙</div>
+        <div class="sent-comment-content">この内容に関しては、しっかりと事実確認を怠らず、原因究明を行うべきだと思います。しかし、たくさんの人がこの課題についてコメントしていると思うので、しっかりとその内容について確認するようにしてください</div>
+      </div>
+      <% if @sent_comments%>
+      <% @sent_comments.each do |c| %>
+        <div class="sent-comment">
+        <div class="sent-comment-object">11月総会 幹部選挙</div>
+        <div class="sent-comment-content"><%= c.comment %></div>
+      </div>
+      <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
