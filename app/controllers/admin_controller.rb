@@ -61,6 +61,18 @@ class AdminController < ApplicationController
     end
   end
 
+  def user_approve
+    user = User.find_by(id: params[:user_id])
+    user.approval = true
+    if user.save
+      flash[:notice] = "ユーザーを承認しました"
+      redirect_to('/database/users')
+    else
+      flash[:notice] = "承認に失敗しました"
+      redirect_to('/database/users')
+    end
+  end
+
   def show_mic
     self.user_authentificate
     @mics = Mic.all.order("date")

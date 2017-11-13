@@ -46,6 +46,7 @@ class SubmitController < ApplicationController
 
   def comment
     self.user_authentificate
+    @conferences = Event.where(category:"conference")
   end
 
   def comment_list
@@ -54,9 +55,7 @@ class SubmitController < ApplicationController
 
   def comment_conference
     self.user_authentificate
-    @conferences = Conference.all
-    @object1 = params[:object1]
-    @conference = Conference.find_by(name:@object1)
+    @conferences = Event.where(category:"conference")
   end
 
   def comment_conference_send

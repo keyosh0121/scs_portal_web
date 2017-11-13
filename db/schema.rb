@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171106143512) do
+ActiveRecord::Schema.define(version: 20171112091252) do
 
   create_table "bands", force: :cascade do |t|
     t.string "name"
@@ -52,6 +52,7 @@ ActiveRecord::Schema.define(version: 20171106143512) do
     t.boolean "able_to_comment", default: false, null: false
     t.boolean "entry_required", default: false, null: false
     t.string "category"
+    t.text "contents"
   end
 
   create_table "mics", force: :cascade do |t|
@@ -115,6 +116,7 @@ ActiveRecord::Schema.define(version: 20171106143512) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "authority"
+    t.boolean "approval", default: false
   end
 
 end

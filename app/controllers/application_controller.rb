@@ -11,6 +11,9 @@ class ApplicationController < ActionController::Base
     if @current_user == nil
       flash[:notice] = "ログインが必要な機能です。"
       redirect_to('/login')
+    elsif @current_user.approval == false
+      flash[:notice] = "管理者の承認が完了していません。"
+      redirect_to('/')
     end
   end
 

@@ -35,6 +35,7 @@ Rails.application.routes.draw do
   post "/database/add-event" => "admin#add_event"
   post "/database/event-delete/:id" => "admin#delete_event"
   get "/database/users" => "admin#show_users"
+  post "/database/user/:user_id/approve" => "admin#user_approve"
   post "/database/users/authority_edit/:id" => "admin#user_authority_edit"
   get "/database/notifications" => "admin#show_infos"
   post "/database/notifications/new" => "admin#add_infos"

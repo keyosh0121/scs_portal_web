@@ -148,18 +148,17 @@
   grid-gap: 5px;
 }
 .user-display{
-  height: 130px;
+  overflow: auto;
   background-color: #fff;
 }
 .user-display-inner{
   margin: 10px 20px;
-  height: 110px;
+  overflow: auto;
 
 }
 .user-display-basic{
   height: 40px;
   width: 100%;
-
   display: grid;
   grid-template-columns: 50% 50%;
   grid-template-rows: 50% 50%;
@@ -185,6 +184,11 @@
 }
 .user-display-authority{
   font-size: 14px;
+}
+.approve-button{
+  overflow: auto;
+  display: block;
+  padding: 5px;
 }
 
 @media only screen and (min-device-width: 200px) and (max-device-width: 700px){

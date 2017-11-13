@@ -13,5 +13,6 @@ class EventValidator < ActiveModel::Validator
 end
 
 class Event < ApplicationRecord
-validates_with EventValidator
+  validates_with EventValidator
+  serialize :contents
 end

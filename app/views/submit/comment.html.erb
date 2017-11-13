@@ -6,22 +6,24 @@
       </div>
       <div class="comment-side-content"><a href="/submit/comment/conference">総会コメント</a></div>
       <div class="comment-side-content"><a href="/submit/comment/performance">オーディション講評など</a></div>
-      <div class="comment-side-content">送信済み一覧</div>
+      <div class="comment-side-content"><a href="/submit/comment/list">送信コメント一覧</a>
+      </div>
     </div>
     <div class="comment-main">
       <h1>総会へのコメント送信</h1>
       <div class="com-cof-content">総会を選択してください</div>
-      <div class="com-cof-input"><select name="">
-        <option value=""></option>
-        option
+      <div class="com-cof-input"><select name="atevent">
+        <% @conferences.each do |conference|%>
+          <option value="<%= conference.name %>"><%= conference.name %></option>
+        <% end %>
       </select></div>
       <div class="com-cof-content">コメント先を選択してください</div>
-      <div class="com-cof-input"><select name="">
+      <div class="com-cof-input"><select name="atcontent">
         <option value=""></option>
         option
       </select></div>
       <div class="com-cof-content">コメント内容を入力してください</div>
-      <div class="com-cof-input textarea-comcof"><textarea name=""></textarea></div>
+      <div class="com-cof-input textarea-comcof"><textarea name="comment"></textarea></div>
       <input type="submit" name="" id="com-submit-btn">
     </div>
   </div>
