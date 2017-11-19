@@ -5,7 +5,7 @@
     <div class="event-add-input-box">
       <input type="text" name="name" placeholder="イベント名">
       <select name="category">
-        <option value="" disabled selected>選択してください(イベントの種類)</option>
+        <option value="" disabled selected>選択してください(イベントの種類)▼</option>
         <option value="live">サークルライブ</option>
         <option value="audition">オーディション</option>
         <option value="stage">ステージイベント</option>
@@ -19,15 +19,16 @@
       <input type="date" name="date" placeholder="日程">
       <input type="time" name="time">
       <select name="entry_required">
-        <option value=false disabled selected>選択してください(エントリーの有無)</option>
+        <option value=false disabled selected>選択してください(エントリーの有無)▼</option>
         <option value=true>エントリー必要</option>
         <option value=false>エントリー不要</option>
       </select>
       <select name="able_to_comment">
-        <option value="" disabled selected>選択してください(コメントの可否)</option>
+        <option value="" disabled selected>選択してください(コメントの可否)▼</option>
         <option value="true">講評/コメント可能</option>
         <option value="false">講評/コメント不可</option>
       </select>
+      <input type="text" name="contents" placeholder="コンマ( , )区切りでコンテンツを入力してください">
       <input type="submit" name="" class="event-submit-btn" value="イベントを追加する">
     </div>
     <% end %>

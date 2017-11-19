@@ -109,13 +109,21 @@ class AdminController < ApplicationController
   end
 
   def add_event
+    string = params[:contents].split(",")
+    puts string
+    array = Array.new
+    string.each do |str|
+      array.push(str)
+    end
+
     @event = Event.new(
       name: params[:name],
       date: params[:date],
       start_time: params[:time],
       entry_required: params[:entry_required],
       able_to_comment: params[:able_to_comment],
-      category: params[:category]
+      category: params[:category],
+      contents: array
       )
     if @event.save
       flash[:notice] = "イベントを登録しました"

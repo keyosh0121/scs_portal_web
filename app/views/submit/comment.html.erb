@@ -12,7 +12,7 @@
     <div class="comment-main">
       <h1>総会へのコメント送信</h1>
       <div class="com-cof-content">総会を選択してください</div>
-      <div class="com-cof-input"><select name="atevent">
+      <div class="com-cof-input"><select name="atevent" class="event-select">
         <% @conferences.each do |conference|%>
           <option value="<%= conference.name %>"><%= conference.name %></option>
         <% end %>

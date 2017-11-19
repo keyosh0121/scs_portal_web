@@ -12,11 +12,17 @@ class MicDateValidator < ActiveModel::Validator
     else
       record.errors[:base] << "日付を入力してください"
     end
+
     if record.full?
       record.errors[:base] << "既にマイク練が3バンド入っています。"
     end
+
     if record.band == nil
       record.errors[:base] << "バンドが選択されていません"
+    end
+
+    if record.time == nil
+      record.errors[:base] << "時限が選択されていません"
     end
   end
 end

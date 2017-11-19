@@ -102,6 +102,7 @@
   background-color: salmon;
   height: 40px;
   margin: 40px 5px;
+  width: 100%;
 }
 .mic-sub-form select{
     width: 100%;
@@ -148,6 +149,7 @@
 .mic-list-content{
   float: left;
   padding: 10px 15px;
+  width: 33%;
 }
 .mic-list-content-title{
   font-size: 18px;
