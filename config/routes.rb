@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   get "submit/comment/list" => "submit#comment_list"
   get "submit/comment/conference" => "submit#comment_conference"
   post "submit/comment/conference/send" => "submit#comment_conference_send"
+  post "submit/comment/conference/get" => "submit#get_comment"
   get "submit/comment/performance" => "submit#comment_performance"
   post "submit/comment/performance/send" => "submit#comment_performance_send"
 

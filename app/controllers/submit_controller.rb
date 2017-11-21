@@ -48,13 +48,16 @@ class SubmitController < ApplicationController
   def comment
     self.user_authentificate
     @conferences = Event.where(category:"conference")
-    if params[:name]
-      @event = Event.find_by(name: params[:name]).contents
+    if params[:event_name]
+      @contents = Event.find_by(name: params[:event_name]).contents
       puts @contents
     end
   end
   def get_content
-
+    if params[:event_name]
+      @contents = Event.find_by(name: params[:event_name]).contents
+      puts @contents
+    end
   end
 
   def comment_list
@@ -109,16 +112,21 @@ class SubmitController < ApplicationController
     if params[:member8] != ""
       members.push(params[:member8])
     end
-
     @band = Band.new(
       name: params[:name],
       pa: params[:pa],
       members: members,
       master: params[:master],
       description: params[:description],
-      year: Date.today.year
-      #  ----------------------------image
+      year: Date.today.year,
+      image: "default-band.jpg"
       )
+    if params[:image]
+      image = params[:image]
+      @band.image = "#{@band.name}.jpg"
+      File.binwrite("public/band-images/#{@band.image}", image.read)
+    end
+
     if @band.save
       redirect_to("/user/#{session[:user_id]}/show")
       flash[:notice] = "正規バンドの申請を受け付けました"

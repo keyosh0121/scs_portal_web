@@ -1,4 +1,4 @@
-$(function(){
+$(document).on('turbolinks:load', function() {
   var modal = $('.modal');
   $('.modal-close').click(function(){
     modal.fadeOut();

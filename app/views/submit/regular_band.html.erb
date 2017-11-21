@@ -1,7 +1,7 @@
 <div class="reg-band-sub-wrapper">
 <h1>正規バンド申請</h1>
   <div class="reg-band-sub-form">
-  <%= form_tag("/submit/regular-band/send") do %>
+  <%= form_tag("/submit/regular-band/send",{multipart: true}) do %>
     <table>
 
         <tr>

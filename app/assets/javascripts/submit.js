@@ -1,12 +1,13 @@
 $(function() {
   var eventSelect = $('.event-select');
+  var contentSelect = $('.content-select');
   eventSelect.change(function(){
-    $.get({
+    $.data({
       url: "/submit/comment",
-      data: { name: eventSelect.has('option:selected').val()}
+      data: { event_name: eventSelect.has('option:selected').val() }
     });
     console.log("selected");
-    $('.content-select').html('<%= j(options_for_select(@books)) %>');
+    console.log(contentSelect.html);
   });
 });
 

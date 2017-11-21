@@ -1,5 +1,26 @@
 <div class="band-show-wrapper">
   <div class="band-show-inner">
-
+    <h1>正規申請中バンド</h1>
+    <div class="band-show-description">
+      現在正規申請中のバンドです。「承認」ボタンを押すと正規バンドとして登録されます。内容を編集する場合は「編集」ボタンをクリックしてください
+    </div>
+    <div class="band-show-container">
+    <% if @bands.count != 0 %>
+    <% @bands.each do |band|%>
+      <div class="band-show-content">
+        <div class="band-name"><%= band.name%></div>
+        <div class="band-edit">編集
+        </div>
+        <%= link_to("承認",'/database/bands/register/' + band.id.to_s,method: 'post',class: "band-approve", data: {confirm: "本当に承認しますか？"}) %>
+        <div class="band-members"><%= band.members.join(" ") %>
+        </div>
+        <%= image_tag("/band-images/#{band.image}",:class => "band-img") %>
+        <div class="band-description"><%= band.description %></div>
+      </div>
+    <% end %>
+    <% else %>
+      <div class="no-bands">   現在申請中のバンドはありません。</div>
+    <% end %>
+    </div>
   </div>
 </div>

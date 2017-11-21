@@ -13,7 +13,7 @@
         </div>
         <div class="band-members"><%= band.members.join(" ") %>
         </div>
-        <img src="/assets/back-mic.jpg" class="band-img">
+        <%= image_tag("/band-images/#{band.image}",:class => "band-img") %>
         <div class="band-description"><%= band.description %></div>
       </div>
     <% end %>
