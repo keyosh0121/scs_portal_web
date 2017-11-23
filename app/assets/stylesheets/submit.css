@@ -85,7 +85,6 @@
   font-family: sans-serif;
   padding: 8px;
   margin: 5px;
-  height: 50px;
   border: 6px solid #99F;
 }
 .mic-time-input{
@@ -162,7 +161,20 @@
 }
 /********** 正規バンド申請画面 **********/
 
-
+.to-temporal-btn{
+  padding: 5px 15px;
+  background-color: rgba(0, 0, 0, 0.4);
+  margin: 15px;
+  color: white;
+}
+.to-temporal-btn:hover{
+  background-color: rgba(0, 0, 0, 0.6);
+  transition: 300ms ease;
+}
+.to-temporal-btn:active{
+  background-color: rgba(0, 0, 0, 0.8);
+  transition: 100ms ease;
+}
 .reg-band-sub-wrapper{
   margin-top: 50px;
   padding: 10px 0;

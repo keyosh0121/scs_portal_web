@@ -10,14 +10,10 @@
     </div>
     <div class="comment-main">
       <h1>送信済みコメント一覧</h1>
-      <div class="sent-comment">
-        <div class="sent-comment-object">11月総会 幹部選挙</div>
-        <div class="sent-comment-content">この内容に関しては、しっかりと事実確認を怠らず、原因究明を行うべきだと思います。しかし、たくさんの人がこの課題についてコメントしていると思うので、しっかりとその内容について確認するようにしてください</div>
-      </div>
       <% if @sent_comments%>
       <% @sent_comments.each do |c| %>
         <div class="sent-comment">
-        <div class="sent-comment-object">11月総会 幹部選挙</div>
+        <div class="sent-comment-object"><%= c.atevent %>  <%= c.atcontent %><%= link_to('コメントを削除','/submit/comment/list/destroy/' + c.id.to_s ,{:method => 'POST', data: {confirm: "本当に取り消しますか？"}})%></div>
         <div class="sent-comment-content"><%= c.comment %></div>
       </div>
       <% end %>

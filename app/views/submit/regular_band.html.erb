@@ -1,18 +1,20 @@
 <div class="reg-band-sub-wrapper">
 <h1>正規バンド申請</h1>
+
   <div class="reg-band-sub-form">
+    <%= link_to('企画バンドの申請はこちら','/submit/temporal-band',{:class => "to-temporal-btn"})%>
   <%= form_tag("/submit/regular-band/send",{multipart: true}) do %>
     <table>
 
         <tr>
           <td class="reg-band-form-title">バンド名</td>
           <td class="required-question"><div class="required-box">必須</div></td>
-          <td><input name="name" placeholder="バンド名を入力してください"></td>
+          <td><input name="name" placeholder="バンド名を入力してください" value="<%= @band.name %>"></td>
         </tr>
         <tr>
           <td class="reg-band-form-title">PA</td>
           <td class="required-question"><div class="required-box">必須</div></td>
-          <td><input name="pa" placeholder="PAの氏名を入力(姓名スペースなし)" value="<%= @band.name %>"></td>
+          <td><input name="pa" placeholder="PAの氏名を入力(姓名スペースなし)" value="<%= @band.pa %>"></td>
         </tr>
     </table>
     <div class="caution">※姓名の漢字を必ず確認してください。
@@ -21,7 +23,7 @@
         <tr>
           <td class="reg-band-form-title">メンバー1</td>
           <td class="required-question"><div class="required-box">必須</div></td>
-          <td><input name="member1" placeholder="氏名を入力" value="<%= @band.pa %>"></td>
+          <td><input name="member1" placeholder="氏名を入力"></td>
         </tr>
         <tr>
           <td class="reg-band-form-title">メンバー2</td>
@@ -64,12 +66,12 @@
     <table>
           <td class="reg-band-form-title">バンマス氏名</td>
           <td class="required-question"><div class="required-box">必須</div></td>
-          <td><input name="master" placeholder="バンマス氏名を入力"></td>
+          <td><input name="master" placeholder="バンマス氏名を入力" value="<%=band.master%>"></td>
         </tr>
         <tr>
           <td class="reg-band-form-title">説明</td>
           <td class="required-question"><div class="required-box">必須</div></td>
-          <td><textarea placeholder="バンドの特徴や紹介文を入力してください" name="description"></textarea></td>
+          <td><textarea placeholder="バンドの特徴や紹介文を入力してください" name="description" value="<%= band.description %>"></textarea></td>
         </tr>
         <tr>
           <td class="reg-band-form-title">画像</td>

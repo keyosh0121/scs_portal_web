@@ -1,5 +1,5 @@
 class SubmitController < ApplicationController
-
+  protect_from_forgery :except => [:get_content]
   def mic
     self.user_authentificate
     @mic = Mic.new()
@@ -38,25 +38,35 @@ class SubmitController < ApplicationController
     if @mic.save
       redirect_to("/submit/mic-list")
       flash[:notice] = "マイク練申請が完了しました。"
-      MicMailer.send_mic_to_admin(@mic).deliver
     else
       flash[:notice] = "保存に失敗しました。入力内容を確認してください。"
       render("/submit/mic")
     end
   end
 
+  def mic_destroy
+    mic = Mic.find_by(id: params[:id])
+    if mic.delete
+      flash[:notice] = "マイク練申請が取り消されました"
+      redirect_to('/submit/mic-list')
+    else
+      flash[:notice] = "処理に失敗しました。再度取消処理を行ってください"
+      redirect_to('/submit/mic-list')
+    end
+  end
+
   def comment
     self.user_authentificate
     @conferences = Event.where(category:"conference")
-    if params[:event_name]
-      @contents = Event.find_by(name: params[:event_name]).contents
-      puts @contents
-    end
+    @contents = []
   end
   def get_content
     if params[:event_name]
-      @contents = Event.find_by(name: params[:event_name]).contents
-      puts @contents
+      @contents = EventContent.where(event: params[:event_name])
+      render json: @contents
+      @contents.each do |con|
+        puts con.name
+      end
     end
   end
 
@@ -67,18 +77,57 @@ class SubmitController < ApplicationController
   def comment_conference
     self.user_authentificate
     @conferences = Event.where(category:"conference")
+    @contents = []
+  end
+
+  def comment_destroy
+    @comment = Comment.find_by(id: params[:id])
+    if @comment.delete
+      flash[:notice] = "コメントを削除しました"
+      redirect_to('/submit/comment/list')
+    else
+      flash[:notice] = "削除に失敗しました。再度試して下さい"
+      redirect_to('/submit/comment/list')
+    end
   end
 
   def comment_conference_send
-
+    @comment = Comment.new(
+      sender: @current_user.name,
+      atevent: params[:atevent],
+      atcontent: params[:atcontent],
+      comment: params[:comment]
+    )
+    if @comment.save
+      flash[:notice] = "コメントが送信されました。"
+      redirect_to('/submit/comment/list')
+    else
+      flash[:notice] = "送信に失敗しました。再度試して下さい。"
+      render('/submit/comment_list')
+    end
   end
 
   def comment_performance
     self.user_authentificate
-    @performances = Performance.all
+    @comment = Comment.new()
+    @auditions = Event.where(category:"audition",able_to_comment: true)
+    @contents = []
   end
 
   def comment_performance_send
+    @comment = Comment.new(
+      sender: @current_user.name,
+      atevent: params[:atevent],
+      atcontent: params[:atcontent],
+      comment: params[:comment]
+    )
+    if @comment.save
+      flash[:notice] = "コメントが送信されました。"
+      redirect_to('/submit/comment/list')
+    else
+      flash[:notice] = "送信に失敗しました。再度試して下さい。"
+      render('/submit/comment_list')
+    end
   end
 
   def regular_band

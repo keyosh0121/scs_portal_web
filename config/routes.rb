@@ -12,12 +12,14 @@ Rails.application.routes.draw do
 
   get "submit/mic" => "submit#mic"
   post "submit/mic/send" => "submit#mic_submit"
+  post "submit/mic/destroy/:id" => "submit#mic_destroy"
     get "submit/mic-list" => "submit#mic_list"
   get "submit/comment" => "submit#comment"
   get "submit/comment/list" => "submit#comment_list"
+  post "submit/comment/list/destroy/:id" => "submit#comment_destroy"
   get "submit/comment/conference" => "submit#comment_conference"
   post "submit/comment/conference/send" => "submit#comment_conference_send"
-  post "submit/comment/conference/get" => "submit#get_comment"
+  post "submit/comment/conference/get_content" => "submit#get_content"
   get "submit/comment/performance" => "submit#comment_performance"
   post "submit/comment/performance/send" => "submit#comment_performance_send"
 

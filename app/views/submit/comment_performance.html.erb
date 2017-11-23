@@ -9,20 +9,24 @@
       <div class="comment-side-content"><a href="/submit/comment/list">送信コメント一覧</a></div>
     </div>
     <div class="comment-main">
-      <h1>総会へのコメント送信</h1>
+    <%= form_tag('/submit/comment/performance/send') do %>
+      <h1>演奏への講評</h1>
       <div class="com-cof-content">オーディション・イベントを選択してください</div>
-      <div class="com-cof-input"><select name="atevent">
-        <option value=""></option>
-        option
+      <div class="com-cof-input"><select name="atevent" class="event-select">
+        <option value="" disabled selected>選択して下さい</option>
+        <% @auditions.each do |audi|%>
+          <option value="<%= audi.name %>"><%= audi.name %></option>
+          option
+        <% end %>
       </select></div>
       <div class="com-cof-content">コメント先のバンドを選択してください</div>
-      <div class="com-cof-input"><select name="atcontent">
-        <option value=""></option>
-        option
+      <div class="com-cof-input"><select name="atcontent" class="content-select">
+        <option value="" disabled>オーディションを選択して下さい</option>
       </select></div>
       <div class="com-cof-content">コメント内容を入力してください</div>
       <div class="com-cof-input textarea-comcof"><textarea name="comment"></textarea></div>
       <input type="submit" name="" id="com-submit-btn">
+    <% end %>
     </div>
   </div>
 </div>
