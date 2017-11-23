@@ -457,8 +457,34 @@
   font-size: 14px;
 }
 .cancel-btn{
-
 }
 
+/*   マイク練部屋登録画面  */
 
+.mic-room-wrap{
+  margin: 10px;
+  margin-top: 55px;
+  overflow: auto;
+}
+.mic-room-date{
+  font-size: 20px;
+  border-bottom: solid 1px #aaa;
+  padding: 10px;
+}
+.mic-roop-time-wrap{
+  padding: 10px;
+}
+.room-select{
+  height: 45px;
+  background-color: #cdd;
+  border: orange;
+}
+#mic-room-submit{
+  height: 40px;
+  background-color: salmon;
+  -webkit-appearance: none;
+  border-radius: 10px;
+  margin: 10px 5%;
+  width: 90%;
+}
 

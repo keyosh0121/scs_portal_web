@@ -1,0 +1,2 @@
+class MicRoom < ApplicationRecord
+end

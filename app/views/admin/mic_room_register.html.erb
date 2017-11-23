@@ -1,0 +1,20 @@
+<div class="mic-room-wrap">
+  <h1>本日の部屋登録</h1>
+  <div class="mic-room-form">
+    <div class="mic-room-date"><%= Date.today.strftime("%m月 %d日") + "の部屋を登録" %></div>
+    <%= form_tag('/database/mic/room-register/send') do %>
+      <% @hours.each do |hour| %>
+      <div class="mic-room-time-wrap">
+        <div class="mic-room-time"><%= hour %>限</div>
+        <select name="room<%= hour %>" class="room-select">
+          <option value="nil" selected>なし</option>
+            <% @rooms.each do |room|%>
+              <option value="<%= room %>"><%= room %></option>
+            <% end %>
+        </select>
+      </div>
+      <% end %>
+    <input type="submit" value="登録する" class="submit-btn" id="mic-room-submit">
+    <% end %>
+  </div>
+</div>

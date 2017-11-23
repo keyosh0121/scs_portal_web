@@ -44,6 +44,8 @@ Rails.application.routes.draw do
   get "/database/notifications" => "admin#show_infos"
   post "/database/notifications/new" => "admin#add_infos"
   get "/database/mic-practice" => "admin#show_mic"
+  get "/database/mic/room-register" => "admin#mic_room_register"
+  post "/database/mic/room-register/send" => "admin#mic_room_register_send"
   get "/database" => "admin#top"
 
 

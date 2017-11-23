@@ -66,12 +66,12 @@
     <table>
           <td class="reg-band-form-title">バンマス氏名</td>
           <td class="required-question"><div class="required-box">必須</div></td>
-          <td><input name="master" placeholder="バンマス氏名を入力" value="<%=band.master%>"></td>
+          <td><input name="master" placeholder="バンマス氏名を入力" value="<%=@band.master%>"></td>
         </tr>
         <tr>
           <td class="reg-band-form-title">説明</td>
           <td class="required-question"><div class="required-box">必須</div></td>
-          <td><textarea placeholder="バンドの特徴や紹介文を入力してください" name="description" value="<%= band.description %>"></textarea></td>
+          <td><textarea placeholder="バンドの特徴や紹介文を入力してください" name="description" value="<%= @band.description %>"></textarea></td>
         </tr>
         <tr>
           <td class="reg-band-form-title">画像</td>
