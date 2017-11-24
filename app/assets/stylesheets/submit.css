@@ -58,11 +58,9 @@
 .mic-sub-main select{
   font-size: 14px;
   font-weight: bold;
-  margin: 10px;
   margin-bottom: 20px;
   -webkit-appearance: none;
   border: none;
-  width: 300px;
 }
 #mic-date-input{
   -webkit-appearance: none;
@@ -104,15 +102,20 @@
   -webkit-appearance: none;
   border: none;
   background-color: salmon;
-  height: 40px;
-  margin: 40px 5px;
+  margin: 24px auto;
+  padding: 16px;
   width: 100%;
 }
 .mic-sub-form select{
-    width: 100%;
-    border: dotted 1px #000;
-    border-radius: 4px;
-  }
+  float: top;
+  border: dotted 1px #000;
+  border-radius: 4px;
+  display: block;
+}
+.mic-sub-form-content{
+  width: 100%;
+  float: top;
+}
 @media only screen and (min-device-width:200px) and (max-device-width:700px){
   .mic-submit-inner{
     margin: 0 10px;
@@ -132,7 +135,7 @@
     width: 100%;
   }
   .mic-sub-form select{
-    width: 100%;
+
   }
 }
 
