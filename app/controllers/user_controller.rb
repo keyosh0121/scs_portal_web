@@ -57,7 +57,7 @@ class UserController < ApplicationController
     @user = User.find_by(id: session[:user_id])
 
     @notifs = Notification.order(created_at: "DESC").limit(5)
-
+  end
 
   def logout
     session[:user_id] = nil
