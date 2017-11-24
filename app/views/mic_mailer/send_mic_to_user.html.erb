@@ -1,0 +1,20 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>[<%= @mic.band%>]マイク練申請</h1>
+    <p style="font-size: 16px;">マイク練申請を受け付けました。</p><br>
+    <p>マイク練の受付はまだ完了していません。管理者が受領した際、再度メールが届きます。しばらくメールが届かない場合、管理者に直接問い合わせて下さい。</p>
+    <br><br>
+    <div style="font-size: 16px">
+      日程.....<%= @mic.date %><br>
+      時限.....<%= @mic.time %><br>
+      送信者.....<%= @mic.sender %><br>
+      PAの参加予定.....<%= @mic.paattendance %>
+    </div><br><br>
+    <p style="font-size: 13px">内容に変更がある場合は、サイトから一度マイク練申請を取り消したのちもう一度申請を行って下さい。</p>
+  </body>
+</html>

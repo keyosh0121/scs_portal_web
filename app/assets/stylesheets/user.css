@@ -134,6 +134,15 @@
   background-color: rgba(255, 255, 255, 0.7);
   border-radius: 4px;
 }
+.user-show-logout:hover{
+  background-color: white;
+  transition: 200ms ease;
+}
+.user-show-logout:active{
+  background-color: darksalmon;
+  color: white;
+  transition: 100ms ease;
+}
 .logout-link{
   color: #000;
   font-weight: bold;

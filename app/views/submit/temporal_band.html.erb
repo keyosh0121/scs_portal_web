@@ -3,71 +3,39 @@
   <div class="description-tem">企画バンドの申請ができます。<br>氏名の入力が間違っていると、プログラムが正常に動作しなくなってしまう場合があります。<br>「正しい漢字」「氏名の間はスペースを空けない」ことを必ず確認して入力してください。</div>
   <div class="tem-band-form-wrapper">
     <%= form_tag("/submit/temporal-band/send") do %>
-    <table>
-        <tr>
-          <td class="reg-band-form-title">企画バンド名</td>
-          <td class="required-question"><div class="required-box">必須</div></td>
-          <td><input name="name" placeholder="バンド名を入力してください"></td>
-        </tr>
-        <tr>
-          <td class="reg-band-form-title">イベント</td>
-          <td class="required-question"><div class="required-box">必須</div></td>
-          <td><select name="event">
-          <% @events.each do |event|%>
-            <option value="<%= event.name %>"><%= event.name %></option>
-          <% end %>
-          </select></td>
-        </tr>
-        <tr>
-          <td></td>
-          <td></td>
-          <td>
-            <div class="caution">※姓名の漢字を必ず確認してください。
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <td class="reg-band-form-title">メンバー1</td>
-          <td class="required-question"><div class="required-box">必須</div></td>
-          <td><input name="member1" placeholder="氏名を入力"></td>
-        </tr>
-        <tr>
-          <td class="reg-band-form-title">メンバー2</td>
-          <td class="required-question"><div class="required-box">必須</div></td>
-          <td><input name="member2" placeholder="氏名を入力"></td>
-        </tr>
-        <tr>
-          <td class="reg-band-form-title">メンバー3</td>
-          <td class="required-question-no"></td>
-          <td><input name="member3" placeholder="氏名を入力"></td>
-        </tr>
-        <tr>
-          <td class="reg-band-form-title">メンバー4</td>
-          <td class="required-question-no"></td>
-          <td><input name="member4" placeholder="氏名を入力"></td>
-        </tr>
-        <tr>
-          <td class="reg-band-form-title">メンバー5</td>
-          <td class="required-question-no"></td>
-          <td><input name="member5" placeholder="氏名を入力"></td>
-        </tr>
-        <tr>
-          <td class="reg-band-form-title">メンバー6</td>
-          <td class="required-question-no"></td>
-          <td><input name="member6" placeholder="氏名を入力"></td>
-        </tr>
-        <tr>
-          <td class="reg-band-form-title">メンバー7</td>
-          <td class="required-question-no"></td>
-          <td><input name="member7" placeholder="氏名を入力"></td>
-        </tr>
-        <tr>
-          <td class="reg-band-form-title">メンバー8</td>
-          <td class="required-question-no"></td>
-          <td><input name="member8" placeholder="氏名を入力"></td>
-        </tr>
-    </table>
-    <%= link_to("送信",'/submit/temporal-band/send',{method: 'post',class: "tem-send-btn"})%>
+      <div class="tem-form">
+        <div class="tem-form-content">基本情報</div>
+        <div class="tem-form-content-small">企画バンド名</div>
+        <input type="text" name="name" placeholder="企画名を入力して下さい">
+        <div class="tem-form-content-small">出演予定イベント</div>
+        <div class="tem-form-select-wrap">
+          <select name="event">
+            <option value="" disabled selected>選択して下さい</option>
+            <% @events.each do |event|%>
+              <option value="<%= event.name %>"><%= event.name %></option>
+            <% end %>
+          </select>
+        </div>
+        <div class="tem-form-content">メンバー</div>
+        <div class="tem-form-content-small">メンバー①</div>
+        <input type="text" name="member1" placeholder="氏名を入力して下さい">
+        <div class="tem-form-content-small">メンバー②</div>
+        <input type="text" name="member2" placeholder="氏名を入力して下さい">
+        <div class="tem-form-content-small">メンバー③</div>
+        <input type="text" name="member3" placeholder="氏名を入力して下さい">
+        <div class="tem-form-content-small">メンバー④</div>
+        <input type="text" name="member4" placeholder="氏名を入力して下さい">
+        <div class="tem-form-content-small">メンバー⑤</div>
+        <input type="text" name="member5" placeholder="氏名を入力して下さい">
+        <div class="tem-form-content-small">メンバー⑥</div>
+        <input type="text" name="member6" placeholder="氏名を入力して下さい">
+        <div class="tem-form-content-small">メンバー⑦</div>
+        <input type="text" name="member7" placeholder="氏名を入力して下さい">
+        <div class="tem-form-content-small">メンバー⑧</div>
+        <input type="text" name="member8" placeholder="氏名を入力して下さい">
+
+      <%= link_to("送信",'/submit/temporal-band/send',{method: 'post',class: "tem-send-btn"})%>
+      </div>
     <% end %>
   </div>
 </div>

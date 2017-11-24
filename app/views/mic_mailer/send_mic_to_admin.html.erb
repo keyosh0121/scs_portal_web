@@ -5,14 +5,17 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <h1>[<%= @mic.band%>]マイク練申請</h1>
-    <p>マイク練申請を受け付けました。</p><br>
-    <p>マイク練の受付はまだ完了していません。管理者が受領した際、再度メールが届きます。しばらくメールが届かない場合、管理者に直接問い合わせて下さい。</p>
+    <h1>[<%= @mic.band%>]からマイク練申請がありました</h1>
     <br><br>
-    日程.....<%= @mic.date %><br>
-    時限.....<%= @mic.time %><br>
-    送信者.....<%= @mic.sender %><br>
-    PAの参加予定.....<%= @mic.paattendance %><br><br>
-    <p>内容に変更がある場合は、サイトから一度マイク練申請を取り消したのちもう一度申請を行って下さい。</p>
+    <div style="font-size: 16px">
+      日程.....<%= @mic.date %><br>
+      時限.....<%= @mic.time %><br>
+      送信者.....<%= @mic.sender %><br>
+      PAの参加予定.....<%= @mic.paattendance %>
+    </div><br><br>
+    <p style="font-size: 13px">Portalにログイン後、「管理画面」からマイク練の承認を行って下さい。マイク練の承認は送信者に通知されます.
+    </p><br>
+    <a style="font-size:16px;padding:16px;color:white;background-color:salmon;" href="https://scsportal.herokuapp.com/login">ポータルのログイン画面へ</a>
+
   </body>
 </html>

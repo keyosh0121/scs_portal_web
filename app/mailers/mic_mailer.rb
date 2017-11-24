@@ -1,16 +1,8 @@
 class MicMailer < ApplicationMailer
   default from: "scs.portal.testing@gmail.com"
-  def send_mic_to_admin(mic)
+  def send_mic_to_user(mic)
     @mic = mic
-    #マイク練管理者にマイク練が申請された旨のメールを送信する
-    mic_admin = User.find_by(authority: "mic")
-    admin = User.find_by(authority: "admin")
-    if mic_admin
-      admin_email = mic_admin.email
-    else
-      admin_email = admin.email
-    end
-    sender_name = mic.sender
+    sender_name = @mic.sender
     sender = User.find_by(name: sender_name)
     sender_email = sender.email
     mail(
@@ -21,7 +13,17 @@ class MicMailer < ApplicationMailer
   end
 
 
-  def send_mic_to_users(mic)
-
+  def send_mic_to_admin(mic)
+    @mic = mic
+    admins = User.where(authority:"mic")
+    addresses = Array.new()
+    admins.each do |admin|
+      addresses.push(admin.email)
+    end
+    mail(
+      subject: "[マイク練係]マイク練申請が届きました(#{mic.date.strftime("%m月%d日")})",
+      to: addresses) do |format|
+      format.html
+    end
   end
 end
