@@ -67,6 +67,7 @@ input :not(input[type="checkbox"]){
 }
 .header-left{
   position: absolute;
+  overflow: hidden;
   margin: 0 auto;
   height: 100%;
   right: 20%;

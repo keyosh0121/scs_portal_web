@@ -99,6 +99,7 @@
   padding: 16px;
   padding-top: 40px;
   font-size: 70px;
+  overflow: hidden;
   color: white;
 }
 .user-sub-title{
