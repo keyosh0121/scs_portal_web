@@ -90,7 +90,12 @@
 .mic-time-input{
   display: none;
 }
+.mic-time-input:hover + label {
+  background: #DDF;
+  transition:  300ms ease;
+}
 .mic-time-input:checked + label {
+  font-weight: bold;
   background: #99F;
   color: white;
   transition:  100ms ease;
@@ -105,6 +110,8 @@
 }
 .mic-sub-form select{
     width: 100%;
+    border: dotted 1px #000;
+    border-radius: 4px;
   }
 @media only screen and (min-device-width:200px) and (max-device-width:700px){
   .mic-submit-inner{
