@@ -21,8 +21,8 @@ class MicMailer < ApplicationMailer
       addresses.push(admin.email)
     end
     if addresses.empty?
-      address = User.find_by(authority:"admin")
-      addresses.push(address)
+      user = User.find_by(authority:"admin")
+      addresses.push(user.email)
     end
     mail(
       subject: "[マイク練係]マイク練申請が届きました(#{mic.date.strftime("%m月%d日")})",
