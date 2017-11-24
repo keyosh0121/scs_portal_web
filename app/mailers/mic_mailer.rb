@@ -8,12 +8,12 @@ class MicMailer < ApplicationMailer
     if mic_admin
       admin_email = mic_admin.email
     else
-      admin_email = admin
+      admin_email = admin.email
     end
 
     mail(
       subject: "#{@mic.band}マイク練申請(#{@mic.date}-#{@mic.time})",
-      to: admin_email) do |format|
+      to: "k.guitar121@gmail.com") do |format|
       format
     end
   end

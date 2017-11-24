@@ -38,6 +38,7 @@ class SubmitController < ApplicationController
     if @mic.save
       redirect_to("/submit/mic-list")
       flash[:notice] = "マイク練申請が完了しました。"
+      MicMailer.send_mic_to_admin(@mic).deliver
     else
       flash[:notice] = "保存に失敗しました。入力内容を確認してください。"
       render("/submit/mic")
