@@ -7,11 +7,11 @@
         <div class="user-show-image">
         </div>
         <div class="user-show-informations">
-          <div class="user-show-content"><%= @user.name + "(#{@user.year}年度入会)" %></div>
+          <div class="user-show-content-name"><%= @user.name + "(#{@user.year}年度入会)" %></div>
           <div class="user-show-content"><%= @user.email %></div>
-          <div class="user-show-logout"><%= link_to("ログアウト","/user/logout",{method: :post})%></div>
-          <div class="user-show-logout"><%= link_to("ユーザー情報編集","/user/logout")%></div>
-          <div class="user-show-logout"><%= link_to("管理画面へ","/database")%></div>
+          <div class="user-show-logout"><%= link_to("ログアウト","/user/logout",{method: :post, :class => "logout-link"})%></div>
+          <div class="user-show-logout"><%= link_to("ユーザー情報編集","/user/logout",:class => "logout-link")%></div>
+          <div class="user-show-logout"><%= link_to("管理画面へ","/database",:class => "logout-link")%></div>
         </div>
       </div>
     </div>
@@ -20,7 +20,8 @@
       <% if @notifs.count != 0 %>
       <% @notifs.each do |notif|%>
         <div class="notice-content">
-          <%= notif.date.year.to_s + "/" + notif.date.month.to_s + "/" + notif.date.day.to_s + "  " + notif.time.hour.to_s + ":" + notif.time.min.to_s + "    " + notif.content %>
+          <%= notif.date.strftime("%m月%d日") + notif.time.strftime("%H:%M") %><br>
+          <%= notif.content%>
         </div>
       <% end %>
       <% end %>

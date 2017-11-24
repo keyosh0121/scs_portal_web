@@ -1,5 +1,5 @@
 .signup-wrapper{
-  background-image: url('gakkan.jpg');
+  background-color: rgba(0, 0, 0, 0.8);
   background-size: cover;
   text-align: center;
   color: white;
@@ -76,6 +76,8 @@
   color: white;
   background-color: rgba(180, 0, 0, 0.6);
 }
+
+
 /* ここから show.html.erb */
 
 
@@ -91,8 +93,10 @@
   z-index: 2;
 }
 .user-title{
-  text-align: center;
+  text-align: left;
+  font-weight: bold;
   font-family: "Avenir";
+  padding: 16px;
   padding-top: 40px;
   font-size: 70px;
   color: white;
@@ -105,9 +109,10 @@
 .user-show-box{
   border: 1px solid ;
   height: auto;
+  padding: 16px;
   margin: 20px;
-  background-color: rgba(100, 100, 100, 0.7);
-
+  background-color: #333;
+  color: #fff;
 }
 .user-show-image{
   width: 100px;
@@ -116,6 +121,25 @@
   background-repeat: no-repeat;
   background-position: center;
   float: left;
+}
+.user-show-content{
+  text-align: left;
+}
+.user-show-logout{
+  padding: 8px;
+  margin-top: 8px;
+  border: solid 5px darksalmon;
+  font-size: 18px;
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 4px;
+}
+.logout-link{
+  color: #000;
+  font-weight: bold;
+}
+.user-show-content-name{
+  font-size: 20px;
+  text-align: left;
 }
 
 .user-show-informations{
