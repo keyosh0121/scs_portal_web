@@ -221,7 +221,7 @@
   padding: 10px 0;
   width: 85%;
   margin: auto;
-  background-color: rgba(0, 300, 0, 0.2);
+  background-color: #E9E9E9;
 }
 .reg-form{
   width: 100%;
@@ -256,7 +256,7 @@
   border-bottom: solid 1px #aaa;
   padding: 16px;
   font-size: 12px;
-  background-color: rgba(170, 170, 250, 0.1);
+  background-color: rgba(170, 200, 255, 0.4);
 }
 .reg-form input:focus{
   border-bottom: solid 1px salmon;
