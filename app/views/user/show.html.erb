@@ -17,10 +17,12 @@
     </div>
     <div class="notice-wrapper">
       <div class="user-menu-title notice-title">お知らせ</div>
+      <% if @notifs.count != 0 %>
       <% @notifs.each do |notif|%>
         <div class="notice-content">
           <%= notif.date.year.to_s + "/" + notif.date.month.to_s + "/" + notif.date.day.to_s + "  " + notif.time.hour.to_s + ":" + notif.time.min.to_s + "    " + notif.content %>
         </div>
+      <% end %>
       <% end %>
       </div>
     <div class="user-menu-wrapper">

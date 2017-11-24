@@ -55,12 +55,9 @@ class UserController < ApplicationController
 
   def show
     @user = User.find_by(id: session[:user_id])
-    if Notification.count != 0
-      @notifs = Notification.order(created_at: "DESC").limit(5)
-    else
-      @notifs = [Notification.new(),Notification.new()]
-    end
-  end
+
+    @notifs = Notification.order(created_at: "DESC").limit(5)
+
 
   def logout
     session[:user_id] = nil
