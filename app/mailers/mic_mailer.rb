@@ -16,7 +16,7 @@ class MicMailer < ApplicationMailer
     mail(
       subject: "#{@mic.band}マイク練申請(#{@mic.date} [#{@mic.time}])",
       to: sender_email) do |format|
-      format
+      format.html
     end
   end
 
