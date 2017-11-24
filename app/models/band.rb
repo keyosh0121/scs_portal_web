@@ -1,5 +1,4 @@
 class Band < ApplicationRecord
-  serialize :members
   validates :name, presence: true
   validates :master, presence: true
   validates :description, presence: true
