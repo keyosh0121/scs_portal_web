@@ -116,7 +116,29 @@
   width: 100%;
   float: top;
 }
-@media only screen and (min-device-width:200px) and (max-device-width:700px){
+@media (max-width: 1400px){
+  .mic-submit-inner{
+    margin: 0 10px;
+  }
+  .mic-sub-side{
+    height: auto;
+    width: 100%;
+  }
+  .mic-sub-main{
+    float: top;
+    width: 100%;
+    padding: 5px;
+    margin-top: 30px;
+    background-color: #fefefe;
+  }
+  #mic-date-input{
+    width: 100%;
+  }
+  .mic-sub-form select{
+
+  }
+}
+@media only screen and (min-device-width:200px) and (max-device-width:1125px){
   .mic-submit-inner{
     margin: 0 10px;
   }
@@ -172,14 +194,17 @@
 /********** 正規バンド申請画面 **********/
 
 .to-temporal-btn{
-  padding: 5px 15px;
-  background-color: rgba(0, 0, 0, 0.4);
+  padding: 16px;
+  background-color: #fff;
   margin: 15px;
-  color: white;
+  border: darkgreen solid 4px;
+  border-radius: 8px;
 }
 .to-temporal-btn:hover{
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: darkgreen;
+  color: white;
   transition: 300ms ease;
+
 }
 .to-temporal-btn:active{
   background-color: rgba(0, 0, 0, 0.8);
@@ -198,56 +223,63 @@
   margin: auto;
   background-color: rgba(0, 300, 0, 0.2);
 }
-.reg-band-sub-form table{
-  width: 90%;
-  margin: auto;
-
-}
-.reg-band-sub-form table td{
-  padding-top: 5px ;
-  padding-bottom: 5px;
-}
-.reg-band-sub-form input {
-  height: 30px;
-  width: 230px;
-  border:  solid 0.5px gray;
-  background-color: rgba(300, 300, 300, 0.5);
-  padding: 10px;
-  margin-left: 10px;
-}
-.reg-band-sub-form textarea{
-  width: 230px;
-  height: 90px;
-  background-color: rgba(300, 300, 300, 0.5);
-  margin-left: 10px;
-}
-.caution{
-  color: darkred;
-  padding: 0 30px;
-  font-size: 12px;
-  text-align: center;
-}
-.required-question{
-  font-size: 10px;
-  color: white;
-  text-align: center;
-  opacity: 0.7;
-  width: 33px;
-}
-.required-box{
-  background-color: rgba(180, 0, 0, 0.8);
-  height: 35px;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  vertical-align: center;
+.reg-form{
   width: 100%;
+  padding: 16px;
 }
-
-.reg-band-form-title{
-  width: 200px;
+.reg-form-content{
+  width: 100%;
+  padding: 8px;
+  border-bottom: 1px solid gray;
+  font-size: 18px;
+  font-weight: bold;
+  color: #fff;
+  background-color: #666;
+}
+.reg-form-content-small{
+  width: 100%;
+  padding: 4px;
+  border-bottom: dotted 1px gray;
   font-size: 13px;
-  text-align: right;
-  padding-right: 10px;
+}
+.reg-form input,textarea{
+  width: 100%;
+  margin: 16px 0;
+  padding: 8px;
+  font-size: 14px;
+}
+.reg-form textarea{
+  height: 150px;
+}
+.reg-form input[type="text"], input[type="file"]{
+  border: none;
+  border-bottom: solid 1px #aaa;
+  padding: 16px;
+  font-size: 12px;
+  background-color: rgba(170, 170, 250, 0.1);
+}
+.reg-form input:focus{
+  border-bottom: solid 1px salmon;
+  background-color: #fff;
+  transition: 300ms ease;
+  font-size: 14px;
+}
+.reg-caution{
+  color: #B00;
+  padding: 0 16px;
+}
+.reg-submit:hover{
+  color: salmon;
+  background-color: transparent;
+  transition: 200ms ease;
+  }
+.reg-submit{
+  font-weight: bold;
+  font-size: 16px;
+  background-color: salmon;
+  border: solid 5px salmon;
+  color: white;
+  border-radius: 4px;
 }
 @media(max-width:600px){
   .reg-band-form-title{

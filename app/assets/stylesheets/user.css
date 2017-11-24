@@ -87,7 +87,7 @@
   z-index: 1;
   margin-top: 50px;
   background-image: url('https://mb.api.cloud.nifty.com/2013-09-01/applications/tZQAF19Rr4FUKnoU/publicFiles/797-700x465のコピー.jpg');
-    background-size: cover;
+  background-size: cover;
 }
 .user-show-higher-wrapper{
   z-index: 2;
@@ -150,9 +150,9 @@
 }
 
 .user-menu-wrapper{
-  margin: 20px;
+  margin: 0 16px;
   height: auto;
-  padding-bottom: 20px;
+  padding-bottom: 16px;
 }
 .user-menu-title{
   font-size: 30px;
@@ -199,7 +199,6 @@
 .notice-wrapper{
   color: white;
   margin: 20px;
-
 }
 .notice-content{
   padding: 5px 40px;

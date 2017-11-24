@@ -2,84 +2,45 @@
 <h1>正規バンド申請</h1>
 
   <div class="reg-band-sub-form">
+    <div class="error-reg">
+      <% @band.errors.full_messages do |message| %>
+        <%= message %><br>
+      <% end %>
+    </div>
     <%= link_to('企画バンドの申請はこちら','/submit/temporal-band',{:class => "to-temporal-btn"})%>
-  <%= form_tag("/submit/regular-band/send",{multipart: true}) do %>
-    <table>
+    <%= form_tag("/submit/regular-band/send",{multipart: true}) do %>
+     <div class="reg-form">
+       <div class="reg-form-content">バンド名</div>
+       <input type="text" name="name" placeholder="バンド名を入力して下さい">
+       <div class="reg-form-content">PA・メンバー</div>
+       <div class="reg-form-content-small">PA<span class="caution"> ※必須</span></div>
+       <input type="text" name="pa" placeholder="氏名を入力して下さい">
+       <div class="reg-form-content-small">バンドメンバー①<span class="reg-caution"> ※必須</span></div>
+       <input type="text" name="member1" placeholder="氏名を入力して下さい">
+       <div class="reg-form-content-small">バンドメンバー②<span class="reg-caution"> ※必須</span></div>
+       <input type="text" name="member2" placeholder="氏名を入力して下さい">
+       <div class="reg-form-content-small">バンドメンバー③</div>
+       <input type="text" name="member3" placeholder="氏名を入力して下さい">
+       <div class="reg-form-content-small">バンドメンバー④</div>
+       <input type="text" name="member4" placeholder="氏名を入力して下さい">
+       <div class="reg-form-content-small">バンドメンバー⑤</div>
+       <input type="text" name="member5" placeholder="氏名を入力して下さい">
+       <div class="reg-form-content-small">バンドメンバー⑥</div>
+       <input type="text" name="member6" placeholder="氏名を入力して下さい">
+       <div class="reg-form-content-small">バンドメンバー⑦</div>
+       <input type="text" name="member7" placeholder="氏名を入力して下さい">
+       <div class="reg-form-content-small">バンドメンバー⑧</div>
+       <input type="text" name="member8" placeholder="氏名を入力して下さい">
+       <div class="reg-form-content-small">バンマス氏名<span class="reg-caution"> ※必須</span></div>
+       <input type="text" name="master" placeholder="氏名を入力して下さい">
+       <div class="reg-form-content">バンド情報</div>
 
-        <tr>
-          <td class="reg-band-form-title">バンド名</td>
-          <td class="required-question"><div class="required-box">必須</div></td>
-          <td><input name="name" placeholder="バンド名を入力してください" value="<%= @band.name %>"></td>
-        </tr>
-        <tr>
-          <td class="reg-band-form-title">PA</td>
-          <td class="required-question"><div class="required-box">必須</div></td>
-          <td><input name="pa" placeholder="PAの氏名を入力(姓名スペースなし)" value="<%= @band.pa %>"></td>
-        </tr>
-    </table>
-    <div class="caution">※姓名の漢字を必ず確認してください。
-    </div>
-    <table>
-        <tr>
-          <td class="reg-band-form-title">メンバー1</td>
-          <td class="required-question"><div class="required-box">必須</div></td>
-          <td><input name="member1" placeholder="氏名を入力"></td>
-        </tr>
-        <tr>
-          <td class="reg-band-form-title">メンバー2</td>
-          <td class="required-question"><div class="required-box">必須</div></td>
-          <td><input name="member2" placeholder="氏名を入力"></td>
-        </tr>
-        <tr>
-          <td class="reg-band-form-title">メンバー3</td>
-          <td class="required-question-no"></td>
-          <td><input name="member3" placeholder="氏名を入力"></td>
-        </tr>
-        <tr>
-          <td class="reg-band-form-title">メンバー4</td>
-          <td class="required-question-no"></td>
-          <td><input name="member4" placeholder="氏名を入力"></td>
-        </tr>
-        <tr>
-          <td class="reg-band-form-title">メンバー5</td>
-          <td class="required-question-no"></td>
-          <td><input name="member5" placeholder="氏名を入力"></td>
-        </tr>
-        <tr>
-          <td class="reg-band-form-title">メンバー6</td>
-          <td class="required-question-no"></td>
-          <td><input name="member6" placeholder="氏名を入力"></td>
-        </tr>
-        <tr>
-          <td class="reg-band-form-title">メンバー7</td>
-          <td class="required-question-no"></td>
-          <td><input name="member7" placeholder="氏名を入力"></td>
-        </tr>
-        <tr>
-          <td class="reg-band-form-title">メンバー8</td>
-          <td class="required-question-no"></td>
-          <td><input name="member8" placeholder="氏名を入力"></td>
-        </tr>
-    </table>
-    <div class="caution">※バンマスの連絡先はユーザー情報のデータベースから自動で参照されます。
-    </div>
-    <table>
-          <td class="reg-band-form-title">バンマス氏名</td>
-          <td class="required-question"><div class="required-box">必須</div></td>
-          <td><input name="master" placeholder="バンマス氏名を入力" value="<%=@band.master%>"></td>
-        </tr>
-        <tr>
-          <td class="reg-band-form-title">説明</td>
-          <td class="required-question"><div class="required-box">必須</div></td>
-          <td><textarea placeholder="バンドの特徴や紹介文を入力してください" name="description" value="<%= @band.description %>"></textarea></td>
-        </tr>
-        <tr>
-          <td class="reg-band-form-title">画像</td>
-          <td class="required-question-no"></td>
-          <td><input type="file" name="image"></td>
-        </tr>
-    </table>
-    <input type="submit" name="" id="reg-band-send">
+       <div class="reg-form-content-small">バンドの説明<span class="reg-caution"> ※必須</span></div>
+       <textarea name="description"></textarea>
+       <div class="reg-form-content-small">バンド写真</div>
+       <input type="file" name="image">
+       <input type="submit" name="" value="正規バンドを申請" class="reg-submit">
+     </div>
     <% end %>
   </div>
 </div>
