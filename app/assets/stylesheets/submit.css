@@ -364,7 +364,7 @@
   border-bottom: 1px solid darkblue;
   width: 100%;
 }
-.tem-form input:focus, select:focus{
+.tem-form input:focus,.tem-form select:focus{
   background-color: #cff;
   transition: 200ms ease;
   font-size: 15px;
@@ -418,10 +418,10 @@
   width: 70%;
   float: left;
   overflow: auto;
-  padding: 25px;
+  padding: 8px;
 }
 .comment-main h1{
-  padding: 16px;
+  padding: 8px;
   width: 100%;
 }
 .com-cof-content{
@@ -430,25 +430,35 @@
 }
 .com-cof-input{
   width: 100%;
-  height: 50px
+  overflow: hidden;
 }
 .com-cof-input textarea{
-  height: 200px;
+  height: 240px;
   width: 100%;
+  padding: 16px;
 }
 .textarea-comcof{
   height: 220px;
 }
-
 .comment-main select{
   width: 100%;
+  padding: 8px;
 }
+.sent-comment{
+  border: dotted 1px;
+  margin: 8px 0;
+}
+
 #com-submit-btn{
   background-color: salmon;
-  height: 40px;
+  border: none;
+  margin: 16px 0;
+  text-align: center;
+  font-size: 16px;
+  padding: 16px;
+  border-radius: 4px;
   width: 100%;
   -webkit-appearance: none;
-  margin: auto;
 }
 .sent-comment-object{
   font-weight: bold;
@@ -460,7 +470,7 @@
 }
 @media only screen and (min-device-width:200px) and (max-device-width:700px){
   .comment-inner{
-    margin: 5px;
+    margin: 0;
 
   }
   .comment-side{
@@ -468,9 +478,7 @@
   }
   .comment-main{
     width: 100%;
-    padding: 0;
   }
-  .com-cof-input textarea{width:90%}
 }
 
 

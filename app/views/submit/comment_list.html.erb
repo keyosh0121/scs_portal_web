@@ -13,9 +13,9 @@
       <% if @sent_comments%>
       <% @sent_comments.each do |c| %>
         <div class="sent-comment">
-        <div class="sent-comment-object"><%= c.atevent %>  <%= c.atcontent %><%= link_to('コメントを削除','/submit/comment/list/destroy/' + c.id.to_s ,{:method => 'POST', data: {confirm: "本当に取り消しますか？"}})%></div>
-        <div class="sent-comment-content"><%= c.comment %></div>
-      </div>
+          <div class="sent-comment-object"><%= c.atevent %>  <%= c.atcontent %><%= link_to('コメントを削除','/submit/comment/list/destroy/' + c.id.to_s ,{:method => 'POST', data: {confirm: "本当に取り消しますか？"}})%></div>
+          <div class="sent-comment-content"><%= c.comment %></div>
+        </div>
       <% end %>
       <% end %>
     </div>
