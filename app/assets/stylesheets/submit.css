@@ -476,6 +476,7 @@
 
 .room-wrapper{
   margin-top: 50px;
+  padding: 16px;
 }
 .room-title{
   margin: auto;
@@ -551,16 +552,23 @@
   width: 98.5%;
 }
 .band-select{
-  height: 35px;
+  height: 50px;
   background-color: #44707f;
   color: white;
-  font-size: 15px;
+  font-size: 14px;
+  width: 100%;
+  margin: 0;
+  padding: 16px;
+  margin: 10px 0;
+
 }
 #room-submit{
   -webkit-appearance: none;
   height: 45px;
   color: white;
+  width: 100%;
   background-color: salmon;
-  margin: 15px 2px;
+  margin: 10px 0;
   border: none;
+  padding: 16px;
 }
