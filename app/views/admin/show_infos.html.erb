@@ -1,11 +1,11 @@
 <div class="show-infos-wrapper">
   <div class="new-info-wrapper">
-    <div class="new-info-title">
-      <h1>新しいお知らせを作成</h1>
-    </div>
     <div class="new-info-contents">
       <%= form_tag("/database/notifications/new") do%>
+        <div class="new-info-title">お知らせを投稿</div>
+        <div class="new-info-small">お知らせの内容</div>
         <input type="text" name="content" id="new-info-content" placeholder="お知らせの内容を入力して下さい" value="<%= @notif.content %>">
+        <div class="new-info-caution">お知らせは、ユーザーのトップページに反映されます。<br>正規バンドの登録は自動でお知らせに投稿されます。</div>
         <input type="submit">
       <% end %>
     </div>
