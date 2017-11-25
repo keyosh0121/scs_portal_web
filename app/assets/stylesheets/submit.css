@@ -564,11 +564,11 @@
 }
 #room-submit{
   -webkit-appearance: none;
-  height: 45px;
+  font-size: 16px;
   color: white;
   width: 100%;
   background-color: salmon;
-  margin: 10px 0;
+  margin: 16px 0;
   border: none;
   padding: 16px;
 }
