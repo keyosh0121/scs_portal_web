@@ -421,7 +421,7 @@
   padding: 25px;
 }
 .comment-main h1{
-  padding: 5px 15px;
+  padding: 16px;
   width: 100%;
 }
 .com-cof-content{
@@ -434,17 +434,19 @@
 }
 .com-cof-input textarea{
   height: 200px;
+  width: 100%;
 }
 .textarea-comcof{
   height: 220px;
 }
+
 .comment-main select{
-  width: 300px;
+  width: 100%;
 }
 #com-submit-btn{
   background-color: salmon;
   height: 40px;
-  width: 300px;
+  width: 100%;
   -webkit-appearance: none;
   margin: auto;
 }
