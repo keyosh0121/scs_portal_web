@@ -543,7 +543,7 @@
   float: left;
 }
 .room-radio:checked + label {
-  background: #44a0aE;
+  background: #77D0DE;
   color: yellow;
   transition:  100ms ease;
 }

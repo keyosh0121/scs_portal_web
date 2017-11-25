@@ -10,7 +10,7 @@
     <p>マイク練の受付はまだ完了していません。管理者が受領した際、再度メールが届きます。しばらくメールが届かない場合、管理者に直接問い合わせて下さい。</p>
     <br><br>
     <div style="font-size: 16px;padding:16px;background-color:#335;color:white;font-weight:bold;">
-      日程.....<%= @mic.date %><br>
+      日程.....<%= @mic.date.strftime("%y年%m月%d日") %><br>
       時限.....<%= @mic.time %><br>
       送信者.....<%= @mic.sender %><br>
       PAの参加予定.....<%= @mic.paattendance %>
