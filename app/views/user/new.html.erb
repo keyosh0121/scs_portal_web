@@ -3,79 +3,35 @@
   <h1>新規登録</h1>
   <div class="form-wrapper">
     <%= form_tag("/signup/send") do %>
-    <table class="signup-form-table">
-      <thead>
-      </thead>
-      <tbody>
-
-        <tr>
-          <td class="signup-content-name">氏名</td>
-          <td class="required-question">
-            <div class="required-box">必須</div>
-          </td>
-          <td><input  class="form-input-signup" type="" placeholder="スペースなしで氏名を入力" name="name" value="<%= @user.name %>"></td>
-        </tr>
-        <tr>
-          <td class="signup-content-name">Email</td>
-          <td class="required-question">
-            <div class="required-box">必須</div>
-          </td>
-          <td><input placeholder="Emailアドレスを入力してください" class="form-input-signup" type="" name="email" value="<%= @user.email %>"></td>
-        </tr>
-        <tr>
-          <td class="signup-content-name">電話番号</td>
-          <td class="required-question">
-            <div class="required-box">必須</div>
-          </td>
-          <td><input  class="form-input-signup" placeholder="ハイフンなし11桁" type="" name="tel" value="<%= @user.tel %>"></td>
-        </tr>
-        <tr>
-          <td class="signup-content-name">入会年度</td>
-          <td class="required-question">
-            <div class="required-box">必須</div>
-          </td>
-          <td>
-          <% year = Date.today.year %>
-            <input  class="form-input-signup" type="" name="year" value="<%= @user.year %>" placeholder="SCSに入会した年度(リストから選択)" list="yearList" >
-            <datalist id="yearList">
-              <option value="<%= year - 3 %>"></option>
-              <option value="<%= year - 2 %>"></option>
-              <option value="<%= year - 1 %>"></option>
-              <option value="<%= year - 0 %>"></option>
-            </datalist>
-
-          </td>
-        </tr>
-        <tr>
-          <td class="signup-content-name">大学名</td>
-          <td class="required-question">
-            <div class="required-box">必須</div>
-          </td>
-          <td><input  class="form-input-signup" type="" name="univ" value="<%= @user.univ %>" placeholder="例)早稲田大学"></td>
-        </tr>
-
-        <tr>
-          <td class="signup-content-name">パスワード</td>
-          <td class="required-question">
-            <div class="required-box">必須</div>
-          </td>
-          <td><input  class="form-input-signup" type="password" name="password" placeholder="6文字以上で指定してください" s></td>
-        </tr>
-        <tr>
-          <td class="signup-content-name">パスワード(再入力)</td>
-          <td class="required-question">
-            <div class="required-box">必須</div>
-          </td>
-          <td><input  class="form-input-signup" type="password" name=""></td>
-        </tr>
-
-      </tbody>
-    </table>
-    <% @errors.each do |message|%>
-      <%= message %>
+      <div class="signup-form">
+        <div class="signup-content">個人情報登録</div>
+        <div class="signup-content-small">氏名 <span>※必須</span></div>
+        <input type="text" name="name" placeholder="氏名を入力">
+        <div class="signup-content-small">Emailアドレス <span>※必須</span></div>
+        <input type="email" name="email" placeholder="普段使用するメールアドレスを入力してください">
+        <div class="signup-content-small">電話番号(ハイフンなし) <span>※必須</span></div>
+        <input type="text" name="tell" placeholder="電話番号をハイフンなしで入力してください">
+        <div class="signup-content">その他の情報</div>
+        <div class="signup-content-small">SCSに入会した年度 <span>※必須</span></div>
+        <input type="text" name="year" placeholder="半角数字 例)2016">
+        <div class="signup-content-small">大学名 <span>※必須</span></div>
+        <input type="text" name="univ" placeholder="例)早稲田大学">
+        <div class="signup-content">パスワード登録 </div>
+        <div class="signup-content-small">パスワード(6文字以上) <span>※必須</span></div>
+        <input type="password" name="password" placeholder="氏名を入力">
+        <div class="signup-content-small">パスワード再入力 <span>※必須</span></div>
+        <input type="password" name="passwordagain" placeholder="氏名を入力">
+        <% @errors.each do |message|%>
+          <%= message %>
+        <% end %>
+        <div class="signup-rule">
+          ・パスワードや個人情報は漏れることのないよう大切に保管して下さい。<br>
+          ・管理者権限が与えられる場合は、SCSサークル員以外のユーザーを登録しないよう留意して下さい。<br>
+          ・申請フォームなどの入力は、取り消しが可能ですが、慎重に行うようお願いします。<br>
+          ・悪意のある利用・機能外の個人的な利用は控えて下さい。<br>
+        </div>
+        <input type="submit" class="signup-btn" value="新規登録">
+      </div>
     <% end %>
-    <input type="submit" class="send-btn" value="送信">
-    <% end %>
-
   </div>
 </div>

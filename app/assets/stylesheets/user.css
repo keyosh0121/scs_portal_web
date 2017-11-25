@@ -3,79 +3,70 @@
   background-size: cover;
   text-align: center;
   color: white;
-  height: 900px;
+  overflow: auto;
 }
 .signup-wrapper h1{
   padding-top:50px;
 }
-.signup-form-table{
-  width: 90%;
-  margin: 5%;
-  text-align: right;
+
+.form-wrapper{
+  overflow: auto;
+}
+.signup-form{
+  overflow: auto;
+  margin: 16px;
+  padding: 16px;
+  background-color: #ccc;
+  text-align: left;
+}
+.signup-content{
+  background-color: #666;
+  color: white;
+  padding: 16px;
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 16px;
+}
+.signup-content-small{
+  padding: 4px;
+  border-bottom: 1px dotted gray;
+  color: #000;
+  font-size: 12px;
+}
+.signup-form input:not([type="submit"]){
+  margin: 16px 0;
+  padding: 16px;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.5);
+  border: none;
+}
+.signup-form input:focus{
+  background-color: #fff;
+  transition: 200ms ease;
+}
+.signup-form span{
+  color: #811;
+  padding-left: 16px;
+}
+.signup-rule{
+  padding: 16px;
+  color: #911;
+  border: dotted 1px;
+  font-size: 13px;
+}
+.signup-btn{
+  padding: 16px;
+  margin: 16px 0;
+  width: 100%;
+  color: #fff;
+  background-color: salmon;
+  font-size: 20px;
 }
 @media (max-width: 350px){
-  .signup-form-table{
-    width: 100%;
-  }
+
 
 }
-.form-table td{
-  padding: 12px;
-}
-.form-wrapper{
-  text-align: center;
-}
-.form-input-signup{
-  height: 30px;
-  width: 80%;
-  opacity: 0.65;
-  padding: 15px;
-  font-size: 12px;
-  margin-left: 10px;
-}
 
-.signup-content-name{
-  font-size: 12px;
-  padding: 15px;
-  width: 90px;
-}
-.send-btn{
-  border-radius: 10px;
-  height: 40px;
-  width: 200px;
-  margin: 0 auto;
-  display: block;
-  border-style: none;
-  background-color: orange;
-  opacity: 0.7;
-  font-weight: bold;
-  color: #fff;
-  box-shadow: 3px orange;
-}
-.send-btn:hover{
-  opacity: 1;
-}
-.send-btn:active{
-  box-shadow: none;
-  top: 3px;
-  position: relative;
-}
-.login-error-message{
-  font-size: 12.8px;
-  color:  darkred;
-  padding-left: 10px;
-  opacity: 0.8;
-}
-.required-question{
-  width: 30px;
-}
-.required-box{
-  height: 30px;
-  text-align: center;
-  padding: 10px 0;
-  color: white;
-  background-color: rgba(180, 0, 0, 0.6);
-}
 
 
 /* ここから show.html.erb */
