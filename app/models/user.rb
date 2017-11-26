@@ -2,7 +2,7 @@ class User < ApplicationRecord
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   FOUR_YEARS_AGO = Date.today.year - 4
   validates :name, {presence: true}
-  validates :email, {presence: true, uniqueness: true, format: {with: VALID_EMAIL_REGEX}}
+  validates :email, {presence: true, uniqueness: true}
   validates :tel, {presence: true}
   validates :year, presence: true, numericality: {only_integer: true, greater_than: FOUR_YEARS_AGO}
     validates :univ, {presence: true}
