@@ -20,4 +20,5 @@ class UserMailer < ApplicationMailer
       format.html
     end
   end
+
 end
