@@ -42,6 +42,8 @@ class UserController < ApplicationController
       univ: params[:univ],
       password: params[:password])
     if @user.save
+      UserMailer.user_verification_mail(@user).deliver
+      UserMailer.user_verification_mail_to_admin(@user).deliver
       session[:user_id] = @user.id
       redirect_to("/")
       flash[:notice] = "ログインしました"

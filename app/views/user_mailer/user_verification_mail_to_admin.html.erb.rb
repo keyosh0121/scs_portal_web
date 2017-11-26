@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>新規会員登録がありました</h1>
+    <div style="font-size: 14px;padding:16px;background-color: #DFDFDF;margin:10px 0;width:100%;">
+      氏名…<%= @user.name %>(<%= @user.year %>年度入会)
+      アドレス…<%= @user.email %>
+    </div>
+    Portal管理画面から、ユーザーの承認を行って下さい。<br>
+    <a href="htpps://scsportal.herokuapp.com" style="padding:16px;background-color:salmon;color:white;font-weight:bold;">Portalサイトへ</a>
+  </body>
+</html>
