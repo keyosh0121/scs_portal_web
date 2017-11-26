@@ -8,14 +8,15 @@ class UserMailer < ApplicationMailer
     end
     mail(
       subject: "[SCS Portal]新規ユーザーの登録があります)",
-      to: sender_email) do |format|
+      to: mails) do |format|
       format.html
     end
   end
   def user_verification_mail(user)
+    @user = user
     mail(
       subject: "[SCS Portal]仮登録完了のお知らせ",
-      to: sender_email) do |format|
+      to: @user.email) do |format|
       format.html
     end
   end
