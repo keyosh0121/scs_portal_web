@@ -22,6 +22,8 @@ Rails.application.routes.draw do
   post "submit/comment/conference/get_content" => "submit#get_content"
   get "submit/comment/performance" => "submit#comment_performance"
   post "submit/comment/performance/send" => "submit#comment_performance_send"
+  get "submit/comment/list/detail/:id" => "submit#comment_detail_show"
+  post 'submit/comment/list/detail/:id/reply-send' => 'submit#comment_reply_send'
 
   post "submit/regular-band/send" => "submit#regular_band_submit"
   get "submit/regular-band" => "submit#regular_band"

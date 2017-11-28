@@ -116,6 +116,26 @@ class SubmitController < ApplicationController
     @contents = []
   end
 
+  def comment_detail_show
+    @comment = Comment.find(params[:id])
+  end
+
+  def comment_reply_send
+    @comment = Comment.find(params[:id])
+    @reply = ReplyToComment.new(
+      comment_id: params[:id],
+      sender_id: @current_user.id,
+      text: params[:text]
+      )
+    if @reply.save
+      flash[:notice] = "コメントに返信しました"
+      redirect_to("/submit/comment/list/detail/#{params[:id]}")
+    else
+      flash[:notice] = "送信が失敗しました。再度試してください。"
+      redirect_to("/submit/comment/list/detail/#{params[:id]}")
+    end
+  end
+
   def comment_performance_send
     @comment = Comment.new(
       sender: @current_user.name,
