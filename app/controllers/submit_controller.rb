@@ -84,6 +84,7 @@ class SubmitController < ApplicationController
 
   def comment_destroy
     @comment = Comment.find_by(id: params[:id])
+    ReplyToComment.where(comment_id: @comment.id).delete_all
     if @comment.delete
       flash[:notice] = "コメントを削除しました"
       redirect_to('/submit/comment/list')
@@ -133,6 +134,16 @@ class SubmitController < ApplicationController
     else
       flash[:notice] = "送信が失敗しました。再度試してください。"
       redirect_to("/submit/comment/list/detail/#{params[:id]}")
+    end
+  end
+
+  def comment_reply_delete
+    if ReplyToComment.find(params[:id]).destroy
+      flash[:notice] = "コメントへの返信を削除しました。"
+      redirect_to('/submit/comment/list')
+    else
+      flash[:notice] = "削除に失敗しました。もう一度試してください。"
+      render('/submit/comment_list')
     end
   end
 
