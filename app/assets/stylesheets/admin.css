@@ -411,14 +411,13 @@
 }
 .event-add-wrap{
   margin: 10px ;
+  padding: 16px;
   overflow: auto;
   background-color: #ccc;
 }
 .event-add-wrap input:not(.event-submit-btn), select{
-  height: 40px;
   float: left;
   width: 100%;
-  margin: 5px;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -427,21 +426,31 @@
   border-bottom: solid 1px #9f9033;
   border-radius: 0;
   background: none;
-  font-size: 13px;
+  font-size: 14px;
+  padding: 12px;
+  margin: 4px 0;
+  background-color: #eee;
 }
 .event-submit-btn{
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
   width: 100%;
-  height: 40px;
+  height: 55px;
+  margin: 10px 0;
   background-color: salmon;
   border: none;
   color: #fff;
   font-size: bold;
 }
+.event-input-info{
+  border-bottom: dotted 1px;
+  font-size: 13px;
+  padding: 4px;
+
+}
 .event-add-input-box{
-  width: 400px;
+  width: 100%;
   margin: 10px auto;
 }
 .show-event-title{

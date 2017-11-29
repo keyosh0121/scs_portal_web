@@ -1,0 +1,23 @@
+<div class="comment-wrapper">
+  <div class="comment-inner">
+    <div class="comment-side">
+      <div class="comment-side-title">コメント/講評送信画面</div>
+      <div class="comment-side-category">メニュー
+      </div>
+      <div class="comment-side-content"><a href="/submit/comment/conference">総会コメント</a></div>
+      <div class="comment-side-content"><a href="/submit/comment/performance">オーディション講評など</a></div>
+      <div class="comment-side-content"><a href="/submit/comment/list">送信コメント一覧</a></div>
+      <div class="comment-side-content"><a href="/submit/comment/all">総会コメントを見る</a></div>
+    </div>
+    <div class="comment-main">
+      <h1>総会コメントを見る</h1>
+      <% @conferences.each do |conference| %>
+        <%= link_to("/submit/comment/all/#{conference.id}") do %>
+        <div class="comment-conf-content">
+          <%= conference.name %>
+        </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -512,6 +512,18 @@
   transition: 200ms ease;
   color: salmon;
 }
+.comment-conf-content{
+  font-size: 25px;
+  padding: 16px;
+  border: dotted 1px blue;
+  margin: 8px 0;
+  width: 100%;
+}
+.comment-conf-content:hover{
+  background-color: #ddd;
+  transition: 200ms ease;
+}
+
 @media only screen and (min-device-width:200px) and (max-device-width:700px){
   .comment-inner{
     margin: 0;
@@ -625,4 +637,84 @@
   margin: 16px 0;
   border: none;
   padding: 16px;
+}
+
+
+/* エントリー管理画面*/
+.entry-inner{
+  margin: 55px 200px;
+  overflow: auto;
+}
+.entry-sidemenu{
+  width: 300px;
+  overflow: auto;
+  float: left;
+  padding: 8px;
+}
+.entry-side-title{
+  font-size: 20px;
+  font-weight: bold;
+  padding: 16px;
+  width: 100%;
+}
+.entry-side-sub{
+  padding: 8px;
+  font-size: 13px;
+  background-color: #aaa;
+}
+.entry-side-content{
+  padding: 16px;
+  border-bottom: 1px solid #555;
+  font-size: 13px;
+}
+.entry-main{
+  padding: 8px;
+  width: 60%;
+  float: left;
+  overflow: auto;
+}
+.entry-menu-description{
+  overflow: auto;
+  background-color: #eee;
+  font-size: 13px;
+  padding: 16px;
+}
+.entry-menu-content{
+  padding: 16px;
+  margin: 8px 0;
+  font-size: 20px;
+  font-weight: bold;
+  border: 4px outset #cff;
+}
+.entry-menu-content:active{
+  border-style: inset;
+}
+.entry-form{
+  padding: 8px;
+}
+.entry-form textarea{
+  width: 100%;
+  height: 100px;
+}
+.entry-form input[type="submit"]{
+  background-color: salmon;
+  width: 100%;
+  border: none;
+  color: #fff;
+  height: 55px;
+}
+.entry-form-content{
+  font-size: 13px;
+  border-bottom: dotted 1px ;
+}
+@media(max-width: 1100px){
+  .entry-inner{
+    margin: 55px 0;
+  }
+  .entry-sidemenu{
+    width: 100%;
+  }
+  .entry-main{
+    width: 100%;
+  }
 }

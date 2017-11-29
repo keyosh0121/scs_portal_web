@@ -3,7 +3,9 @@
   <div class="event-add-wrap">
     <%= form_tag('/database/add-event') do %>
     <div class="event-add-input-box">
+      <div class="event-input-info">イベント名</div>
       <input type="text" name="name" placeholder="イベント名">
+      <div class="event-input-info">イベントの種類</div>
       <select name="category">
         <option value="" disabled selected>選択してください(イベントの種類)▼</option>
         <option value="live">サークルライブ</option>
@@ -16,18 +18,31 @@
         <option value="nomikai">宴会</option>
         <option value="other">その他</option>
       </select>
+      <div class="event-input-info">開催日程</div>
       <input type="date" name="date" placeholder="日程">
+      <div class="event-input-info">イベント開始時間</div>
       <input type="time" name="time">
+      <div class="event-input-info">エントリーの有無</div>
       <select name="entry_required">
         <option value=false disabled selected>選択してください(エントリーの有無)▼</option>
         <option value=true>エントリー必要</option>
         <option value=false>エントリー不要</option>
       </select>
+       <div class="event-input-info">(エントリー有りの場合のみ)エントリーの種別</div>
+      <select name="type">
+        <option value=false disabled selected>選択してください(エントリーの種別)▼</option>
+        <option value="0">個人エントリー</option>
+        <option value="1">正規バンドのみエントリー可</option>
+        <option value="2">企画バンドのみエントリー可</option>
+        <option value="3">正規・企画エントリー可</option>
+      </select>
+      <div class="event-input-info">コメント可能かどうか</div>
       <select name="able_to_comment">
         <option value="" disabled selected>選択してください(コメントの可否)▼</option>
         <option value="true">講評/コメント可能</option>
         <option value="false">講評/コメント不可</option>
       </select>
+      <div class="event-input-info">イベントのコンテンツ（必ず、半角英数コンマ”,”でイベントを区切ってください。プログラムが判定します。）</div>
       <input type="text" name="contents" placeholder="コンマ( , )区切りでコンテンツを入力してください">
       <input type="submit" name="" class="event-submit-btn" value="イベントを追加する">
     </div>

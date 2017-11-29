@@ -127,6 +127,7 @@ class AdminController < ApplicationController
       entry_required: params[:entry_required],
       able_to_comment: params[:able_to_comment],
       category: params[:category],
+      event_type: params[:type].to_i
       )
     if @event.save
       flash[:notice] = "イベントを登録しました"

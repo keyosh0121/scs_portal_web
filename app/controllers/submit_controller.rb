@@ -163,6 +163,15 @@ class SubmitController < ApplicationController
     end
   end
 
+  def all_comment_menu
+    @conferences = Event.where(category:"conference")
+  end
+  def all_comment_conf
+    @conference = Event.find(params[:conf_id])
+    @comments = Comment.where(atevent: @conference.name)
+
+  end
+
   def regular_band
     self.user_authentificate
     @band = Band.new()
@@ -298,6 +307,19 @@ class SubmitController < ApplicationController
 
   def add_infos
     self.user_authentificate
+  end
+
+  def entry_top
+    @events = Event.where(entry_required: true)
+  end
+  def entry_event
+    @event = Event.find(params[:id])
+  end
+  def entry_list
+  end
+  def entry_admin
+  end
+  def entry_admin_list
   end
 
 end
