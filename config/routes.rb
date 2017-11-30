@@ -25,6 +25,13 @@ Rails.application.routes.draw do
   get "submit/comment/list/detail/:id" => "submit#comment_detail_show"
   post 'submit/comment/list/detail/:id/reply-send' => 'submit#comment_reply_send'
   post '/submit/comment/delete/:id' => 'submit#comment_reply_delete'
+  get 'submit/comment/all' => 'submit#all_comment_menu'
+  get 'submit/comment/all/:conf_id' => 'submit#all_comment_conf'
+  get 'submit/entry' => "submit#entry_top"
+  get 'submit/entry/event/:id' => "submit#entry_event"
+  get 'submit/entry/list' => "submit#entry_list"
+  get 'submit/entry/admin' => "submit#entry_admin"
+  get 'submit/entry/admin/list/:id' => "submit#entry_admin_list"
 
   post "submit/regular-band/send" => "submit#regular_band_submit"
   get "submit/regular-band" => "submit#regular_band"

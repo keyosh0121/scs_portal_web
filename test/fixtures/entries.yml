@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 1
+  event_id: 1
+  regular_band_id: 1
+  temporal_band_id: 1
+  entry_type: 1
+
+two:
+  user_id: 1
+  event_id: 1
+  regular_band_id: 1
+  temporal_band_id: 1
+  entry_type: 1

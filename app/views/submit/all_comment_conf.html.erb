@@ -10,36 +10,33 @@
       <div class="comment-side-content"><a href="/submit/comment/all">総会コメントを見る</a></div>
     </div>
     <div class="comment-main">
-      <h1>コメント詳細</h1>
+      <h1><%= @conference.name %>へのコメント</h1>
+      <% if @comments.any? %>
+      <% @comments.each do |c| %>
         <div class="sent-comment">
-          <div class="sent-comment-object"><%= @comment.atevent %>  <%= @comment.atcontent %><%= link_to('コメントを削除','/submit/comment/list/destroy/' + @comment.id.to_s ,{:method => 'POST', data: {confirm: "本当に取り消しますか？"}})%> </div>
-          <div class="sent-comment-content"><%= @comment.comment %></div>
-        </div>
-        <div class="comment-reply-container">
-              <div class="reply-image"><i class="fa fa-reply"></i></div>
-              <div class="reply-content">
-                <%= form_tag('/submit/comment/list/detail/' + @comment.id.to_s + '/reply-send',{data: {confirm: "送信しますか？"}}) do %>
-                  返信を送信する
-                  <div class="reply-text"><textarea name="text"></textarea></div>
-                  <input type="submit" name="" class="reply-send-btn" value="送信する">
-                <% end %>
-              </div>
+          <div class="sent-comment-object"><%= c.atevent %>  <%= c.atcontent %>
+            <% if c.sender == @current_user.name %>
+             <%= link_to('コメントを削除','/submit/comment/list/destroy/' + c.id.to_s ,{:method => 'POST', data: {confirm: "本当に取り消しますか？"}})%>
+            <% end %>
+            <%= link_to('コメント詳細/返信','/submit/comment/list/detail/' + c.id.to_s)%>
             </div>
-        <% if ReplyToComment.where(comment_id: @comment.id).any?%>
-          <% ReplyToComment.where(comment_id: @comment.id).each do |reply|%>
+          <div class="sent-comment-content"><%= c.comment %></div>
+        </div>
+        <% if ReplyToComment.where(comment_id: c.id).any?%>
+          <% ReplyToComment.where(comment_id: c.id).each do |reply|%>
             <div class="comment-reply-container">
               <div class="reply-image"><i class="fa fa-reply"></i></div>
               <div class="reply-content">
                 <%= User.find_by(id: reply.sender_id).name %> さんからの返信(送信日時:<%= reply.created_at.strftime("%y年%m月%d日 %H時%M分") %>)
-                <% if reply.sender_id == @current_user.id %>
+                 <% if reply.sender_id == @current_user.id %>
                   <%= link_to("コメントを削除",'/submit/comment/delete/' + reply.id.to_s,{:method => "POST", data: {confirm: "本当に取り消しますか？"}})%>
                 <% end %>
                 <div class="reply-text"><%= reply.text %></div>
               </div>
-
             </div>
           <% end %>
         <% end %>
+      <% end %>
+      <% end %>
     </div>
   </div>
-</div>
