@@ -17,6 +17,10 @@
          <% if @mics[i].date == dummy_date %>
            <% if @mics[i].time == dummy_time %>
               <div class="mic-band"><%= @mics[i].band %></div>
+              <div class="approve-button"><select name="status">
+            <option value="approve">承認</option>
+            <option value="approve">拒否</option>
+          </select><input type="submit" name="" value="変更"></div>
               <% i+=1 %>
            <% else %>
               <% dummy_time=@mics[i].time %>
