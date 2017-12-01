@@ -8,6 +8,9 @@
   </div>
   <div class="entry-main">
     <h1>エントリー済みイベント一覧</h1>
+    <div class="entry-description">
+      あなたがエントリーしたイベント・バンドが表示されます。原則取り消しはできませんが、取り消す場合、管理者に必ず連絡してください。
+    </div>
     <% @entries.each do |entry| %>
       <%
         if entry.entry_type == 0
@@ -28,7 +31,7 @@
         end
       %>
       <div class="entry-list-content">
-        <div class="entry-list-title"><%= Event.find(entry.event_id).name %><span><%= band %></span><p>(<%= Event.find(entry.event_id).date.strftime("%y年%m月%d日") %>)</p><p><%= status %></p></div>
+        <div class="entry-list-title"><%= Event.find(entry.event_id).name %><span><%= band %></span><p>(<%= Event.find(entry.event_id).date.strftime("%y年%m月%d日") %>)</p><br><p><%= status %></p></div>
       </div>
     <% end %>
   </div>

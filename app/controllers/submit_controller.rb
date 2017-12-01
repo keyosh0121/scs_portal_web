@@ -345,7 +345,6 @@ class SubmitController < ApplicationController
   end
   def entry_list
     @entries = @current_user.entries
-
   end
   def entry_admin
   end
