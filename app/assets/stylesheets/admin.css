@@ -224,7 +224,17 @@
 }
 /* マイク練管理画面 */
 
-
+.mic-title{
+  margin: auto;
+  padding-top: 20px;
+  text-align: center;
+  font-weight: normal;
+  color: #66808f;
+}
+.mic-title-box{
+  margin: 5px;
+  border: solid 8px #66808F;
+}
 .mic-admin-wrapper{
   margin-top: 50px;
 }
@@ -238,6 +248,17 @@
   border: 0.3px solid lightgray;
   font-weight: normal;
 }
+.mic-date{
+  font-size: 50px;
+  font-family: Frosty;
+}
+.mic-time{
+  font-size: 20px;
+}
+.mic-band{
+  font-size: 20px;
+}
+
 
 /* バンド管理 */
 

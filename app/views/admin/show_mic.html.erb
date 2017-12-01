@@ -1,37 +1,41 @@
 <div class="mic-admin-wrapper">
-<table>
-  <thead>
-    <tr>
-      <th>ID</th>
-      <th>バンド</th>
-      <th>PA</th>
-      <th>PAの参加可否</th>
-      <th>送信者</th>
-      <th>日付</th>
-      <th>時限</th>
-      <th>ステータス</th>
-      <th>承認/拒否</th>
-    </tr>
-  </thead>
-    <tbody>
-      <% @mics.each do |mic|%>
-      <tr>
-        <div class="mic-show">
-          <th><%= mic.id %></th>
-          <th><%= mic.band %></th>
-          <th><%= mic.pa %></th>
-          <th><%= mic.paattendance %></th>
-          <th><%= mic.sender %></th>
-          <th><%= mic.date %></th>
-          <th><%= mic.time %></th>
-          <th><%= mic.status %></th>
-          <th><<select name="status">
+  <div class="mic-title">
+    <div class="mic-title-box">
+      <h1>マイク練管理</h1>
+    </div>
+  </div>
+
+
+  <div class="mic-main-wrapper">
+      <div class="mic-date"><%= @mics[0].date %></div>
+      <div class="mic-time"><%= @mics[0].time %></div>
+        <% i=0 %>
+        <% dummy_date=@mics[i].date %>
+        <% dummy_time=@mics[i].time %>
+        <% j = @mics.last.id %>
+        <% until i > j do %>
+         <% if @mics[i].date == dummy_date %>
+           <% if @mics[i].time == dummy_time %>
+              <div class="mic-band"><%= @mics[i].band %></div>
+              <div class="approve-button"><select name="status">
             <option value="approve">承認</option>
             <option value="approve">拒否</option>
-          </select><input type="submit" name="" value="変更"></th>
-        </div>
-      </tr>
-      <% end %>
-    </tbody>
-  </table>
+          </select><input type="submit" name="" value="変更"></div>
+              <% i+=1 %>
+           <% else %>
+              <% dummy_time=@mics[i].time %>
+              <div class="mic-time"><%= @mics[i].time %></div>
+           <% end %>
+
+          <% else %>
+          <% dummy_date=@mics[i].date%>
+          <div class="mic-date"><%= @mics[i].date %></div>
+          <% end %>
+
+        <% end %>
+  </div>
+
+
+
+
 </div>
