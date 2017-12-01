@@ -1,0 +1,35 @@
+<div class="entry-inner">
+  <div class="entry-sidemenu">
+    <div class="entry-side-title">エントリー</div>
+    <div class="entry-side-sub">メニュー</div>
+    <%=link_to('/submit/entry') do%><div class="entry-side-content">エントリーする</div><%end%>
+    <%=link_to('/submit/entry/list') do%><div class="entry-side-content">エントリー一覧</div><%end%>
+    <%=link_to('/submit/entry/admin') do%><div class="entry-side-content">エントリー管理画面</div><%end%>
+  </div>
+  <div class="entry-main">
+    <h1>エントリー済みイベント一覧</h1>
+    <% @entries.each do |entry| %>
+      <%
+        if entry.entry_type == 0
+          status = "個人"
+        elsif entry.entry_type == 1
+          status = "正規のみ申請"
+          band = Band.find(entry.regular_band_id).name
+        elsif entry.entry_type == 2
+          status = "企画のみ申請"
+          band = TemporalBand.find(entry.temporal_band_id).name
+        elsif entry.entry_type == 3
+          status = "正規/企画申請"
+          if entry.regular_band_id
+            band = Band.find(entry.regular_band_id).name
+          elsif entry.temporal_band_id
+            band = TemporalBand.find(entry.temporal_band_id).name
+          end
+        end
+      %>
+      <div class="entry-list-content">
+        <div class="entry-list-title"><%= Event.find(entry.event_id).name %><span><%= band %></span><p>(<%= Event.find(entry.event_id).date.strftime("%y年%m月%d日") %>)</p><p><%= status %></p></div>
+      </div>
+    <% end %>
+  </div>
+</div>

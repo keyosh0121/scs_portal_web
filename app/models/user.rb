@@ -23,9 +23,7 @@ class User < ApplicationRecord
     user_bands = Array.new()
     TemporalBand.all.each do |band|
       if band.members.include?(self.name)
-        if band.registration
           user_bands.push(band)
-        end
       end
     end
     return user_bands
@@ -54,5 +52,23 @@ class User < ApplicationRecord
       end
     end
     return user_mics
+  end
+
+  def entries
+    user_entries = Array.new()
+    Entry.all.each do |entry|
+      if entry.regular_band_id
+        if self.bands.include?(Band.find(entry.regular_band_id))
+          user_entries.push(entry)
+        end
+      elsif entry.temporal_band_id
+        if self.temporal_bands.include?(TemporalBand.find(entry.temporal_band_id))
+          user_entries.push(entry)
+        end
+      elsif entry.user_id == self.id
+        user_entries.push(entry)
+      end
+    end
+    return user_entries
   end
 end

@@ -20,6 +20,7 @@
         正規バンド、もしくは企画バンドを選択したのち、エントリーボタンを押してください。企画バンドが表示されない場合は、先にホームメニュー＞企画バンドの申請 から企画バンドの申請を行ってください。
       <% end %>
     </div>
+    <%= form_tag('/submit/entry/event/' + @event.id.to_s + '/send') do%>
     <% if @event.event_type == 0 %>
       <div class="entry-form">
         <textarea name="message" placeholder="メッセージが送信できます"></textarea>
@@ -31,7 +32,7 @@
         <select name="regular_band">
           <option disabled selected>正規バンドを選択</option>
           <% @current_user.bands.each do |band|%>
-          <option value="<%=band.name%>"><%=band.name%></option>
+          <option value="<%=band.id%>"><%=band.name%></option>
           <% end %>
         </select>
         <input type="submit" name="" value="エントリーする">
@@ -43,21 +44,22 @@
     <% elsif @event.event_type == 3 %>
       <div class="entry-form">
         <div class="entry-form-content">正規バンドを選択(企画エントリーの場合は入力しないでください)</div>
-        <select name="regular_band">
-          <option disabled selected>正規バンドを選択</option>
+        <select name="regular_band" class="band-select-regular">
+          <option disabled selected value=0>正規バンドを選択</option>
           <% @current_user.bands.each do |band|%>
-          <option value="<%=band.name%>"><%=band.name%></option>
+          <option value="<%=band.id%>"><%=band.name%></option>
           <% end %>
         </select>
         <div class="entry-form-content">企画バンドを選択(正規バンドの場合は入力しないでください)</div>
-        <select name="temporal_band">
-          <option disabled selected>企画バンドを選択</option>
+        <select name="temporal_band" class="band-select-temporal">
+          <option disabled selected value=0>企画バンドを選択</option>
           <% @current_user.temporal_bands.each do |band|%>
-          <option value="<%=band.name%>"><%=band.name%></option>
+          <option value="<%=band.id%>"><%=band.name%></option>
           <% end %>
         </select>
         <input type="submit" name="" value="エントリーする">
       </div>
+    <% end %>
     <% end %>
   </div>
 </div>

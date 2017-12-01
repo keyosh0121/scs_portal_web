@@ -315,7 +315,37 @@ class SubmitController < ApplicationController
   def entry_event
     @event = Event.find(params[:id])
   end
+  def entry_event_submit
+    event = Event.find(params[:id])
+    if params[:regular_band]
+      r_band_id = params[:regular_band].to_i
+    else
+      r_band_id = nil
+    end
+    if params[:temporal_band]
+      t_band_id = params[:temporal_band].to_i
+    else
+      t_band_id = nil
+    end
+    @entry = Entry.new(
+      user_id: @current_user.id,
+      event_id: event.id,
+      entry_type: event.event_type,
+      regular_band_id: r_band_id,
+      temporal_band_id: t_band_id,
+      message: params[:message]
+      )
+    if @entry.save
+      flash[:notice] = "エントリーしました"
+      redirect_to('/submit/entry')
+    else
+      flash[:notice] = "エントリーできませんでした。再度試してください。"
+      render('submit/entry_event')
+    end
+  end
   def entry_list
+    @entries = @current_user.entries
+
   end
   def entry_admin
   end

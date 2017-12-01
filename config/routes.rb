@@ -29,6 +29,7 @@ Rails.application.routes.draw do
   get 'submit/comment/all/:conf_id' => 'submit#all_comment_conf'
   get 'submit/entry' => "submit#entry_top"
   get 'submit/entry/event/:id' => "submit#entry_event"
+  post 'submit/entry/event/:id/send' => "submit#entry_event_submit"
   get 'submit/entry/list' => "submit#entry_list"
   get 'submit/entry/admin' => "submit#entry_admin"
   get 'submit/entry/admin/list/:id' => "submit#entry_admin_list"

@@ -1,7 +1,6 @@
 $(document).on('turbolinks:load', function() {
   var eventSelect = $('.event-select');
   var contentSelect = $('.content-select');
-
   eventSelect.change(function(){
     contentSelect.html('')
     var result = $.ajax({
@@ -18,6 +17,12 @@ $(document).on('turbolinks:load', function() {
         contentSelect.append('<option value="' + resultText[k].name + '"> '+ resultText[k].name + '</option>')
       }
     });
+  });
+  $('.band-select-regular').change(function(){
+    $('.band-select-temporal').val(0);
+  });
+  $('.band-select-temporal').change(function(){
+    $('.band-select-regular').val(0);
   });
 });
 
