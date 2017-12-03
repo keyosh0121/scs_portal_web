@@ -7,12 +7,13 @@
 
 
   <div class="mic-main-wrapper">
+	<% if @mics.any %>
       <div class="mic-date"><%= @mics[0].date %></div>
       <div class="mic-time"><%= @mics[0].time %></div>
         <% i=0 %>
         <% dummy_date=@mics[i].date %>
         <% dummy_time=@mics[i].time %>
-        <% j = @mics.last.id %>
+        <% j = @mics.count %>
         <% until i > j do %>
          <% if @mics[i].date == dummy_date %>
            <% if @mics[i].time == dummy_time %>
@@ -33,6 +34,7 @@
           <% end %>
 
         <% end %>
+		<% end %>
   </div>
 
 
