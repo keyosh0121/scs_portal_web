@@ -10,7 +10,7 @@
       <% end %>
       <div class="new-info-title">お知らせ一覧</div>
       <div class="info-viewer">
-      <% @notifications.order('created_at DESC').each do |notif|%>
+      <% Notification.all.order('created_at DESC').each do |notif|%>
         <div class="info-viewer-content">
           <%= notif.content %><%= link_to("削除",'/database/notifications/delete/' + notif.id.to_s , {:method => 'POST',data: {confirm: "本当に削除しますか？"}})%>
         </div>
