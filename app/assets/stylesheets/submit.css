@@ -742,6 +742,13 @@
   font-size: 18px;
   padding: 0 8px ;
 }
+.error-message{
+  font-size: 14px;
+  background-color: #d00;
+  color: #fff;
+  padding: 16px;
+  border: solid 1px;
+}
 @media(max-width: 1100px){
   .entry-inner{
     margin: 55px 0;

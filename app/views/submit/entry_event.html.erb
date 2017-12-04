@@ -20,6 +20,9 @@
         正規バンド、もしくは企画バンドを選択したのち、エントリーボタンを押してください。企画バンドが表示されない場合は、先にホームメニュー＞企画バンドの申請 から企画バンドの申請を行ってください。
       <% end %>
     </div>
+    <% if @entry.errors.any? %>
+      <div class="error-message"><% @entry.errors.full_messages.each do |message| %><%= message %><br><% end %></div>
+    <% end%>
     <%= form_tag('/submit/entry/event/' + @event.id.to_s + '/send') do%>
     <% if @event.event_type == 0 %>
       <div class="entry-form">

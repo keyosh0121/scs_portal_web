@@ -311,12 +311,15 @@ class SubmitController < ApplicationController
 
   def entry_top
     @events = Event.where(entry_required: true)
+    @entry = Entry.new
   end
   def entry_event
     @event = Event.find(params[:id])
+    @entry = Entry.new
   end
   def entry_event_submit
     event = Event.find(params[:id])
+    @event = Event.find(params[:id])
     if params[:regular_band]
       r_band_id = params[:regular_band].to_i
     else
