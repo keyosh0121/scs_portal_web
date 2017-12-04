@@ -237,20 +237,12 @@
 }
 .mic-admin-wrapper{
   margin-top: 50px;
-}
-.mic-admin-wrapper table{
-  margin: 90px auto;
-  border-collapse: collapse;
-}
-.mic-admin-wrapper th{
-  font-size: 12.8px;
-  padding: 7px 30px;
-  border: 0.3px solid lightgray;
-  font-weight: normal;
+	padding:16px;
 }
 .mic-date{
-  font-size: 50px;
-  font-family: Frosty;
+  font-size: 24px;
+	padding:16px;
+	background-color:#11102a;
 }
 .mic-time{
   font-size: 20px;
