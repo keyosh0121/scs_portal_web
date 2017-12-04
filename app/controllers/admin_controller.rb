@@ -77,6 +77,18 @@ class AdminController < ApplicationController
     self.user_authentificate
     @mics = Mic.all.order("date")
   end
+	
+	def mic_approve
+		@mic = Mic.find(params[:id])
+		@mic.status = params[:status]
+		if @mic.save
+			flash[:notice] = "マイク練の詳細を変更しました"
+			redirect_to('/submit/mic-practice')
+		else
+			flash[:notice] = "変更に失敗しました"
+			render('submit/show_mic')
+		end
+	end
 
   def show_infos
     self.user_authentificate

@@ -243,6 +243,8 @@
   font-size: 24px;
 	padding:16px;
 	background-color:#11102a;
+	color: white;
+	
 }
 .mic-time{
   font-size: 20px;
@@ -255,6 +257,7 @@
 	margin: 8px;
 	background-color: #eef;
 	overflow:auto;
+	padding:16px;
 }
 
 /* バンド管理 */

@@ -56,7 +56,8 @@ Rails.application.routes.draw do
   post "/database/notifications/new" => "admin#add_infos"
   post '/database/notifications/delete/:id' => "admin#delete_info"
   get "/database/mic-practice" => "admin#show_mic"
-  get "/database/mic/room-register" => "admin#mic_room_register"
+	post "/database/mic-practice/approve/:id" => "admin#mic_approve"
+	get "/database/mic/room-register" => "admin#mic_room_register"
   post "/database/mic/room-register/send" => "admin#mic_room_register_send"
   get "/database" => "admin#top"
 
