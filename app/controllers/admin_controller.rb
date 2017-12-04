@@ -81,6 +81,7 @@ class AdminController < ApplicationController
   def show_infos
     self.user_authentificate
     @notif = Notification.new()
+    @notifications = Notification.all
   end
 
   def add_infos
@@ -89,12 +90,23 @@ class AdminController < ApplicationController
       date: Date.today,
       time: Time.now
       )
+    @notifications = Notification.all
     if @notif.save
       redirect_to("/database/notifications")
       flash[:notice] = "お知らせを投稿しました"
     else
       render("/admin/show_infos")
       flash[:notice] = "お知らせを投稿できませんでした。再度試して下さい"
+    end
+  end
+  def delete_info
+    @notification = Notification.find(params[:id])
+    if @notification.destroy
+      flash[:notice] = "お知らせを削除しました"
+      redirect_to('/database/notifications')
+    else
+      flash[:notice] = "削除に失敗しました。"
+      redirect_to('/database/notifications')
     end
   end
 

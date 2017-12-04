@@ -392,6 +392,10 @@
   margin: 16px 0;
   width: 100%;
 }
+.info-viewer{
+  padding: 16px;
+  background-color: #f5f5ff;
+}
 
 @media(max-width:600px) {
   .new-info-wrapper{

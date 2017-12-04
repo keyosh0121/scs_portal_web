@@ -523,11 +523,9 @@
   background-color: #ddd;
   transition: 200ms ease;
 }
-
-@media only screen and (min-device-width:200px) and (max-device-width:700px){
+@media(max-width: 900px){
   .comment-inner{
     margin: 0;
-
   }
   .comment-side{
     width: 100%;
@@ -536,6 +534,18 @@
     width: 100%;
   }
 }
+@media only screen and (min-device-width:200px) and (max-device-width:700px){
+  .comment-inner{
+    margin: 0;
+  }
+  .comment-side{
+    width: 100%;
+  }
+  .comment-main{
+    width: 100%;
+  }
+}
+
 
 
 /********** 部屋利用 **********/
