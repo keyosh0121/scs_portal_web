@@ -14,5 +14,4 @@ end
 
 class Event < ApplicationRecord
   validates_with EventValidator
-  serialize :contents
 end

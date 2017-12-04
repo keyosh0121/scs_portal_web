@@ -1,13 +1,28 @@
-class User < ApplicationRecord
-  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-  FOUR_YEARS_AGO = Date.today.year - 4
-  validates :name, {presence: true}
-  validates :email, {presence: true, uniqueness: true, format: {with: VALID_EMAIL_REGEX}}
-  validates :tel, {presence: true}
-  validates :year, presence: true, numericality: {only_integer: true, greater_than: FOUR_YEARS_AGO}
-    validates :univ, {presence: true}
-  validates :password, {presence: true}
+class UserValidator < ActiveModel::Validator
+  def validate(record)
+    if record.name == nil
+      record.errors[:base] << "名前が入力されていません"
+    end
+    if record.name.include?(" ") | record.name.include?("　")
+      record.errors[:base] << "姓名はスペースを使用せず入力してください"
+    end
+    if record.email == nil
+      record.errors[:base] << "メールアドレスを入力してください"
+    end
+    if record.tel == nil
+      record.errors[:base] << "電話番号を入力してください"
+    end
+    if record.year == nil
+      record.errors[:base] << "入会年度を選択してください"
+    end
+    if record.password == nil
+      record.errors[:base] << "パスワードが入力されていません"
+    end
+  end
+end
 
+class User < ApplicationRecord
+  validates_with UserValidator
   def bands
     user_bands = Array.new()
     Band.all.each do |band|
