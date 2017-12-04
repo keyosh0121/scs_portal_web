@@ -258,7 +258,12 @@
 .mic-band{
   font-size: 20px;
 }
-
+.mic-content{
+	border:1px solid #aaa;
+	margin: 8px;
+	background-color: #eef;
+	overflow:auto;
+}
 
 /* バンド管理 */
 
