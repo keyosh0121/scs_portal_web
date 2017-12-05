@@ -242,13 +242,13 @@
 .mic-date{
   font-size: 24px;
 	padding:16px;
-  background-color:#11102a;
+  background-color:#333340;
   color: white;
 }
 .mic-time{
   font-size: 14px;
   padding: 8px;
-  background-color: #eeb;
+  background-color: #999;
 }
 .mic-band{
   font-size: 28px;
@@ -272,7 +272,7 @@
 .mic-content{
 	border:1px solid #aaa;
 	margin: 8px;
-	background-color: #cdf;
+	background-color: #ccc;
 	overflow:auto;
 	padding:8px;
 }
