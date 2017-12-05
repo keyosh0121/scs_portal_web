@@ -17,7 +17,7 @@
         <% until i > j do %>
          <% if @mics[i].date == dummy_date %>
            <% if @mics[i].time == dummy_time %>
-					 <%=form_tag('/submit/mic-practice/approve/' + @mics[i].id.to_s ) do%>
+					 <%=form_tag('/database/mic-practice/approve/' + @mics[i].id.to_s ) do%>
 					 <div class="mic-content">
               <div class="mic-band"><%= @mics[i].band %></div>
               <div class="approve-button"><select name="status">
