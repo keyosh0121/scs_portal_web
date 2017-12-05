@@ -84,7 +84,7 @@ class AdminController < ApplicationController
 		@mic = Mic.find(params[:id])
 		if @mic.update(:status => params[:status])
 			flash[:notice] = "マイク練の詳細を変更しました"
-			redirect_to('/submit/mic-practice')
+			redirect_to('/database/mic-practice')
 		else
 			flash[:notice] = "変更に失敗しました"
 			render('show_mic')

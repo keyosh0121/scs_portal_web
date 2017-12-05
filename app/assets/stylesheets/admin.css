@@ -242,22 +242,69 @@
 .mic-date{
   font-size: 24px;
 	padding:16px;
-	background-color:#11102a;
-	color: white;
-	
+  background-color:#333340;
+  color: white;
 }
 .mic-time{
-  font-size: 20px;
+  font-size: 14px;
+  padding: 8px;
+  background-color: #999;
 }
 .mic-band{
-  font-size: 20px;
+  font-size: 28px;
+  width: 100%;
+  float: left;
+  height: 100%;
+  font-weight: bold;
+}
+.mic-band span{
+  font-size: 16px;
+  font-weight: normal;
+}
+.status-display{
+  font-size: 12px;
+  padding: 8px;
+  color: #fff;
+  background-color: green;
+  float: left;
+  margin-right: 8px;
 }
 .mic-content{
 	border:1px solid #aaa;
 	margin: 8px;
-	background-color: #eef;
+	background-color: #ccc;
 	overflow:auto;
-	padding:16px;
+	padding:8px;
+}
+.mic-content input[type="text"]{
+  width: 100%;
+  float: left;
+  height: 40px;
+  border: none;
+  -webkit-appearance: none;
+}
+.mic-content select{
+  width: 100%;
+  height: 100%;
+  float: left;
+  border: 1px dotted #ccc;
+  margin: 0;
+  height: 40px;
+  padding: 0;
+  margin: 10px 0;
+}
+.mic-content input[type="submit"]{
+  height: 100%;
+  background-color: salmon;
+  color: #fff;
+  border: none;
+  width: 100%;
+  height: 40px;
+  position: relative;
+
+}
+.mic-content input,select{
+  margin: 8px 0;
 }
 
 /* バンド管理 */
