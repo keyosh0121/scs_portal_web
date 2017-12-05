@@ -82,13 +82,13 @@ class AdminController < ApplicationController
 	def mic_approve
     @mics = Mic.all.order("date")
 		@mic = Mic.find(params[:id])
-		@mic.status = params[:status]
-		if @mic.save
+		puts @mic.update(:status => params[:status])
+		if @mic.update(:status => params[:status])
 			flash[:notice] = "マイク練の詳細を変更しました"
 			redirect_to('/submit/mic-practice')
 		else
 			flash[:notice] = "変更に失敗しました"
-			render('submit/show_mic')
+			render('show_mic')
 		end
 	end
 
@@ -136,16 +136,13 @@ class AdminController < ApplicationController
   end
 
   def add_event
-
     string = params[:contents].split(",")
     puts string
     array = Array.new
     string.each do |str|
       content = EventContent.new(name: str, event: params[:name])
       content.save
-
     end
-
     @event = Event.new(
       name: params[:name],
       date: params[:date],
