@@ -82,7 +82,6 @@ class AdminController < ApplicationController
 	def mic_approve
     @mics = Mic.all.order("date")
 		@mic = Mic.find(params[:id])
-		puts @mic.update(:status => params[:status])
 		if @mic.update(:status => params[:status])
 			flash[:notice] = "マイク練の詳細を変更しました"
 			redirect_to('/submit/mic-practice')
