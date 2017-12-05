@@ -30,4 +30,16 @@ class MicMailer < ApplicationMailer
       format.html
     end
   end
+
+  def send_mic_status_change(mic,text)
+    @mic = mic
+    @text = text
+    user_email = User.find_by(name: @mic.sender).email
+    mail(
+      subject: "マイク練が#{@mic.status}されました",
+      to: user_email) do |format|
+      format.html
+    end
+  end
+
 end

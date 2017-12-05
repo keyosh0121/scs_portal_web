@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1 style="font-size:24px;">申請したマイク練が<%= @mic.status %>されました</h1>
+    <div style="font-size:13px; padding:16px; background-color:#ddd; margin:8px;">
+      日程.....<%= @mic.date %><br>
+      時限.....<%= @mic.time %><br>
+      送信者.....<%= @mic.sender %><br>
+      PAの参加予定.....<%= @mic.paattendance %><br><br>
+      【マイク練係より】<%= @text %>
+    </div>
+  </body>
+</html>

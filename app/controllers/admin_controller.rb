@@ -86,6 +86,7 @@ class AdminController < ApplicationController
 		if @mic.update(:status => params[:status])
 			flash[:notice] = "マイク練の詳細を変更しました"
 			redirect_to('/database/mic-practice')
+      MicMailer.send_mic_status_change(@mic,params[:text]).deliver
 		else
 			flash[:notice] = "変更に失敗しました"
 			render('show_mic')
