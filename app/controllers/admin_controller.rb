@@ -76,9 +76,11 @@ class AdminController < ApplicationController
   def show_mic
     self.user_authentificate
     @mics = Mic.all.order("date")
+    @mic = Mic.new
   end
-	
+
 	def mic_approve
+    @mics = Mic.all.order("date")
 		@mic = Mic.find(params[:id])
 		@mic.status = params[:status]
 		if @mic.save
