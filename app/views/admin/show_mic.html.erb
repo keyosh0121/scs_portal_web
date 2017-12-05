@@ -8,7 +8,7 @@
 
   <div class="mic-main-wrapper">
 	<% if @mics.any? %>
-      <div class="mic-date"><%= @mics[0].date %></div>
+      <div class="mic-date"><%= @mics[0].date.strftime("%m月%d日") %></div>
       <div class="mic-time"><%= @mics[0].time %></div>
         <% i=0 %>
         <% dummy_date=@mics[i].date %>
@@ -19,11 +19,16 @@
            <% if @mics[i].time == dummy_time %>
 					 <%=form_tag('/database/mic-practice/approve/' + @mics[i].id.to_s ) do%>
 					 <div class="mic-content">
-              <div class="mic-band"><%= @mics[i].band %></div>
-              <div class="approve-button"><select name="status">
-            <option value="承認">承認</option>
-            <option value="拒否">拒否</option>
-          </select><input type="submit" name="" value="変更"></div>
+              <div class="mic-band"><%= @mics[i].band %><span><%= "  (PA: " + @mics[i].pa.to_s + " / " + @mics[i].paattendance + ")" %></span><div class="status-display"><%= @mics[i].status %></div></div>
+              <input type="text" name="text" placeholder="伝達事項などを入力してください">
+              <select name="status">
+                <option disabled selected>変更を選択</option>
+                <option value="承認">承認する</option>
+                <option value="条件付き承認">条件付きで承認</option>
+                <option value="拒否">拒否する</option>
+              </select>
+              <input type="submit" name="" value="変更">
+            </div>
 					<% end %>
 					</div>
               <% i+=1 %>
