@@ -306,6 +306,12 @@
 .mic-content input,select{
   margin: 8px 0;
 }
+.mic-description{
+  padding: 16px;
+  font-size: 13px;
+  background-color: #ddd;
+  margin: 10px 0;
+}
 
 /* バンド管理 */
 
