@@ -170,6 +170,7 @@ class SubmitController < ApplicationController
   end
 
   def all_comment_menu
+		self.user_authentificate
     @conferences = Event.where(category:"conference")
   end
   def all_comment_conf
