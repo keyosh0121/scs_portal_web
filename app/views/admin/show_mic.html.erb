@@ -4,9 +4,12 @@
       <h1>マイク練管理</h1>
     </div>
   </div>
-
-
   <div class="mic-main-wrapper">
+    <div class="mic-description">
+      ・ステータスを変更すると、マイク練申請者にメールが届きます。<br>
+      ・準備時間や分割などの場合「条件付き承認」を選択してください。<br>
+      ・送信ボタンは確認してから押してください。
+    </div>
 	<% if @mics.any? %>
       <div class="mic-date"><%= @mics[0].date.strftime("%m月%d日") %></div>
       <div class="mic-time"><%= @mics[0].time %></div>

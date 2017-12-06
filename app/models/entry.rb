@@ -17,7 +17,7 @@ class EntryValidator < ActiveModel::Validator
         record.errors[:base] << "バンドが選択されていません"
       end
     end
-    myEvents = Entry.where(user_id: record.user_id).any?
+    myEvents = Entry.where(user_id: record.user_id)
     if record.entry_type == 0
       if myEvents.any?
         if myEvents.where(event_id: record.event_id).any?
