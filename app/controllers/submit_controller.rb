@@ -316,10 +316,12 @@ class SubmitController < ApplicationController
   end
 
   def entry_top
+		self.user_authentificate
     @events = Event.where(entry_required: true)
     @entry = Entry.new
   end
   def entry_event
+		self.user_authentificate
     @event = Event.find(params[:id])
     @entry = Entry.new
   end
@@ -353,6 +355,7 @@ class SubmitController < ApplicationController
     end
   end
   def entry_list
+		self.user_authentificate
     @entries = @current_user.entries
   end
   def entry_admin
