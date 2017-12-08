@@ -173,13 +173,13 @@ class AdminController < ApplicationController
 
   def mic_room_register
     self.user_authentificate
-    @hours = [1,2,3,4,5,6,7]
+    @hours = [1,2,3,8,4,5,6,7]
     @rooms = ["B101","B102","B103","B104","B105","B106","B123","B124","B125","B126"]
     @today_mics = Mic.where(date: Date.today).order('time')
   end
 
   def mic_room_register_send
-    @hours = [1,2,3,4,5,6,7]
+    @hours = [0,1,2,3,8,4,5,6,7]
     array = Array.new()
     if params[:room1] != "nil"
       @mic_room = MicRoom.new(
@@ -191,7 +191,7 @@ class AdminController < ApplicationController
     end
     if params[:room2] != "nil"
       @mic_room = MicRoom.new(
-        room: params[:room1],
+        room: params[:room2],
         date: Date.today,
         time: "2限"
         )
@@ -199,7 +199,7 @@ class AdminController < ApplicationController
     end
     if params[:room3] != "nil"
       @mic_room = MicRoom.new(
-        room: params[:room1],
+        room: params[:room3],
         date: Date.today,
         time: "3限"
         )
@@ -207,7 +207,7 @@ class AdminController < ApplicationController
     end
     if params[:room4] != "nil"
       @mic_room = MicRoom.new(
-        room: params[:room1],
+        room: params[:room4],
         date: Date.today,
         time: "4限"
         )
@@ -215,7 +215,7 @@ class AdminController < ApplicationController
     end
     if params[:room5] != "nil"
       @mic_room = MicRoom.new(
-        room: params[:room1],
+        room: params[:room5],
         date: Date.today,
         time: "5限"
         )
@@ -223,7 +223,7 @@ class AdminController < ApplicationController
     end
     if params[:room6] != "nil"
       @mic_room = MicRoom.new(
-        room: params[:room1],
+        room: params[:room6],
         date: Date.today,
         time: "6限"
         )
@@ -231,9 +231,17 @@ class AdminController < ApplicationController
     end
     if params[:room7] != "nil"
       @mic_room = MicRoom.new(
-        room: params[:room1],
+        room: params[:room7],
         date: Date.today,
         time: "7限"
+        )
+      array.push(@mic_room)
+    end
+    if params[:room8] != "nil"
+      @mic_room = MicRoom.new(
+        room: params[:room8],
+        date: Date.today,
+        time: "昼限"
         )
       array.push(@mic_room)
     end

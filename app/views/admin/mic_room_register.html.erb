@@ -1,17 +1,24 @@
 <div class="mic-room-wrap">
   <h1>本日の部屋登録</h1>
   <div class="mic-room-form">
+    <div class="mic-room-current">
+      <% if MicRoom.where(date: Date.today).any? %>
+        <% MicRoom.where(date: Date.today).each do |room| %>
+          <%= room.time.to_s + "  " + room.room.to_s %><br>
+        <% end %>
+      <% end %>
+    </div>
     <div class="mic-room-date"><%= Date.today.strftime("%m月 %d日") + "の部屋を登録" %></div>
     <%= form_tag('/database/mic/room-register/send') do %>
       <% @hours.each do |hour| %>
       <div class="mic-room-time-wrap">
-        <div class="mic-room-time"><%= hour %>限(
+        <div class="mic-room-time"><% if hour != 8 %><%= hour %><% else%>昼<%end%>限
           <% if @today_mics.where(time: hour.to_s + "限")%>
             <% @today_mics.where(time: hour.to_s + "限").each do |mic|%>
-              <%= mic.band + "  " + mic.status %>
+              (<%= mic.band + "  " + mic.status %>)
             <% end %>
           <% end %>
-        )</div>
+        </div>
         <select name="room<%= hour %>" class="room-select">
           <option value="nil" selected>なし</option>
             <% @rooms.each do |room|%>
