@@ -598,4 +598,10 @@
   margin: 10px 5%;
   width: 90%;
 }
-
+.mic-room-current{
+  padding: 16px;
+  font-size: 16px;
+  font-weight: bolder;
+  background-color: #d4d4e9;
+  margin: 16px 0;
+}

@@ -6,6 +6,8 @@
         <% MicRoom.where(date: Date.today).each do |room| %>
           <%= room.time.to_s + "  " + room.room.to_s %><br>
         <% end %>
+      <% else %>
+        本日のマイク練部屋登録はまだありません。
       <% end %>
     </div>
     <div class="mic-room-date"><%= Date.today.strftime("%m月 %d日") + "の部屋を登録" %></div>
