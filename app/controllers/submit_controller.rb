@@ -359,6 +359,11 @@ class SubmitController < ApplicationController
     @entries = @current_user.entries
   end
   def entry_admin
+    self.user_authentificate
+    @events = Event.where(entry_required: true)
+  end
+  def event_entry_to_csv
+    @event = Event.find(params[:event_id])
   end
   def entry_admin_list
   end

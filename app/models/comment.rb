@@ -1,6 +1,6 @@
 class CommentValidater < ActiveModel::Validator
   def validate(record)
-    if record.text.length < 10
+    if record.comment.length < 10
       record.errors[:base] << "10文字以上入力してください"
     end
   end

@@ -8,5 +8,13 @@
   </div>
   <div class="entry-main">
     <h1>エントリー管理画面</h1>
+    <div class="entry-description">
+      ・項目をクリックすると、データファイルがダウンロードできます<br>
+    </div>
+    <div class="entry-datas">
+      <% @events.each do |event|%>
+        <%= link_to(event.name, "/submit/entry/admin/csv/" + event.id.to_s(format: :csv))%><br>
+      <% end %>
+    </div>
   </div>
 </div>

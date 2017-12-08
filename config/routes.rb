@@ -32,6 +32,7 @@ Rails.application.routes.draw do
   post 'submit/entry/event/:id/send' => "submit#entry_event_submit"
   get 'submit/entry/list' => "submit#entry_list"
   get 'submit/entry/admin' => "submit#entry_admin"
+  get 'submit/entry/admin/csv/:event_id' => "submit#event_entry_to_csv"
   get 'submit/entry/admin/list/:id' => "submit#entry_admin_list"
 
   post "submit/regular-band/send" => "submit#regular_band_submit"
