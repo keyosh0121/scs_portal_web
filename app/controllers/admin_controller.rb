@@ -175,6 +175,7 @@ class AdminController < ApplicationController
     self.user_authentificate
     @hours = [1,2,3,4,5,6,7]
     @rooms = ["B101","B102","B103","B104","B105","B106","B123","B124","B125","B126"]
+    @today_mics = Mic.where(date: Date.today).order('time')
   end
 
   def mic_room_register_send

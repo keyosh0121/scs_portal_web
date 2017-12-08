@@ -235,6 +235,18 @@
   margin: 5px;
   border: solid 8px #66808F;
 }
+.to-mic-room{
+  font-size: 20px;
+  padding: 16px;
+  border: solid 5px salmon;
+  background-color: white;
+  margin: 20px;
+}
+.to-mic-room:hover{
+  background-color: salmon;
+  color: white;
+  transition: 300ms ease;
+}
 .mic-admin-wrapper{
   margin-top: 50px;
 	padding:16px;
