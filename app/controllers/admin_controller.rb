@@ -75,7 +75,7 @@ class AdminController < ApplicationController
 
   def show_mic
     self.user_authentificate
-    @mics = Mic.all.order("date")
+    @mics = Mic.all.order('date DESC,time')
     @mic = Mic.new
   end
 
