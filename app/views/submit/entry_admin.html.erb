@@ -13,7 +13,7 @@
     </div>
     <div class="entry-datas">
       <% @events.each do |event|%>
-				<%= link_to(event.name,'submit/event/csv-download/' + event.id.to_s + '.csv')%>
+				<%= link_to(event.name,'submit/event/csv-download/' + event.id.to_s + '.csv',{format: :csv})%>
       <% end %>
     </div>
   </div>

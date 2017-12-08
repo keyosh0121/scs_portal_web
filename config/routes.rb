@@ -31,7 +31,7 @@ Rails.application.routes.draw do
   get 'submit/entry/event/:id' => "submit#entry_event"
   post 'submit/entry/event/:id/send' => "submit#entry_event_submit"
   get 'submit/entry/list' => "submit#entry_list"
-	get 'submit/entry/csv-download/:event_id' => 'submit#event_entry_to_csv'
+	get 'submit/entry/csv-download/:event_id.csv' => 'submit#event_entry_to_csv'
   get 'submit/entry/admin' => "submit#entry_admin"
   get 'submit/entry/admin/list/:id' => "submit#entry_admin_list"
 
