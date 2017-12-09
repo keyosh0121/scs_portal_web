@@ -17,11 +17,11 @@ class Mic < ApplicationRecord
   def status_string
     if self.status == 0
       return "未承認"
-    elsif self.stauts == 1
+    elsif self.status == 1
       return "承認"
-    elsif self.stauts == 2
+    elsif self.status == 2
       return "条件付きで承認"
-    elsif self.stauts == 3
+    elsif self.status == 3
       return "不可"
     end
   end
