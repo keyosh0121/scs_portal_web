@@ -17,7 +17,7 @@
 
     <div class="room-about">練習室利用は現役正規バンドのみ可能です。<br>
       自分の正規バンドが表示されない場合、申請に誤りがあるか、ユーザーの登録が正しく完了していない場合があります。</div>
-    <div class="room-current">
+    <div class="room-current">現在マイク練で予約しているのは<%= MicRoom.where(date: Date.today).count%>部屋です。
       <div class="rcurrent-title">   <%= Date.today.strftime("%m月%d日")%>の利用状況</div>
   <% if @usages.count != 0 %>
         <% RoomUsage.where(date: Date.today).each do |usage| %>
