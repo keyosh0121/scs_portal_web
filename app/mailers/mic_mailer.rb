@@ -36,7 +36,7 @@ class MicMailer < ApplicationMailer
     @text = text
     user_email = User.find_by(name: @mic.sender).email
     mail(
-      subject: "マイク練が#{@mic.status}されました",
+      subject: "マイク練が#{@mic.status_string}されました",
       to: user_email) do |format|
       format.html
     end

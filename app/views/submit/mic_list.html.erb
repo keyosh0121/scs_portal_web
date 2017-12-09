@@ -1,3 +1,4 @@
+
 <div class="mic-list-wrap">
   <div class="mic-list-inner">
     <div class="mic-sub-side">
@@ -15,7 +16,7 @@
         <div class="mic-list-content mic-list-content-title"><%= mic.band %></div>
         <div class="mic-list-content mic-list-content-date"><%= mic.date %></div>
         <div class="mic-list-content mic-list-content-time"><%= mic.time %></div>
-        <div class="mic-list-content mic-list-content-status"><%= mic.status %></div>
+        <div class="mic-list-content mic-list-content-status"><%= mic.status_string %></div>
         <div class="mic-list-content mic-list-content-cancel"><%= link_to('申請取消','/submit/mic/destroy/' + mic.id.to_s , {:method => 'post', data: {confirm: "本当に取り消しますか？"}})%></div>
       </div>
       <% end %>

@@ -24,22 +24,22 @@
 					 <%=form_tag('/database/mic-practice/approve/' + @mics[i].id.to_s ) do%>
 					 <div class="mic-content">
               <div class="mic-band"><%= @mics[i].band %><span><%= "  (PA: " + @mics[i].pa.to_s + " / " + @mics[i].paattendance + ")" %></span>
-                <% if @mics[i].status == "承認" %>
+                <% if @mics[i].status_string == "承認" %>
                   <div class="status-display">承認</div>
-                <% elsif @mics[i].status == "未承認"%>
+                <% elsif @mics[i].status_string == "未承認"%>
                   <div class="status-display" style="background-color:#FFFF99;">未承認</div>
-                <% elsif @mics[i].status == "拒否"%>
+                <% elsif @mics[i].status_string == "不可"%>
                   <div class="status-display" style="background-color:#770000;">拒否</div>
-                <% elsif @mics[i].status == "条件付き承認"%>
+                <% elsif @mics[i].status_string == "条件付きで承認"%>
                 <div class="status-display" style="background-color:#BBBB44;color:black;">条件付き承認</div>
                 <% end %>
                 </div>
               <input type="text" name="text" placeholder="伝達事項などを入力してください">
               <select name="status">
                 <option disabled selected>変更を選択</option>
-                <option value="承認">承認する</option>
-                <option value="条件付き承認">条件付きで承認</option>
-                <option value="拒否">拒否する</option>
+                <option value="1">承認する</option>
+                <option value="2">条件付きで承認</option>
+                <option value="3">拒否する</option>
               </select>
               <input type="submit" name="" value="変更">
             </div>
