@@ -365,7 +365,8 @@ class SubmitController < ApplicationController
   end
   def event_entry_to_csv
     @event = Event.find(params[:event_id])
-  end
+		@entries = Entry.where(event_id: @event.id)
+	end
   def entry_admin_list
   end
 
