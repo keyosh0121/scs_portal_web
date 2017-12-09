@@ -14,4 +14,7 @@ class Mic < ApplicationRecord
       return true
     end
   end
+
+  def delete_old_records
+  end
 end
