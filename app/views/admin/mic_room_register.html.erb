@@ -17,7 +17,7 @@
         <div class="mic-room-time"><% if hour != 8 %><%= hour %><% else%>昼<%end%>限
           <% if @today_mics.where(time: hour.to_s + "限")%>
             <% @today_mics.where(time: hour.to_s + "限").each do |mic|%>
-              (<%= mic.band + "  " + mic.status %>)
+              (<%= mic.band + "  " + mic.status_string %>)
             <% end %>
           <% end %>
         </div>

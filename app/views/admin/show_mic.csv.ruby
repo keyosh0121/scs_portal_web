@@ -10,7 +10,7 @@ CSV.generate do |csv|
       mic.paattendance,
       mic.date,
       mic.time,
-      mic.status
+      mic.status_string
     ]
     csv << csv_column_values
   end

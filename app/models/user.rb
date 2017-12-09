@@ -86,4 +86,7 @@ class User < ApplicationRecord
     end
     return user_entries
   end
+
+  def change_status_to_ob_if_graduated
+  end
 end

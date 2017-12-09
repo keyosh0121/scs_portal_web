@@ -38,7 +38,7 @@ class SubmitController < ApplicationController
       time: params[:time],
       paattendance: attendance,
       pa: pa,
-      status: "未承認"
+      status: 0
       )
     params[:paattendance]
     if @mic.save
