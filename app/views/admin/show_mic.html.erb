@@ -24,13 +24,13 @@
 					 <%=form_tag('/database/mic-practice/approve/' + @mics[i].id.to_s ) do%>
 					 <div class="mic-content">
               <div class="mic-band"><%= @mics[i].band %><span><%= "  (PA: " + @mics[i].pa.to_s + " / " + @mics[i].paattendance + ")" %></span>
-                <% if @mics[i].status_string == "承認" %>
+                <% if @mics[i].status == 1 %>
                   <div class="status-display">承認</div>
-                <% elsif @mics[i].status_string == "未承認"%>
+                <% elsif @mics[i].status == 0 %>
                   <div class="status-display" style="background-color:#FFFF99;">未承認</div>
-                <% elsif @mics[i].status_string == "不可"%>
+                <% elsif @mics[i].status == 3 %>
                   <div class="status-display" style="background-color:#770000;">拒否</div>
-                <% elsif @mics[i].status_string == "条件付きで承認"%>
+                <% elsif @mics[i].status == 2 %>
                 <div class="status-display" style="background-color:#BBBB44;color:black;">条件付き承認</div>
                 <% end %>
                 </div>
