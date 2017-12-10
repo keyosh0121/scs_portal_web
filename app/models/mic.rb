@@ -23,6 +23,8 @@ class Mic < ApplicationRecord
       return "条件付きで承認"
     elsif self.status == 3
       return "不可"
+    else
+      return ""
     end
   end
   def delete_old_records
