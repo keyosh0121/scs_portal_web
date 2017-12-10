@@ -14,8 +14,8 @@
     <%= form_tag('/database/mic/room-register/send') do %>
       <% @hours.each do |hour| %>
       <div class="mic-room-time-wrap">
-        <div class="mic-room-time"><% if hour != 8 %><%= hour %><% else%>昼<%end%>限
-          <% if @today_mics.where(time: hour.to_s + "限")%>
+        <div class="mic-room-time"><% if hour != 8 %><%= hour %><% else %>昼<%end%>限
+          <% if @today_mics.where(time: hour.to_s + "限").any? %>
             <% @today_mics.where(time: hour.to_s + "限").each do |mic|%>
               (<%= mic.band + "  " + mic.status_string %>)
             <% end %>
