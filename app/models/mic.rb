@@ -1,7 +1,18 @@
 
 class MicDateValidator < ActiveModel::Validator
   def validate(record)
-    end
+		if record.date == nil
+			record.errors[:base] << "日付が入力されていません"
+		elsif record.date < Date.today + 5
+			record.errors[:base] << "5日前を過ぎた日程は申請できません"
+		end
+		if record.band == nil
+			record.errors[:base] << "バンドを選択してください"
+		end
+		if record.time == nil 
+			record.errors[:base] << "時限を入力してください"
+		end
+  end
 end
 
 class Mic < ApplicationRecord
