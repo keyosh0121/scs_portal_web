@@ -6,7 +6,7 @@ end
 
 class Mic < ApplicationRecord
   validates_with MicDateValidator, on: :create
-  def full? #マイク練が3件申請されている場合に跳ね返すクラスメソッド
+  def full? #マイク練が3件申請されている場合に跳ね返すインスタンスメソッド
     count = Mic.where(date: self.date, time: self.time).count
     if count < 3
       return false
