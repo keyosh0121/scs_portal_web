@@ -114,7 +114,7 @@ class SubmitController < ApplicationController
       redirect_to('/submit/comment/list')
     else
       flash[:notice] = "送信に失敗しました。再度試して下さい。"
-      render('/submit/comment_list')
+      render('/submit/comment_conference')
     end
   end
 
