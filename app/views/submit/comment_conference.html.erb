@@ -12,7 +12,7 @@
     <div class="comment-main">
     <%= form_tag('/submit/comment/conference/send') do %>
       <h1>総会へのコメント送信</h1>
-			      <div class="error-messages"><%=@comment.errors.full_messages.each do |message|%><%=message%><br><%end%></div>
+			      <div class="error-messages"><%@comment.errors.full_messages.each do |message|%><%=message%><br><%end%></div>
       <div class="com-cof-content">総会を選択してください</div>
       <div class="com-cof-input">
         <select name="atevent" class="event-select">
