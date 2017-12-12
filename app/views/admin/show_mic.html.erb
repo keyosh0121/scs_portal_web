@@ -51,8 +51,10 @@
            <% end %>
 
           <% else %>
-          <% dummy_date=@mics[i].date%>
+          <% dummy_date=@mics[i].date %>
+          <% dummy_time=@mics[i].time %>
           <div class="mic-date"><%= @mics[i].date.strftime("%m月%d日") %></div>
+          <div class="mic-time"><%= @mics[i].time %></div>
           <% end %>
 
         <% end %>
