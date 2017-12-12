@@ -180,6 +180,7 @@ class AdminController < ApplicationController
 
   def mic_room_register_send
     @hours = [0,1,2,3,8,4,5,6,7]
+		@today_mics = Mic.where(date: Date.today).order('time')
     array = Array.new()
     if params[:room1] != "nil"
       @mic_room = MicRoom.new(
