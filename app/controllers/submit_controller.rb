@@ -67,6 +67,7 @@ class SubmitController < ApplicationController
     self.user_authentificate
     @conferences = Event.where(category:"conference")
     @contents = []
+		@comment = Comment.new
   end
   def get_content
     if params[:event_name]
@@ -84,6 +85,7 @@ class SubmitController < ApplicationController
 
   def comment_conference
     self.user_authentificate
+		@comment = Comment.new
     @conferences = Event.where(category:"conference")
     @contents = []
   end
