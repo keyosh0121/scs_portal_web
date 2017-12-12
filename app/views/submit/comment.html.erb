@@ -29,6 +29,7 @@
         </div>
       <div class="com-cof-content">コメント内容を入力してください</div>
       <div class="com-cof-input textarea-comcof"><textarea name="comment"></textarea></div>
+      <div class="error-messages"><%=@comment.errors.full_messages.each do |message|%><%=message%><br><%end%></div>
       <input type="submit" name="" id="com-submit-btn">
       <% end %>
     </div>
