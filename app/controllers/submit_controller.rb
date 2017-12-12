@@ -103,6 +103,7 @@ class SubmitController < ApplicationController
   end
 
   def comment_conference_send
+	  @conferences = Event.where(category:"conference")
     @comment = Comment.new(
       sender: @current_user.name,
       atevent: params[:atevent],
