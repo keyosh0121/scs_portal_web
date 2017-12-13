@@ -38,6 +38,11 @@ class Mic < ApplicationRecord
       return ""
     end
   end
-  def delete_old_records
+  def self.delete_old_records
+		self.all.each do |mic|
+			if mic.date < Date.today - 100
+				mic.delete
+			end
+		end
   end
 end
