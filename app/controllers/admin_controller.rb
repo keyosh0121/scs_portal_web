@@ -73,6 +73,7 @@ class AdminController < ApplicationController
     end
   end
 
+  #マイク練管理
   def show_mic
     self.user_authentificate
     @mics = Mic.all.order('date DESC,time')
@@ -91,6 +92,11 @@ class AdminController < ApplicationController
 			render('show_mic')
 		end
 	end
+
+  #音響掲示板
+  def mic_approvedlist
+    @mics = Mic.where(status:'承認').order('date DESC,time')
+  end
 
   def show_infos
     self.user_authentificate
