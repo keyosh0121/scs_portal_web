@@ -719,6 +719,26 @@
   font-size: 13px;
   border-bottom: dotted 1px ;
 }
+.entry-form-content-wrap{
+  display: grid;
+  grid-template-columns: 60% 40%;
+  grid-gap: 4px;
+}
+.entry-form input{
+  background-color: #fafafa;
+  float: left;
+  height: 40px;
+  margin: 8px 0;
+  border: none;
+  border-bottom: solid 1px salmon;
+  display: block;
+}
+
+
+.mc-time{
+  background-color: transparent;
+  width: 100%;
+}
 .entry-description{
   padding: 16px;
   font-size: 12px;

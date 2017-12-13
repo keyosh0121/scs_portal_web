@@ -342,13 +342,41 @@ class SubmitController < ApplicationController
     else
       t_band_id = nil
     end
+    musics = []
+    times = []
+    if params[:music1]
+      musics.push(params[:music1])
+      if params[:time1]
+        times.push(params[:time1])
+      end
+    end
+    if params[:music2]
+      musics.push(params[:music2])
+      if params[:time2]
+        times.push(params[:time2])
+      end
+    end
+    if params[:music3]
+      musics.push(params[:music3])
+      if params[:time3]
+        times.push(params[:time3])
+      end
+    end
+    if params[:music4]
+      musics.push(params[:music4])
+      if params[:time4]
+        times.push(params[:time4])
+      end
+    end
     @entry = Entry.new(
       user_id: @current_user.id,
       event_id: event.id,
       entry_type: event.event_type,
       regular_band_id: r_band_id,
       temporal_band_id: t_band_id,
-      message: params[:message]
+      message: params[:message],
+      musics: musics,
+      times: times
       )
     if @entry.save
       flash[:notice] = "エントリーしました"

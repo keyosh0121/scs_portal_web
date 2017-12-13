@@ -2,7 +2,7 @@
 require 'csv'
 
 CSV.generate do |csv|
-  csv_column_names = ["エントリー送信者","送信者アドレス","送信者電話番号","バンド名","バンドメンバー","バンマス","メッセージ"]
+  csv_column_names = ["エントリー送信者","送信者アドレス","送信者電話番号","バンド名","バンドメンバー","バンマス","曲名","曲尺","メッセージ"]
   csv << csv_column_names
   @entries.each do |entry|
 	user = User.find(entry.user_id)
@@ -30,6 +30,8 @@ CSV.generate do |csv|
 			band.name,
 			band.members,
 			master,
+      entry.musics,
+      entry.times,
 			entry.message
     ]
     csv << csv_column_values
