@@ -20,5 +20,13 @@ class UserMailer < ApplicationMailer
       format.html
     end
   end
+	def user_approved_mail(user)
+		@user = user
+		mail(
+			subject: "ユーザーが承認されました。"
+			to: @user.email) do |format|
+			format.html
+		end
+	end
 
 end

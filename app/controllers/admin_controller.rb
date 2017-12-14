@@ -66,6 +66,7 @@ class AdminController < ApplicationController
     user.approval = true
     if user.save
       flash[:notice] = "ユーザーを承認しました"
+			UserMailer.user_approved_mail(user).deliver
       redirect_to('/database/users')
     else
       flash[:notice] = "承認に失敗しました"
