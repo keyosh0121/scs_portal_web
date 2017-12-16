@@ -13,7 +13,7 @@ class SubmitController < ApplicationController
     self.user_authentificate
     @mic = Mic.new()
     if @current_user
-      @mics = @current_user.mics.reorder('date DESC')
+      @mics = @current_user.mics
       @user_bands = @current_user.bands
     end
   end
