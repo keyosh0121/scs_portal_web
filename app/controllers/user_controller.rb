@@ -56,8 +56,8 @@ class UserController < ApplicationController
   end
 
   def show
+		self.user_authentificate
     @user = User.find_by(id: session[:user_id])
-
     @notifs = Notification.order(created_at: "DESC").limit(5)
   end
 
