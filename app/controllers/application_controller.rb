@@ -16,5 +16,10 @@ class ApplicationController < ActionController::Base
       redirect_to('/')
     end
   end
-	
+	def permit_access_only_for(authority)
+		if @current_user.authority != authority
+			flash[:notice] = アクセス権限がありません
+			redirect_to('/user/#{@current_user.id}/show')
+		end
+	end
 end
