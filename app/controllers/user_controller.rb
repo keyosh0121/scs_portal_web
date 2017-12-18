@@ -20,11 +20,11 @@ class UserController < ApplicationController
     else
       @error = "Emailが違います"
     end
+    Z
     if @user == nil || @user.password != params[:password]
       @email = params[:email]
       render("login")
     else
-      session[:user_id] = @user.id
       @user.remember
       cookies.permanent.signed[:user_id] = @user.id
       cookies.permanent[:remember_token] = @user.remember_token
@@ -60,7 +60,10 @@ class UserController < ApplicationController
 
   def show
 		self.user_authentificate
-    @user = User.find_by(id: session[:user_id])
+    if (session_user = User.find_by(id: session[:user_id]))
+      @user = session_user
+    elsif (cookie_user = User.find_by(id: cookies.signed[:user_id]))
+      @user = cookie_user
     @notifs = Notification.order(created_at: "DESC").limit(5)
   end
 
