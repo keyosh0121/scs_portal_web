@@ -22,7 +22,9 @@ class UserValidator < ActiveModel::Validator
 end
 
 class User < ApplicationRecord
+  attr_accessor :remember_token
   validates_with UserValidator
+
   def bands
     user_bands = Array.new()
     Band.all.each do |band|
@@ -88,5 +90,38 @@ class User < ApplicationRecord
   end
 
   def change_status_to_ob_if_graduated
+    #2018年4月1日0:00に2014入会のステータスを全員分OBにする
+    current_year = Date.today.year
+    graduating_year = current_year - 4
+    graduates = User.where(year: graduating_year)
+    graduates.each do |graduate|
+      graduate.status = "OB"
+      graduate.save
+    end
   end
+
+  def self.digest(string)
+    #暗号化
+    cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
+                                                  BCrypt::Engine.cost
+    BCrypt::Password.create(string, cost: cost)
+  end
+
+  def self.new_token
+    #ランダムなトークンを生成する
+    SecureRandom.urlsafe_base64
+  end
+
+  def remember
+    self.remember_token = User.new_token
+    #remember_tokenにランダムなトークンを保存
+    update_attribute(:remember_digest,User.digest(remember_token))
+    #remember_digestにremember_tokenをBCryptで暗号化したものを保存
+  end
+
+  def authenticated?(remember_token)
+    BCrypt::Password.new(remember_digest).is_password?(remember_token)
+    #remember_digestは、remember_tokenを暗号化したものか問う
+  end
+
 end

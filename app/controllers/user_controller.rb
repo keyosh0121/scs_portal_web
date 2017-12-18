@@ -25,6 +25,9 @@ class UserController < ApplicationController
       render("login")
     else
       session[:user_id] = @user.id
+      @user.remember
+      cookies.permanent.signed[:user_id] = @user.id
+      cookies.permanent[:remember_token] = @user.remember_token
       redirect_to("/user/#{session[:user_id]}/show")
     end
   end

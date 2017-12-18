@@ -8,4 +8,9 @@ end
 
 class Comment < ApplicationRecord
   validates_with CommentValidater
+  validates :atevent,
+    presence: {message: 'イベントが選択されていません'}
+  validates :atcontent,
+    presence: {message: 'コンテンツが選択されていません'}
+
 end

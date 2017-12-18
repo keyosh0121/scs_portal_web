@@ -1,8 +1,8 @@
 class Band < ApplicationRecord
-  validates :name, presence: true
-  validates :master, presence: true
-  validates :description, presence: true
-  validates :pa, presence: true
+  validates :name, presence: {message: 'バンド名を入力してください'}
+  validates :master, presence: {message: 'バンマスは必須項目です'}
+  validates :description, presence: {message: '説明を記載してください'}
+  validates :pa, presence: {message: 'PAは必須項目です'}
 
   def member_datas
     arr = Array.new()
