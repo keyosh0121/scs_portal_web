@@ -27,7 +27,11 @@ class UserController < ApplicationController
       @user.remember
       cookies.permanent.signed[:user_id] = @user.id
       cookies.permanent[:remember_token] = @user.remember_token
-      redirect_to("/user/#{session[:user_id]}/show")
+      if (session_id = session[:user_id])
+        redirect_to("/user/#{session_id}/show")
+      elsif (cookie_id = cookies.signed[:user_id])
+        redirect_to("/user/#{cookie_id}/show")
+      end
     end
   end
 

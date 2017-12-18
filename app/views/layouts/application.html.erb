@@ -17,7 +17,7 @@
     <div class="header-wrapper">
       <div class="sidemenu-open-btn"><i class="fa fa-bars"></i></div>
       <div class="header-left">
-      <% if session[:user_id] == nil && cookies.signed[:user_id] == nil %>
+      <% if session[:user_id] == nil%>
         <div id="title"><%= link_to("SCS Portal","/",{class:"header-title"}) %></div>
       <% else %>
         <div id="title"><%= link_to("SCS Portal","/user/#{session[:user_id]}/show",{class:"header-title"}) %></div>
@@ -28,7 +28,7 @@
       </div>
       <div class="header-end">
 
-        <% if session[:user_id] == nil %>
+        <% if session[:user_id] == nil && cookies[:user_id] == nil %>
           <a href="/login" class="btn login">ログイン</a>
         <% else %>
 
