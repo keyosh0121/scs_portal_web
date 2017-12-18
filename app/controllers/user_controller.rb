@@ -64,6 +64,7 @@ class UserController < ApplicationController
       @user = session_user
     elsif (cookie_user = User.find_by(id: cookies.signed[:user_id]))
       @user = cookie_user
+    end
     @notifs = Notification.order(created_at: "DESC").limit(5)
   end
 
