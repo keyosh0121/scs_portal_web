@@ -42,6 +42,8 @@ Rails.application.routes.draw do
   get "submit/room" => "submit#room"
   post "submit/room/send" => "submit#room_send"
   get "submit/room/send" => "submit#room"
+  get 'submit/contact' => 'submit#contact_top'
+  post 'submit/contact/send' => 'submit#contact_send'
 
   get "/database/bands" => "admin#show_bands"
   post "/database/bands/register/:id" => "admin#register_band"

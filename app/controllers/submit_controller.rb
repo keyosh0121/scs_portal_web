@@ -401,4 +401,21 @@ class SubmitController < ApplicationController
   def entry_admin_list
   end
 
+  def contact_top
+    @contact = Contact.new
+  end
+
+  def contact_send
+    @contact = Contact.new(
+      user_id: @current_user.id,
+      content: params[:content],
+      )
+    if @contact.save
+      flash[:notice] = "送信されました"
+      redirect_to('/submit/contact')
+    else
+      flash[:notice] = "送信できませんでした。再度試してください"
+      render('submit/contact_top')
+    end
+  end
 end

@@ -785,3 +785,39 @@
     width: 100%;
   }
 }
+.contact-inner{
+  width: 90%;
+  overflow: auto;
+  margin: auto;
+}
+.contact-title{
+  width: 100%;
+  background-color: #333;
+  color: #fff;
+  font-size: 20px;
+  font-weight: bold;
+  padding: 16px;
+  margin: 8px 0;
+}
+.contact-description{
+  border: 1px dotted #ccc;
+  padding: 16px;
+  font-size: 13px;
+  margin: 8px 0;
+}
+.contact-inner textarea{
+  width: 100%;
+  background-color: #e0e0e0;
+  height: 200px;
+  margin: 8px 0;
+}
+.contact-inner input{
+  width: 100%;
+  padding: 20px;
+  text-align: center;
+  background-color: salmon;
+  color: #fff;
+  font-size: 18px;
+  font-weight: bold;
+  margin: 8px 0;
+}
