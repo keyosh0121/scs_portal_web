@@ -1,7 +1,7 @@
 <div class="contact-inner">
   <div class="contact-title">お問い合わせ/ご意見</div>
   <div class="contact-description">SCS Portalは、活発なサークル活動を推進するために、サークル員が0から設計・開発して運用しているWEBアプリケーションです。設計やデザインなど、建設的なご意見をいただけると幸いです。頑張って開発しているので、誹謗中傷などはご遠慮ください。</div>
-  <% form_tag('/submit/contact/send') do %>
+  <%= form_tag('/submit/contact/send') do %>
     <textarea name="content"></textarea>
     <input type="submit" name="" placeholder="ご意見・ご感想・労いの言葉を入力してください">
   <% end %>

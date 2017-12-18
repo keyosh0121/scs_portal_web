@@ -789,6 +789,7 @@
   width: 90%;
   overflow: auto;
   margin: auto;
+  margin-top: 60px;
 }
 .contact-title{
   width: 100%;
