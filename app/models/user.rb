@@ -124,4 +124,8 @@ class User < ApplicationRecord
     #remember_digestは、remember_tokenを暗号化したものか問う
   end
 
+  def forget
+    update_attribute(:remember_digest, nil)
+  end
+
 end

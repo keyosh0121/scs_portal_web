@@ -68,8 +68,12 @@ class UserController < ApplicationController
   end
 
   def logout
+    @current_user.forget
+    cookies.delete(:user_id)
+    cookies.delete(:remember_token)
     session[:user_id] = nil
     flash[:notice] = "ログアウトしました。"
+
     redirect_to("/")
   end
 end
