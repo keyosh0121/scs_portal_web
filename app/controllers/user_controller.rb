@@ -82,10 +82,12 @@ class UserController < ApplicationController
   end
 
   def edit
+
   end
 
   def edit_send
-    if @current_user.update(
+    user = @current_user
+    if user.update(
       name: params[:name],
       email: params[:email],
       year: params[:year],
@@ -98,5 +100,6 @@ class UserController < ApplicationController
       flash[:notice] = "変更できませんでした。内容を確認してください"
       render('user/edit')
     end
+
   end
 end
