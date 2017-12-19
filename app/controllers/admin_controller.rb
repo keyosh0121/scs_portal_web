@@ -96,7 +96,7 @@ class AdminController < ApplicationController
 
   #音響掲示板
   def mic_approvedlist
-    @mics = Mic.where(status:'承認').order('date DESC,time')
+    @mics = Mic.where(status:'1').order('date DESC,time')
   end
 
   def show_infos
