@@ -216,5 +216,16 @@
   font-size: 16px;
 }
 .edit-inner{
-
+  margin: 16px;
+}
+.edit-form-content{
+  padding: 8px;
+  font-size: 13px;
+  border-bottom: dotted 1px #aaa;
+}
+.edit-inner input{
+  padding: 8px;
+  height: 40px;
+  width: 100%;
+  margin-top: 8px;
 }
