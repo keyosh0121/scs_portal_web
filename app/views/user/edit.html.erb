@@ -13,6 +13,13 @@
     <input type="tel" name="tel" value="<%=@current_user.tel%>">
     <div class="edit-form-content">大学</div>
     <input type="text" name="univ" value="<%=@current_user.univ%>">
+    <% if @user.errors.any?%>
+        <div class="edit-error-display">
+            <% @user.errors.full_messages do |message|%>
+                <%= message %><br>
+            <% end %>
+        </div>
+    <% end %>
     <input type="submit" name="" value="変更する">
     <% end %>
   </div>

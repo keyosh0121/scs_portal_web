@@ -82,12 +82,12 @@ class UserController < ApplicationController
   end
 
   def edit
-
+    @user = @current_user
   end
 
   def edit_send
-    user = @current_user
-    if user.update(
+    @user = @current_user
+    if @user.update(
       name: params[:name],
       email: params[:email],
       year: params[:year],
