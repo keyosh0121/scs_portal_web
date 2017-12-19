@@ -80,4 +80,10 @@ class UserController < ApplicationController
 
     redirect_to("/")
   end
+
+  def edit
+  end
+
+  def edit_send
+  end
 end

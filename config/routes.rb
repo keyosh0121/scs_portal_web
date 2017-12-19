@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   get "signup" => "user#new"
 
   get "user/:id/show" => "user#show"
+  get 'user/edit' => 'user#edit'
+  post 'user/edit/send' => 'user#edit_send'
   post "user/logout" => "user#logout"
 
   get "submit/mic" => "submit#mic"
