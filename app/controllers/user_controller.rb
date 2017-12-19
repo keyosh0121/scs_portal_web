@@ -85,5 +85,18 @@ class UserController < ApplicationController
   end
 
   def edit_send
+    if @current_user.update(
+      name: params[:name],
+      email: params[:email],
+      year: params[:year],
+      tel: params[:tel],
+      univ: params[:univ]
+      )
+      flash[:notice] = "内容を変更しました。"
+      redirect_to("/user/#{@current_user.id}/show")
+    else
+      flash[:notice] = "変更できませんでした。内容を確認してください"
+      render('user/edit')
+    end
   end
 end
