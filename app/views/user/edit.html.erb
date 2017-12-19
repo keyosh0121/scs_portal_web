@@ -2,16 +2,25 @@
 <div class="edit-inner">
   <div class="edit-title">ユーザー情報の編集</div>
   <div class="edit-form">
-    <div class="edit-form-content">氏名(スペースを開けてください)</div>
-    <input type="text" name="name" value="@current_user.name">
+    <%= form_tag('/user/edit/send') do %>
+    <div class="edit-form-content">氏名(スペースを開けないでください)</div>
+    <input type="text" name="name" value="<%=@current_user.name%>">
     <div class="edit-form-content">Email</div>
-    <input type="email" name="email" value="@current_user.email">
+    <input type="email" name="email" value="<%=@current_user.email%>">
     <div class="edit-form-content">入会年度</div>
-    <input type="text" name="year" value="@current_user.year">
+    <input type="text" name="year" value="<%=@current_user.year%>">
     <div class="edit-form-content">携帯電話番号</div>
-    <input type="tel" name="name" value="@current_user.tel">
+    <input type="tel" name="tel" value="<%=@current_user.tel%>">
     <div class="edit-form-content">大学</div>
-    <input type="text" name="univ" value="@current_user.univ">
+    <input type="text" name="univ" value="<%=@current_user.univ%>">
+    <% if @user.errors.any?%>
+        <div class="edit-error-display">
+            <% @user.errors.full_messages do |message|%>
+                <%= message %><br>
+            <% end %>
+        </div>
+    <% end %>
     <input type="submit" name="" value="変更する">
+    <% end %>
   </div>
 </div>

@@ -10,7 +10,7 @@
           <div class="user-show-content-name"><%= @user.name + "(#{@user.year}年度入会)" %></div>
           <div class="user-show-content"><%= @user.email %></div>
           <div class="user-show-logout"><%= link_to("ログアウト","/user/logout",{method: :post, :class => "logout-link"})%></div>
-          <div class="user-show-logout"><%= link_to("ユーザー情報編集","/user/logout",:class => "logout-link")%></div>
+          <div class="user-show-logout"><%= link_to("ユーザー情報編集","/user/edit",:class => "logout-link")%></div>
           <div class="user-show-logout"><%= link_to("管理画面へ","/database",:class => "logout-link")%></div>
         </div>
       </div>

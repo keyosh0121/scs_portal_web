@@ -1,6 +1,6 @@
 class UserValidator < ActiveModel::Validator
   def validate(record)
-    if record.name == nil
+    if record.name == nil | record.name = ""
       record.errors[:base] << "名前が入力されていません"
     end
     if record.name.include?(" ") | record.name.include?("　")
