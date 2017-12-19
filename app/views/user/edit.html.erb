@@ -3,7 +3,7 @@
   <div class="edit-title">ユーザー情報の編集</div>
   <div class="edit-form">
     <%= form_tag('/user/edit/send') do %>
-    <div class="edit-form-content">氏名(スペースを開けてください)</div>
+    <div class="edit-form-content">氏名(スペースを開けないでください)</div>
     <input type="text" name="name" value="<%=@current_user.name%>">
     <div class="edit-form-content">Email</div>
     <input type="email" name="email" value="<%=@current_user.email%>">
