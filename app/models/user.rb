@@ -120,7 +120,9 @@ class User < ApplicationRecord
   end
 
   def authenticated?(remember_token)
-    BCrypt::Password.new(remember_digest).is_password?(remember_token)
+    if remember_digest
+      BCrypt::Password.new(remember_digest).is_password?(remember_token)
+    end
     #remember_digestは、remember_tokenを暗号化したものか問う
   end
 
