@@ -1,9 +1,9 @@
 class UserValidator < ActiveModel::Validator
   def validate(record)
-    if record.name == nil | record.name = ""
+    if record.name == nil || record.name == ""
       record.errors[:base] << "名前が入力されていません"
     end
-    if record.name.include?(" ") | record.name.include?("　")
+    if record.name.include?(" ") || record.name.include?("　")
       record.errors[:base] << "姓名はスペースを使用せず入力してください"
     end
     if record.email == nil
@@ -120,7 +120,9 @@ class User < ApplicationRecord
   end
 
   def authenticated?(remember_token)
-    BCrypt::Password.new(remember_digest).is_password?(remember_token)
+    if remember_digest
+      BCrypt::Password.new(remember_digest).is_password?(remember_token)
+    end
     #remember_digestは、remember_tokenを暗号化したものか問う
   end
 
