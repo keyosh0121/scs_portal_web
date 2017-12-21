@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   def set_current_user
     if (user_id = session[:user_id])
       @current_user = User.find(user_id)
-    elsif (user_id = cookies.signed[:user_id]))
+    elsif (user_id = cookies.signed[:user_id])
       if user && user.authenticated?(cookies[:remember_token])
         @current_user = user
       end
