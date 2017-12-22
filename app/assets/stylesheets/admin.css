@@ -692,3 +692,15 @@
   background-color: #d4d4e9;
   margin: 16px 0;
 }
+.room-buttons{
+	width: 100%;
+	overflow:auto;
+}
+.room-btn{
+	padding:16px;
+	border:3px solid salmon;
+	background-color:salmon;
+	margin:16px 1%;
+	width:48%;
+}
+
