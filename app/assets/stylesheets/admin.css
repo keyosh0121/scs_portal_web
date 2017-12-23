@@ -707,11 +707,11 @@
   float: left;
   text-align: center;
 }
-.weekly-room-inner{
+.room-inner{
   margin: 8px;
   margin-top: 70px;
 }
-.weekly-room-inner h2{
+.room-inner h2{
   display: block;
   width: 100%;
   border-bottom: 1px solid #aaa;
@@ -721,7 +721,7 @@
   background-color: #444;
   margin-top: 16px;
 }
-.weekly-room-inner p{
+.room-inner p{
   display: block;
   width: 100%;
   border-bottom: dotted 1px #aaa;
@@ -729,14 +729,15 @@
   font-size: 13px;
   margin-bottom: 0;
 }
-.weekly-room-inner input[type="submit"]{
+.room-inner input[type="submit"]{
   background-color: salmon;
   color: #fff;
   padding: 16px;
   width: 100%;
   margin: 16px 0;
+  margin-top: 32px;
 }
-.weekly-room-inner select{
+.room-inner select{
   padding: 8px;
   font-size: 15px;
   width: 100%;
