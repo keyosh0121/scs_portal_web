@@ -1,1 +1,33 @@
-room_monthly.html.erb
+<div class="monthly-room-inner">
+  <h2><% Date.today.month %>月の予約部屋を登録</h2>
+  <p>日時入力欄</p>
+  <select name="date">
+    <option value="" disabled selected>選択して下さい</option>
+    <% this_monday = Date.today - Date.today.wday %>
+    <% 7.times do |num|%>
+      <option value="<%= this_monday + num %>"><%= this_monday + num %></option>}
+      option
+    <% end %>
+  </select>
+  <p>時限</p>
+  <select name="time">
+    <option value="" disabled selected>選択して下さい</option>
+    <% @hours.each do |hour|%>
+      <option value="<%=hour%>">
+        <%= if hour == 8
+              "昼"
+            else
+              hour.to_s + "限"
+        %>
+      </option>
+    <% end %>
+  </select>
+  <p>部屋入力欄</p>
+  <select name="room">
+    <option value="" disabled selected>選択して下さい</option>
+    <% @rooms.each do |room|%>
+      <option value="<%= room %>"><%= room %></option>
+    <% end %>
+  </select>
+  <input type="submit" name="">
+</div>
