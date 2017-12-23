@@ -60,10 +60,14 @@ Rails.application.routes.draw do
   get "/database/notifications" => "admin#show_infos"
   post "/database/notifications/new" => "admin#add_infos"
   post '/database/notifications/delete/:id' => "admin#delete_info"
-  get "/database/mic-practice" => "admin#show_mic"                             #マイク練管理
+  #マイク練管理
+  get "/database/mic-practice" => "admin#show_mic"
 	post "/database/mic-practice/approve/:id" => "admin#mic_approve"
-  get "/database/mic-practice-approvedlist" => "admin#mic_approvedlist"        #音響掲示板
+  get "/database/mic-practice-approvedlist" => "admin#mic_approvedlist"
+   #音響掲示板
 	get "/database/mic/room-register" => "admin#mic_room_register"
+  get "/database/mic/room-register/monthly" => "admin#room_monthly"
+  get "/database/mic/room-register/weekly" => "admin#room_weekly"
   post "/database/mic/room-register/send" => "admin#mic_room_register_send"
   get "/database" => "admin#top"
 
