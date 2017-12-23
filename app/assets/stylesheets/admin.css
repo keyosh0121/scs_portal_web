@@ -707,31 +707,31 @@
   float: left;
   text-align: center;
 }
-.monthly-room-inner{
+.weekly-room-inner{
   margin: 8px;
   margin-top: 55px;
 }
-.monthly-room-inner h2{
+.weekly-room-inner h2{
   display: block;
   width: 100%;
   border-bottom: 1px solid #aaa;
 }
-.monthly-room-inner p{
+.weekly-room-inner p{
   display: block;
   width: 100%;
   border-bottom: dotted 1px #aaa;
   padding: 8px;
   font-size: 13px;
 }
-.monthly-room-inner input[type="submit"]{
+.weekly-room-inner input[type="submit"]{
   background-color: salmon;
   color: #fff;
   padding: 16px;
   width: 100%;
   margin: 16px 0;
 }
-.monthly-room-inner select{
+.weekly-room-inner select{
   padding: 16px;
   width: 100%;
-  margin: 16px 0;
+  margin: 4px 0;
 }
