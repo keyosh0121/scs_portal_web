@@ -698,9 +698,11 @@
 }
 .room-btn{
 	padding:16px;
+  font-size: 16px;
 	border:3px solid salmon;
 	background-color:salmon;
-	margin:16px 1%;
-	width:48%;
+	margin:8px 1%;
+	width:46%;
+  text-align: center;
 }
 
