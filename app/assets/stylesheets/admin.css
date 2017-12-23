@@ -715,6 +715,9 @@
   display: block;
   width: 100%;
   border-bottom: 1px solid #aaa;
+  font-size: 18px;
+  color: white;
+  background-color: #444;
 }
 .weekly-room-inner p{
   display: block;
