@@ -5,7 +5,7 @@
     <option value="" disabled selected>選択して下さい</option>
     <% this_monday = Date.today - Date.today.wday %>
     <% 7.times do |num|%>
-      <option value="<%= this_monday + num %>"><%= this_monday + num %></option>
+      <option value="<%= this_monday + num %>"><%= (this_monday + num).strftime("%m月%d日") %></option>
       option
     <% end %>
   </select>
