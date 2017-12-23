@@ -719,6 +719,7 @@
   padding: 16px;
   color: white;
   background-color: #444;
+  margin-top: 16px;
 }
 .weekly-room-inner p{
   display: block;
@@ -737,7 +738,7 @@
 }
 .weekly-room-inner select{
   padding: 8px;
-  font-size: 15px;
+  font-size: 1533px;
   width: 100%;
   margin: 4px 0;
 }
