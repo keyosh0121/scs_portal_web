@@ -703,6 +703,7 @@
 	background-color:salmon;
 	margin:8px 1%;
 	width:46%;
+  float: left;
   text-align: center;
 }
 
