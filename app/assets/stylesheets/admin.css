@@ -702,7 +702,9 @@
 	border:3px solid salmon;
 	background-color:salmon;
 	margin:8px 1%;
-	width:46%;
+  color: #fff;
+
+	width:48%;
   float: left;
   text-align: center;
 }
