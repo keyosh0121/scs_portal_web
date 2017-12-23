@@ -736,7 +736,8 @@
   margin: 16px 0;
 }
 .weekly-room-inner select{
-  padding: 16px;
+  padding: 8px;
+  font-size: 15px;
   width: 100%;
   margin: 4px 0;
 }
