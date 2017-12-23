@@ -716,6 +716,7 @@
   width: 100%;
   border-bottom: 1px solid #aaa;
   font-size: 18px;
+  padding: 16px;
   color: white;
   background-color: #444;
 }
@@ -725,6 +726,7 @@
   border-bottom: dotted 1px #aaa;
   padding: 8px;
   font-size: 13px;
+  margin-bottom: 0;
 }
 .weekly-room-inner input[type="submit"]{
   background-color: salmon;
