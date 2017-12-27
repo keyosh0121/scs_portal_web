@@ -1,0 +1,35 @@
+<div class="room-inner">
+  <h2><%= Date.today.month %>月の予約部屋を登録</h2>
+  <p>日時入力欄</p>
+  <select name="date">
+    <option value="" disabled selected>選択して下さい</option>
+    <% first_day = Date.today - Date.today.day + 1 %>
+    <% last_day = Date.new(Date.today.year,Date.today.month, -1)%>
+    <% last_day.day.times do |num|%>
+      <option value="<%= first_day + num %>"><%= (first_day + num).strftime("%m月%d日") %></option>
+      option
+    <% end %>
+  </select>
+  <p>時限</p>
+  <select name="time">
+    <option value="" disabled selected>選択して下さい</option>
+    <% @hours.each do |hour|%>
+      <option value="<%=hour%>">
+        <%= if hour == 8
+              "昼"
+            else
+              hour.to_s + "限"
+            end
+        %>
+      </option>
+    <% end %>
+  </select>
+  <p>部屋入力欄</p>
+  <select name="room">
+    <option value="" disabled selected>選択して下さい</option>
+    <% @rooms.each do |room|%>
+      <option value="<%= room %>"><%= room %></option>
+    <% end %>
+  </select>
+  <input type="submit" name="">
+</div>

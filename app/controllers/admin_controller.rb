@@ -177,23 +177,26 @@ class AdminController < ApplicationController
       redirect_to("/database/show-event")
     end
   end
-
-  def mic_room_register
-    self.user_authentificate
+  def set_rooms_and_hours
     @hours = [1,2,3,8,4,5,6,7]
     @rooms = ["B101","B102","B103","B104","B105","B106","B123","B124","B125","B126"]
+  end
+  def mic_room_register
+    self.user_authentificate
+    self.set_rooms_and_hours
     @today_mics = Mic.where(date: Date.today).order('time')
   end
 
   def mic_room_register_send
-    @hours = [0,1,2,3,8,4,5,6,7]
+    self.set_rooms_and_hours
 		@today_mics = Mic.where(date: Date.today).order('time')
     array = Array.new()
     if params[:room1] != "nil"
       @mic_room = MicRoom.new(
         room: params[:room1],
         date: Date.today,
-        time: "1限"
+        time: "1限",
+        reservation_type_num: 0
         )
       array.push(@mic_room)
     end
@@ -201,7 +204,8 @@ class AdminController < ApplicationController
       @mic_room = MicRoom.new(
         room: params[:room2],
         date: Date.today,
-        time: "2限"
+        time: "2限",
+        reservation_type_num: 0
         )
       array.push(@mic_room)
     end
@@ -209,7 +213,8 @@ class AdminController < ApplicationController
       @mic_room = MicRoom.new(
         room: params[:room3],
         date: Date.today,
-        time: "3限"
+        time: "3限",
+        reservation_type_num: 0
         )
       array.push(@mic_room)
     end
@@ -217,7 +222,8 @@ class AdminController < ApplicationController
       @mic_room = MicRoom.new(
         room: params[:room4],
         date: Date.today,
-        time: "4限"
+        time: "4限",
+        reservation_type_num: 0
         )
       array.push(@mic_room)
     end
@@ -225,7 +231,8 @@ class AdminController < ApplicationController
       @mic_room = MicRoom.new(
         room: params[:room5],
         date: Date.today,
-        time: "5限"
+        time: "5限",
+        reservation_type_num: 0
         )
       array.push(@mic_room)
     end
@@ -233,7 +240,8 @@ class AdminController < ApplicationController
       @mic_room = MicRoom.new(
         room: params[:room6],
         date: Date.today,
-        time: "6限"
+        time: "6限",
+        reservation_type_num: 0
         )
       array.push(@mic_room)
     end
@@ -241,7 +249,8 @@ class AdminController < ApplicationController
       @mic_room = MicRoom.new(
         room: params[:room7],
         date: Date.today,
-        time: "7限"
+        time: "7限",
+        reservation_type_num: 0
         )
       array.push(@mic_room)
     end
@@ -249,7 +258,8 @@ class AdminController < ApplicationController
       @mic_room = MicRoom.new(
         room: params[:room8],
         date: Date.today,
-        time: "昼限"
+        time: "昼限",
+        reservation_type_num: 0
         )
       array.push(@mic_room)
     end
@@ -270,5 +280,24 @@ class AdminController < ApplicationController
     end
     redirect_to('/database/mic/room-register')
   end
+
+  def room_monthly
+    self.set_rooms_and_hours
+    @mic_rooms = MicRoom.where('date >= Date.today')
+  end
+
+  def room_monthly_send
+    self.set_rooms_and_hours
+  end
+
+  def room_weekly
+    self.set_rooms_and_hours
+    @mic_rooms = MicRoom.where('date >= Date.today')
+  end
+
+  def room_weekly_send
+    self.set_rooms_and_hours
+  end
+
 end
 
