@@ -411,6 +411,10 @@
   margin: 10px 0;
 }
 
+.pagination{
+  float: left;
+}
+
 
 /* バンド管理 */
 
