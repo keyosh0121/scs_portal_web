@@ -743,3 +743,17 @@
   width: 100%;
   margin: 4px 0;
 }
+.room-list{
+  background-color: #efefef;
+  padding: 16px;
+  border: 2px #ccc solid;
+}
+.room-list p{
+  padding: 4px;
+  margin: 0;
+  display: block;
+  width: 100%;
+  border-bottom: dotted 1px #aaa;
+  font-size: 13px;
+  margin-bottom: 8px;
+}

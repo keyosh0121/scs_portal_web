@@ -179,7 +179,7 @@ class AdminController < ApplicationController
   end
   def set_rooms_and_hours
     @hours = [1,2,3,8,4,5,6,7]
-    @rooms = ["B101","B102","B103","B104","B105","B106","B123","B124","B125","B126"]
+    @rooms = ["B101","B102","B103","B104","B105","B106","B123","B126"]
   end
   def mic_room_register
     self.user_authentificate
@@ -288,6 +288,19 @@ class AdminController < ApplicationController
 
   def room_monthly_send
     self.set_rooms_and_hours
+    @microom = MicRoom.new(
+      date: params[:date],
+      time: params[:time],
+      room: params[:room],
+      reservation_type_num: 2
+      )
+    if @microom.save
+      flash[:notice] = "予約内容を保存しました"
+      redirect_to('/database/mic/room-register/monthly')
+    else
+      render('admin/room_monthly')
+      flash[:notice] = "保存できませんでした。再度試して下さい"
+    end
   end
 
   def room_weekly
@@ -297,7 +310,19 @@ class AdminController < ApplicationController
 
   def room_weekly_send
     self.set_rooms_and_hours
+    @microom = MicRoom.new(
+      date: params[:date],
+      time: params[:time],
+      room: params[:room],
+      reservation_type_num: 1
+      )
+    if @microom.save
+      flash[:notice] = "予約内容を保存しました"
+      redirect_to('/database/mic/room-register/weekly')
+    else
+      flash[:notice] = "保存できませんでした。再度試して下さい"
+      render('admin/room_weekly')
+    end
   end
-
 end
 

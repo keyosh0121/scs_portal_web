@@ -68,8 +68,11 @@ Rails.application.routes.draw do
 	get "/database/mic/room-register" => "admin#mic_room_register"
   get "/database/mic/room-register/monthly" => "admin#room_monthly"
   get "/database/mic/room-register/weekly" => "admin#room_weekly"
+  post "/database/mic/room-register/weekly/send" => "admin#room_weekly_send"
+  post "/database/mic/room-register/monthly/send" => "admin#room_monthly_send"
   post "/database/mic/room-register/send" => "admin#mic_room_register_send"
   get "/database" => "admin#top"
+
 
 
 end

@@ -5,7 +5,8 @@
 		<a href="/database/mic/room-register/monthly" class="room-btn">月予約</a>
 	</div>
   <div class="mic-room-form">
-    <div class="mic-room-current">
+    <div class="mic-room-current room-list">
+      <p>本日分の部屋予約状況</p>
       <% if MicRoom.where(date: Date.today).any? %>
         <% MicRoom.where(date: Date.today).each do |room| %>
           <%= room.time.to_s + "  " + room.room.to_s %><br>
