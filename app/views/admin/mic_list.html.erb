@@ -1,0 +1,30 @@
+<div class="mic-master-list-inner">
+  <div class="mic-master-list">
+    <% date_mic_and_room = (Mic.select("date").pluck("date").uniq).sort.reverse
+       wdays = ["月","火","水","木","金","土","日"]%>
+    <h2>マスターリスト</h2>
+    <% date_mic_and_room.each do |date|%>
+      <p><%= date.strftime( "%m月%d日(#{%w(日 月 火 水 木 金 土)[date.wday]})")%></p>
+      <table>
+        <tbody>
+           <tr>
+            <% if Mic.where(date: date).any? %>
+            <% Mic.where(date: date).each do |mic|%>
+              <td class="miclist-time"><%= mic.time %></td>
+              <td class="miclist-band"> <%= mic.band %></td>
+              <td class="miclist-status"><%= mic.status_string %></td>
+              <% if MicRoom.where(date: date).where(time: mic.time).any? %>
+                <td><%= MicRoom.where(date: date).find_by(time: mic.time).room %></td>
+                <% else %>
+                <td>部屋未定</td>
+              <% end %>
+            <% end %>
+            <% else %>
+              <td></td><td></td><td></td>
+            <% end %>
+          </tr>
+        </tbody>
+      </table>
+    <% end %>
+  </div>
+</div>

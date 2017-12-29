@@ -758,3 +758,35 @@
   margin-bottom: 8px
   ;
 }
+.mic-master-list-inner{
+  margin: 8px;
+  margin-top: 60px;
+  background-color: #f9f9f9;
+  box-shadow: 3px 3px 10px;
+  padding: 8px;
+  overflow: auto;
+}
+.mic-master-list{
+  margin-top: 20px;
+}
+.mic-master-list p{
+  padding: 4px;
+  width: 100%;
+  border-bottom: 1px dotted #aaa;
+  background-color: #efefef;
+}
+.mic-master-list table{
+  width: 100%;
+}
+.mic-master-list td{
+  padding: 4px;
+}
+.miclist-time{
+  width: 10%;
+}
+.miclist-band{
+  width: 40%;
+}
+.miclist-status{
+  width: 20%;
+}

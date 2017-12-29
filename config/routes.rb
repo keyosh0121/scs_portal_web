@@ -61,6 +61,7 @@ Rails.application.routes.draw do
   post "/database/notifications/new" => "admin#add_infos"
   post '/database/notifications/delete/:id' => "admin#delete_info"
   #マイク練管理
+  get '/database/mic-practice/list' => "admin#mic_list"
   get "/database/mic-practice" => "admin#show_mic"
 	post "/database/mic-practice/approve/:id" => "admin#mic_approve"
   get "/database/mic-practice-approvedlist" => "admin#mic_approvedlist"

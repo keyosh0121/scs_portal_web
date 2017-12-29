@@ -324,5 +324,10 @@ class AdminController < ApplicationController
       render('admin/room_weekly')
     end
   end
+
+  def mic_list
+    @mic = Mic.all
+    @room = MicRoom.all
+  end
 end
 
