@@ -44,6 +44,7 @@ Rails.application.routes.draw do
   get "submit/room" => "submit#room"
   post "submit/room/send" => "submit#room_send"
   get "submit/room/send" => "submit#room"
+  post 'submit/room/destroy/:id' => "submit#room_destroy" #部屋利用申請取り消し
   get 'submit/contact' => 'submit#contact_top'
   post 'submit/contact/send' => 'submit#contact_send'
 

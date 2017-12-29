@@ -311,6 +311,17 @@ class SubmitController < ApplicationController
     end
   end
 
+  def room_destroy
+    usage = RoomUsage.find_by(id: params[:id])
+    if usage.delete
+      flash[:notice] = "利用申請が取り消されました"
+      redirect_to('/submit/room')
+    else
+      flash[:notice] = "処理に失敗しました。再度取消処理を行ってください"
+      redirect_to('/submit/room')
+    end
+  end
+
   def show_infos
     self.user_authentificate
   end
