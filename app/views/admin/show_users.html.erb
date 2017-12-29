@@ -27,7 +27,7 @@
         <% end %>
         <button class="open-modal" type="button" data-toggle="modal" data-target=".modal" data-id="<%= user.id %>" data-name="<%= user.name %>">編集</button>
         <% if user.approval == false %>
-        <%= link_to("承認",'/database/user/' + user.id.to_s + '/approve',method: 'post',class: "approve-button", data: {confirm: "本当に承認しますか？"}) %>
+        <%= link_to("承認",'/database/user/' + user.id.to_s + '/approve',method: 'post',class: "approve-button", data: {confirm: "本当に承認しますか？"}) %><%= link_to("承認",'/database/user/' + user.id.to_s + '/reject',method: 'post',class: "approve-button", data: {confirm: "本当に承認しますか？"}) %>
         <% else %>
         <div class="approve-button">承認済み</div>
         <% end %>

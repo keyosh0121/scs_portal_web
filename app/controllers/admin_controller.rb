@@ -73,6 +73,17 @@ class AdminController < ApplicationController
       redirect_to('/database/users')
     end
   end
+  def user_reject
+    user = User.find_by(id: params[:user_id])
+    user.delete
+    if user.save
+      flash[:notice] = "ユーザーを拒否しました"
+      redirect_to('/database/users')
+    else
+      flash[:notice] = "承認に失敗しました"
+      redirect_to('/database/users')
+    end
+  end
 
   #マイク練管理
   def show_mic
