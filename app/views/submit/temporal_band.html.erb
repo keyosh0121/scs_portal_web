@@ -11,7 +11,7 @@
         <div class="tem-form-select-wrap">
           <select name="event">
             <option value="" disabled selected>選択して下さい</option>
-            <% @events.each do |event|%>
+            <% @events.where(category: "stage").each do |event|%>
               <option value="<%= event.name %>"><%= event.name %></option>
             <% end %>
           </select>
