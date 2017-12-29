@@ -18,6 +18,7 @@ end
 
 class RoomUsage < ApplicationRecord
   serialize :period
+  validates :date, uniquness: {scope: [:time]}
   validates_with RoomUsageValidator
 	def self.delete_old_records
 		one_year_ago = Date.today - 365
