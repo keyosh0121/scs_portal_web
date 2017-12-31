@@ -15,11 +15,7 @@ class MicMailer < ApplicationMailer
 
   def send_mic_to_admin(mic)
     @mic = mic
-    admins = User.where(authority:"mic")
-    addresses = Array.new()
-    admins.each do |admin|
-      addresses.push(admin.email)
-    end
+    addresses = User.where(authority:"mic").pluck('email')
     if addresses.empty?
       user = User.find_by(authority:"admin")
       addresses.push(user.email)

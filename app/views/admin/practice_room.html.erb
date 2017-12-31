@@ -1,0 +1,27 @@
+<div class="room-usage-wrap">
+  <div class="ru-title">部屋利用リスト</div>
+  <div class="ru-desc">部屋利用者のリストを表示します。</div>
+  <table>
+    <tbody>
+      <tr style="font-weight:bold;">
+        <td>申請者</td>
+        <td>部屋</td>
+        <td>利用バンド</td>
+        <td>時限</td>
+      </tr>
+      <% RoomUsage.all.pluck('date').uniq.reverse.each do |date|%>
+      <tr>
+        <td colspan="4" style="background-color:#dedede;padding:4px;"><%= date.strftime("%m月%d日") %></td>
+      </tr>
+      <% RoomUsage.where(date: date).each do |usage|%>
+      <tr>
+        <td><%= usage.sender%></td>
+        <td><%= usage.room %></td>
+        <td><%= usage.band %></td>
+        <td><%= usage.period.join(',') %></td>
+      </tr>
+      <% end %>
+      <% end %>
+    </tbody>
+  </table>
+</div>

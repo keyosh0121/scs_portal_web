@@ -546,6 +546,7 @@
 }
 .info-viewer{
   padding: 16px;
+  font-size: 12px;
   background-color: #f5f5ff;
 }
 
@@ -579,6 +580,29 @@
   margin-top: 50px;
   text-align: center;
 }
+.showtemp-wrapper h1{
+  padding: 16px 8px;
+  background-color: #393945;
+  font-size: 16px;
+  color: #fff;
+}
+.showtemp-contents{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  padding: 16px;
+}
+.showtemp-content{
+  overflow: auto;
+  padding: 16px;
+  border: solid 1px #dfdfdf;
+  text-align: left;
+}
+@media(max-width:600px) {
+  .showtemp-contents{
+    grid-template-columns: 1fr;
+  }
+}
+
 
 /* イベント管理 */
 
@@ -790,3 +814,29 @@
 .miclist-status{
   width: 20%;
 }
+
+.room-usage-wrap{
+  margin-top: 55px;
+  padding: 8px;
+}
+.ru-title{
+  padding: 16px 8px;
+  width: 100%;
+  background-color: #393946;
+  color: #fff;
+  margin: 8px 0;
+  font-weight: bold;
+  font-size: 16px;
+
+}
+.ru-desc{
+  padding: 16px;
+  border: dotted 1px #aaa;
+  font-size:12px;
+  margin: 4px 0;
+}
+.room-usage-wrap table{
+  width: 100%;
+  font-size: 13px;
+}
+
