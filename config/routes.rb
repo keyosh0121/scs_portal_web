@@ -62,6 +62,7 @@ Rails.application.routes.draw do
   get "/database/notifications" => "admin#show_infos"
   post "/database/notifications/new" => "admin#add_infos"
   post '/database/notifications/delete/:id' => "admin#delete_info"
+  get '/database/room-usage' => 'admin#practice_room'
   #マイク練管理
   get '/database/mic-practice/list' => "admin#mic_list"
   get "/database/mic-practice" => "admin#show_mic"

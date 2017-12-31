@@ -340,5 +340,8 @@ class AdminController < ApplicationController
     @mic = Mic.all
     @room = MicRoom.all
   end
+
+  def practice_room
+  end
 end
 
