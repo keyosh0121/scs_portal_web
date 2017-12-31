@@ -579,6 +579,29 @@
   margin-top: 50px;
   text-align: center;
 }
+.showtemp-wrapper h1{
+  padding: 16px 8px;
+  background-color: #393945;
+  font-size: 16px;
+  color: #fff;
+}
+.showtemp-contents{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  padding: 16px;
+}
+.showtemp-content{
+  overflow: auto;
+  padding: 16px;
+  border: solid 1px #dfdfdf;
+  text-align: left;
+}
+@media(max-width:600px) {
+  .showtemp-contents{
+    grid-template-columns: 1fr;
+  }
+}
+
 
 /* イベント管理 */
 
