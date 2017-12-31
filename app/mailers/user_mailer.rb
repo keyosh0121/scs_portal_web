@@ -12,7 +12,7 @@ class UserMailer < ApplicationMailer
       format.html
     end
   end
-	
+
   def user_verification_mail(user)
     @user = user
     mail(
@@ -21,7 +21,7 @@ class UserMailer < ApplicationMailer
       format.html
     end
   end
-	
+
 	def user_approved_mail(user)
 		@user = user
 		mail(
@@ -30,5 +30,14 @@ class UserMailer < ApplicationMailer
 			format.html
 		end
 	end
-
+  def contact_form_mail(contact)
+    admin_mails = User.where(authority: "admin").pluck('email')
+    @contact = contact
+    mail(
+      subject:"お問い合わせが届きました",
+      to: admin_mails
+      ) do |format|
+      format.html
+    end
+  end
 end

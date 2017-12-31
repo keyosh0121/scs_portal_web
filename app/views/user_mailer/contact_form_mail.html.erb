@@ -1,0 +1,5 @@
+送信者:<%= User.find(@contact.user_id).name%><br>
+送信者アドレス:<%= User.find(@contact.user_id).email %>
+<br><br>
+<%= @contact.content %>
+<br><br>

@@ -424,6 +424,7 @@ class SubmitController < ApplicationController
     if @contact.save
       flash[:notice] = "送信されました"
       redirect_to('/submit/contact')
+      UserMailer.contact_form_mail(@contact).deliver
     else
       flash[:notice] = "送信できませんでした。再度試してください"
       render('submit/contact_top')
