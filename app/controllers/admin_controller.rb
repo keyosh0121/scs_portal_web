@@ -107,7 +107,7 @@ class AdminController < ApplicationController
 
   #音響掲示板
   def mic_approvedlist
-    @mics = Mic.where(status:'1').order('date DESC,time')
+    @mics = Mic.where(status:'1').order('date DESC,time').page(params[:page]).per(10)
   end
 
   def show_infos
