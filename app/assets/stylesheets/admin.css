@@ -597,6 +597,12 @@
   border: solid 1px #dfdfdf;
   text-align: left;
 }
+.showtemp-event{
+	padding:8px;
+	width:100%;
+	background-color:#556;
+	color:white;
+}
 @media(max-width:600px) {
   .showtemp-contents{
     grid-template-columns: 1fr;
