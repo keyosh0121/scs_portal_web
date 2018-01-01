@@ -1,7 +1,7 @@
 <div class="showtemp-wrapper">
   <h1>企画バンド管理</h1>
   <div class="showtemp-contents">
-	<% TemporalBand.all.pluck('event').uniq.each do |event|>
+	<% TemporalBand.all.pluck('event').uniq.each do |event|%>
 	<div class="showtemp-event"><%= event %></div>
     <% TemporalBand.where(event: event).each do |band|%>
       <div class="showtemp-content">
