@@ -216,7 +216,6 @@ class SubmitController < ApplicationController
     @band = Band.new(
       name: params[:name],
       pa: params[:pa],
-      members: members,
       master: params[:master],
       description: params[:description],
       year: Date.today.year,
@@ -229,8 +228,12 @@ class SubmitController < ApplicationController
     end
 
     if @band.save
-      redirect_to("/user/#{session[:user_id]}/show")
+      redirect_to("/user/#{@current_user.id}/show")
+      members.each do |member|
+      BandMember.new(name: member,band_id: @band.id).save
+    end
       flash[:notice] = "正規バンドの申請を受け付けました"
+
     else
       flash[:notice] = "保存に失敗しました。入力内容を確認してください。"
       render("submit/regular_band")

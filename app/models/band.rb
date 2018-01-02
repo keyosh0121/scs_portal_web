@@ -15,5 +15,17 @@ class Band < ApplicationRecord
     end
     return arr
   end
+  def members
+    BandMember.where(band_id: self.id).pluck('name')
+  end
+  def self.member_repeat?(band1,band2)
+    bool = false
+    band1.members.each do |member|
+      if band2.members.include?(member)
+        bool = true
+      end
+    end
+    return bool
+  end
 
 end
