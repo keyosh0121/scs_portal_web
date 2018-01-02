@@ -15,7 +15,7 @@ class Band < ApplicationRecord
     end
     return arr
   end
-  def members_database
+  def members
     BandMember.where(band_id: self.id).pluck('name')
   end
   def self.member_repeat?(band1,band2)
