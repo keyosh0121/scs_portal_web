@@ -339,6 +339,7 @@ class AdminController < ApplicationController
   def mic_list
     @mic = Mic.all
     @room = MicRoom.all
+    @date_mic_and_room = Mic.select("date").order(date: 'DESC').page(params[:page]).per(10)
   end
 
   def practice_room

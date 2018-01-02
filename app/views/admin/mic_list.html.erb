@@ -1,6 +1,6 @@
 <div class="mic-master-list-inner">
   <div class="mic-master-list">
-    <% date_mic_and_room = (Mic.select("date").pluck("date").uniq).sort.reverse
+    <% date_mic_and_room = (@date_mic_and_room.pluck("date").uniq)
        wdays = ["月","火","水","木","金","土","日"]%>
     <h2>マスターリスト</h2>
     <% date_mic_and_room.each do |date|%>
@@ -26,6 +26,8 @@
             <% end %>
         </tbody>
       </table>
+
     <% end %>
+    <%= paginate @date_mic_and_room %>
   </div>
 </div>

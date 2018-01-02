@@ -242,3 +242,17 @@ footer{
 .copyright span{
   font-size: 12px;
 }
+
+.page-item{
+  float: left;
+  list-style: none;
+  padding: 8px 24px;
+  border-left: 1px dotted #aaa;
+}
+.pagination{
+  margin: 8px auto;
+}
+.pagination .active{
+  background-color: #ddf;
+}
+
