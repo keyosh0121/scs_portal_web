@@ -1,0 +1,2 @@
+class TemporalBandMember < ApplicationRecord
+end

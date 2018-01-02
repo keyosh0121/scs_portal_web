@@ -275,11 +275,13 @@ class SubmitController < ApplicationController
     end
     @temporal_band = TemporalBand.new(
       name: params[:name],
-      members: members,
       event: params[:event]
       )
     if @temporal_band.save
       flash[:notice] = "企画バンドの申請が完了しました。"
+      members.each do |member|
+        TemporalBandMember.new(id: @temporal_band.id, name: member).save
+      end
       redirect_to("/user/#{@current_user.id}/show")
     else
       puts @temporal_band.errors.full_messages
