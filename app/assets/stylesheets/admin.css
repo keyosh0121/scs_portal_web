@@ -330,49 +330,38 @@
 }
 
 /*音響掲示板*/
-.mic-approvedlist-title{
-  margin: auto;
-  padding-top: 20px;
-  text-align: center;
-  font-weight: normal;
-  color: #66808f;
-}
+
 .mic-approvedlist-title-box{
-  margin: 5px;
-  border: solid 8px #66808F;
+  margin: 4px;
 }
 .mic-approvedlist-admin-wrapper{
-  margin-top: 50px;
-  padding:16px;
+  margin-top: 55px;
+  margin: 4px;
+  box-shadow: 3px 3px 3px 3px;
+  padding: 8px;
 }
 .mic-approvedlist-date{
-  font-size: 24px;
-  padding:16px;
-  background-color:#333340;
-  color: white;
+  font-size: 14px;
+  padding:4px 8px;
+  background-color:#dfdfdf;
 }
 .mic-approvedlist-time{
-  font-size: 14px;
-  padding: 8px;
+  font-size: 12px;
+  padding: 4px;
   background-color: #999;
 }
 .mic-approvedlist-band{
-  font-size: 28px;
-  width: 100%;
+  font-size: 13px;
+  width: 40%;
   float: left;
   height: 100%;
   font-weight: bold;
 }
 .mic-approvedlist-band span{
-  font-size: 16px;
+  font-size: 12px;
   font-weight: normal;
 }
 .mic-approvedlist-content{
-  border:1px solid #aaa;
-  margin: 8px;
-  background-color: #ccc;
-  overflow:auto;
-  padding:8px;
 }
 .mic-approvedlist-content input[type="text"]{
   width: 100%;
