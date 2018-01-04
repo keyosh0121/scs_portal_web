@@ -21,11 +21,31 @@ class Band < ApplicationRecord
   def self.member_repeat?(band1,band2)
     bool = false
     band1.members.each do |member|
+      #TODO:配列同士をマージして2個以上あればtrue
       if band2.members.include?(member)
         bool = true
       end
     end
     return bool
   end
+
+  def self.next_band_candidate(bands)
+    next_band_candidate = []
+    bands.each_with_index do |band1,i|
+      candidates = []
+      bands.each_with_index do |band2,i2|
+        unless i == i2
+          if Band.member_repeat?(band1,band2)
+            candidates.push(band2)
+          end
+        end
+      end
+      puts candidates.class
+      next_band_candidate.push(candidates)
+    end
+    return next_band_candidate
+  end
+
+
 
 end
