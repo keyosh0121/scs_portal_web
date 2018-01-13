@@ -47,7 +47,7 @@ class UserController < ApplicationController
       year: params[:year].to_i,
       univ: params[:univ],
       password: params[:password],
-      approved: true)
+      approval: true)
     if @user.save
       session[:user_id] = @user.id
       redirect_to("/")
