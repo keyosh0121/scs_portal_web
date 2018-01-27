@@ -10,13 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180102131608) do
+ActiveRecord::Schema.define(version: 20180120165400) do
 
   create_table "band_members", force: :cascade do |t|
     t.integer "band_id"
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id"
   end
 
   create_table "bands", force: :cascade do |t|
@@ -173,19 +174,17 @@ ActiveRecord::Schema.define(version: 20180102131608) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "username"
     t.string "name"
     t.string "email"
     t.string "tel"
     t.string "univ"
     t.integer "year"
-    t.string "password"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "authority"
     t.boolean "approval", default: false
     t.string "remember_digest"
-    t.string "passward_digest"
+    t.string "password_digest"
   end
 
 end
