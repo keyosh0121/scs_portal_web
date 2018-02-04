@@ -9,7 +9,7 @@
         <td>利用バンド</td>
         <td>時限</td>
       </tr>
-      <% RoomUsage.all.pluck('date').uniq.reverse.each do |date|%>
+      <% @dates.each do |date|%>
       <tr>
         <td colspan="4" style="background-color:#dedede;padding:4px;"><%= date.strftime("%m月%d日") %></td>
       </tr>
