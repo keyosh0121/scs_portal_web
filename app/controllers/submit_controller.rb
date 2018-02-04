@@ -80,7 +80,7 @@ class SubmitController < ApplicationController
   end
 
   def comment_list
-    @sent_comments = Comment.where(sender:@current_user.name)
+    @sent_comments = Comment.where(sender_id:@current_user.id)
   end
 
   def comment_conference
@@ -92,7 +92,7 @@ class SubmitController < ApplicationController
 
   def comment_destroy
     @comment = Comment.find_by(id: params[:id])
-    ReplyToComment.where(comment_id: @comment.id).delete_all
+    Comment.where(reply_to: @comment.id).delete_all
     if @comment.delete
       flash[:notice] = "コメントを削除しました"
       redirect_to('/submit/comment/list')
@@ -105,9 +105,9 @@ class SubmitController < ApplicationController
   def comment_conference_send
 	  @conferences = Event.where(category:"conference")
     @comment = Comment.new(
-      sender: @current_user.name,
-      atevent: params[:atevent],
-      atcontent: params[:atcontent],
+      sender_id: @current_user.id,
+      event_id: Event.find_by(name:params[:atevent]).id,
+      content_id: EventContent.find_by(name:params[:atcontent], event: params[:atevent]).id,
       comment: params[:comment]
     )
     if @comment.save
@@ -132,10 +132,12 @@ class SubmitController < ApplicationController
 
   def comment_reply_send
     @comment = Comment.find(params[:id])
-    @reply = ReplyToComment.new(
-      comment_id: params[:id],
+    @reply = Comment.new(
+      reply_to: params[:id],
       sender_id: @current_user.id,
-      text: params[:text]
+      event_id: @comment.event_id,
+      content_id: @comment.content_id,
+      comment: params[:text]
       )
     if @reply.save
       flash[:notice] = "コメントに返信しました"
@@ -147,7 +149,7 @@ class SubmitController < ApplicationController
   end
 
   def comment_reply_delete
-    if ReplyToComment.find(params[:id]).destroy
+    if Comment.find(params[:id]).destroy
       flash[:notice] = "コメントへの返信を削除しました。"
       redirect_to('/submit/comment/list')
     else
@@ -159,8 +161,8 @@ class SubmitController < ApplicationController
   def comment_performance_send
     @comment = Comment.new(
       sender: @current_user.name,
-      atevent: params[:atevent],
-      atcontent: params[:atcontent],
+      atevent: Event.find_by(name: params[:atevent]).id,
+      atcontent: EventContent.find_by(name:params[:atcontent], event:params[:atevent]),
       comment: params[:comment]
     )
     if @comment.save
@@ -178,7 +180,7 @@ class SubmitController < ApplicationController
   end
   def all_comment_conf
     @conference = Event.find(params[:conf_id])
-    @comments = Comment.where(atevent: @conference.name)
+    @comments = Comment.where(event_id: @conference.id)
 
   end
 
