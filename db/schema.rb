@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180204045831) do
+ActiveRecord::Schema.define(version: 20180206020830) do
 
   create_table "band_members", force: :cascade do |t|
     t.integer "band_id"
@@ -128,6 +128,7 @@ ActiveRecord::Schema.define(version: 20180204045831) do
     t.date "date"
     t.time "time"
     t.string "content"
+    t.time "datetime"
   end
 
   create_table "performances", force: :cascade do |t|
