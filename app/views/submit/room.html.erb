@@ -24,7 +24,7 @@
           <%= usage.room %>
           <%= usage.band %>
           <%= usage.period.join(",")%>限
-          <% if @current_user.band_names.include?(usage.band)%>
+          <% if @current_user.band_names.include?(usage.band) || usage.band == @current_user.name%>
             <%= link_to('消去','/submit/room/destroy/' + usage.id.to_s , {:method => 'post', data: {confirm: "本当に取り消しますか？"}})%>
           <% end %>
           <br>
@@ -67,6 +67,8 @@
       <%= @current_user.bands.each do |band| %>
         <option value="<%=band.name%>"><%= band.name %></option>
       <% end %>
+      <option value="<%=@current_user.name%>">個人</option>}
+      option
     </select>
   </div>
   <input type="submit" name="" value=利用申請する id="room-submit">
