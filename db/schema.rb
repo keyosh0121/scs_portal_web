@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180206020830) do
+ActiveRecord::Schema.define(version: 20180214065157) do
 
   create_table "band_members", force: :cascade do |t|
     t.integer "band_id"
@@ -122,7 +122,6 @@ ActiveRecord::Schema.define(version: 20180206020830) do
     t.date "date"
     t.time "time"
     t.string "content"
-    t.time "datetime"
   end
 
   create_table "performances", force: :cascade do |t|
@@ -144,14 +143,13 @@ ActiveRecord::Schema.define(version: 20180206020830) do
   end
 
   create_table "room_usages", force: :cascade do |t|
-    t.string "band"
-    t.string "sender"
     t.date "date"
-    t.time "time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text "period"
     t.string "room"
+    t.integer "band_id"
+    t.integer "user_id"
   end
 
   create_table "temporal_band_members", force: :cascade do |t|

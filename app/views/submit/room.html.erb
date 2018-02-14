@@ -22,7 +22,7 @@
       <% if @usages.count != 0 %>
         <% RoomUsage.where(date: Date.today).each do |usage| %>
           <%= usage.room %>
-          <%= usage.band %>
+          <%= usage.band.name %>
           <%= usage.period.join(",")%>限
           <% if @current_user.band_names.include?(usage.band) || usage.band == @current_user.name%>
             <%= link_to('消去','/submit/room/destroy/' + usage.id.to_s , {:method => 'post', data: {confirm: "本当に取り消しますか？"}})%>

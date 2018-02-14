@@ -304,8 +304,8 @@ class SubmitController < ApplicationController
     puts
     @usage = RoomUsage.new(
       room: params[:room],
-      band: params[:band],
-      sender: @current_user.name,
+      band_id: Band.find_by(name:params[:band]).id,
+      user_id: @current_user.id,
       date: params[:date],
       period: params[:time]
       )
