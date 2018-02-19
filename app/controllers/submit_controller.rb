@@ -181,7 +181,6 @@ class SubmitController < ApplicationController
   def all_comment_conf
     @conference = Event.find(params[:conf_id])
     @comments = Comment.where(event_id: @conference.id)
-
   end
 
   def regular_band
@@ -191,30 +190,6 @@ class SubmitController < ApplicationController
 
   def regular_band_submit
     members = Array.new()
-    if params[:member1] != ""
-      members.push(params[:member1])
-    end
-    if params[:member2] != ""
-      members.push(params[:member2])
-    end
-    if params[:member3] != ""
-      members.push(params[:member3])
-    end
-    if params[:member4] != ""
-      members.push(params[:member4])
-    end
-    if params[:member5] != ""
-      members.push(params[:member5])
-    end
-    if params[:member6] != ""
-      members.push(params[:member6])
-    end
-    if params[:member7] != ""
-      members.push(params[:member7])
-    end
-    if params[:member8] != ""
-      members.push(params[:member8])
-    end
     @band = Band.new(
       name: params[:name],
       pa: params[:pa],
@@ -222,18 +197,19 @@ class SubmitController < ApplicationController
       description: params[:description],
       year: Date.today.year,
       image: "default-band.jpg"
-      )
+    )
     if params[:image]
       image = params[:image]
       @band.image = "#{@band.name}.jpg"
       File.binwrite("public/band-images/#{@band.image}", image.read)
     end
-
     if @band.save
+      member_names = [params[:member1],params[:member2],params[:member3],params[:member4],params[:member5],params[:member6],params[:member7],params[:member8]]
+      8.times do |i|
+        #TODO:例外処理
+        BandMember.new(name: member_names[i],band_id: @band.id,part: i).save if member_names[i]
+      end
       redirect_to("/user/#{@current_user.id}/show")
-      members.each do |member|
-      BandMember.new(name: member,band_id: @band.id).save
-    end
       flash[:notice] = "正規バンドの申請を受け付けました"
 
     else
@@ -250,40 +226,17 @@ class SubmitController < ApplicationController
 
   def temporal_band_submit
     @events = Event.all
-    members = Array.new()
-    if params[:member1] != ""
-      members.push(params[:member1])
-    end
-    if params[:member2] != ""
-      members.push(params[:member2])
-    end
-    if params[:member3] != ""
-      members.push(params[:member3])
-    end
-    if params[:member4] != ""
-      members.push(params[:member4])
-    end
-    if params[:member5] != ""
-      members.push(params[:member5])
-    end
-    if params[:member6] != ""
-      members.push(params[:member6])
-    end
-    if params[:member7] != ""
-      members.push(params[:member7])
-    end
-    if params[:member8] != ""
-      members.push(params[:member8])
-    end
-    @temporal_band = TemporalBand.new(
+    @temporal_band = Band.new(
       name: params[:name],
-      event: params[:event]
+      type: 1,
+      event_id: Event.find_by(name: params[:event]).id
       )
     if @temporal_band.save
       flash[:notice] = "企画バンドの申請が完了しました。"
-      members.each do |member|
-        band_member = TemporalBandMember.new(band_id: @temporal_band.id, name: member)
-        band_member.save
+      member_names = [params[:member1],params[:member2],params[:member3],params[:member4],params[:member5],params[:member6],params[:member7],params[:member8]]
+      8.times do |i|
+        #TODO:例外処理
+        BandMember.new(band_id: @temporal_band.id, name: member_names[i],part: i).save if member_names[i]
       end
       redirect_to("/user/#{@current_user.id}/show")
     else

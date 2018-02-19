@@ -2,9 +2,10 @@ class Band < ApplicationRecord
   has_many :room_usages
   validates :name, presence: {message: 'バンド名を入力してください'}
   validates :master, presence: {message: 'バンマスは必須項目です'}
-  validates :description, presence: {message: '説明を記載してください'}
-  validates :pa, presence: {message: 'PAは必須項目です'}
-
+  validates :pa, presence: {message: 'PAは必須項目です'}, if: :regular_band?
+  def regular_band?
+    self.band_type == 0
+  end
   def member_datas
     arr = Array.new()
     self.members.each do |member|
