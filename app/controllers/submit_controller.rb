@@ -71,7 +71,8 @@ class SubmitController < ApplicationController
   end
   def get_content
     if params[:event_name]
-      @contents = EventContent.where(event: params[:event_name])
+      @conference = Event.find_by(name: params[:event_name])
+      @contents = @conference.event_contents
       render json: @contents
       @contents.each do |con|
         puts con.name
@@ -103,11 +104,12 @@ class SubmitController < ApplicationController
   end
 
   def comment_conference_send
+    content=EventContent.find_by(name: params[:atcontent])
 	  @conferences = Event.where(category:"conference")
     @comment = Comment.new(
       sender_id: @current_user.id,
-      event_id: Event.find_by(name:params[:atevent]).id,
-      content_id: EventContent.find_by(name:params[:atcontent], event: params[:atevent]).id,
+      event_id: content.event_id,
+      content_id: content.id,
       comment: params[:comment]
     )
     if @comment.save
