@@ -15,9 +15,9 @@
       </tr>
       <% RoomUsage.where(date: date).each do |usage|%>
       <tr>
-        <td><%= usage.sender%></td>
+        <td><%= usage.user.name %></td>
         <td><%= usage.room %></td>
-        <td><%= usage.band %></td>
+        <td><%= usage.band.name %></td>
         <td><%= usage.period.join(',') %></td>
       </tr>
       <% end %>

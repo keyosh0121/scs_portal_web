@@ -254,14 +254,15 @@ class SubmitController < ApplicationController
 
   def room_send
     @usages = RoomUsage.all
-    puts
+    dummy_band_id=nil
+    dummy_band_id=Band.find_by(name:params[:band]).id  if Band.find_by(name:params[:band])
     @usage = RoomUsage.new(
-      room: params[:room],
-      band: params[:band],
-      sender: @current_user.name,
-      date: params[:date],
-      period: params[:time]
-      )
+        room: params[:room],
+        band_id: dummy_band_id,
+        user_id: @current_user.id,
+        date: params[:date],
+        period: params[:time]
+        )
     if @usage.save
       flash[:notice] = "申請しました。"
       render('submit/room')

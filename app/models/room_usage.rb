@@ -1,6 +1,6 @@
 class RoomUsageValidator < ActiveModel::Validator
   def validate(record)
-    if record.band == nil
+    if record.band_id == nil
       record.errors[:base] << "バンド名が入力されていません"
     end
     if record.room == nil
@@ -17,6 +17,8 @@ class RoomUsageValidator < ActiveModel::Validator
 end
 
 class RoomUsage < ApplicationRecord
+  belongs_to :user
+  belongs_to :band
   serialize :period
   validates_with RoomUsageValidator
   def self.delete_old_records
