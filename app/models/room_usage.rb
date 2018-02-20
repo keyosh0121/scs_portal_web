@@ -19,6 +19,7 @@ end
 class RoomUsage < ApplicationRecord
   belongs_to :user
   belongs_to :band
+  belongs_to :period
   serialize :period
   validates_with RoomUsageValidator
   def self.delete_old_records
