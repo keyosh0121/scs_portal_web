@@ -22,6 +22,7 @@ class UserValidator < ActiveModel::Validator
 end
 
 class User < ApplicationRecord
+  has_many :room_usages
   attr_accessor :remember_token
   validates_with UserValidator
 	validates :email, uniqueness: true

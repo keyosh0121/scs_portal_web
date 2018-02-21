@@ -17,10 +17,10 @@
     <div class="header-wrapper">
       <div class="sidemenu-open-btn"><i class="fa fa-bars"></i></div>
       <div class="header-left">
-      <% if session[:user_id] == nil%>
+      <% if cookies[:user_id] == nil%>
         <div id="title"><%= link_to("SCS Portal","/",{class:"header-title"}) %></div>
       <% else %>
-        <div id="title"><%= link_to("SCS Portal","/user/#{session[:user_id]}/show",{class:"header-title"}) %></div>
+        <div id="title"><%= link_to("SCS Portal","/user/#{cookies[:user_id]}/show",{class:"header-title"}) %></div>
       <% end %>
         <div class="selectColor"></div>
       </div>

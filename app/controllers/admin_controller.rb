@@ -154,13 +154,6 @@ class AdminController < ApplicationController
   end
 
   def add_event
-    string = params[:contents].split(",")
-    puts string
-    array = Array.new
-    string.each do |str|
-      content = EventContent.new(name: str, event: params[:name])
-      content.save
-    end
     @event = Event.new(
       name: params[:name],
       date: params[:date],
@@ -170,11 +163,20 @@ class AdminController < ApplicationController
       category: params[:category],
       event_type: params[:type].to_i
       )
+
     if @event.save
       flash[:notice] = "イベントを登録しました"
       redirect_to("/database/show-event")
     else
       flash[:notice] = "イベント登録に失敗しました。再度試してください。"
+    end
+
+    string = params[:contents].split(",")
+    puts string
+    array = Array.new
+    string.each do |str|
+      content = EventContent.new(name: str, event_id: @event.id)
+      content.save
     end
   end
 
@@ -343,6 +345,8 @@ class AdminController < ApplicationController
   end
 
   def practice_room
+    @dates = RoomUsage.all.pluck('date').uniq.reverse
+
   end
 end
 

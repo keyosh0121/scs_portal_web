@@ -9,15 +9,15 @@
         <td>利用バンド</td>
         <td>時限</td>
       </tr>
-      <% RoomUsage.all.pluck('date').uniq.reverse.each do |date|%>
+      <% @dates.each do |date|%>
       <tr>
         <td colspan="4" style="background-color:#dedede;padding:4px;"><%= date.strftime("%m月%d日") %></td>
       </tr>
       <% RoomUsage.where(date: date).each do |usage|%>
       <tr>
-        <td><%= usage.sender%></td>
+        <td><%= usage.user.name %></td>
         <td><%= usage.room %></td>
-        <td><%= usage.band %></td>
+        <td><%= usage.band.name %></td>
         <td><%= usage.period.join(',') %></td>
       </tr>
       <% end %>

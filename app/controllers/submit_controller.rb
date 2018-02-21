@@ -71,7 +71,8 @@ class SubmitController < ApplicationController
   end
   def get_content
     if params[:event_name]
-      @contents = EventContent.where(event: params[:event_name])
+      @conference = Event.find_by(name: params[:event_name])
+      @contents = @conference.event_contents
       render json: @contents
       @contents.each do |con|
         puts con.name
@@ -80,7 +81,7 @@ class SubmitController < ApplicationController
   end
 
   def comment_list
-    @sent_comments = Comment.where(sender:@current_user.name)
+    @sent_comments = Comment.where(sender_id:@current_user.id)
   end
 
   def comment_conference
@@ -92,7 +93,7 @@ class SubmitController < ApplicationController
 
   def comment_destroy
     @comment = Comment.find_by(id: params[:id])
-    ReplyToComment.where(comment_id: @comment.id).delete_all
+    Comment.where(reply_to: @comment.id).delete_all
     if @comment.delete
       flash[:notice] = "コメントを削除しました"
       redirect_to('/submit/comment/list')
@@ -103,11 +104,12 @@ class SubmitController < ApplicationController
   end
 
   def comment_conference_send
+    content=EventContent.find_by(name: params[:atcontent])
 	  @conferences = Event.where(category:"conference")
     @comment = Comment.new(
-      sender: @current_user.name,
-      atevent: params[:atevent],
-      atcontent: params[:atcontent],
+      sender_id: @current_user.id,
+      event_id: content.event_id,
+      content_id: content.id,
       comment: params[:comment]
     )
     if @comment.save
@@ -132,10 +134,12 @@ class SubmitController < ApplicationController
 
   def comment_reply_send
     @comment = Comment.find(params[:id])
-    @reply = ReplyToComment.new(
-      comment_id: params[:id],
+    @reply = Comment.new(
+      reply_to: params[:id],
       sender_id: @current_user.id,
-      text: params[:text]
+      event_id: @comment.event_id,
+      content_id: @comment.content_id,
+      comment: params[:text]
       )
     if @reply.save
       flash[:notice] = "コメントに返信しました"
@@ -147,7 +151,7 @@ class SubmitController < ApplicationController
   end
 
   def comment_reply_delete
-    if ReplyToComment.find(params[:id]).destroy
+    if Comment.find(params[:id]).destroy
       flash[:notice] = "コメントへの返信を削除しました。"
       redirect_to('/submit/comment/list')
     else
@@ -159,8 +163,8 @@ class SubmitController < ApplicationController
   def comment_performance_send
     @comment = Comment.new(
       sender: @current_user.name,
-      atevent: params[:atevent],
-      atcontent: params[:atcontent],
+      atevent: Event.find_by(name: params[:atevent]).id,
+      atcontent: EventContent.find_by(name:params[:atcontent], event:params[:atevent]),
       comment: params[:comment]
     )
     if @comment.save
@@ -178,8 +182,7 @@ class SubmitController < ApplicationController
   end
   def all_comment_conf
     @conference = Event.find(params[:conf_id])
-    @comments = Comment.where(atevent: @conference.name)
-
+    @comments = Comment.where(event_id: @conference.id)
   end
 
   def regular_band
@@ -189,30 +192,6 @@ class SubmitController < ApplicationController
 
   def regular_band_submit
     members = Array.new()
-    if params[:member1] != ""
-      members.push(params[:member1])
-    end
-    if params[:member2] != ""
-      members.push(params[:member2])
-    end
-    if params[:member3] != ""
-      members.push(params[:member3])
-    end
-    if params[:member4] != ""
-      members.push(params[:member4])
-    end
-    if params[:member5] != ""
-      members.push(params[:member5])
-    end
-    if params[:member6] != ""
-      members.push(params[:member6])
-    end
-    if params[:member7] != ""
-      members.push(params[:member7])
-    end
-    if params[:member8] != ""
-      members.push(params[:member8])
-    end
     @band = Band.new(
       name: params[:name],
       pa: params[:pa],
@@ -220,18 +199,19 @@ class SubmitController < ApplicationController
       description: params[:description],
       year: Date.today.year,
       image: "default-band.jpg"
-      )
+    )
     if params[:image]
       image = params[:image]
       @band.image = "#{@band.name}.jpg"
       File.binwrite("public/band-images/#{@band.image}", image.read)
     end
-
     if @band.save
+      member_names = [params[:member1],params[:member2],params[:member3],params[:member4],params[:member5],params[:member6],params[:member7],params[:member8]]
+      8.times do |i|
+        #TODO:例外処理
+        BandMember.new(name: member_names[i],band_id: @band.id,part: i).save if member_names[i]
+      end
       redirect_to("/user/#{@current_user.id}/show")
-      members.each do |member|
-      BandMember.new(name: member,band_id: @band.id).save
-    end
       flash[:notice] = "正規バンドの申請を受け付けました"
 
     else
@@ -248,40 +228,17 @@ class SubmitController < ApplicationController
 
   def temporal_band_submit
     @events = Event.all
-    members = Array.new()
-    if params[:member1] != ""
-      members.push(params[:member1])
-    end
-    if params[:member2] != ""
-      members.push(params[:member2])
-    end
-    if params[:member3] != ""
-      members.push(params[:member3])
-    end
-    if params[:member4] != ""
-      members.push(params[:member4])
-    end
-    if params[:member5] != ""
-      members.push(params[:member5])
-    end
-    if params[:member6] != ""
-      members.push(params[:member6])
-    end
-    if params[:member7] != ""
-      members.push(params[:member7])
-    end
-    if params[:member8] != ""
-      members.push(params[:member8])
-    end
-    @temporal_band = TemporalBand.new(
+    @temporal_band = Band.new(
       name: params[:name],
-      event: params[:event]
+      type: 1,
+      event_id: Event.find_by(name: params[:event]).id
       )
     if @temporal_band.save
       flash[:notice] = "企画バンドの申請が完了しました。"
-      members.each do |member|
-        band_member = TemporalBandMember.new(band_id: @temporal_band.id, name: member)
-        band_member.save
+      member_names = [params[:member1],params[:member2],params[:member3],params[:member4],params[:member5],params[:member6],params[:member7],params[:member8]]
+      8.times do |i|
+        #TODO:例外処理
+        BandMember.new(band_id: @temporal_band.id, name: member_names[i],part: i).save if member_names[i]
       end
       redirect_to("/user/#{@current_user.id}/show")
     else
@@ -299,14 +256,15 @@ class SubmitController < ApplicationController
 
   def room_send
     @usages = RoomUsage.all
-    puts
+    dummy_band_id=nil
+    dummy_band_id=Band.find_by(name:params[:band]).id  if Band.find_by(name:params[:band])
     @usage = RoomUsage.new(
-      room: params[:room],
-      band: params[:band],
-      sender: @current_user.name,
-      date: params[:date],
-      period: params[:time]
-      )
+        room: params[:room],
+        band_id: dummy_band_id,
+        user_id: @current_user.id,
+        date: params[:date],
+        period: params[:time]
+        )
     if @usage.save
       flash[:notice] = "申請しました。"
       render('submit/room')

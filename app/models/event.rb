@@ -13,5 +13,6 @@ class EventValidator < ActiveModel::Validator
 end
 
 class Event < ApplicationRecord
+  has_many :event_contents
   validates_with EventValidator
 end

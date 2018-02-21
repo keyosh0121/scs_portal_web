@@ -19,12 +19,12 @@
       自分の正規バンドが表示されない場合、申請に誤りがあるか、ユーザーの登録が正しく完了していない場合があります。</div>
     <div class="room-current">現在マイク練で予約しているのは<%= MicRoom.where(date: Date.today).count%>部屋です。
       <div class="rcurrent-title">   <%= Date.today.strftime("%m月%d日")%>の利用状況</div>
-  <% if @usages.count != 0 %>
+      <% if @usages.count != 0 %>
         <% RoomUsage.where(date: Date.today).each do |usage| %>
           <%= usage.room %>
-          <%= usage.band %>
+          <%= usage.band.name %>
           <%= usage.period.join(",")%>限
-          <% if @current_user.band_names.include?(usage.band)%>
+          <% if @current_user.band_names.include?(usage.band) || usage.band == @current_user.name %>
             <%= link_to('消去','/submit/room/destroy/' + usage.id.to_s , {:method => 'post', data: {confirm: "本当に取り消しますか？"}})%>
           <% end %>
           <br>
@@ -32,6 +32,7 @@
       <% else %>
         現在の利用申請はまだありません。
       <% end %>
+      <a href="/database/room-usage">過去の利用履歴を見る</a><br>
     </div>
   <div class="room-content-title">利用部屋</div>
   <div class="room-content-wrap">
@@ -61,11 +62,13 @@
   </div>
   <div class="room-content-title">利用するバンド</div>
     <select name="band" class="band-select">
-        <option value="" disabled selected>選択してください</option>
+        <option value="" selected disabled>選択してください</option>
         option
       <%= @current_user.bands.each do |band| %>
         <option value="<%=band.name%>"><%= band.name %></option>
       <% end %>
+      <option value="<%=@current_user.name%>">個人</option>}
+      option
     </select>
   </div>
   <input type="submit" name="" value=利用申請する id="room-submit">
