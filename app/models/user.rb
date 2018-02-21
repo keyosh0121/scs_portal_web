@@ -24,6 +24,7 @@ end
 class User < ApplicationRecord
   attr_accessor :remember_token
   validates_with UserValidator
+	validates :email, uniqueness: true
 
   def bands
     user_bands = Array.new()
