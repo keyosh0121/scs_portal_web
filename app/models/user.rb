@@ -61,18 +61,7 @@ class User < ApplicationRecord
     return user_bands
   end
 
-  def mics
-    user_mics = Array.new()
 
-    Mic.all.order("date DESC").each do |mic|
-      if self.bands.include?(Band.find_by(name: mic.band))
-        user_mics.push(mic)
-      elsif self.name == mic.sender
-        user_mics.push(mic)
-      end
-    end
-    return user_mics
-  end
 
   def entries
     user_entries = Array.new()
