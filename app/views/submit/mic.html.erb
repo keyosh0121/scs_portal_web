@@ -23,15 +23,18 @@
         <input type="date" name="date" id="mic-date-input" value="<%= Date.today + 7 %>">
         <div class="mic-sub-form-content">時限を選択</div>
         <div class="mic-time-picker">
-          <input type="radio" class="mic-time-input" id="mic0" name="time" value="0限"><label for="mic0" class="mic-time-pick">0限(8:00-9:00)</label>
-          <input type="radio" class="mic-time-input" id="mic1" name="time" value="1限"><label for="mic1" class="mic-time-pick">1限(9:00-10:30)</label>
-          <input type="radio" class="mic-time-input" id="mic2" name="time" value="2限"><label for="mic2" class="mic-time-pick">2限(10:40-12:10)</label>
-          <input type="radio" class="mic-time-input" id="micL" name="time" value="昼限"><label for="micL" class="mic-time-pick">昼限(12:10-13:00)</label>
-          <input type="radio" class="mic-time-input" id="mic3" name="time" value="3限"><label for="mic3" class="mic-time-pick">3限(13:00-14:30)</label>
-          <input type="radio" class="mic-time-input" id="mic4" name="time" value="4限"><label for="mic4" class="mic-time-pick">4限(14:45-16:15)</label>
-          <input type="radio" class="mic-time-input" id="mic5" name="time" value="5限"><label for="mic5" class="mic-time-pick">5限(16:30-18:00)</label>
-          <input type="radio" class="mic-time-input" id="mic6" name="time" value="6限"><label for="mic6" class="mic-time-pick">6限(18:15-19:45)</label>
-          <input type="radio" class="mic-time-input" id="mic7" name="time" value="7限"><label for="mic7" class="mic-time-pick">7限(19:55-21:25)</label>
+          <!-- <input type="radio" class="mic-time-input" id="mic0" name="period" value="0限"><label for="mic0" class="mic-time-pick">0限(8:00-9:00)</label>
+          <input type="radio" class="mic-time-input" id="mic1" name="period" value="1限"><label for="mic1" class="mic-time-pick">1限(9:00-10:30)</label>
+          <input type="radio" class="mic-time-input" id="mic2" name="peiod" value="2限"><label for="mic2" class="mic-time-pick">2限(10:40-12:10)</label>
+          <input type="radio" class="mic-time-input" id="micL" name="peiod" value="昼限"><label for="micL" class="mic-time-pick">昼限(12:10-13:00)</label>
+          <input type="radio" class="mic-time-input" id="mic3" name="peiod" value="3限"><label for="mic3" class="mic-time-pick">3限(13:00-14:30)</label>
+          <input type="radio" class="mic-time-input" id="mic4" name="period" value="4限"><label for="mic4" class="mic-time-pick">4限(14:45-16:15)</label>
+          <input type="radio" class="mic-time-input" id="mic5" name="period" value="5限"><label for="mic5" class="mic-time-pick">5限(16:30-18:00)</label>
+          <input type="radio" class="mic-time-input" id="mic6" name="period" value="6限"><label for="mic6" class="mic-time-pick">6限(18:15-19:45)</label>
+          <input type="radio" class="mic-time-input" id="mic7" name="period" value="7限"><label for="mic7" class="mic-time-pick">7限(19:55-21:25)</label> -->
+          <% @periods.each do |period| %>
+            <input type="radio" class="mic-time-input" id="mic<%= period.name %>" name="period_id" value="<%= period.id %>"><label for="mic<%= period.name %>" class="mic-time-pick"><%= period.name %>(<%= period.start %>-<%= period.end %>)</label>
+          <% end %>
         </div>
         <div class="mic-sub-form-content">バンドを選択</div>
         <select name="band">
