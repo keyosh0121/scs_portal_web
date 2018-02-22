@@ -7,29 +7,29 @@
   <div class="mic-approvedlist-main-wrapper">
   <% if @mics.any? %>
       <div class="mic-approvedlist-date"><%= @mics[0].date.strftime("%m月%d日") %></div>
-      <div class="mic-approvedlist-time"><%= @mics[0].time %></div>
+      <div class="mic-approvedlist-time"><%= Period.find(@mics[0].period_id).name %>限</div>
         <% i=0 %>
         <% dummy_date=@mics[i].date %>
-        <% dummy_time=@mics[i].time %>
+        <% dummy_time=Period.find(@mics[i].period_id)  %>
         <% j = @mics.count - 1 %>
         <% until i > j do %>
          <% if @mics[i].date == dummy_date %>
-           <% if @mics[i].time == dummy_time %>
+           <% if Period.find(@mics[i].period_id) == dummy_time %>
            <div class="mic-approvedlist-content">
               <div class="mic-approvedlist-band"><%= @mics[i].band %><span><%= "  (PA: " + @mics[i].pa.to_s + " / " + @mics[i].paattendance + ")" %></span>
                 </div>
             </div>
               <% i += 1 %>
            <% else %>
-              <% dummy_time=@mics[i].time %>
-              <div class="mic-approvedlist-time"><%= @mics[i].time %></div>
+              <% dummy_time=Period.find(@mics[i].period_id)%>
+              <div class="mic-approvedlist-time"><%= Period.find(@mics[i].period_id).name %>限</div>
            <% end %>
 
           <% else %>
           <% dummy_date=@mics[i].date %>
-          <% dummy_time=@mics[i].time %>
+          <% dummy_time=Period.find(@mics[i].period_id) %>
           <div class="mic-approvedlist-date"><%= @mics[i].date.strftime("%m月%d日") %></div>
-          <div class="mic-approvedlist-time"><%= @mics[i].time %></div>
+          <div class="mic-approvedlist-time"><%= Period.find(@mics[i].period_id).name %>限</div>
           <% end %>
 
         <% end %>

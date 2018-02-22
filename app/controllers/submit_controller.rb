@@ -35,7 +35,7 @@ class SubmitController < ApplicationController
       band: params[:band],
       sender: @current_user.name,
       date: params[:date],
-      time: params[:time],
+      period_id: params[:time].to_i,
       paattendance: attendance,
       pa: pa,
       status: 0

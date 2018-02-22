@@ -9,7 +9,7 @@ class MicDateValidator < ActiveModel::Validator
 		if record.band == nil
 			record.errors[:base] << "バンドを選択してください"
 		end
-		if record.time == nil
+		if record.period_id == nil
 			record.errors[:base] << "時限を入力してください"
 		end
   end
