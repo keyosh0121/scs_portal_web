@@ -20,7 +20,7 @@ class UserController < ApplicationController
     else
       @error = "Emailが違います"
     end
-    if @user == nil || !nil)@user.authenticate(params[:password])
+    if @user == nil || !@user.authenticate(params[:password])
       @email = params[:email]
       render("login")
     else
