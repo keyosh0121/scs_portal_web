@@ -1,5 +1,7 @@
 class User < ApplicationRecord
+  has_many :room_usages
   attr_accessor :remember_token
+<<<<<<< HEAD
   validates :name, presence: { message: '名前が入力されていません' }
   validates :email, presence: { message: 'メールアドレスを入力してください' }
   validates :tel, presence: { message: '電話番号を入力してください' }
@@ -7,6 +9,43 @@ class User < ApplicationRecord
   has_many :band_members
   has_many :bands, through: :band_members
   has_secure_password
+=======
+  validates_with UserValidator
+	validates :email, uniqueness: true
+
+  def bands
+    user_bands = Array.new()
+    Band.all.each do |band|
+      if band.members.include?(self.name)
+        if band.registration
+          user_bands.push(band)
+        end
+      end
+    end
+    return user_bands
+  end
+  def temporal_bands
+    user_bands = Array.new()
+    TemporalBand.all.each do |band|
+      if band.members.include?(self.name)
+          user_bands.push(band)
+      end
+    end
+    return user_bands
+  end
+
+  def band_names
+    user_bands = Array.new()
+    Band.all.each do |band|
+      if band.members.include?(self.name)
+        if band.registration
+          user_bands.push(band.name)
+        end
+      end
+    end
+    return user_bands
+  end
+>>>>>>> master
 
   def mics
     user_mics = Array.new()

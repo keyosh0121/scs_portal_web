@@ -14,11 +14,11 @@
       <% if @sent_comments%>
       <% @sent_comments.each do |c| %>
         <div class="sent-comment">
-          <div class="sent-comment-object"><%= c.atevent %>  <%= c.atcontent %><%= link_to('コメントを削除','/submit/comment/list/destroy/' + c.id.to_s ,{:method => 'POST', data: {confirm: "本当に取り消しますか？"}})%> <%= link_to('コメント詳細/返信','/submit/comment/list/detail/' + c.id.to_s)%></div>
+          <div class="sent-comment-object"><%= Event.find(c.event_id).name %>  <%= EventContent.find(c.content_id).name %><%= link_to('コメントを削除','/submit/comment/list/destroy/' + c.id.to_s ,{:method => 'POST', data: {confirm: "本当に取り消しますか？"}})%> <%= link_to('コメント詳細/返信','/submit/comment/list/detail/' + c.id.to_s)%></div>
           <div class="sent-comment-content"><%= c.comment %></div>
         </div>
-        <% if ReplyToComment.where(comment_id: c.id).any?%>
-          <% ReplyToComment.where(comment_id: c.id).each do |reply|%>
+        <% if Comment.where(reply_to: c.id).any?%>
+          <% Comment.where(reply_to: c.id).each do |reply|%>
             <div class="comment-reply-container">
               <div class="reply-image"><i class="fa fa-reply"></i></div>
               <div class="reply-content">
@@ -26,7 +26,7 @@
                  <% if reply.sender_id == @current_user.id %>
                   <%= link_to("コメントを削除",'/submit/comment/delete/' + reply.id.to_s,{:method => "POST", data: {confirm: "本当に取り消しますか？"}})%>
                 <% end %>
-                <div class="reply-text"><%= reply.text %></div>
+                <div class="reply-text"><%= reply.comment %></div>
               </div>
             </div>
           <% end %>

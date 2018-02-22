@@ -10,13 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20180120165400) do
+=======
+
+ActiveRecord::Schema.define(version: 20180222075318) do
+
+ActiveRecord::Schema.define(version: 20180220101658) do
+
+>>>>>>> master
 
   create_table "band_members", force: :cascade do |t|
     t.integer "band_id"
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+<<<<<<< HEAD
+=======
+    t.integer "part"
+>>>>>>> master
     t.integer "user_id"
   end
 
@@ -30,6 +42,8 @@ ActiveRecord::Schema.define(version: 20180120165400) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "registration", default: false, null: false
+    t.integer "band_type"
+    t.integer "event_id"
   end
 
   create_table "comments", force: :cascade do |t|
@@ -40,6 +54,9 @@ ActiveRecord::Schema.define(version: 20180120165400) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "event_id"
+    t.integer "content_id"
+    t.integer "reply_to"
+    t.integer "sender_id"
   end
 
   create_table "conferences", force: :cascade do |t|
@@ -71,18 +88,11 @@ ActiveRecord::Schema.define(version: 20180120165400) do
     t.string "times"
   end
 
-  create_table "entry_events", force: :cascade do |t|
-    t.integer "event_id"
-    t.integer "type"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "event_contents", force: :cascade do |t|
     t.string "name"
-    t.string "event"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "event_id"
   end
 
   create_table "events", force: :cascade do |t|
@@ -114,10 +124,13 @@ ActiveRecord::Schema.define(version: 20180120165400) do
     t.string "sender"
     t.date "date"
     t.string "time"
+    t.string "approval"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "status"
     t.integer "band_id"
+    t.integer "period_id"
+    t.integer "user_id"
   end
 
   create_table "notifications", force: :cascade do |t|
@@ -137,6 +150,14 @@ ActiveRecord::Schema.define(version: 20180120165400) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "periods", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "name"
+    t.string "start"
+    t.string "end"
+  end
+
   create_table "reply_to_comments", force: :cascade do |t|
     t.integer "type"
     t.integer "comment_id"
@@ -147,14 +168,14 @@ ActiveRecord::Schema.define(version: 20180120165400) do
   end
 
   create_table "room_usages", force: :cascade do |t|
-    t.string "band"
-    t.string "sender"
     t.date "date"
-    t.time "time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text "period"
     t.string "room"
+    t.integer "band_id"
+    t.integer "user_id"
+    t.integer "period_id"
   end
 
   create_table "temporal_band_members", force: :cascade do |t|
