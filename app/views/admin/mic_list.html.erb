@@ -12,7 +12,7 @@
             <% Mic.where(date: date).each do |mic|%>
             <tr>
               <td class="miclist-time"><%= mic.period.name %></td>
-              <td class="miclist-band"> <%= mic.band %></td>
+              <td class="miclist-band"> <%= mic.band.name %></td>
               <td class="miclist-status"><%= mic.status_string %></td>
                 <% if MicRoom.where(date: date).where(time: mic.time).any? %>
                 <td><%= MicRoom.where(date: date).find_by(time: mic.time).room %></td>
