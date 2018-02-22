@@ -12,7 +12,7 @@
     <div style="font-size: 16px;padding:16px;background-color:#335;color:white;font-weight:bold;">
       日程.....<%= @mic.date.strftime("%y年%m月%d日") %><br>
       時限.....<%= @mic.period.name %><br>
-      送信者.....<%= @mic.sender %><br>
+      送信者.....<%= @mic.user.name %><br>
       PAの参加予定.....<%= @mic.paattendance %>
     </div><br><br>
     <p style="font-size: 13px">内容に変更がある場合は、サイトから一度マイク練申請を取り消したのちもう一度申請を行って下さい。</p>

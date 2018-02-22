@@ -2,9 +2,8 @@ class MicMailer < ApplicationMailer
   default from: "scs.portal.testing@gmail.com"
   def send_mic_to_user(mic)
     @mic = mic
-    sender_name = @mic.sender
-    sender = User.find_by(name: sender_name)
-    sender_email = sender.email
+    sender_name = @mic.user.name
+    sender_email = @mic.user.email
     mail(
       subject: "#{@mic.band.name}マイク練申請(#{@mic.date} [#{@mic.period.name}])",
       to: sender_email) do |format|
@@ -30,7 +29,7 @@ class MicMailer < ApplicationMailer
   def send_mic_status_change(mic,text)
     @mic = mic
     @text = text
-    user_email = User.find_by(name: @mic.sender).email
+    user_email = @mic.user.email
     mail(
       subject: "マイク練が#{@mic.status_string}されました",
       to: user_email) do |format|

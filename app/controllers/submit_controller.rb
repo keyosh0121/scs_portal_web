@@ -34,7 +34,7 @@ class SubmitController < ApplicationController
     end
     @mic = Mic.new(
       band_id: params[:band_id],
-      sender: @current_user.name,
+      user_id: @current_user.id,
       date: params[:date],
       period_id: params[:period_id],
       paattendance: attendance,

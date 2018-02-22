@@ -23,6 +23,7 @@ end
 
 class User < ApplicationRecord
   has_many :room_usages
+  has_many :mics
   attr_accessor :remember_token
   validates_with UserValidator
 	validates :email, uniqueness: true
