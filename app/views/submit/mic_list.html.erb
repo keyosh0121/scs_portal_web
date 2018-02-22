@@ -15,7 +15,7 @@
       <div class="mic-list-contents">
         <div class="mic-list-content mic-list-content-title"><%= mic.band %></div>
         <div class="mic-list-content mic-list-content-date"><%= mic.date %></div>
-        <div class="mic-list-content mic-list-content-time"><%= Period.find(mic.period_id).name %>限</div>
+        <div class="mic-list-content mic-list-content-time"><%= mic.period.name %></div>
         <div class="mic-list-content mic-list-content-status"><%= mic.status_string %></div>
         <div class="mic-list-content mic-list-content-cancel"><%= link_to('申請取消','/submit/mic/destroy/' + mic.id.to_s , {:method => 'post', data: {confirm: "本当に取り消しますか？"}})%></div>
       </div>
