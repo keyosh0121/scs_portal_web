@@ -10,7 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema.define(version: 20180222151053) do
+ActiveRecord::Schema.define(version: 20180222145257) do
 
   create_table "band_members", force: :cascade do |t|
     t.integer "band_id"
@@ -77,6 +79,13 @@ ActiveRecord::Schema.define(version: 20180222151053) do
     t.string "times"
   end
 
+  create_table "entry_events", force: :cascade do |t|
+    t.integer "event_id"
+    t.integer "type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "event_contents", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -113,7 +122,6 @@ ActiveRecord::Schema.define(version: 20180222151053) do
     t.string "sender"
     t.date "date"
     t.string "time"
-    t.string "approval"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "status"
@@ -128,6 +136,7 @@ ActiveRecord::Schema.define(version: 20180222151053) do
     t.date "date"
     t.time "time"
     t.string "content"
+    t.time "datetime"
   end
 
   create_table "performances", force: :cascade do |t|
@@ -184,6 +193,7 @@ ActiveRecord::Schema.define(version: 20180222151053) do
   end
 
   create_table "users", force: :cascade do |t|
+    t.string "username"
     t.string "name"
     t.string "email"
     t.string "tel"
@@ -195,7 +205,7 @@ ActiveRecord::Schema.define(version: 20180222151053) do
     t.string "authority"
     t.boolean "approval", default: false
     t.string "remember_digest"
-    t.string "passward_digest"
+    t.string "password_digest"
   end
 
 end
