@@ -23,7 +23,7 @@
         <% RoomUsage.where(date: Date.today).each do |usage| %>
           <%= usage.room %>
           <%= usage.band.name %>
-          <%= usage.period.join(",")%>限
+          <%= usage.period.name %>
           <% if @current_user.band_names.include?(usage.band) || usage.band == @current_user.name %>
             <%= link_to('消去','/submit/room/destroy/' + usage.id.to_s , {:method => 'post', data: {confirm: "本当に取り消しますか？"}})%>
           <% end %>
@@ -51,14 +51,17 @@
   </div>
   <div class="room-content-title">利用時間</div>
   <div class="room-content-wrap">
-  <input type="checkbox" class="room-radio" id="1-gen" name="time[]" value="1"><label for="1-gen">1限</label>
+  <!-- <input type="checkbox" class="room-radio" id="1-gen" name="time[]" value="1"><label for="1-gen">1限</label>
   <input type="checkbox" class="room-radio" id="2-gen" name="time[]" value="2"><label for="2-gen">2限</label>
   <input type="checkbox" class="room-radio" id="3-gen" name="time[]" value="3"><label for="3-gen">3限</label>
   <input type="checkbox" class="room-radio" id="hiru-gen" name="time[]" value="昼"><label for="hiru-gen">昼限</label>
   <input type="checkbox" class="room-radio" id="4-gen" name="time[]" value="4"><label for="4-gen">4限</label>
   <input type="checkbox" class="room-radio" id="5-gen" name="time[]" value="5"><label for="5-gen">5限</label>
   <input type="checkbox" class="room-radio" id="6-gen" name="time[]" value="6"><label for="6-gen">6限</label>
-  <input type="checkbox" class="room-radio" id="7-gen" name="time[]" value="7"><label for="7-gen">7限</label>
+  <input type="checkbox" class="room-radio" id="7-gen" name="time[]" value="7"><label for="7-gen">7限</label> -->
+  <% @periods.each do |period| %>
+    <input type="checkbox" class="room-radio" id="<%= period.name %>" name="period_id" value="<%= period.id %>"><label for="<%= period.name %>"><%= period.name %></label>
+  <% end %>
   </div>
   <div class="room-content-title">利用するバンド</div>
     <select name="band" class="band-select">
