@@ -22,8 +22,8 @@
             <div class="created-at">申請日時: <%= mic.created_at.strftime("%m月%d日 %H:%M")%></div>
           </div>
           <div class="right">
-            <%= link_to('承認',"/database/mic-practice/approve/#{mic.id}",{method: 'POST',class: "approve-btn",data:{confirm: "本当に承認しますか？"}}) if mic.status == 0%>
-            <% if mic.status == 1 %>
+            <%= link_to('承認',"/database/mic-practice/approve/#{mic.id}",{method: 'POST',class: "approve-btn",data:{confirm: "本当に承認しますか？"}}) if mic.status.to_i == 0%>
+            <% if mic.status.to_i == 1 %>
               <a class="approve-btn approved">承認済</a>
             <% end %>
           </div>
