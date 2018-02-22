@@ -11,6 +11,9 @@
 # It's strongly recommended that you check this file into your version control system.
 
 
+ActiveRecord::Schema.define(version: 20180222153752) do
+
+
 ActiveRecord::Schema.define(version: 20180222151053) do
 ActiveRecord::Schema.define(version: 20180222145257) do
 
@@ -45,9 +48,9 @@ ActiveRecord::Schema.define(version: 20180222145257) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "event_id"
-    t.integer "content_id"
     t.integer "reply_to"
     t.integer "user_id"
+    t.integer "event_content_id"
   end
 
   create_table "conferences", force: :cascade do |t|

@@ -14,5 +14,6 @@ end
 
 class Event < ApplicationRecord
   has_many :event_contents
+  has_many :comments
   validates_with EventValidator
 end
