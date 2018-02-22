@@ -10,7 +10,7 @@ class User < ApplicationRecord
   validates :year, presence: true
   validates :name, presence: true
   validates :password_digest, presence: true
-
+  has_secure_password
   def bands
     user_bands = Array.new()
     Band.all.each do |band|
