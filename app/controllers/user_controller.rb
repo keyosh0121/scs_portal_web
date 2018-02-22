@@ -14,13 +14,13 @@ class UserController < ApplicationController
   def login_user
     if User.find_by(email: params[:email])
       @user = User.find_by(email: params[:email])
-      if params[:password] != @user.password
+      unless @user.authenticate(params[:password])
         @error = "パスワードが違います"
       end
     else
       @error = "Emailが違います"
     end
-    if @user == nil || @user.password != params[:password]
+    if @user == nil || !@user.authenticate(params[:password])
       @email = params[:email]
       render("login")
     else

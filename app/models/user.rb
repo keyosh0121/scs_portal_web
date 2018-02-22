@@ -1,33 +1,14 @@
-class UserValidator < ActiveModel::Validator
-  def validate(record)
-    if record.name == nil || record.name == ""
-      record.errors[:base] << "名前が入力されていません"
-    end
-    if record.name.include?(" ") || record.name.include?("　")
-      record.errors[:base] << "姓名はスペースを使用せず入力してください"
-    end
-    if record.email == nil
-      record.errors[:base] << "メールアドレスを入力してください"
-    end
-    if record.tel == nil
-      record.errors[:base] << "電話番号を入力してください"
-    end
-    if record.year == nil
-      record.errors[:base] << "入会年度を選択してください"
-    end
-    if record.password == nil
-      record.errors[:base] << "パスワードが入力されていません"
-    end
-  end
-end
 
 class User < ApplicationRecord
   has_many :room_usages
   has_many :mics
   attr_accessor :remember_token
-  validates_with UserValidator
-	validates :email, uniqueness: true
-
+	validates :email, presence: true,uniqueness: true
+  validates :tel, presence: true
+  validates :year, presence: true
+  validates :name, presence: true
+  validates :password_digest, presence: true
+  has_secure_password
   def bands
     user_bands = Array.new()
     Band.all.each do |band|
