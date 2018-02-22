@@ -20,7 +20,7 @@
         <% end %>
         <h1>マイク練申請フォーム</h1>
         <div class="mic-sub-form-content">申請する日時を選択</div>
-        <input type="date" name="date" id="mic-date-input" value="<%= Date.today + 5 %>">
+        <input type="date" name="date" id="mic-date-input" value="<%= Date.today + 7 %>">
         <div class="mic-sub-form-content">時限を選択</div>
         <div class="mic-time-picker">
           <input type="radio" class="mic-time-input" id="mic0" name="time" value="0限"><label for="mic0" class="mic-time-pick">0限(8:00-9:00)</label>
@@ -45,6 +45,7 @@
         </select>
         <div class="mic-sub-form-content">PAの参加可否</div>
         <select name="paattendance">
+          <option disabled selected>選択してください</option>
           <option value="参加">参加</option>
           <option value="不参加">不参加</option>
         </select>
