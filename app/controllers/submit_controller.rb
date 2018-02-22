@@ -252,10 +252,12 @@ class SubmitController < ApplicationController
   def room
     @usages = RoomUsage.all
     @usage = RoomUsage.new()
+    @periods = Period.all
     self.user_authentificate
   end
 
   def room_send
+    @periods = Period.all
     @usages = RoomUsage.all
     dummy_band_id=nil
     dummy_band_id=Band.find_by(name:params[:band]).id  if Band.find_by(name:params[:band])
@@ -264,7 +266,7 @@ class SubmitController < ApplicationController
         band_id: dummy_band_id,
         user_id: @current_user.id,
         date: params[:date],
-        period: params[:time]
+        period_id: params[:period_id]
         )
     if @usage.save
       flash[:notice] = "申請しました。"
