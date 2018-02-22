@@ -22,6 +22,7 @@ class UserValidator < ActiveModel::Validator
 end
 
 class User < ApplicationRecord
+  has_many :comments
   has_many :room_usages
   has_many :mics
   attr_accessor :remember_token

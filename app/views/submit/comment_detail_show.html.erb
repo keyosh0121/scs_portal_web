@@ -30,8 +30,8 @@
             <div class="comment-reply-container">
               <div class="reply-image"><i class="fa fa-reply"></i></div>
               <div class="reply-content">
-                <%= User.find(reply.sender_id).name %> さんからの返信(送信日時:<%= reply.created_at.strftime("%y年%m月%d日 %H時%M分") %>)
-                <% if reply.sender_id == @current_user.id %>
+                <%= reply.user.name %> さんからの返信(送信日時:<%= reply.created_at.strftime("%y年%m月%d日 %H時%M分") %>)
+                <% if reply.user == @current_user %>
                   <%= link_to("コメントを削除",'/submit/comment/delete/' + reply.id.to_s,{:method => "POST", data: {confirm: "本当に取り消しますか？"}})%>
                 <% end %>
                 <div class="reply-text"><%= reply.comment%></div>

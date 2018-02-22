@@ -82,7 +82,7 @@ class SubmitController < ApplicationController
   end
 
   def comment_list
-    @sent_comments = Comment.where(sender_id:@current_user.id)
+    @sent_comments = @current_user.comments
   end
 
   def comment_conference
@@ -108,7 +108,7 @@ class SubmitController < ApplicationController
     content=EventContent.find_by(name: params[:atcontent])
 	  @conferences = Event.where(category:"conference")
     @comment = Comment.new(
-      sender_id: @current_user.id,
+      user_id: @current_user.id,
       event_id: content.event_id,
       content_id: content.id,
       comment: params[:comment]
@@ -137,7 +137,7 @@ class SubmitController < ApplicationController
     @comment = Comment.find(params[:id])
     @reply = Comment.new(
       reply_to: params[:id],
-      sender_id: @current_user.id,
+      user_id: @current_user.id,
       event_id: @comment.event_id,
       content_id: @comment.content_id,
       comment: params[:text]
