@@ -6,7 +6,7 @@ class MicDateValidator < ActiveModel::Validator
 		elsif record.date < Date.today + 7
 			record.errors[:base] << "7日前を過ぎた日程は申請できません"
 		end
-		if record.band == nil
+		if record.band_id == nil
 			record.errors[:base] << "バンドを選択してください"
 		end
 		if record.period_id == nil

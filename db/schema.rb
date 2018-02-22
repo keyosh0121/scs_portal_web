@@ -10,8 +10,6 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-ActiveRecord::Schema.define(version: 20180220024339) do
 ActiveRecord::Schema.define(version: 20180220101658) do
 
   create_table "band_members", force: :cascade do |t|
@@ -126,8 +124,8 @@ ActiveRecord::Schema.define(version: 20180220101658) do
     t.datetime "updated_at", null: false
     t.integer "status"
     t.integer "band_id"
-    t.integer "user_id"
     t.integer "period_id"
+    t.integer "user_id"
   end
 
   create_table "notifications", force: :cascade do |t|

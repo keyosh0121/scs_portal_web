@@ -32,7 +32,7 @@ class SubmitController < ApplicationController
       pa = "指定なし"
     end
     @mic = Mic.new(
-      band: params[:band],
+      band_id: Band.find(params[:band_id]).id,
       sender: @current_user.name,
       date: params[:date],
       period_id: params[:time].to_i,
