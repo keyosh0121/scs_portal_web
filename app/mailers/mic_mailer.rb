@@ -6,7 +6,7 @@ class MicMailer < ApplicationMailer
     sender = User.find_by(name: sender_name)
     sender_email = sender.email
     mail(
-      subject: "#{@mic.band}マイク練申請(#{@mic.date} [#{@mic.period.name}])",
+      subject: "#{@mic.band.name}マイク練申請(#{@mic.date} [#{@mic.period.name}])",
       to: sender_email) do |format|
       format.html
     end
