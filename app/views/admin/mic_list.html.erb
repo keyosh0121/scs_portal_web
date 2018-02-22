@@ -11,7 +11,7 @@
             <% if Mic.where(date: date).any? %>
             <% Mic.where(date: date).each do |mic|%>
             <tr>
-              <td class="miclist-time"><%= mic.time %></td>
+              <td class="miclist-time"><%= Period.find(mic.period_id).name %>限</td>
               <td class="miclist-band"> <%= mic.band %></td>
               <td class="miclist-status"><%= mic.status_string %></td>
                 <% if MicRoom.where(date: date).where(time: mic.time).any? %>

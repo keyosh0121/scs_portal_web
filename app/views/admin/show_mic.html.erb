@@ -10,54 +10,24 @@
       ・準備時間や分割などの場合「条件付き承認」を選択してください。<br>
       ・送信ボタンは確認してから押してください。
     </div>
-    <div class="to-mic-room"><%= link_to('今日の部屋を登録','/database/mic/room-register') %></div>
-	<% if @mics.any? %>
-      <div class="mic-date"><%= @mics[0].date.strftime("%m月%d日") %></div>
-      <div class="mic-time"><%= @mics[0].time %></div>
-        <% i=0 %>
-        <% dummy_date=@mics[i].date %>
-        <% dummy_time=@mics[i].time %>
-        <% j = @mics.count - 1 %>
-        <% until i > j do %>
-         <% if @mics[i].date == dummy_date %>
-           <% if @mics[i].time == dummy_time %>
-					 <%=form_tag('/database/mic-practice/approve/' + @mics[i].id.to_s ) do%>
-					 <div class="mic-content">
-              <div class="mic-band"><%= @mics[i].band %><span><%= "  (PA: " + @mics[i].pa.to_s + " / " + @mics[i].paattendance + ")" %></span>
-                <% if @mics[i].status == "1" %>
-                  <div class="status-display">承認</div>
-                <% elsif @mics[i].status == "0" %>
-                  <div class="status-display" style="background-color:#FFFF99;">未承認</div>
-                <% elsif @mics[i].status == "3" %>
-                  <div class="status-display" style="background-color:#770000;">拒否</div>
-                <% elsif @mics[i].status == "2" %>
-                <div class="status-display" style="background-color:#BBBB44;color:black;">条件付き承認</div>
-                <% end %>
-                </div>
-              <input type="text" name="text" placeholder="伝達事項などを入力してください">
-              <select name="status">
-                <option disabled selected>変更を選択</option>
-                <option value="1">承認する</option>
-                <option value="2">条件付きで承認</option>
-                <option value="3">拒否する</option>
-              </select>
-              <input type="submit" name="" value="変更">
-            </div>
-					<% end %>
-              <% i += 1 %>
-           <% else %>
-              <% dummy_time=@mics[i].time %>
-              <div class="mic-time"><%= @mics[i].time %></div>
-           <% end %>
-
-          <% else %>
-          <% dummy_date=@mics[i].date %>
-          <% dummy_time=@mics[i].time %>
-          <div class="mic-date"><%= @mics[i].date.strftime("%m月%d日") %></div>
-          <div class="mic-time"><%= @mics[i].time %></div>
-          <% end %>
-
-        <% end %>
-		<% end %>
   </div>
+  <% mics = Mic.select {|m| m.date >= Date.today}%>
+    <% mics.map(&:date).uniq.each do |date|%>
+      <div class="date"> <%= date.strftime("%m月%d日" + "(#{%w(日 月 火 水 木 金 土)[date.wday]})") %></div>
+      <% mics.select {|m| m.date == date}.each do |mic|%>
+        <div class="mic-admin-band">
+          <div class="left">
+            <div class="period"><%= "#{Period.find(mic.period_id).name}限" %></div>
+            <div class="band-pa"><p><%= Band.find(mic.band_id).name %></p> (PA:<% Band.find(mic.band_id).pa %>)</div>
+            <div class="created-at">申請日時: <%= mic.created_at.strftime("%m月%d日 %H:%M")%></div>
+          </div>
+          <div class="right">
+            <%= link_to('承認',"/database/mic-practice/approve/#{mic.id}",{method: 'POST',class: "approve-btn",data:{confirm: "本当に承認しますか？"}}) if mic.status.to_i == 0%>
+            <% if mic.status.to_i == 1 %>
+              <a class="approve-btn approved">承認済</a>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
 </div>
