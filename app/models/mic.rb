@@ -16,6 +16,7 @@ class MicDateValidator < ActiveModel::Validator
 end
 
 class Mic < ApplicationRecord
+  belongs_to :band
   belongs_to :period
   validates_with MicDateValidator, on: :create
   def full? #マイク練が3件申請されている場合に跳ね返すインスタンスメソッド

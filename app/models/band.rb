@@ -1,4 +1,5 @@
 class Band < ApplicationRecord
+  has_many :bands
   has_many :room_usages
   validates :name, presence: {message: 'バンド名を入力してください'}
   validates :master, presence: {message: 'バンマスは必須項目です'}
