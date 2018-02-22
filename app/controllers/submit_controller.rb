@@ -2,6 +2,7 @@ class SubmitController < ApplicationController
   protect_from_forgery :except => [:get_content]
   def mic
     self.user_authentificate
+    @periods = Period.all
     @mic = Mic.new()
     if @current_user
       @mics = @current_user.mics
@@ -35,7 +36,7 @@ class SubmitController < ApplicationController
       band_id: Band.find(params[:band_id]).id,
       sender: @current_user.name,
       date: params[:date],
-      period_id: params[:time].to_i,
+      period_id: params[:period_id],
       paattendance: attendance,
       pa: pa,
       status: 0
@@ -48,7 +49,7 @@ class SubmitController < ApplicationController
       MicMailer.send_mic_to_admin(@mic).deliver
     else
       flash[:notice] = "保存に失敗しました。入力内容を確認してください。"
-      render("/submit/mic")
+      redirect_to("/submit/mic")
     end
   end
 
