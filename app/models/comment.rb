@@ -7,6 +7,7 @@ class CommentValidater < ActiveModel::Validator
 end
 
 class Comment < ApplicationRecord
+  belongs_to :user
   validates_with CommentValidater
   validates :event_id,
     presence: {message: 'イベントが選択されていません'}
