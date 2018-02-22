@@ -110,7 +110,7 @@ class SubmitController < ApplicationController
     @comment = Comment.new(
       user_id: @current_user.id,
       event_id: content.event_id,
-      content_id: content.id,
+      event_content_id: content.id,
       comment: params[:comment]
     )
     if @comment.save
@@ -139,7 +139,7 @@ class SubmitController < ApplicationController
       reply_to: params[:id],
       user_id: @current_user.id,
       event_id: @comment.event_id,
-      content_id: @comment.content_id,
+      event_content_id: @comment.event_content_id,
       comment: params[:text]
       )
     if @reply.save
@@ -163,9 +163,9 @@ class SubmitController < ApplicationController
 
   def comment_performance_send
     @comment = Comment.new(
-      sender: @current_user.name,
-      atevent: Event.find_by(name: params[:atevent]).id,
-      atcontent: EventContent.find_by(name:params[:atcontent], event:params[:atevent]),
+      user_id: @current_user.id,
+      event_id: Event.find_by(name: params[:atevent]).id,
+      event_content_id: EventContent.find_by(name:params[:atcontent], event:params[:atevent]).id,
       comment: params[:comment]
     )
     if @comment.save
@@ -183,7 +183,7 @@ class SubmitController < ApplicationController
   end
   def all_comment_conf
     @conference = Event.find(params[:conf_id])
-    @comments = Comment.where(event_id: @conference.id)
+    @comments = @conference.comments
   end
 
   def regular_band
