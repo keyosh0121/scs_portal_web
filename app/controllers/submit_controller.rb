@@ -190,6 +190,7 @@ class SubmitController < ApplicationController
     self.user_authentificate
     @band = Band.new()
     @names = User.all.map(&:name)
+    gon.names = @names
   end
 
   def regular_band_submit

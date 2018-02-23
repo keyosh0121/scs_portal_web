@@ -281,6 +281,14 @@
   color: white;
   border-radius: 4px;
 }
+.reg-member-registration{
+  height: 5px;
+  width: 100%;
+  font-size: 8px;
+  margin-bottom: 0;
+  margin-top: 4px;
+}
+.reg-member-input{margin-top: 0;}
 @media(max-width:600px){
   .reg-band-form-title{
     font-size: 6px;

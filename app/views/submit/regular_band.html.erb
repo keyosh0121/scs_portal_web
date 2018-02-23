@@ -17,7 +17,8 @@
        <input type="text" name="pa" placeholder="氏名を入力して下さい">
        <% 8.times do |i|%>
         <div class="reg-form-content-small">バンドメンバー<%= i + 1%><span class="reg-caution"><%= "※必須" if i <= 2 %></span></div>
-        <input type="text" name="member<%= i + 1%>" placeholder="氏名を入力して下さい" list="nameList">
+        <div class="reg-member-registration-<%= i + 1%> reg-member-registration"></div>
+        <input class="reg-member-input <%= i + 1%>" type="text" name="member<%= i + 1%>" placeholder="氏名を入力して下さい" list="nameList">
         <datalist id="nameList">
           <% @names.each do |name|%>
             <option value="<%= name %>"><%= name %></option>
