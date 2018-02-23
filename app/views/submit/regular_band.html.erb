@@ -15,22 +15,16 @@
        <div class="reg-form-content">PA・メンバー</div>
        <div class="reg-form-content-small">PA<span class="caution"> ※必須</span></div>
        <input type="text" name="pa" placeholder="氏名を入力して下さい">
-       <div class="reg-form-content-small">バンドメンバー①<span class="reg-caution"> ※必須</span></div>
-       <input type="text" name="member1" placeholder="氏名を入力して下さい">
-       <div class="reg-form-content-small">バンドメンバー②<span class="reg-caution"> ※必須</span></div>
-       <input type="text" name="member2" placeholder="氏名を入力して下さい">
-       <div class="reg-form-content-small">バンドメンバー③</div>
-       <input type="text" name="member3" placeholder="氏名を入力して下さい">
-       <div class="reg-form-content-small">バンドメンバー④</div>
-       <input type="text" name="member4" placeholder="氏名を入力して下さい">
-       <div class="reg-form-content-small">バンドメンバー⑤</div>
-       <input type="text" name="member5" placeholder="氏名を入力して下さい">
-       <div class="reg-form-content-small">バンドメンバー⑥</div>
-       <input type="text" name="member6" placeholder="氏名を入力して下さい">
-       <div class="reg-form-content-small">バンドメンバー⑦</div>
-       <input type="text" name="member7" placeholder="氏名を入力して下さい">
-       <div class="reg-form-content-small">バンドメンバー⑧</div>
-       <input type="text" name="member8" placeholder="氏名を入力して下さい">
+       <% 8.times do |i|%>
+        <div class="reg-form-content-small">バンドメンバー<%= i + 1%><span class="reg-caution"><%= "※必須" if i <= 2 %></span></div>
+        <input type="text" name="member<%= i + 1%>" placeholder="氏名を入力して下さい" list="nameList">
+        <datalist id="nameList">
+          <% @names.each do |name|%>
+            <option value="<%= name %>"><%= name %></option>
+            option
+          <% end %>
+        </datalist>
+       <% end %>
        <div class="reg-form-content-small">バンマス氏名<span class="reg-caution"> ※必須</span></div>
        <input type="text" name="master" placeholder="氏名を入力して下さい">
        <div class="reg-form-content">バンド情報</div>
