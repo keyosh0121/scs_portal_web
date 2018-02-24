@@ -271,8 +271,8 @@
     height: 40px;
     margin: 15px auto;
     padding: 10px 15px;
-		.approve-btn{color:#282;border:#282;}
-		.delete-btn{color:#822;border:#822;}
+		.approve-btn{color:#282;border:1px solid #282;}
+		.delete-btn{color:#822;border:1px solid #822;}
     &.approved{
       color: #fff;
       background-color: #282;
