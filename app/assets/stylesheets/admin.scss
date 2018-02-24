@@ -245,7 +245,7 @@
 }
 .mic-admin-band{
   display: grid;
-  grid-template-columns: 75% 25%;
+  grid-template-columns: 50% 25% 25%;
   margin: 4px 8px;
   border: dotted #ccc 1px;
   .period{
@@ -264,14 +264,15 @@
   .created-at{
     font-size: 12px;
   }
-  .approve-btn{
+  .approve-btn, .delete-btn{
     font-size: 12px;
     border: 1px gray solid;
-    color: #282;
     width: 60px;
     height: 40px;
     margin: 15px auto;
     padding: 10px 15px;
+		.approve-btn{color:#282;border:#282;}
+		.delete-btn{color:#822;border:#822;}
     &.approved{
       color: #fff;
       background-color: #282;
