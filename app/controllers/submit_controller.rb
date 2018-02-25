@@ -219,7 +219,7 @@ class SubmitController < ApplicationController
 
     else
       flash[:notice] = "保存に失敗しました。入力内容を確認してください。"
-      render("submit/regular_band")
+      redirect_to :action => "regular_band"
     end
   end
 
