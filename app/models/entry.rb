@@ -46,5 +46,7 @@ class Entry < ApplicationRecord
   #1.....正規バンドのみエントリー可
   #2.....企画バンドのみエントリー可
   #3.....正規・企画エントリー可
+  belongs_to :event
+  belongs_to :user
   validates_with EntryValidator
 end
