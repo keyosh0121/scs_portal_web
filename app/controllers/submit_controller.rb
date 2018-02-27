@@ -231,23 +231,27 @@ class SubmitController < ApplicationController
 
   def temporal_band_submit
     @events = Event.all
-    @temporal_band = Band.new(
-      name: params[:name],
-      type: 1,
-      event_id: Event.find_by(name: params[:event]).id
-      )
-    if @temporal_band.save
-      flash[:notice] = "企画バンドの申請が完了しました。"
-      member_names = [params[:member1],params[:member2],params[:member3],params[:member4],params[:member5],params[:member6],params[:member7],params[:member8]]
-      8.times do |i|
-        #TODO:例外処理
-        BandMember.new(band_id: @temporal_band.id, name: member_names[i],part: i).save if member_names[i]
-      end
+    if params[:event]
+      @temporal_band = Band.new(
+        name: params[:name],
+        type: 1,
+        event_id: Event.find_by(name: params[:event]).id
+        )
+      if @temporal_band.save
+        flash[:notice] = "企画バンドの申請が完了しました。"
+        member_names = [params[:member1],params[:member2],params[:member3],params[:member4],params[:member5],params[:member6],params[:member7],params[:member8]]
+        8.times do |i|
+         #TODO:例外処理
+         BandMember.new(band_id: @temporal_band.id, name: member_names[i],part: i).save if member_names[i]
+        end
       redirect_to("/user/#{@current_user.id}/show")
-    else
-      puts @temporal_band.errors.full_messages
-      flash[:notice] = "登録に失敗しました。入力内容を確認してください"
-      render("submit/temporal_band")
+      else
+        puts @temporal_band.errors.full_messages
+        flash[:notice] = "登録に失敗しました。入力内容を確認してください"
+        render("submit/temporal_band")
+      end
+    else flash[:notice] = "申請に失敗しました。イベントを選択してください。"
+         redirect_to :action => "temporal_band"
     end
   end
 
