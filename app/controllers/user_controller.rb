@@ -77,7 +77,6 @@ class UserController < ApplicationController
     cookies.delete(:remember_token)
     session[:user_id] = nil
     flash[:notice] = "ログアウトしました。"
-
     redirect_to("/")
   end
 

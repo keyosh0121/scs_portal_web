@@ -67,6 +67,7 @@ Rails.application.routes.draw do
   get '/database/mic-practice/list' => "admin#mic_list"
   get "/database/mic-practice" => "admin#show_mic"
 	post "/database/mic-practice/approve/:id" => "admin#mic_approve"
+  post "/database/mic-practice/delete/:id" => "admin#mic_delete"
   get "/database/mic-practice-approvedlist" => "admin#mic_approvedlist"
    #音響掲示板
 	get "/database/mic/room-register" => "admin#mic_room_register"

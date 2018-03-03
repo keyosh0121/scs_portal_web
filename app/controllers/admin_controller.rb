@@ -105,6 +105,17 @@ class AdminController < ApplicationController
 		end
 	end
 
+  def mic_delete
+    @mic = Mic.find(params[:id])
+    if @mic.delete
+      flash[:notice] = "マイク練を削除しました"
+      redirect_to('/database/mic-practice')
+    else
+      flash[:notice] = "削除に失敗しました。再度試してください。"
+      render('show_mic')
+    end
+  end
+
   #音響掲示板
   def mic_approvedlist
     @mics = Mic.where(status:'1').order('date DESC,time').page(params[:page]).per(10)
