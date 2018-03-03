@@ -234,7 +234,7 @@ class SubmitController < ApplicationController
     if params[:event]
       @temporal_band = Band.new(
         name: params[:name],
-        type: 1,
+        band_type: 1,
         event_id: Event.find_by(name: params[:event]).id
         )
       if @temporal_band.save
