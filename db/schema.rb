@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180222163726) do
+ActiveRecord::Schema.define(version: 20180303025451) do
 
   create_table "band_members", force: :cascade do |t|
     t.integer "band_id"
@@ -199,7 +199,6 @@ ActiveRecord::Schema.define(version: 20180222163726) do
     t.string "tel"
     t.string "univ"
     t.integer "year"
-    t.string "password"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "authority"
