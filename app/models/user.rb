@@ -1,10 +1,9 @@
 
 class User < ApplicationRecord
-
-  has_many :comments
-  has_many :room_usages
-  has_many :mics
-  has_many :entries
+  has_many :comments, dependent: :destroy
+  has_many :room_usages, dependent: :destroy
+  has_many :mics, dependent: :destroy
+  has_many :entries, dependent: :destroy
   attr_accessor :remember_token
 	validates :email, presence: true,uniqueness: true
   validates :tel, presence: true

@@ -1,4 +1,4 @@
 class EventContent < ApplicationRecord
   belongs_to :event
-  has_many :comments
+  has_many :comments, dependent: :destroy
 end

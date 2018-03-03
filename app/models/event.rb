@@ -13,8 +13,8 @@ class EventValidator < ActiveModel::Validator
 end
 
 class Event < ApplicationRecord
-  has_many :event_contents
-  has_many :comments
-  has_many :entries
+  has_many :event_contents, dependent: :destroy
+  has_many :comments, dependent: :destroy
+  has_many :entries, dependent: :destroy
   validates_with EventValidator
 end

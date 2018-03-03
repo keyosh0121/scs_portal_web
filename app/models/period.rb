@@ -1,6 +1,6 @@
 class Period < ApplicationRecord
-  has_many :mics
-  has_many :room_usages
+  has_many :mics, dependent: :destroy
+  has_many :room_usages, dependent: :destroy
   def self.create_periods
     Period.create(name: "0限", start: "8:00", end: "9:00")
     Period.create(name: "1限", start: "9:00", end: "10:30")
