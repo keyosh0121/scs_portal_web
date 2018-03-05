@@ -12,7 +12,6 @@ class RoomUsageValidator < ActiveModel::Validator
     if record.period == nil
       record.errors[:base] << "時限を選択してください"
     end
-
   end
 end
 
@@ -26,4 +25,7 @@ class RoomUsage < ApplicationRecord
     one_year_ago = Date.today - 365
     self.where("date < one_year_ago").delete_all
   end
+	def user
+		User.find(self.user_id)
+	end
 end
