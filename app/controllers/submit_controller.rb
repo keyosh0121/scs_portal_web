@@ -268,11 +268,11 @@ class SubmitController < ApplicationController
     dummy_band_id=nil
     dummy_band_id=Band.find_by(name:params[:band]).id  if Band.find_by(name:params[:band])
     @usage = RoomUsage.new(
-        room_id: params[:room],
+        room_id: params[:room].to_i,
         band_id: dummy_band_id,
         user_id: @current_user.id,
         date: params[:date],
-        period_id: params[:period_id]
+        period_id: params[:period_id].to_i
         )
     if @usage.save
       flash[:notice] = "申請しました。"
