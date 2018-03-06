@@ -77,6 +77,13 @@ ActiveRecord::Schema.define(version: 20180303025451) do
     t.string "times"
   end
 
+  create_table "entry_events", force: :cascade do |t|
+    t.integer "event_id"
+    t.integer "type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "event_contents", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -113,13 +120,12 @@ ActiveRecord::Schema.define(version: 20180303025451) do
     t.string "sender"
     t.date "date"
     t.string "time"
-    t.string "approval"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "status"
     t.integer "band_id"
-    t.integer "user_id"
     t.integer "period_id"
+    t.integer "user_id"
   end
 
   create_table "notifications", force: :cascade do |t|
@@ -128,6 +134,7 @@ ActiveRecord::Schema.define(version: 20180303025451) do
     t.date "date"
     t.time "time"
     t.string "content"
+    t.time "datetime"
   end
 
   create_table "performances", force: :cascade do |t|
@@ -145,16 +152,6 @@ ActiveRecord::Schema.define(version: 20180303025451) do
     t.string "name"
     t.string "start"
     t.string "end"
-  end
-
-  create_table "replies", force: :cascade do |t|
-    t.integer "from_comment_id", null: false
-    t.integer "to_comment_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["from_comment_id", "to_comment_id"], name: "index_replies_on_from_comment_id_and_to_comment_id", unique: true
-    t.index ["from_comment_id"], name: "index_replies_on_from_comment_id"
-    t.index ["to_comment_id"], name: "index_replies_on_to_comment_id"
   end
 
   create_table "reply_to_comments", force: :cascade do |t|
@@ -194,6 +191,7 @@ ActiveRecord::Schema.define(version: 20180303025451) do
   end
 
   create_table "users", force: :cascade do |t|
+    t.string "username"
     t.string "name"
     t.string "email"
     t.string "tel"

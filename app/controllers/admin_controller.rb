@@ -357,7 +357,6 @@ class AdminController < ApplicationController
 
   def practice_room
     @dates = RoomUsage.all.pluck('date').uniq.reverse
-
   end
 end
 
