@@ -268,7 +268,7 @@ class SubmitController < ApplicationController
     dummy_band_id=nil
     dummy_band_id=Band.find_by(name:params[:band]).id  if Band.find_by(name:params[:band])
     @usage = RoomUsage.new(
-        room: params[:room],
+        room_id: params[:room],
         band_id: dummy_band_id,
         user_id: @current_user.id,
         date: params[:date],

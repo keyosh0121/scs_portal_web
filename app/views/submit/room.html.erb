@@ -36,10 +36,9 @@
     </div>
   <div class="room-content-title">利用部屋</div>
   <div class="room-content-wrap">
-    <input type="radio" class="room-radio" id="E1016" name="room" value="E1016"><label for="E1016">E1016</label>
-    <input type="radio" class="room-radio" id="E1116" name="room" value="E1116"><label for="E1116" >E1116</label>
-    <input type="radio" class="room-radio" id="会議スペース" name="room" value="会議スペース"><label for="会議スペース">会議スペース</label>
-    <input type="radio" class="room-radio" id="個人ブース" name="room" value="個人ブース"><label for="個人ブース">個人ブース</label>
+    <% Room.all.each do |room|%>
+    <input type="radio" class="room-radio" id="<%= room.name %>" name="room" value="<%= room.id %>"><label for="<%= room.name %>"><%= room.name %></label>
+    <% end %>
   </div>
   <div class="room-content-title">利用日</div>
   <div class="room-content-wrap">
@@ -51,14 +50,6 @@
   </div>
   <div class="room-content-title">利用時間</div>
   <div class="room-content-wrap">
-  <!-- <input type="checkbox" class="room-radio" id="1-gen" name="time[]" value="1"><label for="1-gen">1限</label>
-  <input type="checkbox" class="room-radio" id="2-gen" name="time[]" value="2"><label for="2-gen">2限</label>
-  <input type="checkbox" class="room-radio" id="3-gen" name="time[]" value="3"><label for="3-gen">3限</label>
-  <input type="checkbox" class="room-radio" id="hiru-gen" name="time[]" value="昼"><label for="hiru-gen">昼限</label>
-  <input type="checkbox" class="room-radio" id="4-gen" name="time[]" value="4"><label for="4-gen">4限</label>
-  <input type="checkbox" class="room-radio" id="5-gen" name="time[]" value="5"><label for="5-gen">5限</label>
-  <input type="checkbox" class="room-radio" id="6-gen" name="time[]" value="6"><label for="6-gen">6限</label>
-  <input type="checkbox" class="room-radio" id="7-gen" name="time[]" value="7"><label for="7-gen">7限</label> -->
   <% @periods.each do |period| %>
     <input type="checkbox" class="room-radio" id="<%= period.name %>" name="period_id" value="<%= period.id %>"><label for="<%= period.name %>"><%= period.name %></label>
   <% end %>
