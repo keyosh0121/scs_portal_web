@@ -21,7 +21,7 @@
       <div class="rcurrent-title">   <%= Date.today.strftime("%m月%d日")%>の利用状況</div>
       <% if @usages.count != 0 %>
         <% RoomUsage.where(date: Date.today).each do |usage| %>
-          <%= usage.room %>
+          <%= usage.room.name %>
           <%= usage.band.name %>
           <%= usage.period.name %>
           <% if @current_user.band_names.include?(usage.band) || usage.band == @current_user.name %>
