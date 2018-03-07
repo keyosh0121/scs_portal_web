@@ -6,16 +6,16 @@
       <div class="signup-form">
         <div class="signup-content">個人情報登録</div>
         <div class="signup-content-small">氏名 <span>※必須</span></div>
-        <input type="text" name="name" placeholder="氏名を入力">
+        <input type="text" name="name" placeholder="氏名を入力" value=<%=@user.name%>>
         <div class="signup-content-small">Emailアドレス <span>※必須</span></div>
-        <input type="email" name="email" placeholder="普段使用するメールアドレスを入力してください">
+        <input type="email" name="email" placeholder="普段使用するメールアドレスを入力してください" value=<%=@user.email%>>
         <div class="signup-content-small">電話番号(ハイフンなし) <span>※必須</span></div>
-        <input type="text" name="tel" placeholder="電話番号をハイフンなしで入力してください">
+        <input type="text" name="tel" placeholder="電話番号をハイフンなしで入力してください" value=<%=@user.tel%>>
         <div class="signup-content">その他の情報</div>
         <div class="signup-content-small">SCSに入会した年度 <span>※必須</span></div>
-        <input type="text" name="year" placeholder="半角数字 例)2016">
+        <input type="text" name="year" placeholder="半角数字 例)2016" value=<%=@user.year%>>
         <div class="signup-content-small">大学名 <span>※必須</span></div>
-        <input type="text" name="univ" placeholder="例)早稲田大学">
+        <input type="text" name="univ" placeholder="例)早稲田大学" value=<%=@user.univ%>>
         <div class="signup-content">パスワード登録 </div>
         <div class="signup-content-small">パスワード(6文字以上) <span>※必須</span></div>
         <input type="password" name="password" placeholder="パスワードを登録">
