@@ -187,9 +187,10 @@ class SubmitController < ApplicationController
   end
 
   def regular_band
-    self.user_authentificate
+    self.user_authentificate 
     @band = Band.new()
     @names = User.all.map(&:name)
+    @mem = []
     gon.names = @names
   end
 
@@ -203,13 +204,15 @@ class SubmitController < ApplicationController
       year: Date.today.year,
       image: "default-band.jpg"
     )
+    member_names = [params[:member1],params[:member2],params[:member3],params[:member4],params[:member5],params[:member6],params[:member7],params[:member8]]
+    @mem = member_names
     if params[:image]
       image = params[:image]
       @band.image = "#{@band.name}.jpg"
       File.binwrite("public/band-images/#{@band.image}", image.read)
     end
     if @band.save
-      member_names = [params[:member1],params[:member2],params[:member3],params[:member4],params[:member5],params[:member6],params[:member7],params[:member8]]
+      #member_names = [params[:member1],params[:member2],params[:member3],params[:member4],params[:member5],params[:member6],params[:member7],params[:member8]]
       8.times do |i|
         #TODO:例外処理
         BandMember.new(user_id: User.find_by(name: member_names[i]).id,band_id: @band.id,part: i).save if User.find_by(name: member_names[i])
@@ -218,8 +221,10 @@ class SubmitController < ApplicationController
       flash[:notice] = "正規バンドの申請を受け付けました"
 
     else
+      @names = User.all.map(&:name)
       flash[:notice] = "保存に失敗しました。入力内容を確認してください。"
-      redirect_to :action => "regular_band"
+      #redirect_to :action => "regular_band"
+      render("submit/regular_band")
     end
   end
 
