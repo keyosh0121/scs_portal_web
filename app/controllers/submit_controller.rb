@@ -43,7 +43,7 @@ class SubmitController < ApplicationController
       )
     params[:paattendance]
     if @mic.save
-      redirect_to("/submit/mic_list")
+      redirect_to("/submit/mic-list")
       flash[:notice] = "マイク練申請が完了しました。"
       MicMailer.send_mic_to_user(@mic).deliver
       MicMailer.send_mic_to_admin(@mic).deliver
