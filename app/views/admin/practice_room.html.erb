@@ -17,7 +17,7 @@
 			<% if usage %>
       <tr>
         <td><%= usage.user.name if usage.user%></td>
-        <td><%= usage.room %></td>
+        <td><%= usage.room.name if usage.room %></td>
         <td><%= usage.band.name if usage.band%></td>
         <td><%= usage.period.name if usage.period %></td>
       </tr>
