@@ -13,7 +13,7 @@
       <tr>
         <td colspan="4" style="background-color:#dedede;padding:4px;"><%= date.strftime("%m月%d日") %></td>
       </tr>
-      <% RoomUsage.where(date: date).each do |usage|%>
+      <% RoomUsage.where(date: date).order('period_id').each do |usage|%>
 			<% if usage %>
       <tr>
         <td><%= usage.user.name if usage.user%></td>
