@@ -15,6 +15,9 @@ class AdminController < ApplicationController
     self.user_authentificate
     @bands = Band.where(registration: false)
   end
+  def band_detail
+    @band = Band.find(params[:id])
+  end
 
   def show_registered_bands
     @bands = Band.where(registration: true)
@@ -25,7 +28,7 @@ class AdminController < ApplicationController
     @band.registration = true
     if @band.save
       flash[:notice] = "#{@band.name}を正規バンドとして登録しました。"
-      redirect_to("/database/bands")
+      redirect_to("/database/bands/detail/#{@band.id}")
       notification = Notification.new(date: Date.today, time: Time.now, content: "正規バンドに「#{@band.name}」が追加されました。")
       notification.save
     else

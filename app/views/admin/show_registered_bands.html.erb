@@ -7,15 +7,7 @@
     </div>
     <div class="band-show-container">
     <% @bands.each do |band|%>
-      <div class="band-show-content">
-        <div class="band-name"><%= band.name%></div>
-        <div class="band-edit">編集
-        </div>
-        <div class="band-members"><%= band.members.join(" ") %>
-        </div>
-        <%= image_tag("/band-images/#{band.image}",:class => "band-img") %>
-        <div class="band-description"><%= band.description %></div>
-      </div>
+      <%= link_to(band.name,"/database/bands/detail/#{band.id}",{class: "link"})%>
     <% end %>
     </div>
   </div>

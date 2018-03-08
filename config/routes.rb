@@ -49,6 +49,7 @@ Rails.application.routes.draw do
   post 'submit/contact/send' => 'submit#contact_send'
 
   get "/database/bands" => "admin#show_bands"
+  get "/database/bands/detail/:id" => "admin#band_detail"
   post "/database/bands/register/:id" => "admin#register_band"
   get "/database/registered-bands" => "admin#show_registered_bands"
   get "database/temporal-bands" => "admin#show_temporal_bands"
