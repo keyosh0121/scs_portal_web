@@ -20,7 +20,7 @@
         <% end %>
         <h1>マイク練申請フォーム</h1>
         <div class="mic-sub-form-content">申請する日時を選択</div>
-        <input type="date" name="date" id="mic-date-input" value="<%= Date.today + 7 %>">
+        <input type="date" name="date" id="mic-date-input" value="<%=@mic.date ? @mic.date : Date.today + 7%>">
         <div class="mic-sub-form-content">時限を選択</div>
         <div class="mic-time-picker">
 
@@ -34,8 +34,8 @@
           <input type="radio" class="mic-time-input" id="mic6" name="period" value="6限"><label for="mic6" class="mic-time-pick">6限(18:15-19:45)</label>
           <input type="radio" class="mic-time-input" id="mic7" name="period" value="7限"><label for="mic7" class="mic-time-pick">7限(19:55-21:25)</label> -->
           <% @periods.each do |period| %>
-            <input type="radio" class="mic-time-input" id="mic<%= period.name %>" name="period_id" value="<%= period.id %>"><label for="mic<%= period.name %>" class="mic-time-pick"><%= period.name %>(<%= period.start %>-<%= period.end %>)</label>
-
+            <input type="radio" class="mic-time-input" id="mic<%= period.name %>" name="period_id" value="<%= period.id %>"><label for="mic<%= period.name %>" class="mic-time-pick">
+              <%= period.name %>(<%= period.start %>-<%= period.end %>)</label>
           <% end %>
         </div>
         <div class="mic-sub-form-content">バンドを選択</div>

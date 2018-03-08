@@ -43,13 +43,14 @@ class SubmitController < ApplicationController
       )
     params[:paattendance]
     if @mic.save
-      redirect_to("/submit/mic_list")
+      redirect_to("/submit/mic-list")
       flash[:notice] = "マイク練申請が完了しました。"
       MicMailer.send_mic_to_user(@mic).deliver
       MicMailer.send_mic_to_admin(@mic).deliver
     else
       flash[:notice] = "保存に失敗しました。入力内容を確認してください。"
-      redirect_to("/submit/mic")
+      @periods = Period.all
+      render("submit/mic")
     end
   end
 
@@ -187,9 +188,10 @@ class SubmitController < ApplicationController
   end
 
   def regular_band
-    self.user_authentificate
+    self.user_authentificate 
     @band = Band.new()
     @names = User.all.map(&:name)
+    @mem = []
     gon.names = @names
   end
 
@@ -203,13 +205,15 @@ class SubmitController < ApplicationController
       year: Date.today.year,
       image: "default-band.jpg"
     )
+    member_names = [params[:member1],params[:member2],params[:member3],params[:member4],params[:member5],params[:member6],params[:member7],params[:member8]]
+    @mem = member_names
     if params[:image]
       image = params[:image]
       @band.image = "#{@band.name}.jpg"
       File.binwrite("public/band-images/#{@band.image}", image.read)
     end
     if @band.save
-      member_names = [params[:member1],params[:member2],params[:member3],params[:member4],params[:member5],params[:member6],params[:member7],params[:member8]]
+      #member_names = [params[:member1],params[:member2],params[:member3],params[:member4],params[:member5],params[:member6],params[:member7],params[:member8]]
       8.times do |i|
         #TODO:例外処理
         BandMember.new(user_id: User.find_by(name: member_names[i]).id,band_id: @band.id,part: i).save if User.find_by(name: member_names[i])
@@ -218,8 +222,10 @@ class SubmitController < ApplicationController
       flash[:notice] = "正規バンドの申請を受け付けました"
 
     else
+      @names = User.all.map(&:name)
       flash[:notice] = "保存に失敗しました。入力内容を確認してください。"
-      redirect_to :action => "regular_band"
+      #redirect_to :action => "regular_band"
+      render("submit/regular_band")
     end
   end
 
@@ -227,6 +233,7 @@ class SubmitController < ApplicationController
     self.user_authentificate
     @temporal_band = TemporalBand.new()
     @events = Event.where(entry_required: true)
+    @mem = []
   end
 
   def temporal_band_submit
@@ -254,7 +261,38 @@ class SubmitController < ApplicationController
          redirect_to :action => "temporal_band"
     end
   end
+=begin   申請ミス時入力保持用。実装途中
+  def temporal_band_submit
+    @events = Event.all
+    @temporal_band = Band.new(
+        name: params[:name],
+        band_type: 1,
+        event_id: Event.find_by(name: params[:event]).id
+        )
+    member_names = [params[:member1],params[:member2],params[:member3],params[:member4],params[:member5],params[:member6],params[:member7],params[:member8]]
+    @mem = member_names
 
+      if !params[:event]
+        puts @temporal_band.errors.full_messages
+        flash[:notice] = "申請に失敗しました。イベントを選択してください。"
+        @events = Event.where(entry_required: true)
+        #render("submit/temporal_band")
+        redirect_to :action => "temporal_band"
+      end
+      if @temporal_band.save
+        flash[:notice] = "企画バンドの申請が完了しました。"
+        8.times do |i|
+         #TODO:例外処理
+         BandMember.new(band_id: @temporal_band.id, name: member_names[i],part: i).save if member_names[i]
+        end
+        redirect_to("/user/#{@current_user.id}/show")
+      else
+        flash[:notice] = "登録に失敗しました。入力内容を確認してください"
+        #render("submit/temporal_band")
+        redirect_to :action => "temporal_band"
+      end
+  end
+=end
   def room
     @usages = RoomUsage.all
     @usage = RoomUsage.new()

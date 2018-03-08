@@ -21,9 +21,10 @@
       <div class="rcurrent-title">   <%= Date.today.strftime("%m月%d日")%>の利用状況</div>
       <% if @usages.count != 0 %>
         <% RoomUsage.where(date: Date.today).each do |usage| %>
-          <%= usage.room.name %>
-          <%= usage.band.name %>
-          <%= usage.period.name %>
+        
+          <%= usage.room.name if usage.room%>
+          <%= usage.band.name if usage.band%>
+          <%= usage.period.name if usage.period%>
           <% if @current_user.band_names.include?(usage.band) || usage.band == @current_user.name %>
             <%= link_to('消去','/submit/room/destroy/' + usage.id.to_s , {:method => 'post', data: {confirm: "本当に取り消しますか？"}})%>
           <% end %>
