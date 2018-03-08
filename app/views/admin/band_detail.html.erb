@@ -1,5 +1,6 @@
 <div class="band-d-wrap">
   <div class="title">バンド詳細ページ</div>
+  <%if @band%>
   <div class="name"><%= @band.name %></div>
   <img src="/band-images/<%= @band.image%>" alt="">
   <div class="subtitle">バンド紹介文</div>
@@ -15,5 +16,6 @@
     <%= link_to("承認","/database/bands/register/#{@band.id}",{:class => "btn approve",:method => 'POST',:data => {:confirm => "バンドを正規バンドとして登録します。"}}) unless @band.registration %>
     <%= link_to("承認済",'',{:class => "btn approved"}) if @band.registration %>
   </div>
+  <%end%>
 </div>
 
