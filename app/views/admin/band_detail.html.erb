@@ -8,7 +8,7 @@
   <div class="subtitle">結成年</div>
   <div class="description"><%= @band.year %></div>
   <div class="subtitle">メンバー</div>
-  <div class="description"><%BandMember.where(band_id: @band.id).each do |m|%><%= m.user.name%><br><%end%></div>
+  <div class="description"><%BandMember.where(band_id: @band.id).each do |m|%><%= m.user.name if m.user%><br><%end%></div>
   <div class="subtitle">バンマス,PA</div>
   <div class="description">バンマス:<%= @band.master %><br>PA:<%= @band.pa %></div>
   <div class="btn-wrap">
