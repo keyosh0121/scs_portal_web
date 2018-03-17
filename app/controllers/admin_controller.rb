@@ -18,7 +18,16 @@ class AdminController < ApplicationController
   def band_detail
     @band = Band.find(params[:id])
   end
-
+  def band_destroy
+    @band = Band.find(params[:id])
+    if @band.destroy
+      flash[:notice] = "#{@band.name}をデータベースから削除しました"
+      redirect_to('/database/registered-bands')
+    else
+      flash[:notice] = "削除に失敗しました。再度試してください"
+      redirect_to("/database/bands/detail/#{@band.id}")
+    end
+  end
   def show_registered_bands
     @bands = Band.where(registration: true)
   end

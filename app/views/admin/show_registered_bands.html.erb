@@ -3,8 +3,13 @@
   <div class="band-show-inner">
     <div class="band-show-title">正規バンド一覧</div>
     <div class="band-show-description">
-      正規登録されたバンドです。正規申請の取り消し・情報の変更などはここから行ってください。
+      正規バンド申請の取り消し・情報の変更などはここから行ってください。
     </div>
+    <div class="submenu">申請中のバンド</div>
+    <% Band.where(registration:false).each do |band|%>
+      <%= link_to(band.name,"/database/bands/detail/#{band.id}",{class: "link"})%>
+    <% end %>
+    <div class="submenu">登録されているバンド</div>
     <div class="band-show-container">
     <% @bands.each do |band|%>
       <%= link_to(band.name,"/database/bands/detail/#{band.id}",{class: "link"})%>

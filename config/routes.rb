@@ -52,6 +52,7 @@ Rails.application.routes.draw do
   get "/database/bands/detail/:id" => "admin#band_detail"
   post "/database/bands/register/:id" => "admin#register_band"
   get "/database/registered-bands" => "admin#show_registered_bands"
+  post "/database/bands/destroy/:id" =>"admin#band_destroy"
   get "database/temporal-bands" => "admin#show_temporal_bands"
   get "/database/show-event" => "admin#show_event"
   post "/database/add-event" => "admin#add_event"

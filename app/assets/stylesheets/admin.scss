@@ -384,7 +384,9 @@
   background-color: #EEE;
   table{width:100%;margin-top: 28px;}
   td{padding:4px;border-bottom: 1px solid #aaa;}
+  .submenu{font-size: 12px;padding:4px;width:100%;background-color: #ddd;}
   .name{font-size:18px;width:80%}
+  .link{font-size: 14px;padding: 4px}
 }
 .band-show-title{
   font-size: 25px;
@@ -432,6 +434,7 @@
   }
   .band-show-container{
     grid-template-columns: 100%;
+
   }
 }
 
