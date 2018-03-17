@@ -13,7 +13,12 @@
   </div>
   <% mics = Mic.select {|m| m.date >= Date.today}%>
     <% mics.map(&:date).uniq.each do |date|%>
-      <div class="date"> <%= date.strftime("%m月%d日" + "(#{%w(日 月 火 水 木 金 土)[date.wday]})") %></div>
+      <div class="date"> <%= date.strftime("%m月%d日" + "(#{%w(日 月 火 水 木 金 土)[date.wday]})") %>  部屋:
+        <% if MicRoom.where(date:date).count == 0%>
+          部屋:未定
+        <% else %>
+        <% end %>
+      </div>
       <% mics.select {|m| m.date == date}.each do |mic|%>
         <div class="mic-admin-band">
           <div class="left">

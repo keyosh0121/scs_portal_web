@@ -4,7 +4,9 @@
        wdays = ["月","火","水","木","金","土","日"]%>
     <h2>マスターリスト</h2>
     <% date_mic_and_room.each do |date|%>
-      <p><%= date.strftime( "%m月%d日(#{%w(日 月 火 水 木 金 土)[date.wday]})")%></p>
+      <p><%= date.strftime( "%m月%d日(#{%w(日 月 火 水 木 金 土)[date.wday]})")%>
+
+      </p>
       <table>
         <tbody>
 
