@@ -37,7 +37,7 @@
     </div>
   <div class="room-content-title">利用部屋</div>
   <div class="room-content-wrap">
-    <% Room.all.each do |room|%>
+    <% Room.where(room_type:1).each do |room|%>
     <input type="radio" class="room-radio" id="<%= room.name %>" name="room" value="<%= room.id %>"><label for="<%= room.name %>"><%= room.name %></label>
     <% end %>
   </div>
