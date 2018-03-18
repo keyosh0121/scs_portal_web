@@ -24,15 +24,11 @@ class User < ApplicationRecord
   end
 
   def band_names
-    user_bands = Array.new()
-    Band.all.each do |band|
-      if band.members.include?(self.name)
-        if band.registration
-          user_bands.push(band.name)
-        end
-      end
+    user_bands_name = Array.new()
+    self.bands.each do |band|
+      user_bands_name.push(band.name)
     end
-    return user_bands
+    return user_bands_name
   end
 
 
