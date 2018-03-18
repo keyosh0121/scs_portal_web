@@ -12,17 +12,7 @@ class User < ApplicationRecord
   validates :name, presence: true
   validates :password_digest, presence: true
   has_secure_password
-  def bands
-    user_bands = Array.new()
-    Band.all.each do |band|
-      if band.members.include?(self.name)
-        if band.registration
-          user_bands.push(band)
-        end
-      end
-    end
-    return user_bands
-  end
+
   def temporal_bands
     user_bands = Array.new()
     TemporalBand.all.each do |band|
