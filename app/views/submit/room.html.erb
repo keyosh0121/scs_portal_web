@@ -24,7 +24,7 @@
           <%= usage.room.name if usage.room%>
           <%= usage.band.name if usage.band%>
           <%= usage.period.name if usage.period%>
-          <% if @current_user.band_names.include?(usage.band) || usage.band == @current_user.name %>
+          <% if @current_user.band_names.include?(usage.band.name) %>
             <%= link_to('消去','/submit/room/destroy/' + usage.id.to_s , {:method => 'post', data: {confirm: "本当に取り消しますか？"}})%>
           <% end %>
           <br>
