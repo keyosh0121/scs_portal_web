@@ -630,39 +630,25 @@
 }
 
 /*   マイク練部屋登録画面  */
-
-.mic-room-wrap{
-  margin: 10px;
-  margin-top: 55px;
-  overflow: auto;
-}
-.mic-room-date{
-  font-size: 20px;
-  border-bottom: solid 1px #aaa;
-  padding: 10px;
-}
-.mic-roop-time-wrap{
-  padding: 10px;
-}
-.room-select{
-  height: 45px;
-  background-color: #cdd;
-  border: orange;
-}
-#mic-room-submit{
-  height: 40px;
-  background-color: salmon;
-  -webkit-appearance: none;
-  border-radius: 10px;
-  margin: 10px 5%;
-  width: 90%;
-}
-.mic-room-current{
-  padding: 16px;
-  font-size: 16px;
-  font-weight: bolder;
-  background-color: #d4d4e9;
-  margin: 16px 0;
+.roomreg-wrap{
+  max-width: 600px;
+  width:100%;
+  padding:4px;
+  margin: auto;
+  margin: 100px 0 ;
+  .sub{font-size:12px;color:#888;}
+  .date{font-size: 26px;}
+  table{width:100%;
+    border:dotted 1px #ddd;
+    border-collapse: collapse;
+    th,td{border:dotted 1px #ddd;
+    border-collapse: collapse;}
+    th{font-size: 14px;font-weight: normal;}
+    span{font-size: 12px;}
+    select{background-color: #eee;}
+    .period{font-size: 12px;padding: 4px;text-align: right;}
+  }
+  input{height:50px;width:100%;background-color: salmon;margin-top: 24px;color: #fff;font-size:16px;border:none;}
 }
 .room-buttons{
 	width: 100%;

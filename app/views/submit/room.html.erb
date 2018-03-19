@@ -21,7 +21,6 @@
       <div class="rcurrent-title">   <%= Date.today.strftime("%m月%d日")%>の利用状況</div>
       <% if @usages.count != 0 %>
         <% RoomUsage.where(date: Date.today).each do |usage| %>
-        
           <%= usage.room.name if usage.room%>
           <%= usage.band.name if usage.band%>
           <%= usage.period.name if usage.period%>
@@ -37,7 +36,7 @@
     </div>
   <div class="room-content-title">利用部屋</div>
   <div class="room-content-wrap">
-    <% Room.all.each do |room|%>
+    <% Room.where(room_type:1).each do |room|%>
     <input type="radio" class="room-radio" id="<%= room.name %>" name="room" value="<%= room.id %>"><label for="<%= room.name %>"><%= room.name %></label>
     <% end %>
   </div>

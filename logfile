@@ -1,0 +1,119 @@
+2018-03-19 17:21:41.367 JST [3751] LOG:  listening on IPv6 address "::1", port 5432
+2018-03-19 17:21:41.367 JST [3751] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2018-03-19 17:21:41.368 JST [3751] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2018-03-19 17:21:41.387 JST [3752] LOG:  database system was shut down at 2018-03-19 17:21:08 JST
+2018-03-19 17:21:41.394 JST [3751] LOG:  database system is ready to accept connections
+2018-03-19 17:21:51.866 JST [3783] FATAL:  role "postgres" does not exist
+2018-03-19 17:21:53.808 JST [3784] FATAL:  role "postgres" does not exist
+2018-03-19 17:23:41.323 JST [3811] FATAL:  database "psgr_db" does not exist
+2018-03-19 17:23:43.152 JST [3823] FATAL:  database "psgr_db" does not exist
+2018-03-19 17:24:47.106 JST [3862] ERROR:  column "status" cannot be cast automatically to type integer
+2018-03-19 17:24:47.106 JST [3862] HINT:  You might need to specify "USING status::integer".
+2018-03-19 17:24:47.106 JST [3862] STATEMENT:  ALTER TABLE "mics" ALTER COLUMN "status" TYPE integer
+2018-03-19 17:28:35.787 JST [3973] ERROR:  column "status" cannot be cast automatically to type integer
+2018-03-19 17:28:35.787 JST [3973] HINT:  You might need to specify "USING status::integer".
+2018-03-19 17:28:35.787 JST [3973] STATEMENT:  ALTER TABLE "mics" ALTER COLUMN "status" TYPE integer
+2018-03-19 17:29:35.004 JST [3984] ERROR:  relation "public.temporal_band_members" does not exist
+2018-03-19 17:29:35.004 JST [3984] STATEMENT:  ALTER TABLE ONLY "public"."temporal_band_members" DROP CONSTRAINT "temporal_band_members_pkey";
+	
+2018-03-19 17:29:35.006 JST [3984] ERROR:  relation "public.rooms" does not exist
+2018-03-19 17:29:35.006 JST [3984] STATEMENT:  ALTER TABLE ONLY "public"."rooms" DROP CONSTRAINT "rooms_pkey";
+	
+2018-03-19 17:29:35.009 JST [3984] ERROR:  relation "public.periods" does not exist
+2018-03-19 17:29:35.009 JST [3984] STATEMENT:  ALTER TABLE ONLY "public"."periods" DROP CONSTRAINT "periods_pkey";
+	
+2018-03-19 17:29:35.019 JST [3984] ERROR:  relation "public.contacts" does not exist
+2018-03-19 17:29:35.019 JST [3984] STATEMENT:  ALTER TABLE ONLY "public"."contacts" DROP CONSTRAINT "contacts_pkey";
+	
+2018-03-19 17:29:35.025 JST [3984] ERROR:  relation "public.band_members" does not exist
+2018-03-19 17:29:35.025 JST [3984] STATEMENT:  ALTER TABLE ONLY "public"."band_members" DROP CONSTRAINT "band_members_pkey";
+	
+2018-03-19 17:29:35.029 JST [3984] ERROR:  relation "public.temporal_band_members" does not exist
+2018-03-19 17:29:35.029 JST [3984] STATEMENT:  ALTER TABLE "public"."temporal_band_members" ALTER COLUMN "id" DROP DEFAULT;
+	
+2018-03-19 17:29:35.029 JST [3984] ERROR:  relation "public.rooms" does not exist
+2018-03-19 17:29:35.029 JST [3984] STATEMENT:  ALTER TABLE "public"."rooms" ALTER COLUMN "id" DROP DEFAULT;
+	
+2018-03-19 17:29:35.031 JST [3984] ERROR:  relation "public.periods" does not exist
+2018-03-19 17:29:35.031 JST [3984] STATEMENT:  ALTER TABLE "public"."periods" ALTER COLUMN "id" DROP DEFAULT;
+	
+2018-03-19 17:29:35.035 JST [3984] ERROR:  relation "public.contacts" does not exist
+2018-03-19 17:29:35.035 JST [3984] STATEMENT:  ALTER TABLE "public"."contacts" ALTER COLUMN "id" DROP DEFAULT;
+	
+2018-03-19 17:29:35.039 JST [3984] ERROR:  relation "public.band_members" does not exist
+2018-03-19 17:29:35.039 JST [3984] STATEMENT:  ALTER TABLE "public"."band_members" ALTER COLUMN "id" DROP DEFAULT;
+	
+2018-03-19 17:29:35.045 JST [3984] ERROR:  sequence "temporal_band_members_id_seq" does not exist
+2018-03-19 17:29:35.045 JST [3984] STATEMENT:  DROP SEQUENCE "public"."temporal_band_members_id_seq";
+	
+2018-03-19 17:29:35.045 JST [3984] ERROR:  table "temporal_band_members" does not exist
+2018-03-19 17:29:35.045 JST [3984] STATEMENT:  DROP TABLE "public"."temporal_band_members";
+	
+2018-03-19 17:29:35.047 JST [3984] ERROR:  sequence "rooms_id_seq" does not exist
+2018-03-19 17:29:35.047 JST [3984] STATEMENT:  DROP SEQUENCE "public"."rooms_id_seq";
+	
+2018-03-19 17:29:35.048 JST [3984] ERROR:  table "rooms" does not exist
+2018-03-19 17:29:35.048 JST [3984] STATEMENT:  DROP TABLE "public"."rooms";
+	
+2018-03-19 17:29:35.054 JST [3984] ERROR:  sequence "periods_id_seq" does not exist
+2018-03-19 17:29:35.054 JST [3984] STATEMENT:  DROP SEQUENCE "public"."periods_id_seq";
+	
+2018-03-19 17:29:35.054 JST [3984] ERROR:  table "periods" does not exist
+2018-03-19 17:29:35.054 JST [3984] STATEMENT:  DROP TABLE "public"."periods";
+	
+2018-03-19 17:29:35.079 JST [3984] ERROR:  sequence "contacts_id_seq" does not exist
+2018-03-19 17:29:35.079 JST [3984] STATEMENT:  DROP SEQUENCE "public"."contacts_id_seq";
+	
+2018-03-19 17:29:35.080 JST [3984] ERROR:  table "contacts" does not exist
+2018-03-19 17:29:35.080 JST [3984] STATEMENT:  DROP TABLE "public"."contacts";
+	
+2018-03-19 17:29:35.089 JST [3984] ERROR:  sequence "band_members_id_seq" does not exist
+2018-03-19 17:29:35.089 JST [3984] STATEMENT:  DROP SEQUENCE "public"."band_members_id_seq";
+	
+2018-03-19 17:29:35.089 JST [3984] ERROR:  table "band_members" does not exist
+2018-03-19 17:29:35.089 JST [3984] STATEMENT:  DROP TABLE "public"."band_members";
+	
+2018-03-19 17:32:57.480 JST [4012] ERROR:  column reference "id" is ambiguous at character 8
+2018-03-19 17:32:57.480 JST [4012] STATEMENT:  SELECT id from band_members JOIN users ON band_members.user_id = users.id
+	;
+2018-03-19 17:33:12.818 JST [4012] ERROR:  column reference "id" is ambiguous at character 8
+2018-03-19 17:33:12.818 JST [4012] STATEMENT:  SELECT id,user_id from band_members JOIN users ON band_members.user_id = users.id
+	;
+2018-03-19 17:34:12.355 JST [4012] ERROR:  operator does not exist: integer = character varying at character 69
+2018-03-19 17:34:12.355 JST [4012] HINT:  No operator matches the given name and argument type(s). You might need to add explicit type casts.
+2018-03-19 17:34:12.355 JST [4012] STATEMENT:  SELECT user_id from band_members JOIN users ON band_members.user_id = users.name
+	;
+2018-03-19 17:37:09.982 JST [4012] ERROR:  column reference "name" is ambiguous at character 8
+2018-03-19 17:37:09.982 JST [4012] STATEMENT:  SELECT name FROM band_members JOIN users ON band_members.user_id = users.id;
+2018-03-19 17:37:36.766 JST [4012] ERROR:  syntax error at or near "." at character 12
+2018-03-19 17:37:36.766 JST [4012] STATEMENT:  SELECT user.name FROM band_members JOIN users ON band_members.user_id = users.id;
+2018-03-19 17:39:20.484 JST [4012] ERROR:  column reference "name" is ambiguous at character 8
+2018-03-19 17:39:20.484 JST [4012] STATEMENT:  SELECT name users FROM band_members JOIN users ON band_members.user_id = users.id;
+2018-03-19 17:39:34.550 JST [4012] ERROR:  column reference "name" is ambiguous at character 8
+2018-03-19 17:39:34.550 JST [4012] STATEMENT:  SELECT name as users FROM band_members JOIN users ON band_members.user_id = users.id;
+2018-03-19 17:40:23.497 JST [4012] ERROR:  syntax error at or near "." at character 24
+2018-03-19 17:40:23.497 JST [4012] STATEMENT:  SELECT users.name bands.name FROM band_members JOIN users ON band_members.user_id = users.id;
+2018-03-19 17:40:51.522 JST [4012] ERROR:  syntax error at or near "." at character 24
+2018-03-19 17:40:51.522 JST [4012] STATEMENT:  SELECT users.name bands.name FROM band_members JOIN users ON band_members.user_id = users.id JOIN bands ON band_members.band_id = bands.id;
+2018-03-19 17:41:11.871 JST [4012] ERROR:  syntax error at or near "." at character 24
+2018-03-19 17:41:11.871 JST [4012] STATEMENT:  SELECT users.name bands.name FROM band_members JOIN users ON band_members.user_id = users.id JOIN bands ON band_members.band_id = bands.id;
+2018-03-19 17:41:23.939 JST [4012] ERROR:  syntax error at or near "." at character 24
+2018-03-19 17:41:23.939 JST [4012] STATEMENT:  SELECT users.name bands.name FROM band_members JOIN users,bands
+	;
+2018-03-19 17:41:35.590 JST [4012] ERROR:  syntax error at or near "." at character 24
+2018-03-19 17:41:35.590 JST [4012] STATEMENT:  SELECT users.name bands.name FROM band_members,users,bands
+	;
+2018-03-19 17:42:21.544 JST [4012] ERROR:  syntax error at or near "." at character 24
+2018-03-19 17:42:21.544 JST [4012] STATEMENT:  SELECT users.name bands.name FROM band_members,users,bands
+	;
+2018-03-19 17:43:34.103 JST [4012] ERROR:  missing FROM-clause entry for table "users" at character 8
+2018-03-19 17:43:34.103 JST [4012] STATEMENT:  SELECT users.name,bands.name FROM band_members
+	;
+2018-03-19 17:46:23.887 JST [4012] ERROR:  missing FROM-clause entry for table "bands" at character 25
+2018-03-19 17:46:23.887 JST [4012] STATEMENT:  SELECT band_members.id, bands.name,users.name FROM band_members
+	JOIN users ON band_members.id = users.id
+	;
+2018-03-19 18:25:11.334 JST [4012] ERROR:  column reference "name" is ambiguous at character 8
+2018-03-19 18:25:11.334 JST [4012] STATEMENT:  SELECT name, year FROM users, rooms;
+2018-03-19 21:13:03.781 JST [3833] ERROR:  column rooms.type does not exist at character 37
+2018-03-19 21:13:03.781 JST [3833] STATEMENT:  SELECT "rooms".* FROM "rooms" WHERE "rooms"."type" = $1

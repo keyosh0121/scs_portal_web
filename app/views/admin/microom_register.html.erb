@@ -1,0 +1,29 @@
+<div class="roomreg-wrap">
+  <div class="sub">部屋登録画面</div>
+  <div class="date"><%= @date.strftime("%Y年%m月%d日(#{%w(日 月 火 水 木 金 土)[@date.wday]})") %></div>
+  <table>
+    <thead>
+      <tr>
+        <th>時限</th>
+        <th>使用する部屋</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% Mic.where(date: @date).order(:period_id).map(&:period).map(&:name).uniq.each do |period|%>
+      <tr>
+        <td class="period"><%= period %></td>
+        <td><% Mic.where(date:@date).where(period:Period.find_by(name:period)).map(&:band).map(&:name).each_with_index do |band,i|%>
+            <span><%=i + 1%>.<%= band%></span><br>
+          <% end %>
+          <select name="room<%= Period.find_by(name:period).id %>"><option disabled selected>選択してください</option>}
+        option
+          <% Room.where(room_type:2).each do |room|%>
+          <option value="<%= room.id %>"><%=room.name%></option>
+          <% end %>
+        </select></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <input type="submit" name="" value="部屋を登録">
+</div>
