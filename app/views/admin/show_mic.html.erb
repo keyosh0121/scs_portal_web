@@ -20,6 +20,7 @@
           <div class="left">
             <div class="period"><%= "#{Period.find(mic.period_id).name}限"%>
               <%= link_to("部屋を登録する",database_microom_register_path(date:mic.date)) unless MicRoom.where(date: mic.date).where(period_id: mic.period_id).any? %>
+							<%= MicRoom.where(date: mic.date).where(period_id: mic.period_id).first.name %>
             </div>
             <div class="band-pa"><p><%= Band.find(mic.band_id).name %></p> (PA:<% Band.find(mic.band_id).pa %>)</div>
             <div class="created-at">申請日時: <%= mic.created_at.strftime("%m月%d日 %H:%M")%></div>
