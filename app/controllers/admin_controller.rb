@@ -224,7 +224,7 @@ class AdminController < ApplicationController
 		@date = Date.strptime(params[:date])
 		Period.all.each do |p|
 			key = p.id.to_s.to_sym
-			MicRoom.create(date:date,period_id:p.id,room_id:params[key]) if params[key]
+			MicRoom.create(date:@date,period_id:p.id,room_id:params[key]) if params[key]
 		end
 	end
   def mic_list
