@@ -1,6 +1,6 @@
 
 class MicRoom < ApplicationRecord
-  validates :room, presence: {message: '部屋が選択されていません'}
+  validates :room_id, presence: {message: '部屋が選択されていません'}
   def reservation_type
     if self.reservation_type_num
 
