@@ -220,6 +220,13 @@ class AdminController < ApplicationController
   def microom_register
     @date = Date.strptime(params[:date])
   end
+	def microom_register_send
+		@date = Date.strptime(params[:date])
+		Period.all.each do |p|
+			key = p.id.to_s.to_sym
+			Microom.create(date:date,period_id:p.id,room_id:params[key]) if params[key]
+		end
+	end
   def mic_list
     @mic = Mic.all
     @room = MicRoom.all
