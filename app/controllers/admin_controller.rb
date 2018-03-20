@@ -226,6 +226,8 @@ class AdminController < ApplicationController
 			key = p.id.to_s.to_sym
 			MicRoom.create(date:@date,period_id:p.id,room_id:params[key]) if params[key]
 		end
+		flash[:notice] = "利用部屋を登録しました"
+		redirect_to('/database/mic-practice')
 	end
   def mic_list
     @mic = Mic.all
