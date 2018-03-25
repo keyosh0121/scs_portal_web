@@ -1,6 +1,6 @@
 class Band < ApplicationRecord
   has_many :mics, dependent: :destroy
-  has_one :master, class_name: 'User'
+  has_one :master, class_name: 'User',foreign_key: 'master_id'
   has_many :room_usages, dependent: :destroy
   has_many :band_members, dependent: :destroy
   has_many :users, through: :band_members
