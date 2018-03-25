@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180317064957) do
+ActiveRecord::Schema.define(version: 20180325021424) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(version: 20180317064957) do
     t.boolean "registration", default: false, null: false
     t.integer "band_type"
     t.integer "event_id"
+    t.integer "master_id"
   end
 
   create_table "comments", force: :cascade do |t|
@@ -123,6 +124,7 @@ ActiveRecord::Schema.define(version: 20180317064957) do
     t.integer "band_id"
     t.integer "period_id"
     t.integer "user_id"
+    t.integer "order"
   end
 
   create_table "notifications", force: :cascade do |t|

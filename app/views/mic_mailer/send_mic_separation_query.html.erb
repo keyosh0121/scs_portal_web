@@ -1,0 +1,20 @@
+<%= @mic.band.name %> バンマス
+<%= @mic.band.master %>様<br><br>
+本日、同じ時限に申請されているマイク練が複数あるため、分割申請をしてください。<br>
+期限: 申請している時限の3時間前<br><br>
+
+【現在の申請状況】
+<% @mics.each_with_index do |mic,i|%>
+  <%= i + 1%>.<%= mic.band.name %>
+<%end%>
+
+
+以下のリンクをクリックすると、自動で処理が完了します。
+1番目を希望する→
+www.scsportalweb/mic-room/order/id=45?order=1?
+
+2番目を希望する→
+www.scsportalweb/mic-room/order/id=45?order=2?
+
+3番目を希望する→
+www.scsportalweb/mic-room/order/id=45?order=3?

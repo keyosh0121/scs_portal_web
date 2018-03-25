@@ -117,3 +117,26 @@
 2018-03-19 18:25:11.334 JST [4012] STATEMENT:  SELECT name, year FROM users, rooms;
 2018-03-19 21:13:03.781 JST [3833] ERROR:  column rooms.type does not exist at character 37
 2018-03-19 21:13:03.781 JST [3833] STATEMENT:  SELECT "rooms".* FROM "rooms" WHERE "rooms"."type" = $1
+2018-03-20 01:00:09.223 JST [9346] ERROR:  syntax error at or near "." at character 24
+2018-03-20 01:00:09.223 JST [9346] STATEMENT:  SELECT bands.name users.name FROM band_members,users,bands
+	WHERE band_members.band_id = bands.id AND band_members.user_id = users.id
+	;
+2018-03-20 01:03:05.998 JST [9346] ERROR:  column reference "year" is ambiguous at character 165
+2018-03-20 01:03:05.998 JST [9346] STATEMENT:  SELECT bands.name, bands.master,users.name FROM band_members,users,bands
+	WHERE band_members.band_id = bands.id AND band_members.user_id = users.id ORDER BY band_id,year
+	;
+2018-03-20 01:22:31.291 JST [3751] LOG:  received smart shutdown request
+2018-03-20 01:22:31.305 JST [3751] LOG:  worker process: logical replication launcher (PID 3758) exited with exit code 1
+2018-03-20 01:22:31.307 JST [3753] LOG:  shutting down
+2018-03-20 01:22:31.332 JST [3751] LOG:  database system is shut down
+2018-03-24 17:16:12.672 JST [5841] LOG:  listening on IPv6 address "::1", port 5432
+2018-03-24 17:16:12.673 JST [5841] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2018-03-24 17:16:12.674 JST [5841] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2018-03-24 17:16:12.701 JST [5842] LOG:  database system was shut down at 2018-03-24 17:15:21 JST
+2018-03-24 17:16:12.709 JST [5841] LOG:  database system is ready to accept connections
+2018-03-24 17:19:25.596 JST [5899] ERROR:  missing FROM-clause entry for table "period" at character 32
+2018-03-24 17:19:25.596 JST [5899] STATEMENT:  select mics.id,bands.name,date,period.name from mics,bands where mics.band_id = bands.id AND mics.period_id = period.id;
+2018-03-24 17:19:42.358 JST [5899] ERROR:  missing FROM-clause entry for table "periods" at character 32
+2018-03-24 17:19:42.358 JST [5899] STATEMENT:  select mics.id,bands.name,date,periods.name from mics,bands where mics.band_id = bands.id AND mics.period_id = periods.id;
+2018-03-24 17:20:54.626 JST [5899] ERROR:  syntax error at or near "from" at character 57
+2018-03-24 17:20:54.626 JST [5899] STATEMENT:  select original = (mics.id,bands.name,date,periods.name from mics,bands,periods where mics.band_id = bands.id AND mics.period_id = periods.id);

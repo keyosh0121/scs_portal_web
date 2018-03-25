@@ -48,4 +48,16 @@ class Mic < ApplicationRecord
 			end
 		end
   end
+  def self.daily_split_query
+    today_date = Date.today
+    today_mics = Mic.where(date: today_date)
+    if today_mics.any?
+      Period.all.each do |p|
+        if today_mics.where(period_id: p).any?
+          mic_on_period = today_mics.where(period_id: p)
+          mic_on_period.first
+        end
+      end
+    end
+  end
 end

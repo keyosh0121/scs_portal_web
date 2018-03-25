@@ -10,8 +10,6 @@ class MicMailer < ApplicationMailer
       format.html
     end
   end
-
-
   def send_mic_to_admin(mic)
     @mic = mic
     addresses = User.where(authority:"mic").pluck('email')
@@ -37,4 +35,16 @@ class MicMailer < ApplicationMailer
     end
   end
 
+  def send_mic_split_query(mics,mic)
+    # 引数micsにはdate,period_idが一致する2つ以上のマイク練のActiceRecordを指定
+    # 引数micにはそのうち問い合わせたいバンドのマイク練を指定
+    @mics = mics
+    @mic = mic
+    user_email = @mic.user.email
+    mail(
+      subject: "【回答必須】マイク練の分割希望",
+      to: user_email) do |format|
+      format.html
+    end
+  end
 end
