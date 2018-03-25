@@ -4,7 +4,6 @@ class User < ApplicationRecord
   has_many :mics, dependent: :destroy
   has_many :entries, dependent: :destroy
   has_many :band_members, dependent: :destroy
-  has_one :bands
   has_many :bands, through: :band_members, dependent: :destroy
   attr_accessor :remember_token
 	validates :email, presence: true,uniqueness: true
