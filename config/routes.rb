@@ -73,6 +73,7 @@ Rails.application.routes.draw do
   get "/database/mic-practice-approvedlist" => "admin#mic_approvedlist"
    #音響掲示板
    get '/database/microom/register' => "admin#microom_register"
+	post '/database/microom/register/send' => "admin#microom_register_send"
   post "/database/mic/room-register/weekly/send/:params" => "admin#microom_register"
   post "/database/mic/room-register/monthly/send" => "admin#room_monthly_send"
   post "/database/mic/room-register/send" => "admin#mic_room_register_send"
