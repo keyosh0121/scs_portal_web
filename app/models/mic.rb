@@ -12,6 +12,9 @@ class MicDateValidator < ActiveModel::Validator
 		if record.period_id == nil
 			record.errors[:base] << "時限を入力してください"
 		end
+    if Mic.where(date:record.date).where(period_id:record.period_id).count == 3
+      record.errors[:base] << "その時限にはすでに3バンド申請されています。"
+    end
   end
 end
 
@@ -56,7 +59,6 @@ class Mic < ApplicationRecord
           if today_mics.where(period_id: p).count >= 2
             mics_on_period = today_mics.where(period_id: p).order(:created_at)
             first_mic = mics_on_period.first
-            puts "#{first_mic.band.master.name} にメールを送る"
             MicMailer.send_mic_split_query(mics_on_period,first_mic).deliver
           end
         end

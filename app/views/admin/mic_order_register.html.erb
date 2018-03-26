@@ -16,7 +16,7 @@
   <% end %>
 
   <% unless Mic.select{|m| m.date == @mic.date && m.period_id == @mic.period_id && m.order == 3}.any?%>
-    <% if Mic.where(date:@mic.date,period_id:@mic.period_id).count == 3 %>
+    <% if Mic.where(date:@mic.date).where(period_id:@mic.period_id).count >= 3 %>
       <%= link_to("/mic-order-registration/#{@mic.id}/3",:method => 'POST') do %>
       <div class="btn">3番目を希望する</div>
       <% end %>
