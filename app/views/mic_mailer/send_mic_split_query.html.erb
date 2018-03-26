@@ -4,7 +4,7 @@
 期限: 申請している時限の3時間前<br><br>
 
 【現在の申請状況(申請順)】<br>
-<% @mics.each_with_index do |mic,i|%>
+<% @mics.order(:created_at).each_with_index do |mic,i|%>
   <%= i + 1%>.<%= mic.band.name %><br>
 <%end%><br><br>
 
