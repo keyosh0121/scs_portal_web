@@ -1,0 +1,15 @@
+<%= @mic.band.name %><br>
+バンマス  <%= @mic.band.master.name %>様<br><br>
+本日、同じ時限に申請されているマイク練が複数あるため、分割希望時間帯の申請をしてください。<br>
+期限: 申請している時限の3時間前<br><br>
+
+【現在の申請状況(申請順)】<br>
+<% @mics.each_with_index do |mic,i|%>
+  <%= i + 1%>.<%= mic.band.name %><br>
+<%end%><br><br>
+
+
+以下のリンクをクリックして、申請画面から申請を行ってください。<br>
+
+<%= link_to 'こちらから分割希望の申請を行ってください',"/mic-order-registration/#{@mic.id}" %><br>
+

@@ -140,3 +140,13 @@
 2018-03-24 17:19:42.358 JST [5899] STATEMENT:  select mics.id,bands.name,date,periods.name from mics,bands where mics.band_id = bands.id AND mics.period_id = periods.id;
 2018-03-24 17:20:54.626 JST [5899] ERROR:  syntax error at or near "from" at character 57
 2018-03-24 17:20:54.626 JST [5899] STATEMENT:  select original = (mics.id,bands.name,date,periods.name from mics,bands,periods where mics.band_id = bands.id AND mics.period_id = periods.id);
+2018-03-25 13:51:07.230 JST [11386] ERROR:  column users.band_id does not exist at character 38
+2018-03-25 13:51:07.230 JST [11386] STATEMENT:  SELECT  "users".* FROM "users" WHERE "users"."band_id" = $1 LIMIT $2
+2018-03-25 13:51:34.845 JST [11386] ERROR:  column users.band_id does not exist at character 38
+2018-03-25 13:51:34.845 JST [11386] STATEMENT:  SELECT  "users".* FROM "users" WHERE "users"."band_id" = $1 LIMIT $2
+2018-03-25 13:51:55.302 JST [11386] ERROR:  column users.band_id does not exist at character 38
+2018-03-25 13:51:55.302 JST [11386] STATEMENT:  SELECT  "users".* FROM "users" WHERE "users"."band_id" = $1 LIMIT $2
+2018-03-25 14:12:43.347 JST [5841] LOG:  received smart shutdown request
+2018-03-25 14:12:43.352 JST [5841] LOG:  worker process: logical replication launcher (PID 5848) exited with exit code 1
+2018-03-25 14:12:43.352 JST [5843] LOG:  shutting down
+2018-03-25 14:12:43.370 JST [5841] LOG:  database system is shut down

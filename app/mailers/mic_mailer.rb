@@ -40,7 +40,7 @@ class MicMailer < ApplicationMailer
     # 引数micにはそのうち問い合わせたいバンドのマイク練を指定
     @mics = mics
     @mic = mic
-    user_email = @mic.user.email
+    user_email = @mic.band.master.email
     mail(
       subject: "【回答必須】マイク練の分割希望",
       to: user_email) do |format|

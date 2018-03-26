@@ -188,7 +188,7 @@ class SubmitController < ApplicationController
   end
 
   def regular_band
-    self.user_authentificate 
+    self.user_authentificate
     @band = Band.new()
     @names = User.all.map(&:name)
     @mem = []
@@ -197,10 +197,11 @@ class SubmitController < ApplicationController
 
   def regular_band_submit
     members = Array.new()
+    master_id = User.find_by(name:params[:master]).id if User.find_by(name:params[:master])
     @band = Band.new(
       name: params[:name],
       pa: params[:pa],
-      master: params[:master],
+      master_id: master_id,
       description: params[:description],
       year: Date.today.year,
       image: "default-band.jpg"

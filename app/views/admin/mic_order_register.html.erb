@@ -1,0 +1,32 @@
+<div class="order-inner" style="width:100%;max-width:600px;margin:80px auto;">
+  <% unless Mic.select{|m| m.date == @mic.date && m.period_id == @mic.period_id && m.order == 1}.any? %>
+    <%= link_to("/mic-order-registration/#{@mic.id}/1",:method => 'POST') do%>
+      <div class="btn">1番目を希望する</div>
+    <% end %>
+  <% else %>
+    <div class="btn selected"><%= Mic.select{|m| m.date == @mic.date && m.period_id == @mic.period_id && m.order == 1}.first.band.name%></div>
+  <% end %>
+
+  <% unless Mic.select{|m| m.date == @mic.date && m.period_id == @mic.period_id && m.order == 2}.any? %>
+    <%= link_to("/mic-order-registration/#{@mic.id}/2",:method => 'POST') do%>
+    <div class="btn">2番目を希望する</div>
+    <% end %>
+  <% else %>
+    <div class="btn selected"><%= Mic.select{|m| m.date == @mic.date && m.period_id == @mic.period_id && m.order == 2}.first.band.name%></div>
+  <% end %>
+
+  <% unless Mic.select{|m| m.date == @mic.date && m.period_id == @mic.period_id && m.order == 3}.any?%>
+    <% if Mic.where(date:@mic.date,period_id:@mic.period_id).count == 3 %>
+      <%= link_to("/mic-order-registration/#{@mic.id}/3",:method => 'POST') do %>
+      <div class="btn">3番目を希望する</div>
+      <% end %>
+    <% end %>
+  <% else %>
+    <div class="btn selected"><%= Mic.select{|m| m.date == @mic.date && m.period_id == @mic.period_id && m.order == 3}.first.band.name%></div>
+  <% end %>
+
+</div>
+<style type="text/css" media="screen">
+  .btn{width:100%;background-color:salmon;color:white;font-size:16px;padding:8px;margin-top:16px;}
+  .selected{background-color: white;border:solid 1px black;color:black}
+</style>

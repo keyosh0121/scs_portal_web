@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
   get "/" => "home#top"
 
   post "login/send" => "user#login_user"
@@ -78,7 +79,6 @@ Rails.application.routes.draw do
   post "/database/mic/room-register/monthly/send" => "admin#room_monthly_send"
   post "/database/mic/room-register/send" => "admin#mic_room_register_send"
   get "/database" => "admin#top"
-
-
-
+  get '/mic-order-registration/:id' => "admin#mic_order_register"
+  post '/mic-order-registration/:id/:order' => "admin#mic_order_register_send"
 end

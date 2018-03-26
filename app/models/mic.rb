@@ -48,16 +48,23 @@ class Mic < ApplicationRecord
 			end
 		end
   end
-  def self.daily_split_query
-    today_date = Date.today
-    today_mics = Mic.where(date: today_date)
+  def self.daily_split_query(date)
+    today_mics = Mic.where(date: date)
     if today_mics.any?
       Period.all.each do |p|
         if today_mics.where(period_id: p).any?
-          mic_on_period = today_mics.where(period_id: p)
-          mic_on_period.first
+          if today_mics.where(period_id: p).count >= 2
+            mics_on_period = today_mics.where(period_id: p).order(:created_at)
+            first_mic = mics_on_period.first
+            puts "#{first_mic.band.master.name} にメールを送る"
+            MicMailer.send_mic_split_query(mics_on_period,first_mic).deliver
+          end
         end
       end
     end
+  end
+
+  def overlapped_mics
+    Mic.select {|m| m.id != self.id && m.date == self.date && m.period_id == self.period_id}
   end
 end

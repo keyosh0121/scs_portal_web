@@ -238,5 +238,21 @@ class AdminController < ApplicationController
   def practice_room
     @dates = RoomUsage.all.pluck('date').uniq.reverse
   end
+
+  def mic_order_register
+    @mic = Mic.find(params[:id])
+  end
+  def mic_order_register_send
+    @mic = Mic.find(params[:id])
+    @mic.update!(order: params[:order])
+    if @mic.overlapped_mics.select{|m| m.order == nil}.any?
+      date = @mic.date; period_id = @mic.period_id
+      mics = Mic.where(date: date).where(period_id: period_id)
+      mic = @mic.overlapped_mics.select{|m| m.order == nil}.first
+      MicMailer.send_mic_split_query(mics,mic).deliver
+    end
+    flash[:notice] = "#{@mic.order}番目を希望しました"
+    redirect_to('/')
+  end
 end
 
