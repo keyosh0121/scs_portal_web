@@ -306,21 +306,23 @@ class SubmitController < ApplicationController
     @usages = RoomUsage.all
     dummy_band_id=nil
     dummy_band_id=Band.find_by(name:params[:band]).id  if Band.find_by(name:params[:band])
-    @usage = RoomUsage.new(
-        room_id: params[:room].to_i,
-        band_id: dummy_band_id,
-        user_id: @current_user.id,
-        date: params[:date],
-        period_id: params[:period_id].to_i
-        )
-    if @usage.save
-      flash[:notice] = "申請しました。"
-      render('submit/room')
-    else
-      flash[:notice] = "申請できませんでした。再度試してください。"
-      @errors = @usage.errors.full_messages
-      render('submit/room')
+    period_ids = []
+    Period.all.each do |p|
+      period_ids.push(p.id) if params["period_#{p.id}".to_sym]
+      puts params["period_#{p.id}".to_sym]
     end
+    usages = []
+    period_ids.each do |p|
+      usages.push(RoomUsage.new(
+          room_id: params[:room].to_i,
+          band_id: dummy_band_id,
+          user_id: @current_user.id,
+          date: params[:date],
+          period_id: p.to_i
+          ))
+    end
+    usages.each{|u| u.save!}
+    redirect_to('/submit/room')
   end
 
   def room_destroy

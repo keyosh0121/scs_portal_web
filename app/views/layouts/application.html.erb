@@ -45,6 +45,7 @@
 
   <div id="sidemenu">
     <% if @current_user %>
+    <%= link_to("/user/#{cookies[:user_id]}/show") do%>
     <div class="side-user">
       <div class="side-user-img"><i class="fa fa-user-circle-o"></i></div>
       <div class="side-user-info">
@@ -55,6 +56,7 @@
         </div>
       </div>
     </div>
+    <% end %>
     <% end %>
     <div class="sidemenu-menu">
       <div class="sidemenu-category">ポータル</div>

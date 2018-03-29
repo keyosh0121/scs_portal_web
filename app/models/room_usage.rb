@@ -10,7 +10,7 @@ class RoomUsage < ApplicationRecord
   validates :period_id, presence: {message: "時限を選択してください"}
   validates :date, presence: {message: "日付を選択してください"}
   def self.delete_old_records
-    one_year_ago = Date.today - 365
+    one_year_ago = Date.today - 14
     self.where("date < one_year_ago").delete_all
   end
 end
