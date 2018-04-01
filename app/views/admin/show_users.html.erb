@@ -10,8 +10,8 @@
       <div class="user-display-basic">
         <div class="user-display-name"><%= user.name %></div>
         <div class="user-display-univ"><%= user.univ %></div>
-        <div class="user-display-year"><%= user.year %>年度入会(<%= Date.today.year - user.year + 1 if Date.today.mon > 3
-                                                                   Date.today.year - user.year if Date.today.mon <= 3  %>年目)</div>
+        <div class="user-display-year"><%= user.year %>年度入会(<%= Date.today.year - user.year + 1 if Date.today.mon > 3%>
+                                                                   <%= Date.today.year - user.year if Date.today.mon <= 3  %>年目)</div>
       </div>
       <div class="user-display-contact">
         <div class="user-display-tel"><i class="fa fa-phone"></i> <%= user.tel %></div>
