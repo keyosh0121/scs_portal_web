@@ -119,10 +119,10 @@ ActiveRecord::Schema.define(version: 20180325045313) do
     t.string "approval"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "status"
+    t.integer "status"
     t.integer "band_id"
-    t.integer "period_id"
     t.integer "user_id"
+    t.integer "period_id"
     t.integer "order"
   end
 
