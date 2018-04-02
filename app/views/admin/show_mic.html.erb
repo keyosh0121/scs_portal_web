@@ -25,6 +25,7 @@
             <div class="band-pa"><p><%= Band.find(mic.band_id).name %></p> (PA:<% Band.find(mic.band_id).pa %>)</div>
             <div class="created-at">申請日時: <%= mic.created_at.strftime("%m月%d日 %H:%M")%></div>
             <a href="mailto:<%= mic.user.email %>">申請者に連絡</a>
+            <div class="mail-address">申請者アドレス:<%=mic.user.email%></div>
           </div>
 				  <div class="right-delete">
             <%= link_to('削除',"/database/mic-practice/delete/#{mic.id}",{method: 'POST',class: "delete-btn",data:{confirm: "本当に削除しますか？"}}) if mic.status.to_i == 0%>
