@@ -16,14 +16,26 @@
        <div class="reg-form-content-small">PA<span class="caution"> ※必須</span></div>
        <input type="text" name="pa" placeholder="氏名を入力して下さい" value=<%=@band.pa%>>
        <% 8.times do |i|%>
-        <div class="reg-form-content-small">バンドメンバー<%= i + 1%><span class="reg-caution"><%= "※必須" if i <= 2 %></span></div>
+        <div class="reg-form-content-small">バンドメンバー<%= i + 1 %><span class="reg-caution"><%= "※必須" if i <= 2 %></span></div>
         <div class="reg-member-registration-<%= i + 1%> reg-member-registration"></div>
-        <input class="reg-member-input <%= i + 1%>" type="text" name="member<%= i + 1%>" placeholder="氏名を入力して下さい" list="nameList" value=<%=@mem[i]%>>
+        <input class="reg-member-input <%= i + 1%>" type="text" name="member<%= i + 1 %>" placeholder="氏名を入力して下さい" list="nameList" value=<%=@mem[i]%>>
         <datalist id="nameList">
           <% @names.each do |name|%>
             <option value="<%= name %>"><%= name %></option>
           <% end %>
         </datalist>
+        <div class="mic_number">マイク番号
+          <select name="mic<%= i + 1 %>" id="mic_number_pull_down">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+          </select>
+        </div>
        <% end %>
        <div class="reg-form-content-small">バンマス氏名<span class="reg-caution"> ※必須</span></div>
        <input type="text" name="master" placeholder="氏名を入力して下さい" value=<%=@band.master%>>

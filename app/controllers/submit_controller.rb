@@ -208,6 +208,7 @@ class SubmitController < ApplicationController
       image: "default-band.jpg"
     )
     member_names = [params[:member1],params[:member2],params[:member3],params[:member4],params[:member5],params[:member6],params[:member7],params[:member8]]
+    mic_numbers = [params[:mic1],params[:mic2],params[:mic3],params[:mic4],params[:mic5],params[:mic6],params[:mic7],params[:mic8]]
     @mem = member_names
     if params[:image]
       image = params[:image]
@@ -218,7 +219,8 @@ class SubmitController < ApplicationController
       #member_names = [params[:member1],params[:member2],params[:member3],params[:member4],params[:member5],params[:member6],params[:member7],params[:member8]]
       8.times do |i|
         #TODO:例外処理
-        BandMember.new(user_id: User.find_by(name: member_names[i]).id,band_id: @band.id,part: i).save if User.find_by(name: member_names[i])
+        BandMember.create(user_id: User.find_by(name: member_names[i]).id,band_id: @band.id,part: i) if User.find_by(name: member_names[i])
+        MicNumber.create(band_id: @band.id, user_id: User.find_by(name: member_names[i]).id, mic_number: mic_numbers[i].to_i) if User.find_by(name: member_names[i]) && mic_numbers[i]
       end
       redirect_to("/user/#{@current_user.id}/show")
       flash[:notice] = "正規バンドの申請を受け付けました"
