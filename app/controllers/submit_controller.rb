@@ -198,9 +198,10 @@ class SubmitController < ApplicationController
   def regular_band_submit
     members = Array.new()
     master_id = User.find_by(name:params[:master]).id if User.find_by(name:params[:master])
+    pa_id = User.find_by(name:params[:pa]).id if User.find_by(name:params[:pa])
     @band = Band.new(
       name: params[:name],
-      pa: params[:pa],
+      pa_id: pa_id,
       master_id: master_id,
       description: params[:description],
       year: Date.today.year,

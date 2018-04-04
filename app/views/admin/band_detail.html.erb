@@ -10,7 +10,7 @@
   <div class="subtitle">メンバー</div>
   <div class="description"><% @band.users.each do |m|%><%= m.name if m%><br><%end%></div>
   <div class="subtitle">バンマス,PA</div>
-  <div class="description">バンマス:<%= @band.master %><br>PA:<%= @band.pa %></div>
+  <div class="description">バンマス:<%= @band.master.name %><br>PA:<%= @band.pa.name %></div>
   <div class="btn-wrap">
     <%= link_to("削除","/database/bands/destroy/#{@band.id}",{:class => "btn destroy", :method => 'POST', :data =>{:confirm => "#{@band.name}をデータベースから削除してよろしいですか？"}})%>
     <%= link_to("承認","/database/bands/register/#{@band.id}",{:class => "btn approve",:method => 'POST',:data => {:confirm => "バンドを正規バンドとして登録します。"}}) unless @band.registration %>
