@@ -24,7 +24,7 @@
             <option value="<%= name %>"><%= name %></option>
           <% end %>
         </datalist>
-        <div class="mic_number">マイク番号
+        <div class="mic_number">マイク番号<span class="reg-caution"><%= "※必須" if i <= 2 %></span>
           <select name="mic<%= i + 1 %>" id="mic_number_pull_down">
             <option value="1">1</option>
             <option value="2">2</option>
