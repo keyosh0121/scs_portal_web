@@ -5,6 +5,7 @@ class User < ApplicationRecord
   has_many :entries, dependent: :destroy
   has_many :band_members, dependent: :destroy
   has_many :bands, through: :band_members, dependent: :destroy
+  has_many :mic_numbers, dependent: :destroy
   has_one :master, class_name: 'Band', foreign_key: 'master_id'
   has_one :pa, class_name: 'Band', foreign_key: 'pa_id'
   attr_accessor :remember_token
