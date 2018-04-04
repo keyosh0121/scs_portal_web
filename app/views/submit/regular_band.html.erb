@@ -14,7 +14,7 @@
        <input type="text" name="name" placeholder="バンド名を入力して下さい" value=<%=@band.name%>>
        <div class="reg-form-content">PA・メンバー</div>
        <div class="reg-form-content-small">PA<span class="caution"> ※必須</span></div>
-       <input type="text" name="pa" placeholder="氏名を入力して下さい" value=<%=@band.pa%>>
+       <input type="text" name="pa" placeholder="氏名を入力して下さい" value=<%=@pa_name%>>
        <% 8.times do |i|%>
         <div class="reg-form-content-small">バンドメンバー<%= i + 1 %><span class="reg-caution"><%= "※必須" if i <= 2 %></span></div>
         <div class="reg-member-registration-<%= i + 1%> reg-member-registration"></div>
@@ -38,7 +38,7 @@
         </div>
        <% end %>
        <div class="reg-form-content-small">バンマス氏名<span class="reg-caution"> ※必須</span></div>
-       <input type="text" name="master" placeholder="氏名を入力して下さい" value=<%=@band.master%>>
+       <input type="text" name="master" placeholder="氏名を入力して下さい" value=<%=@master_name%>>
        <div class="reg-form-content">バンド情報</div>
 
        <div class="reg-form-content-small">バンドの説明<span class="reg-caution"> ※必須</span></div>
