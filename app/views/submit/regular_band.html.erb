@@ -24,18 +24,6 @@
             <option value="<%= name %>"><%= name %></option>
           <% end %>
         </datalist>
-        <div class="mic_number">マイク番号を選択してください
-          <select name="mic<%= i + 1 %>" id="mic_number_pull_down">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="7">7</option>
-            <option value="8">8</option>
-          </select>
-        </div>
        <% end %>
        <div class="reg-form-content-small">バンマス氏名<span class="reg-caution"> ※必須</span></div>
        <input type="text" name="master" placeholder="氏名を入力して下さい" value=<%=@master_name%>>

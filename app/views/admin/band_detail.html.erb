@@ -8,7 +8,7 @@
   <div class="subtitle">結成年</div>
   <div class="description"><%= @band.year %></div>
   <div class="subtitle">メンバー</div>
-  <div class="description"><% @band.users.each do |m|%><%= m.name if m%><br><%end%></div>
+  <div class="description"><% @band.band_members.each do |m|%><%= m.user.name if m%>    マイク番号<%= m.mic_number if m%><br><%end%></div>
   <div class="subtitle">バンマス,PA</div>
   <div class="description">バンマス:<%= @band.master.name %><br>PA:<%= @band.pa.name %></div>
   <div class="btn-wrap">
