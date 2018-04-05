@@ -204,7 +204,7 @@ class SubmitController < ApplicationController
       pa_id: pa_id,
       master_id: master_id,
       description: params[:description],
-      year: Date.today.year,
+      year: params[:year].to_i,
       image: "default-band.jpg",
       band_type: 0
     )

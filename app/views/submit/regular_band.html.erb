@@ -7,7 +7,7 @@
         <%= message %><br>
       <% end %>
     </div>
-    <%= link_to('企画バンドの申請はこちら','/submit/temporal-band',{:class => "to-temporal-btn"})%>
+    <%= link_to('企画バンドの申請はこちら※まだ受け付けていません','/submit/temporal-band',{:class => "to-temporal-btn"})%>
     <%= form_tag("/submit/regular-band/send",{multipart: true}) do %>
      <div class="reg-form">
        <div class="reg-form-content">バンド名</div>
@@ -15,8 +15,9 @@
        <div class="reg-form-content">PA・メンバー</div>
        <div class="reg-form-content-small">PA<span class="reg-caution"> ※必須</span></div>
        <input type="text" name="pa" placeholder="氏名を入力して下さい" value=<%=@pa_name%>>
+       <div>該当するマイク番号にメンバーの氏名を入力してください</div>
        <% 8.times do |i|%>
-        <div class="reg-form-content-small">バンドメンバー<%= i + 1 %><span class="reg-caution"><%= "※必須" if i <= 2 %></span></div>
+        <div class="reg-form-content-small">マイク番号<%= i + 1 %><span class="reg-caution"><%= "※必須" if i <= 2 %></span></div>
         <div class="reg-member-registration-<%= i + 1%> reg-member-registration"></div>
         <input class="reg-member-input <%= i + 1%>" type="text" name="member<%= i + 1 %>" placeholder="氏名を入力して下さい" list="nameList" value=<%=@mem[i]%>>
         <datalist id="nameList">
@@ -33,6 +34,14 @@
        <textarea name="description"><%=@band.description%></textarea>
        <div class="reg-form-content-small">バンド写真</div>
        <input type="file" name="image">
+       <div class="reg-form-content-small">結成年<span class="reg-caution"> ※必須</span></div>
+       <select name="year">
+        <option value="" disabled selected>選択して下さい</option>
+         <option value="<%=Date.today.year-3%>"><%=Date.today.year-3%></option>
+         <option value="<%=Date.today.year-2%>"><%=Date.today.year-2%></option>
+         <option value="<%=Date.today.year-1%>"><%=Date.today.year-1%></option>
+         <option value="<%=Date.today.year%>"><%=Date.today.year%></option>
+       </select>
        <input type="submit" name="" value="正規バンドを申請" class="reg-submit">
      </div>
     <% end %>
