@@ -5,6 +5,7 @@ class Band < ApplicationRecord
   has_many :room_usages, dependent: :destroy
   has_many :band_members, dependent: :destroy
   has_many :users, through: :band_members
+  has_many :mic_numbers, dependent: :destroy
   validates :name, presence: {message: 'バンド名を入力してください'}
   validates :master, presence: {message: 'バンマスは必須項目です'}, if: :regular_band?
   validates :pa, presence: {message: 'PAは必須項目です'}, if: :regular_band?
