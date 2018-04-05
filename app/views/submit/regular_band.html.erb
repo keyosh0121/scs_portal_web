@@ -14,7 +14,12 @@
        <input type="text" name="name" placeholder="バンド名を入力して下さい" value=<%=@band.name%>>
        <div class="reg-form-content">PA・メンバー</div>
        <div class="reg-form-content-small">PA<span class="reg-caution"> ※必須</span></div>
-       <input type="text" name="pa" placeholder="氏名を入力して下さい" value=<%=@pa_name%>>
+       <input class="reg-member-input" type="text" name="pa" placeholder="氏名を入力して下さい" list="nameList" value=<%=@pa_name%>>
+        <datalist id="nameList">
+          <% @names.each do |name|%>
+            <option value="<%= name %>"><%= name %></option>
+          <% end %>
+        </datalist>
        <div>該当するマイク番号にメンバーの氏名を入力してください</div>
        <% 8.times do |i|%>
         <div class="reg-form-content-small">マイク番号<%= i + 1 %><span class="reg-caution"><%= "※必須" if i <= 2 %></span></div>
