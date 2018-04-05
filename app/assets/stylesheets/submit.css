@@ -312,6 +312,9 @@
 .mic_number{
   font-size: 13px;
 }
+.year-selector{
+  background-color: rgba(170, 200, 255, 0.4);
+}
 
 
 /********** 企画バンド申請画面 **********/
