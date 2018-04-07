@@ -5,7 +5,7 @@
     <%= form_tag("/signup/send") do %>
       <div class="signup-form">
         <div class="signup-content">個人情報登録</div>
-        <div class="signup-content-small">氏名 <span>※必須</span></div>
+        <div class="signup-content-small">氏名(スペースなし) <span>※必須</span></div>
         <input type="text" name="name" placeholder="氏名を入力" value=<%=@user.name%>>
         <div class="signup-content-small">Emailアドレス <span>※必須</span></div>
         <input type="email" name="email" placeholder="普段使用するメールアドレスを入力してください" value=<%=@user.email%>>
