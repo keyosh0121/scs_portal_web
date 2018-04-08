@@ -18,14 +18,16 @@
       <% mics.select {|m| m.date == date}.each do |mic|%>
         <div class="mic-admin-band">
           <div class="left">
-            <div class="period"><%= "#{Period.find(mic.period_id).name}限"%>
+            <div class="period"><%= Period.find(mic.period_id).name%>
+              <% if mic.order %>
+                <%= "分割#{mic.order}番目" %>
+              <% end %>
               <%= link_to("部屋を登録する",database_microom_register_path(date:mic.date)) unless MicRoom.where(date: mic.date).where(period_id: mic.period_id).any? %>
 							<%= MicRoom.where(date: mic.date).where(period_id: mic.period_id).first.room.name if  MicRoom.where(date: mic.date).where(period_id: mic.period_id).any?%>
             </div>
-            <div class="band-pa"><p><%= Band.find(mic.band_id).name %></p> (PA:<% Band.find(mic.band_id).pa %>)</div>
+            <div class="band-pa"><p><%= mic.band.name %></p> (PA:<%= mic.band.pa.name %>  <%= mic.paattendance %>)</div>
             <div class="created-at">申請日時: <%= mic.created_at.strftime("%m月%d日 %H:%M")%></div>
-            <a href="mailto:<%= mic.band.master.email %>">バンマスに連絡</a>
-            <div class="mail-address">バンマスアドレス:<%=mic.band.master.email%></div>
+            <a href="mailto:<%= mic.band.master.email %>">バンマスに連絡：<%=mic.band.master.email%></a>
           </div>
 				  <div class="right-delete">
             <%= link_to('削除',"/database/mic-practice/delete/#{mic.id}",{method: 'POST',class: "delete-btn",data:{confirm: "本当に削除しますか？"}}) if mic.status.to_i == 0%>

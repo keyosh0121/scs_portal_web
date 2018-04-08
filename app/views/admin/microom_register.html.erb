@@ -1,6 +1,8 @@
 <div class="roomreg-wrap">
   <div class="sub">部屋登録画面</div>
-  <div class="date"><%= @date.strftime("%Y年%m月%d日(#{%w(日 月 火 水 木 金 土)[@date.wday]})") %></div>
+  <div class="date"><%= @date.strftime("%Y年%m月%d日(#{%w(日 月 火 水 木 金 土)[@date.wday]})") %>
+    <div class="warning">※表示バンドは分割の順番ではありません</div>
+  </div>
 	<%= form_tag('/database/microom/register/send') do %>
   <table>
     <thead>
@@ -13,8 +15,8 @@
       <% Mic.where(date: @date).order(:period_id).map(&:period).map(&:name).uniq.each do |period|%>
       <tr>
         <td class="period"><%= period %></td>
-        <td><% Mic.where(date:@date).where(period:Period.find_by(name:period)).map(&:band).map(&:name).each_with_index do |band,i|%>
-            <span><%=i + 1%>.<%= band%></span><br>
+        <td><% Mic.where(date:@date).where(period:Period.find_by(name:period)).map(&:band).map(&:name).each_with_index do |band|%>
+            <span><%= band%></span><br>
           <% end %>
           <select name="<%= Period.find_by(name:period).id %>"><option disabled selected>選択してください</option>}
         option
