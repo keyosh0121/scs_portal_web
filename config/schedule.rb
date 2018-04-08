@@ -21,4 +21,5 @@
 every 1.day, :at => '7:30 am' do
   date = Date.today
   runner "Mic.daily_split_query(#{date})"
+  puts "マイク練分割のqueryが送信されました。"
 end
