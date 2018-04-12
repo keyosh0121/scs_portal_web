@@ -13,6 +13,8 @@ Rails.application.routes.draw do
   post 'user/edit/send' => 'user#edit_send'
   post "user/logout" => "user#logout"
 
+  resources :password_reset,     only: [:new, :create, :edit, :update]
+
   get "submit/mic" => "submit#mic"
   post "submit/mic/send" => "submit#mic_submit"
   post "submit/mic/destroy/:id" => "submit#mic_destroy"

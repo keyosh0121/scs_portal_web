@@ -7,13 +7,13 @@ class User < ApplicationRecord
   has_many :bands, through: :band_members, dependent: :destroy
   has_one :master, class_name: 'Band', foreign_key: 'master_id'
   has_one :pa, class_name: 'Band', foreign_key: 'pa_id'
-  attr_accessor :remember_token
+  attr_accessor :remember_token, :activation_token, :reset_token
 	validates :email, presence: true,uniqueness: true
   validates :tel, presence: true
   validates :year, presence: true
   validates :name, presence: true
   validates :password_digest, presence: true
-  has_secure_password
+  has_secure_password validations: false
 
   def temporal_bands
     user_bands = Array.new()
@@ -74,6 +74,17 @@ class User < ApplicationRecord
 
   def forget
     update_attribute(:remember_digest, nil)
+  end
+
+  #パスワード再設定用
+  def create_reset_digest
+    self.reset_token = User.new_token
+    update_attribute(:reset_digest,  User.digest(reset_token))
+    update_attribute(:reset_sent_at, Time.zone.now)
+  end
+
+  def send_password_reset_email
+    UserMailer.password_reset(self).deliver_now
   end
 
 end

@@ -1,27 +1,32 @@
 <div class="main-wrapper-login">
 <div class="login-wrapper">
-  <h1>ログイン</h1>
+  <h1>パスワード変更</h1>
   <div class="login-content-wrapper">
     <div class="login-content login-title">
       <h1>SCS Portal</h1>
     </div>
     <div class="login-content signin-box">
-      <p id="login-with-account">SCSアカウントでログイン</p>
+      <p id="login-with-account">変更用リンクの送信先</p>
 
-      <%= form_tag("/login/send") do %>
+      <!-- <%= form_tag("/user/password/sent") do %>
         <input type="email" name="email" class="login-input login-email-input" value="<%= @email %>" placeholder="Emailアドレスを入力">
-        <input type="password" name="password" class="login-input" placeholder="パスワードを入力">
-        <p id="show-pass"><input id="pass-checkbox" type="checkbox" name="">パスワードを表示する</p>
+        <p id="show-pass"></p>
         <% if @error != nil %>
           <div class="login-error-message"><%= @error %></div>
         <% end %>
-        <input type="submit" id="login-btn" value="ログイン">
+        <input type="submit" id="login-btn" value="送信">
+      <% end %> -->
+
+      <%= form_for(:password_reset, url: password_reset_index_path) do |f| %>
+        <%= f.label :email %>
+        <%= f.email_field :email, class: 'login-input login-email-input' %>
+
+        <%= f.submit "送信", id: "login-btn" %>
       <% end %>
+
       <a href="/signup" class="btn" id="signup-btn">新規会員登録はこちら</a>
-      <div class="btn" id="forgotten-btn">
-      <%= link_to "パスワードをお忘れの方へ", new_password_reset_path %>
-      </div>
     </div>
   </div>
 </div>
 </div>
+
