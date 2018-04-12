@@ -210,6 +210,8 @@ class SubmitController < ApplicationController
     )
     member_names = [params[:member1],params[:member2],params[:member3],params[:member4],params[:member5],params[:member6],params[:member7],params[:member8]]
     @mem = member_names
+    @pa = params[:pa]
+    @master = params[:master]
     if params[:image]
       image = params[:image]
       @band.image = "#{@band.name}.jpg"
@@ -226,8 +228,6 @@ class SubmitController < ApplicationController
 
     else
       @names = User.all.map(&:name)
-      @pa_name = @band.pa.name if @band.pa
-      @master_name = @band.master.name if @band.master
       flash[:notice] = "保存に失敗しました。入力内容を確認してください。"
       #redirect_to :action => "regular_band"
       render("submit/regular_band")
