@@ -14,7 +14,7 @@
        <input type="text" name="name" placeholder="バンド名を入力して下さい" value=<%=@band.name%>>
        <div class="reg-form-content">PA・メンバー</div>
        <div class="reg-form-content-small">PA<span class="reg-caution"> ※必須</span></div>
-       <input class="reg-member-input" type="text" name="pa" placeholder="氏名を入力して下さい" list="nameList" value=<%=@pa_name%>>
+       <input class="reg-member-input" type="text" name="pa" placeholder="氏名を入力して下さい" list="nameList" value=<%=@pa%>>
         <datalist id="nameList">
           <% @names.each do |name|%>
             <option value="<%= name %>"><%= name %></option>
@@ -32,7 +32,7 @@
         </datalist>
        <% end %>
        <div class="reg-form-content-small">バンマス氏名<span class="reg-caution"> ※必須</span></div>
-       <input type="text" name="master" placeholder="氏名を入力して下さい" value=<%=@master_name%>>
+       <input type="text" name="master" placeholder="氏名を入力して下さい" value=<%=@master%>>
        <div class="reg-form-content">バンド情報</div>
        <div class="reg-form-content-small">結成年<span class="reg-caution"> ※必須</span></div>
        <select name="year" class="year-selector">
