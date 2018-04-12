@@ -40,4 +40,20 @@ class UserMailer < ApplicationMailer
       format.html
     end
   end
+
+  def password_reset_mail(user)
+    @user = user
+    mail(
+      subject:"パスワード変更",
+      to: @user.email
+      ) do |format|
+      format.html
+    end
+  end
+
+   def password_reset(user)
+    @user = user
+    mail to: user.email, subject: "Password reset"
+  end
+
 end

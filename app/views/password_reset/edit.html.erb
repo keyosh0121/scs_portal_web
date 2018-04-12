@@ -1,0 +1,23 @@
+
+<div class="signup-wrapper">
+  <h1>パスワード再登録</h1>
+  <div class="form-wrapper">
+
+    <%= form_for(@user, url: password_reset_path(params[:id])) do |f| %>
+      <div class="signup-form">
+        <%= hidden_field_tag :email, @user.email %>
+        <div class="signup-content-small">パスワード(6文字以上) <span>※必須</span></div>
+        <%= f.password_field :password, class: 'form-control' %>
+        <div class="signup-content-small">パスワード再入力 <span>※必須</span></div>
+        <%= f.password_field :password_confirmation, class: 'form-control' %>
+        <div class="signup-rule">
+          ・パスワードや個人情報は漏れることのないよう大切に保管して下さい。<br>
+          ・悪意のある利用・機能外の個人的な利用は控えて下さい。<br>
+        </div>
+        <%= f.submit "再登録", class: "signup-btn" %>
+      </div>
+    <% end %>
+
+
+  </div>
+</div>

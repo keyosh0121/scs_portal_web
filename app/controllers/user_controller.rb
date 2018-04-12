@@ -99,6 +99,31 @@ class UserController < ApplicationController
       flash[:notice] = "変更できませんでした。内容を確認してください"
       render('user/edit')
     end
-
   end
+
+  def password_reset_sender
+  end
+
+  def password_reset_sent
+    @user = User.find_by(email:params[:email])
+    UserMailer.password_reset_mail(@user).deliver
+    flash[:notice] = "メールを送信しました。確認してください。"
+    render :file => "/home/top"
+  end
+
+  def password_reset
+  end
+
+  def password_reset_done
+    if params[:password] == params[:passwordagain]
+      @user = User.find_by(id: params[:id])
+      @user.update_attribute(password: params[:password])
+      flash[:notice] = "変更されました。"
+      redirect_to("login")
+    else
+      flash[:notice] = "再入力されたパスワードが一致しません。"
+      redirect_to("/user/#{params[:id]}/password")
+    end
+  end
+
 end
