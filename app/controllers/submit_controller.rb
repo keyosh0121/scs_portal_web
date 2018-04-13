@@ -236,29 +236,36 @@ class SubmitController < ApplicationController
 
   def temporal_band
     self.user_authentificate
-    @temporal_band = TemporalBand.new()
+    @temporal_band = Band.new()
+    @names = User.all.map(&:name)
     @events = Event.where(entry_required: true)
     @mem = []
   end
 
   def temporal_band_submit
     @events = Event.all
+    master_id = User.find_by(name:params[:master]).id if User.find_by(name:params[:master])
+    @master = params[:master]
+    member_names = [params[:member1],params[:member2],params[:member3],params[:member4],params[:member5],params[:member6],params[:member7],params[:member8]]
+    @mem = member_names
     if params[:event]
       @temporal_band = Band.new(
         name: params[:name],
+        master_id: master_id,
+        pa_id: 1, #paの外部キー制約により、企画バンドにもpaが存在していないといけない。後々解決します。
         band_type: 1,
         event_id: Event.find_by(name: params[:event]).id
         )
       if @temporal_band.save
         flash[:notice] = "企画バンドの申請が完了しました。"
-        member_names = [params[:member1],params[:member2],params[:member3],params[:member4],params[:member5],params[:member6],params[:member7],params[:member8]]
         8.times do |i|
          #TODO:例外処理
-         BandMember.new(band_id: @temporal_band.id, name: member_names[i],part: i).save if member_names[i]
+         BandMember.create(band_id: @temporal_band.id, user_id: User.find_by(name: member_names[i]).id,mic_number: i+1) if User.find_by(name: member_names[i])
         end
       redirect_to("/user/#{@current_user.id}/show")
       else
         puts @temporal_band.errors.full_messages
+        @names = User.all.map(&:name)
         flash[:notice] = "登録に失敗しました。入力内容を確認してください"
         render("submit/temporal_band")
       end
