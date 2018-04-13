@@ -206,8 +206,7 @@ class SubmitController < ApplicationController
       description: params[:description],
       year: params[:year].to_i,
       image: "default-band.jpg",
-      band_type: 0,
-      event_id: 1
+      band_type: 0
     )
     member_names = [params[:member1],params[:member2],params[:member3],params[:member4],params[:member5],params[:member6],params[:member7],params[:member8]]
     @mem = member_names
@@ -254,7 +253,6 @@ class SubmitController < ApplicationController
       @temporal_band = Band.new(
         name: params[:name],
         master_id: master_id,
-        pa_id: 1, #paの外部キー制約により、企画バンドにもpaが存在していないといけない。後々解決します。
         band_type: 1,
         event_id: Event.find_by(name: params[:event]).id
         )
