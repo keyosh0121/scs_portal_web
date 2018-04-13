@@ -167,6 +167,7 @@ class AdminController < ApplicationController
 
   def show_temporal_bands
     self.user_authentificate
+    @events = Event.where("(event_type = ?) OR (event_type = ?)", 2, 3)
     @temporal_bands = TemporalBand.all
   end
 

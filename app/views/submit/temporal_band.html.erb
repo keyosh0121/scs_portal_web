@@ -16,7 +16,9 @@
             <% end %>
           </select>
         </div>
-        <div class="tem-form-content">メンバー</div>
+
+        <!-- 以前の入力欄 -->
+        <!-- <div class="tem-form-content">メンバー</div>
         <div class="tem-form-content-small">メンバー①</div>
         <input type="text" name="member1" placeholder="氏名を入力して下さい">
         <div class="tem-form-content-small">メンバー②</div>
@@ -32,7 +34,24 @@
         <div class="tem-form-content-small">メンバー⑦</div>
         <input type="text" name="member7" placeholder="氏名を入力して下さい">
         <div class="tem-form-content-small">メンバー⑧</div>
-        <input type="text" name="member8" placeholder="氏名を入力して下さい">
+        <input type="text" name="member8" placeholder="氏名を入力して下さい"> -->
+
+
+      <!-- 正規バンド登録の入力欄丸パクリしました。portal登録判定の出し方がわかりません、、 -->
+        <div>該当するマイク番号にメンバーの氏名を入力してください</div>
+       <% 8.times do |i|%>
+        <div class="reg-form-content-small">マイク番号<%= i + 1 %><span class="reg-caution"><%= "※必須" if i <= 2 %></span></div>
+        <div class="reg-member-registration-<%= i + 1%> reg-member-registration"></div>
+        <input class="reg-member-input <%= i + 1%>" type="text" name="member<%= i + 1 %>" placeholder="氏名を入力して下さい" list="nameList" value=<%=@mem[i]%>>
+        <datalist id="nameList">
+          <% @names.each do |name|%>
+            <option value="<%= name %>"><%= name %></option>
+          <% end %>
+        </datalist>
+       <% end %>
+
+       <div class="reg-form-content-small">企画バンド責任者<span class="reg-caution"> ※必須</span></div>
+       <input type="text" name="master" placeholder="氏名を入力して下さい" value=<%=@master%>>
 
       <input class="tem-send-btn" type="submit"></input>
       </div>
