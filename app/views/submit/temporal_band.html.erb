@@ -5,9 +5,9 @@
     <%= form_tag("/submit/temporal-band/send") do %>
       <div class="tem-form">
         <div class="tem-form-content">基本情報</div>
-        <div class="tem-form-content-small">企画バンド名</div>
+        <div class="tem-form-content-small">企画バンド名<span class="reg-caution"> ※必須</span></div>
         <input type="text" name="name" placeholder="企画名を入力して下さい">
-        <div class="tem-form-content-small">出演予定イベント</div>
+        <div class="tem-form-content-small">出演予定イベント<span class="reg-caution"> ※必須</span></div>
         <div class="tem-form-select-wrap">
           <select name="event">
             <option value="" disabled selected>選択して下さい</option>
