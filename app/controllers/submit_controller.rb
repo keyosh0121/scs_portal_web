@@ -206,7 +206,8 @@ class SubmitController < ApplicationController
       description: params[:description],
       year: params[:year].to_i,
       image: "default-band.jpg",
-      band_type: 0
+      band_type: 0,
+      event_id: 1
     )
     member_names = [params[:member1],params[:member2],params[:member3],params[:member4],params[:member5],params[:member6],params[:member7],params[:member8]]
     @mem = member_names
@@ -227,6 +228,7 @@ class SubmitController < ApplicationController
       flash[:notice] = "正規バンドの申請を受け付けました"
 
     else
+      puts @band.errors.full_messages
       @names = User.all.map(&:name)
       flash[:notice] = "保存に失敗しました。入力内容を確認してください。"
       #redirect_to :action => "regular_band"
