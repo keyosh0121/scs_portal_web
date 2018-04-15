@@ -6,7 +6,8 @@ class MicMailer < ApplicationMailer
     sender_email = @mic.user.email
     mail(
       subject: "#{@mic.band.name}マイク練申請(#{@mic.date} [#{@mic.period.name}])",
-      to: sender_email) do |format|
+      to: sender_email,
+      reply_to: 'scsmikesmith@gmail.com') do |format|
       format.html
     end
   end
@@ -30,7 +31,8 @@ class MicMailer < ApplicationMailer
     user_email = @mic.user.email
     mail(
       subject: "マイク練が#{@mic.status_string}されました",
-      to: user_email) do |format|
+      to: user_email,
+      reply_to: 'scsmikesmith@gmail.com') do |format|
       format.html
     end
   end
@@ -44,7 +46,8 @@ class MicMailer < ApplicationMailer
     user_email = "test@gmail.com" unless @mic.band.master
     mail(
       subject: "【回答必須】マイク練の分割希望",
-      to: user_email) do |format|
+      to: user_email,
+      reply_to: 'scsmikesmith@gmail.com') do |format|
       format.html
     end
   end
