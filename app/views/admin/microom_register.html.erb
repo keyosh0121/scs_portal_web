@@ -1,7 +1,6 @@
 <div class="roomreg-wrap">
   <div class="sub">部屋登録画面</div>
   <div class="date"><%= @date.strftime("%Y年%m月%d日(#{%w(日 月 火 水 木 金 土)[@date.wday]})") %>
-    <div class="warning">※表示バンドは分割の順番ではありません</div>
   </div>
 	<%= form_tag('/database/microom/register/send') do %>
   <table>
