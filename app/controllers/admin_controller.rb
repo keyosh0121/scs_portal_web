@@ -222,6 +222,7 @@ class AdminController < ApplicationController
     @date = Date.strptime(params[:date])
     @mics = Mic.where(date: @date)
   end
+
 	def microom_register_send
 		@date = Date.strptime(params[:date])
     @mics = Mic.where(date: @date)
@@ -231,7 +232,15 @@ class AdminController < ApplicationController
 		# end
     @mics.each do |mic|
       key=mic.period_id.to_s.to_sym
-      mic.update(room_id: params[key])
+      if params[key] == "waiting"
+        MicMailer.send_mic_room_wait(mic).deliver
+      elsif params[key] == "cancel"
+        MicMailer.send_mic_room_cancel(mic).deliver
+      elsif params[key]
+        mic.update(room_id: params[key])
+        MicMailer.send_mic_room(mic).deliver
+      else
+      end
     end
 		flash[:notice] = "利用部屋を登録しました"
 		redirect_to('/database/mic-practice')
