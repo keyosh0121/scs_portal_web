@@ -40,9 +40,7 @@
 
           </div>
 				  <div class="right-delete">
-            <%= link_to('削除',"/database/mic-practice/delete/#{mic.id}",{method: 'POST',class: "delete-btn",data:{confirm: "本当に削除しますか？"}}) if mic.status.to_i == 0%>
-            <% if mic.status.to_i == 1 %>
-            <% end %>
+            <%= link_to('削除',"/database/mic-practice/delete/#{mic.id}",{method: 'POST',class: "delete-btn",data:{confirm: "本当に削除しますか？"}}) %>
           </div>
           <div class="right-approve">
             <%= link_to('承認',"/database/mic-practice/approve/#{mic.id}",{method: 'POST',class: "approve-btn",data:{confirm: "本当に承認しますか？"}}) if mic.status.to_i == 0%>
