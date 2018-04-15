@@ -220,13 +220,19 @@ class AdminController < ApplicationController
   end
   def microom_register
     @date = Date.strptime(params[:date])
+    @mics = Mic.where(date: @date)
   end
 	def microom_register_send
 		@date = Date.strptime(params[:date])
-		Period.all.each do |p|
-			key = p.id.to_s.to_sym
-			MicRoom.create(date:@date,period_id:p.id,room_id:params[key]) if params[key]
-		end
+    @mics = Mic.where(date: @date)
+		# Period.all.each do |p|
+		# 	key = p.id.to_s.to_sym
+		# 	MicRoom.create(date:@date,period_id:p.id,room_id:params[key]) if params[key]
+		# end
+    @mics.each do |mic|
+      key=mic.period_id.to_s.to_sym
+      mic.update(room_id: params[key])
+    end
 		flash[:notice] = "利用部屋を登録しました"
 		redirect_to('/database/mic-practice')
 	end

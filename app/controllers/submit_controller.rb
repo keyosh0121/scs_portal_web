@@ -26,18 +26,12 @@ class SubmitController < ApplicationController
     else
       attendance = "不参加"
     end
-    if Band.find(params[:band_id])
-      pa = Band.find(params[:band_id]).pa
-    else
-      pa = "指定なし"
-    end
     @mic = Mic.new(
       band_id: params[:band_id],
       user_id: @current_user.id,
       date: params[:date],
       period_id: params[:period_id],
       paattendance: attendance,
-      pa: pa,
       status: 0
       )
     params[:paattendance]

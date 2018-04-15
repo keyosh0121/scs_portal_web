@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180412005613) do
+ActiveRecord::Schema.define(version: 20180415135434) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -110,13 +110,8 @@ ActiveRecord::Schema.define(version: 20180412005613) do
   end
 
   create_table "mics", force: :cascade do |t|
-    t.string "band"
-    t.string "pa"
     t.string "paattendance"
-    t.string "sender"
     t.date "date"
-    t.string "time"
-    t.string "approval"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "status"
@@ -124,6 +119,7 @@ ActiveRecord::Schema.define(version: 20180412005613) do
     t.integer "period_id"
     t.integer "user_id"
     t.integer "order"
+    t.integer "room_id"
   end
 
   create_table "notifications", force: :cascade do |t|
