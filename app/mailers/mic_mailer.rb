@@ -37,6 +37,39 @@ class MicMailer < ApplicationMailer
     end
   end
 
+  def send_mic_room(mic)
+    @mic = mic
+    master_email = @mic.band.master.email
+    mail(
+      subject: "本日のマイク練部屋",
+      to: master_email,
+      reply_to: 'scsmikesmith@gmail.com') do |format|
+      format.html
+    end
+  end
+
+  def send_mic_room_wait(mic)
+    @mic = mic
+    master_email = @mic.band.master.email
+    mail(
+      subject: "マイク練キャンセル待ち",
+      to: master_email,
+      reply_to: 'scsmikesmith@gmail.com') do |format|
+      format.html
+    end
+  end
+
+  def send_mic_room_cancel(mic)
+    @mic = mic
+    master_email = @mic.band.master.email
+    mail(
+      subject: "マイク練部屋が取れませんでした",
+      to: master_email,
+      reply_to: 'scsmikesmith@gmail.com') do |format|
+      format.html
+    end
+  end
+
   def send_mic_split_query(mics,mic)
     # 引数micsにはdate,period_idが一致する2つ以上のマイク練のActiceRecordを指定
     # 引数micにはそのうち問い合わせたいバンドのマイク練を指定
