@@ -13,7 +13,7 @@
     </div>
   </div>
 
-  <% mics = Mic.order("date ASC, period_id DESC").select {|m| m.date >= Date.today} %>
+  <% mics = Mic.order("date ASC, period_id ASC").select {|m| m.date >= Date.today} %>
     <% mics.map(&:date).uniq.each do |date|%>
       <div class="date"> <%= date.strftime("%m月%d日" + "(#{%w(日 月 火 水 木 金 土)[date.wday]})") %>
       </div>
