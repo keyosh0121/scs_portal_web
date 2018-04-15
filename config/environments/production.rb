@@ -61,6 +61,8 @@ Rails.application.configure do
   # Use a real queuing backend for Active Job (and separate queues per environment)
   # config.active_job.queue_adapter     = :resque
   # config.active_job.queue_name_prefix = "scs_portal_web_#{Rails.env}"
+  config.action_controller.asset_host = 'scsportal.herokuapp.com'
+  config.action_mailer.asset_host = config.action_controller.asset_host
   config.action_mailer.default_url_options = { :host => 'scsportal.herokuapp.com' }
   config.action_mailer.perform_caching = false
   config.action_mailer.delivery_method = :smtp
