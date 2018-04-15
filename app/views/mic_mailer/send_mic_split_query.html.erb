@@ -1,7 +1,6 @@
 <%= @mic.band.name if @mic.band%><br>
 バンマス  <%= @mic.band.master.name if @mic.band.master%>様<br><br>
-本日、同じ時限に申請されているマイク練が複数あるため、分割希望時間帯の申請をしてください。<br>
-期限: 申請している時限の3時間前<br><br>
+本日、同じ時限に申請されているマイク練が複数あるため、分割希望時間帯の申請をしてください。<br><br>
 
 【現在の申請状況(申請順)】<br>
 <% @mics.order(:created_at).each_with_index do |mic,i|%>
