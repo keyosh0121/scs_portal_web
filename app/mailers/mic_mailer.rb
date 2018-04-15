@@ -12,14 +12,14 @@ class MicMailer < ApplicationMailer
   end
   def send_mic_to_admin(mic)
     @mic = mic
-    addresses = User.where(authority:"mic").pluck('email')
-    if addresses.empty?
-      user = User.find_by(authority:"admin")
-      addresses.push(user.email)
-    end
+    # addresses = User.where(authority:"mic").pluck('email')
+    # if addresses.empty?
+    #   user = User.find_by(authority:"admin")
+    #   addresses.push(user.email)
+    # end
     mail(
       subject: "[マイク練係]マイク練申請が届きました(#{mic.date.strftime("%m月%d日")})",
-      to: addresses) do |format|
+      to: 'scsmikesmith@gmail.com') do |format|
       format.html
     end
   end
