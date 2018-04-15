@@ -1,16 +1,19 @@
 <div class="mic-admin-wrapper">
+
   <div class="mic-title">
     <div class="mic-title-box">
       <h1>マイク練管理</h1>
     </div>
   </div>
+
   <div class="mic-main-wrapper">
     <div class="mic-description">
       ・ステータスを変更すると、マイク練申請者にメールが届きます。<br>
       ・承認ボタンは確認してから押してください。
     </div>
   </div>
-  <% mics = Mic.select {|m| m.date >= Date.today}%>
+
+  <% mics = Mic.order("date ASC").select {|m| m.date >= Date.today} %>
     <% mics.map(&:date).uniq.each do |date|%>
       <div class="date"> <%= date.strftime("%m月%d日" + "(#{%w(日 月 火 水 木 金 土)[date.wday]})") %>
       </div>
@@ -50,4 +53,5 @@
         </div>
       <% end %>
     <% end %>
+
 </div>
