@@ -1,11 +1,11 @@
 
 class MicDateValidator < ActiveModel::Validator
   def validate(record)
-		if record.date == nil
-			record.errors[:base] << "日付が入力されていません"
-		elsif record.date < Date.today + 7
-			record.errors[:base] << "7日前を過ぎた日程は申請できません"
-		end
+    if record.date == nil
+      record.errors[:base] << "日付が入力されていません"
+    elsif record.date < Date.today + 7
+      record.errors[:base] << "7日前を過ぎた日程は申請できません"
+    end
 		if record.band_id == nil
 			record.errors[:base] << "バンドを選択してください"
 		end
@@ -51,7 +51,8 @@ class Mic < ApplicationRecord
 			end
 		end
   end
-  def self.daily_split_query(date)
+  def self.daily_split_query
+    date = Date.today+2
     today_mics = Mic.where(date: date)
     if today_mics.any?
       Period.all.each do |p|

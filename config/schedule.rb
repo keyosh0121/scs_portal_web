@@ -5,7 +5,7 @@
 
 # Example:
 #
-# set :output, "/path/to/my/cron_log.log"
+set :output, 'log/crontab.log'
 #
 # every 2.hours do
 #   command "/usr/bin/some_great_command"
@@ -18,8 +18,14 @@
 # end
 
 # Learn more: http://github.com/javan/whenever
-every 1.day, :at => '7:30 am' do
-  date = Date.today + 2
-  runner "Mic.daily_split_query(#{date})"
+
+set :environment, :development
+
+every 1.day, :at => '11:40 am' do
+  runner "Mic.daily_split_query"
   puts "マイク練分割のqueryが送信されました。"
+end
+
+every 1.minute do
+  puts "うんち"
 end
