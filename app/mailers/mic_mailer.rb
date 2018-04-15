@@ -84,4 +84,13 @@ class MicMailer < ApplicationMailer
       format.html
     end
   end
+
+  def send_mic_split_to_admin(mic)
+    @mic = mic
+    mail(
+      subject: "#{@mic.date.strftime("%m月%d日" + "(#{%w(日 月 火 水 木 金 土)[@mic.date.wday]})")}の分割希望(#{mic.band.name})",
+      to: 'scsmikesmith@gmail.com') do |format|
+      format.html
+    end
+  end
 end

@@ -261,6 +261,7 @@ class AdminController < ApplicationController
   def mic_order_register_send
     @mic = Mic.find(params[:id])
     @mic.update!(order: params[:order])
+    MicMailer.send_mic_split_to_admin(@mic).deliver
     if @mic.overlapped_mics.select{|m| m.order == nil}.any?
       date = @mic.date; period_id = @mic.period_id
       mics = Mic.where(date: date).where(period_id: period_id)
