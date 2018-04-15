@@ -1,6 +1,7 @@
 class Room < ApplicationRecord
   has_many :room_usages, dependent: :destroy
 	has_many :mic_rooms
+  has_many :mics
 
   def self.create_rooms
     Room.create(name:"E1016", room_type:1)

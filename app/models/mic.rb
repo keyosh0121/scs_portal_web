@@ -22,6 +22,7 @@ class Mic < ApplicationRecord
   belongs_to :band
   belongs_to :period
   belongs_to :user
+  belongs_to :room, optional: true
   validates_with MicDateValidator, on: :create
   def full? #マイク練が3件申請されている場合に跳ね返すインスタンスメソッド
     count = Mic.where(date: self.date, time: self.time).count

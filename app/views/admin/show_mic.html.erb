@@ -24,8 +24,11 @@
               <% if mic.order %>
                 <%= "分割#{mic.order}番目" %>
               <% end %>
-              <%= link_to("部屋を登録する",database_microom_register_path(date:mic.date)) unless MicRoom.where(date: mic.date).where(period_id: mic.period_id).any? %>
-							<%= MicRoom.where(date: mic.date).where(period_id: mic.period_id).first.room.name if  MicRoom.where(date: mic.date).where(period_id: mic.period_id).any?%>
+              <% if mic.room %>
+                <%= link_to("#{mic.room.name}",database_microom_register_path(date:mic.date)) %>
+              <% else %>
+                <%= link_to("部屋を登録する",database_microom_register_path(date:mic.date)) %>
+              <% end %>
             </div>
 
             <% if mic.band.band_type == 0 %>
