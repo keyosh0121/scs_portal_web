@@ -14,8 +14,7 @@ class SubmitController < ApplicationController
     self.user_authentificate
     @mic = Mic.new()
     if @current_user
-      @mics = @current_user.mics
-      @user_bands = @current_user.bands
+      @mics = @current_user.bands.map{|band| band.mics}
     end
   end
 
@@ -27,8 +26,8 @@ class SubmitController < ApplicationController
     else
       attendance = "不参加"
     end
-    if Band.find_by(name: params[:band])
-      pa = Band.find_by(name: params[:band]).pa
+    if Band.find(params[:band_id])
+      pa = Band.find(params[:band_id]).pa
     else
       pa = "指定なし"
     end
