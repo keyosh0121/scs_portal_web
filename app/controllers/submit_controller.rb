@@ -242,6 +242,18 @@ class SubmitController < ApplicationController
     @master = params[:master]
     member_names = [params[:member1],params[:member2],params[:member3],params[:member4],params[:member5],params[:member6],params[:member7],params[:member8]]
     @mem = member_names
+    error_counter = 0
+    8.times do |i|
+      key = ("member"+(i+1).to_s).to_sym
+      if params[key] != ""
+        if User.find_by(name:member_names[i])
+        else
+          error_counter += 1
+        end
+      else
+      end
+    end
+
     if params[:event]
       @temporal_band = Band.new(
         name: params[:name],
@@ -249,13 +261,17 @@ class SubmitController < ApplicationController
         band_type: 1,
         event_id: Event.find_by(name: params[:event]).id
         )
-      if @temporal_band.save
+      if @temporal_band.save && error_counter == 0
         flash[:notice] = "企画バンドの申請が完了しました。"
         8.times do |i|
          #TODO:例外処理
-         BandMember.create(band_id: @temporal_band.id, user_id: User.find_by(name: member_names[i]).id,mic_number: i+1) if User.find_by(name: member_names[i])
+            BandMember.create(band_id: @temporal_band.id, user_id: User.find_by(name: member_names[i]).id,mic_number: i+1) if User.find_by(name:member_names[i])
         end
-      redirect_to("/user/#{@current_user.id}/show")
+        redirect_to("/user/#{@current_user.id}/show")
+      elsif error_counter > 0
+        @names = User.all.map(&:name)
+        flash[:notice] = "登録に失敗しました。#{error_counter}人の名前が登録されていません。"
+        render("submit/temporal_band")
       else
         puts @temporal_band.errors.full_messages
         @names = User.all.map(&:name)

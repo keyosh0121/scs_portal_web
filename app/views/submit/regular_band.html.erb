@@ -7,7 +7,7 @@
         <%= message %><br>
       <% end %>
     </div>
-    <%= link_to('企画バンドの申請はこちら※まだ受け付けていません','/submit/temporal-band',{:class => "to-temporal-btn"})%>
+    <%= link_to('企画バンドの申請はこちら','/submit/temporal-band',{:class => "to-temporal-btn"})%>
     <%= form_tag("/submit/regular-band/send",{multipart: true}) do %>
      <div class="reg-form">
        <div class="reg-form-content">バンド名</div>
