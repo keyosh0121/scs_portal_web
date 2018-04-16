@@ -15,9 +15,6 @@
   </div>
 
 
-  <%= link_to "未承認マイク練", "/database/mic-practice/unapproved", class: "unregistered" %>
-
-
   <% mics = Mic.order("date ASC, period_id ASC").select {|m| m.date >= Date.today} %>
     <div class="mic">
     <% mics.map(&:date).uniq.each do |date|%>
