@@ -10,6 +10,7 @@ class UserMailer < ApplicationMailer
       subject: "【SCS Portal】新規ユーザーの登録があります)",
       to: mails) do |format|
       format.html
+      format.text
     end
   end
 
@@ -19,6 +20,7 @@ class UserMailer < ApplicationMailer
       subject: "【SCS Portal】仮登録完了のお知らせ",
       to: @user.email) do |format|
       format.html
+      format.text
     end
   end
 
@@ -28,6 +30,7 @@ class UserMailer < ApplicationMailer
 			subject: "ユーザーが承認されました",
 			to: @user.email) do |format|
 			format.html
+      format.text
 		end
 	end
   def contact_form_mail(contact)
@@ -38,6 +41,7 @@ class UserMailer < ApplicationMailer
       to: admin_mails
       ) do |format|
       format.html
+      format.text
     end
   end
 
@@ -48,6 +52,7 @@ class UserMailer < ApplicationMailer
       to: @user.email
       ) do |format|
       format.html
+      format.text
     end
   end
 

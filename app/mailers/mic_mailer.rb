@@ -9,6 +9,7 @@ class MicMailer < ApplicationMailer
       to: sender_email,
       reply_to: 'scsmikesmith@gmail.com') do |format|
       format.html
+      format.text
     end
   end
   def send_mic_to_admin(mic)
@@ -22,6 +23,7 @@ class MicMailer < ApplicationMailer
       subject: "[マイク練係]マイク練申請が届きました(#{mic.date.strftime("%m月%d日")})",
       to: 'scsmikesmith@gmail.com') do |format|
       format.html
+      format.text
     end
   end
 
@@ -34,6 +36,7 @@ class MicMailer < ApplicationMailer
       to: user_email,
       reply_to: 'scsmikesmith@gmail.com') do |format|
       format.html
+      format.text
     end
   end
 
@@ -45,6 +48,7 @@ class MicMailer < ApplicationMailer
       to: master_email,
       reply_to: 'scsmikesmith@gmail.com') do |format|
       format.html
+      format.text
     end
   end
 
@@ -56,6 +60,7 @@ class MicMailer < ApplicationMailer
       to: master_email,
       reply_to: 'scsmikesmith@gmail.com') do |format|
       format.html
+      format.text
     end
   end
 
@@ -67,6 +72,7 @@ class MicMailer < ApplicationMailer
       to: master_email,
       reply_to: 'scsmikesmith@gmail.com') do |format|
       format.html
+      format.text
     end
   end
 
@@ -92,6 +98,7 @@ class MicMailer < ApplicationMailer
       subject: "#{@mic.date.strftime("%m月%d日" + "(#{%w(日 月 火 水 木 金 土)[@mic.date.wday]})")}の分割希望(#{mic.band.name})",
       to: 'scsmikesmith@gmail.com') do |format|
       format.html
+      format.text
     end
   end
 end

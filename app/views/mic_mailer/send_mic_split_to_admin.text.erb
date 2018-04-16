@@ -1,0 +1,4 @@
+<%= @mic.date.strftime("%m月%d日" + "(#{%w(日 月 火 水 木 金 土)[@mic.date.wday]})") %>の<%= @mic.band.name %>さんの希望
+
+<%= @mic.band.name %>さんは<%= @mic.order.to_s %>番目を選択しました。
+
