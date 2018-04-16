@@ -20,7 +20,7 @@
       <% mics.select {|m| m.date == date}.each do |mic|%>
         <div class="mic-admin-band">
           <div class="left">
-            <div class="period"><%= Period.find(mic.period_id).name%>
+            <div class="period"><%= mic.period.name%>
               <% if mic.order %>
                 <%= "分割#{mic.order}番目" %>
               <% end %>

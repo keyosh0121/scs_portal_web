@@ -100,7 +100,7 @@ class AdminController < ApplicationController
   #マイク練管理
   def show_mic
     self.user_authentificate
-    @mics = Mic.all.order('date DESC,time')
+    @mics = Mic.all.includes(:band).order('date DESC,time')
     @mic = Mic.new
   end
 
