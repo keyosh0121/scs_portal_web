@@ -100,8 +100,10 @@ class AdminController < ApplicationController
   #マイク練管理
   def show_mic
     self.user_authentificate
-    @mics = Mic.all.includes(:band).order('date DESC,time')
-    @mic = Mic.new
+  end
+
+  def show_unregistered_mic
+    self.user_authentificate
   end
 
 	def mic_approve

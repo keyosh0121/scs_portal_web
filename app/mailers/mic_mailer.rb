@@ -20,7 +20,7 @@ class MicMailer < ApplicationMailer
     #   addresses.push(user.email)
     # end
     mail(
-      subject: "[マイク練係]マイク練申請が届きました(#{mic.date.strftime("%m月%d日")})",
+      subject: "[#{@mic.band.name}][#{mic.date.strftime("%m月%d日")}]マイク練予約",
       to: 'scsmikesmith@gmail.com') do |format|
       format.html
       format.text

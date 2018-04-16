@@ -2,7 +2,7 @@
 
   <div class="mic-title">
     <div class="mic-title-box">
-      <h1>マイク練管理</h1>
+      <h1>未承認マイク練</h1>
     </div>
   </div>
 
@@ -10,15 +10,10 @@
     <div class="mic-description">
       ・ステータスを変更すると、マイク練申請者にメールが届きます。<br>
       ・承認ボタンは確認してから押してください。
-      <%= link_to "・未承認マイク練はこちら", "/database/mic-practice/unapproved", class: "unregistered" %>
     </div>
   </div>
 
-
-  <%= link_to "未承認マイク練", "/database/mic-practice/unapproved", class: "unregistered" %>
-
-
-  <% mics = Mic.order("date ASC, period_id ASC").select {|m| m.date >= Date.today} %>
+  <% mics = Mic.where(status: 0).order("date ASC, period_id ASC").select {|m| m.date >= Date.today} %>
     <div class="mic">
     <% mics.map(&:date).uniq.each do |date|%>
     <div class="mic">
@@ -54,7 +49,7 @@
             <% end %>
 
           </div>
-				  <div class="right-delete">
+          <div class="right-delete">
             <%= link_to('削除',"/database/mic-practice/delete/#{mic.id}",{method: 'POST',class: "delete-btn",data:{confirm: "本当に削除しますか？"}}) %>
           </div>
           <div class="right-approve">

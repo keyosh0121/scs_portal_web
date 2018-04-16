@@ -71,6 +71,7 @@ Rails.application.routes.draw do
   #マイク練管理
   get '/database/mic-practice/list' => "admin#mic_list"
   get "/database/mic-practice" => "admin#show_mic"
+  get "/database/mic-practice/unapproved" => "admin#show_unregistered_mic"
 	post "/database/mic-practice/approve/:id" => "admin#mic_approve"
   post "/database/mic-practice/delete/:id" => "admin#mic_delete"
   get "/database/mic-practice-approvedlist" => "admin#mic_approvedlist"

@@ -242,48 +242,61 @@
 .date{
   margin: 4px;
   border-bottom: 1px solid gray;
+  font-size: 20px;
+  font-weight: 500;
+  color: #20B2AA;
 }
-.mic-admin-band{
-  display: grid;
-  grid-template-columns: 60% 20% 20%;
-  margin: 4px 8px;
-  border: dotted #ccc 1px;
-  .period{
-    font-size: 15px;
-    padding: 0 4px
-  }
-  .band-pa{
-    margin: 0;
-    padding: 4px;
-    p{
-      font-size: 20px;
-      display: inline;
-    }
-  }
-  .created-at{
-    font-size: 12px;
-  }
-  .mail-address{
-    font-size: 12px;
-  }
-  .approve-btn, .delete-btn{
-    font-size: 12px;
-    border: 1px solid;
-    width: 60px;
-    height: 40px;
-    margin: 15px auto;
-    padding: 10px 15px;
-		.approve-btn{color:#282;border:1px solid #282;}
-		.delete-btn{color:#822;border:1px solid #822;}
-    &.approved{
-      color: #fff;
-      background-color: #282;
-      padding: 10px 10px;
-      border: none;
-      font-family: "Meiryo W3";
-    }
-  }
 
+.unregistered{
+  font-size: 13px;
+}
+
+.mic{
+  margin-bottom: 20px;
+  .mic-admin-band{
+    display: grid;
+    grid-template-columns: 60% 20% 20%;
+    margin: 4px 8px;
+    border: dotted #ccc 1px;
+    .period{
+      font-size: 15px;
+      padding: 0 4px
+    }
+    .band-pa{
+      margin: 0;
+      padding: 4px;
+      p{
+        font-size: 20px;
+        display: inline;
+      }
+    }
+    .created-at{
+      font-size: 12px;
+    }
+    .mail-address{
+      font-size: 12px;
+    }
+    .approve-btn, .delete-btn{
+      font-size: 12px;
+      border: 1px solid;
+      width: 60px;
+      height: 40px;
+      margin: 15px auto;
+      padding: 10px 15px;
+		  .approve-btn{color:#282;border:1px solid #282;}
+  		.delete-btn{color:#822;border:1px solid #822;}
+      &.approved{
+        color: #fff;
+        background-color: #282;
+        padding: 10px 10px;
+        border: none;
+        font-family: "Meiryo W3";
+      }
+    }
+    .attendence-alert{
+      color: #FF4500;
+    }
+  }
 }
 
 .mic-description{
