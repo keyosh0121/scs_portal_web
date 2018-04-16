@@ -82,6 +82,7 @@ class MicMailer < ApplicationMailer
       to: user_email,
       reply_to: 'scsmikesmith@gmail.com') do |format|
       format.html
+      format.text
     end
   end
 
