@@ -1,7 +1,7 @@
 class AdminController < ApplicationController
   def top
     if @current_user
-      if !@current_user.authority
+      if @current_user.authority != "admin"
         redirect_to("/user/#{@current_user.id}/show")
         flash[:notice] = "権限がありません"
       end
