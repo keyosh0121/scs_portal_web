@@ -11,7 +11,12 @@
           <div class="user-show-content"><%= @user.email %></div>
           <div class="user-show-logout"><%= link_to("ログアウト","/user/logout",{method: :post, :class => "logout-link"})%></div>
           <div class="user-show-logout"><%= link_to("ユーザー情報編集","/user/edit",:class => "logout-link")%></div>
-          <div class="user-show-logout"><%= link_to("管理画面へ","/database",:class => "logout-link")%></div>
+          <% if @user.authority == "admin" %>
+            <div class="user-show-logout"><%= link_to("管理画面へ","/database",:class => "logout-link")%></div>
+          <% elsif @user.authority == "mic" %>
+            <div class="user-show-logout"><%= link_to("マイク練管理画面へ","/database/mic-practice",:class => "logout-link")%></div>
+          <% else %>
+          <% end %>
         </div>
       </div>
     </div>

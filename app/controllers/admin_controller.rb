@@ -111,7 +111,7 @@ class AdminController < ApplicationController
 		@mic = Mic.find(params[:id])
 		if @mic.update(:status => 1)
 			flash[:notice] = "マイク練を承認しました"
-			redirect_to('/database/mic-practice')
+			redirect_to('/database/mic-practice/unapproved')
       MicMailer.send_mic_status_change(@mic,params[:text]).deliver
 		else
 			flash[:notice] = "変更に失敗しました"
