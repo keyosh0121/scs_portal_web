@@ -36,7 +36,7 @@
             </div>
 
             <% if mic.band.band_type == 0 %>
-              <div class="band-pa"><p><%= mic.band.name %></p> (PA:<%= mic.band.pa.name %>
+              <div class="band-pa"><%= link_to "#{mic.band.name}", "/database/mic-band-detail/#{mic.band.id}", class: "band-name" %> (PA:<%= mic.band.pa.name %>
                 <% if mic.paattendance == "不参加" %>
                   <span class="attendence-alert"><%= mic.paattendance %></span>
                 <% else %>
@@ -45,7 +45,7 @@
               <!-- <div class="created-at">申請日時: <%= mic.created_at.strftime("%m月%d日 %H:%M")%></div> -->
               <a href="mailto:<%= mic.band.master.email %>">バンマスに連絡：<%=mic.band.master.email%></a>
             <% else %>
-              <div class="band-pa"><p><%= mic.band.name %></p></div>
+              <div class="band-pa"><%= link_to "#{mic.band.name}", "/database/mic-band-detail/#{mic.band.id}", class: "band-name" %></div>
               <!-- <div class="created-at">申請日時: <%= mic.created_at.strftime("%m月%d日 %H:%M")%></div> -->
               <a href="mailto:<%= mic.band.master.email %>">企画責任者に連絡：<%=mic.band.master.email%></a>
             <% end %>

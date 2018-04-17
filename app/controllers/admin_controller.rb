@@ -106,6 +106,10 @@ class AdminController < ApplicationController
     self.user_authentificate
   end
 
+  def band_detail_mic
+    @band=Band.find(params[:id])
+  end
+
 	def mic_approve
     @mics = Mic.all.order("date")
 		@mic = Mic.find(params[:id])
