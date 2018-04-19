@@ -14,5 +14,6 @@ class Room < ApplicationRecord
     Room.create(name:"B106", room_type:2)
     Room.create(name:"B123", room_type:2)
     Room.create(name:"B126", room_type:2)
+    Room.create(name:"キャンセル待ち", room_type:2)
   end
 end
