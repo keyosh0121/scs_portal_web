@@ -76,6 +76,7 @@ Rails.application.routes.draw do
   post "/database/mic-practice/delete/:id" => "admin#mic_delete"
   get "/database/mic-practice-approvedlist" => "admin#mic_approvedlist"
   get "/database/mic-band-detail/:id" => "admin#band_detail_mic"
+  get "/database/mic-remark/:id" => "admin#mic_remark"
    #音響掲示板
    get '/database/microom/register' => "admin#microom_register"
 	post '/database/microom/register/send' => "admin#microom_register_send"

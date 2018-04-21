@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180415135434) do
+ActiveRecord::Schema.define(version: 20180421042411) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -120,6 +120,7 @@ ActiveRecord::Schema.define(version: 20180415135434) do
     t.integer "user_id"
     t.integer "order"
     t.integer "room_id"
+    t.text "remark"
   end
 
   create_table "notifications", force: :cascade do |t|

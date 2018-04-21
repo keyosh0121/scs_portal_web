@@ -28,6 +28,11 @@
               <% if mic.order %>
                 <%= "分割#{mic.order}番目" %>
               <% end %>
+              <% if mic.remark %>
+                <div class="mic-remark">
+                  <%= link_to("備考あり","/database/mic-remark/#{mic.id}") %>
+                </div>
+              <% end %>
               <% if mic.room %>
                 <%= link_to("#{mic.room.name}",database_microom_register_path(date:mic.date)) %>
               <% else %>

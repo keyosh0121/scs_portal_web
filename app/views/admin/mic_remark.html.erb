@@ -1,0 +1,17 @@
+<div class="roomreg-wrap">
+  <div class="sub">マイク練備考</div>
+  <div class="date"><%= @mic.date.strftime("%Y年%m月%d日(#{%w(日 月 火 水 木 金 土)[@mic.date.wday]})") %>
+  </div>
+  <table>
+    <thead>
+      <tr>
+        <th><%=@mic.band.name%>の<%=@mic.period.name%>マイク練の備考</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><%=@mic.remark%></td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -259,6 +259,10 @@ class AdminController < ApplicationController
     @date_mic_and_room = Mic.select("date").order(date: 'DESC').page(params[:page]).per(10)
   end
 
+  def mic_remark
+    @mic = Mic.find(params[:id])
+  end
+
   def practice_room
     @dates = RoomUsage.all.pluck('date').uniq.reverse
   end

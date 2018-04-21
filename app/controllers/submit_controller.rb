@@ -32,7 +32,8 @@ class SubmitController < ApplicationController
       date: params[:date],
       period_id: params[:period_id],
       paattendance: attendance,
-      status: 0
+      status: 0,
+      remark: params[:remark]
       )
     params[:paattendance]
     if @mic.save
