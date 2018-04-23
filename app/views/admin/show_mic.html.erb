@@ -28,7 +28,7 @@
               <% if mic.order %>
                 <%= "分割#{mic.order}番目" %>
               <% end %>
-              <% if mic.remark %>
+              <% if mic.remark != "" && mic.remark %>
                 <div class="mic-remark">
                   <%= link_to("備考あり","/database/mic-remark/#{mic.id}") %>
                 </div>
