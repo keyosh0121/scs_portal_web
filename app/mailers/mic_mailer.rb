@@ -20,7 +20,17 @@ class MicMailer < ApplicationMailer
     #   addresses.push(user.email)
     # end
     mail(
-      subject: "[#{@mic.band.name}][#{mic.date.strftime("%m月%d日")}]マイク練予約",
+      subject: "マイク練予約[#{@mic.band.name}][#{mic.date.strftime("%m月%d日")}  #{mic.period.name}]",
+      to: 'scsmikesmith@gmail.com') do |format|
+      format.html
+      format.text
+    end
+  end
+
+  def send_mic_destroy_to_admin(mic)
+    @mic = mic
+    mail(
+      subject: "マイク練申請取消[#{@mic.band.name}][#{mic.date.strftime("%m月%d日")}  #{mic.period.name}]",
       to: 'scsmikesmith@gmail.com') do |format|
       format.html
       format.text

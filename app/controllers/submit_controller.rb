@@ -14,7 +14,7 @@ class SubmitController < ApplicationController
     self.user_authentificate
     @mic = Mic.new()
     if @current_user
-      @mics = @current_user.bands.map{|band| band.mics}
+      @mics = @current_user.bands.map{|band| band.mics.select {|m| m.date >= Date.today}}
     end
   end
 
@@ -52,6 +52,7 @@ class SubmitController < ApplicationController
     mic = Mic.find_by(id: params[:id])
     if mic.delete
       flash[:notice] = "マイク練申請が取り消されました"
+      MicMailer.send_mic_destroy_to_admin(mic).deliver
       redirect_to('/submit/mic-list')
     else
       flash[:notice] = "処理に失敗しました。再度取消処理を行ってください"
