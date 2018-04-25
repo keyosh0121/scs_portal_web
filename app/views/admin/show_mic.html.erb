@@ -52,7 +52,7 @@
             <% else %>
               <div class="band-pa"><%= link_to "#{mic.band.name}", "/database/mic-band-detail/#{mic.band.id}", class: "band-name" %></div>
               <!-- <div class="created-at">申請日時: <%= mic.created_at.strftime("%m月%d日 %H:%M")%></div> -->
-              <a href="mailto:<%= mic.band.master.email %>">企画責任者に連絡：<%=mic.band.master.email%></a>
+              <a href="mailto:<%= mic.band.master.email %>">企画責任者に連絡：<%=mic.band.master.name%></a>
             <% end %>
 
           </div>
