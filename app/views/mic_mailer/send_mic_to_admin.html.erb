@@ -12,10 +12,13 @@
       時限.....<%= @mic.period.name %><br>
       送信者.....<%= @mic.user.name %><br>
       PAの参加予定.....<% if @mic.paattendance == "不参加" %>
-                        <span style="color: #FF4500;"><%= @mic.paattendance %></span>
+                        <span style="color: #FF4500;"><%= @mic.paattendance %></span><br>
                       <% else %>
-                        <%= @mic.paattendance %>
+                        <%= @mic.paattendance %><br>
                       <% end %>
+      <%if @mic.remark %>
+        備考.....<%= @mic.remark %>
+      <% end %>
     </div><br><br>
     <p style="font-size: 13px">Portalにログイン後、「管理画面」からマイク練の承認を行って下さい。マイク練の承認は送信者に通知されます.
     </p><br>
