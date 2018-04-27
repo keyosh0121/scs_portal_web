@@ -53,7 +53,7 @@
         </select>
         備考
         <input type="text" name="remark" id="mic-remark" >
-        <input type="submit" name="" id="mic-submit-btn" value="申請">
+        <%= submit_tag "申請",data: { confirm: "入力情報に間違いはないですか？"},id: "mic-submit-btn" %>
       </div>
       <% end %>
     </div>
