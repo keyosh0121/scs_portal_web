@@ -10,4 +10,7 @@ $(document).on('turbolinks:load', function() {
     $('.modal form').attr("action","/database/users/authority_edit/" + user_id);
     modal.fadeIn();
   });
+  $('.date').on('click', function(event) {
+    $(this).next().slideToggle();
+  });
 });

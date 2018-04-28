@@ -18,9 +18,10 @@
   <% mics = Mic.order("date ASC, period_id ASC").select {|m| m.date >= Date.today} %>
     <div class="mic">
     <% mics.map(&:date).uniq.each do |date|%>
-    <div class="mic">
+      <div class="mic">
       <div class="date"> <%= date.strftime("%m月%d日" + "(#{%w(日 月 火 水 木 金 土)[date.wday]})") %>
       </div>
+      <div class="date-mics<%= " today" if date == Date.today %>">
       <% mics.select {|m| m.date == date}.each do |mic|%>
         <div class="mic-admin-band">
           <div class="left">
@@ -67,6 +68,7 @@
           </div>
         </div>
       <% end %>
+      </div>
       </div>
     <% end %>
 

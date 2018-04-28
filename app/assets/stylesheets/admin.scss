@@ -240,24 +240,31 @@
   border: solid 8px #66808F;
 }
 .date{
-  margin: 4px;
-  border-bottom: 1px solid gray;
+  margin: 0px 4px;
+  padding: 12px 4px;
+  border: 1px solid #EEEEEE;
   font-size: 20px;
   font-weight: 500;
-  color: #20B2AA;
+  background-color: #444467;
+  color: #fff;
 }
 
+.date-mics{
+  display: none;
+}
+.today{
+  display: block;
+}
 .unregistered{
   font-size: 13px;
 }
 
 .mic{
-  margin-bottom: 20px;
   .mic-admin-band{
     display: grid;
     grid-template-columns: 60% 20% 20%;
     margin: 4px 8px;
-    border: dotted #ccc 1px;
+    border: dotted #fff 1px;
     .period{
       font-size: 15px;
       padding: 0 4px
