@@ -7,6 +7,7 @@ class Room < ApplicationRecord
     Room.create(name:"E1016", room_type:1)
     Room.create(name:"E1116", room_type:1)
     Room.create(name:"会議スペース", room_type:1)
+    Room.create(name:"B101", room_type:2)
     Room.create(name:"B102", room_type:2)
     Room.create(name:"B103", room_type:2)
     Room.create(name:"B104", room_type:2)
