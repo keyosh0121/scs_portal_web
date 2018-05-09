@@ -16,6 +16,6 @@ class Event < ApplicationRecord
   has_many :event_contents, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :entries, dependent: :destroy
-  has_many :bands
+  has_many :bands, dependent: :destroy
   validates_with EventValidator
 end
