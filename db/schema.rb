@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180421042411) do
+ActiveRecord::Schema.define(version: 20180511130634) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -167,6 +167,7 @@ ActiveRecord::Schema.define(version: 20180421042411) do
     t.integer "user_id"
     t.integer "period_id"
     t.integer "room_id"
+    t.string "applicant"
   end
 
   create_table "rooms", force: :cascade do |t|
@@ -206,6 +207,7 @@ ActiveRecord::Schema.define(version: 20180421042411) do
     t.string "password_digest"
     t.string "reset_digest"
     t.datetime "reset_sent_at"
+    t.string "section"
   end
 
 end

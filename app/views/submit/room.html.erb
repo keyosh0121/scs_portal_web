@@ -17,17 +17,27 @@
 
     <div class="room-about">練習室利用は現役正規バンドのみ可能です。<br>
       自分の正規バンドが表示されない場合、申請に誤りがあるか、ユーザーの登録が正しく完了していない場合があります。</div>
-    <div class="room-current">本日申請されているマイク練数：<%= Mic.where(date: Date.today).count %>
+    <div class="room-current">本日マイク練が申請されている時限数：<%= Mic.where(date: Date.today).pluck(:period_id).uniq.count %>
       <div class="rcurrent-title">   <%= Date.today.strftime("%m月%d日")%>の利用状況</div>
       <% if @usages.count != 0 %>
-        <% RoomUsage.where(date: Date.today).each do |usage| %>
-          <%= usage.room.name if usage.room%>
-          <%= usage.band.name if usage.band%>
-          <%= usage.period.name if usage.period%>
-          <% if @current_user.band_names.include?(usage.band.name) %>
-            <%= link_to('消去','/submit/room/destroy/' + usage.id.to_s , {:method => 'post', data: {confirm: "本当に取り消しますか？"}})%>
+        <% @usages.each do |usage| %>
+          <% if usage.band %>
+            <%= usage.room.name if usage.room%>
+            <%= usage.band.name if usage.band%>
+            <%= usage.period.name if usage.period%>
+            <% if @current_user.band_names.include?(usage.band.name) %>
+              <%= link_to('消去','/submit/room/destroy/' + usage.id.to_s , {:method => 'post', data: {confirm: "本当に取り消しますか？"}})%>
+            <% end %>
+            <br>
+          <% else %>
+            <%= usage.room.name if usage.room%>
+            <%= usage.user.section if usage.user%>
+            <%= usage.period.name if usage.period%>
+            <% if @current_user.section == usage.applicant %>
+              <%= link_to('消去','/submit/room/destroy/' + usage.id.to_s , {:method => 'post', data: {confirm: "本当に取り消しますか？"}})%>
+            <% end %>
+            <br>
           <% end %>
-          <br>
         <% end %>
       <% else %>
         現在の利用申請はまだありません。
@@ -54,15 +64,13 @@
     <input type="checkbox" class="room-radio" id="<%= period.name %>" name="period_<%= period.id %>" value="<%= period.id %>"><label for="<%= period.name %>"><%= period.name %></label>
   <% end %>
   </div>
-  <div class="room-content-title">利用するバンド</div>
+  <div class="room-content-title">利用者　※選択していない場合はセクションでの利用で申請されてしまいます</div>
     <select name="band" class="band-select">
-        <option value="" selected disabled>選択してください</option>
-        option
+      <option value="" selected disabled>選択してください</option>
       <%= @current_user.bands.each do |band| %>
         <option value="<%=band.name%>"><%= band.name %></option>
       <% end %>
-      <option value="<%=@current_user.name%>">個人</option>
-      option
+      <option value="<%= @current_user.section %>">自分のセクション</option>
     </select>
   </div>
   <input type="submit" name="" value=利用申請する id="room-submit">

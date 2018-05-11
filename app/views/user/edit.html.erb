@@ -13,6 +13,72 @@
     <input type="tel" name="tel" value="<%=@current_user.tel%>">
     <div class="edit-form-content">大学</div>
     <input type="text" name="univ" value="<%=@current_user.univ%>">
+    <div class="edit-form-content">セクション</div>
+    <select name="section" >
+        <% if @user.section == nil %>
+            <option value="" selected disabled>選択してください</option>
+        <% end %>
+        <% if @user.section == "舞台監督" %>
+            <option value="舞台監督" selected>舞台監督</option>
+        <% else %>
+            <option value="舞台監督">舞台監督</option>
+        <% end %>
+        <% if @user.section == "音響" %>
+            <option value="音響" selected>音響</option>
+        <% else %>
+            <option value="音響">音響</option>
+        <% end %>
+        <% if @user.section == "照明" %>
+            <option value="照明" selected>照明</option>
+        <% else %>
+            <option value="照明">照明</option>
+        <% end %>
+        <% if @user.section == "舞台美術" %>
+            <option value="舞台美術" selected>舞台美術</option>
+        <% else %>
+            <option value="舞台美術">舞台美術</option>
+        <% end %>
+        <% if @user.section == "インカム" %>
+            <option value="インカム" selected>インカム</option>
+        <% else %>
+            <option value="インカム">インカム</option>
+        <% end %>
+        <% if @user.section == "TK" %>
+            <option value="TK" selected>TK</option>
+        <% else %>
+            <option value="TK">TK</option>
+        <% end %>
+        <% if @user.section == "会場" %>
+            <option value="会場" selected>会場</option>
+        <% else %>
+            <option value="会場">会場</option>
+        <% end %>
+        <% if @user.section == "渉外" %>
+            <option value="渉外" selected>渉外</option>
+        <% else %>
+            <option value="渉外">渉外</option>
+        <% end %>
+        <% if @user.section == "広報" %>
+            <option value="広報" selected>広報</option>
+        <% else %>
+            <option value="広報">広報</option>
+        <% end %>
+        <% if @user.section == "デザイン" %>
+            <option value="デザイン" selected>デザイン</option>
+        <% else %>
+            <option value="デザイン">デザイン</option>
+        <% end %>
+        <% if @user.section == "記録" %>
+            <option value="記録" selected>記録</option>
+        <% else %>
+            <option value="記録">記録</option>
+        <% end %>
+        <% if @user.section == "宴会" %>
+            <option value="宴会" selected>宴会</option>
+        <% else %>
+            <option value="宴会">宴会</option>
+        <% end %>
+    </select>
     <% if @user.errors.any?%>
         <div class="edit-error-display">
             <% @user.errors.full_messages do |message|%>

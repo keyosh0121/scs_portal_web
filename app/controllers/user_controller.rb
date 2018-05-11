@@ -46,7 +46,8 @@ class UserController < ApplicationController
       tel: params[:tel],
       year: params[:year].to_i,
       univ: params[:univ],
-      password: params[:password])
+      password: params[:password],
+      section: params[:section])
     if @user.save
       session[:user_id] = @user.id
       redirect_to("/")
@@ -91,7 +92,8 @@ class UserController < ApplicationController
       email: params[:email],
       year: params[:year],
       tel: params[:tel],
-      univ: params[:univ]
+      univ: params[:univ],
+      section: params[:section]
     )
       flash[:notice] = "内容を変更しました。"
       redirect_to("/user/#{@current_user.id}/show")

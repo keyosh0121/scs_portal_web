@@ -13,6 +13,7 @@ class User < ApplicationRecord
   validates :year, presence: true
   validates :name, presence: true
   validates :password_digest, presence: true
+  validates :section, presence: true
   has_secure_password validations: false
 
   # def temporal_bands

@@ -317,7 +317,7 @@ class SubmitController < ApplicationController
   end
 =end
   def room
-    @usages = RoomUsage.all
+    @usages = RoomUsage.where(date: Date.today)
     @usage = RoomUsage.new()
     @periods = Period.all
     self.user_authentificate
@@ -326,7 +326,7 @@ class SubmitController < ApplicationController
   def room_send
     @periods = Period.all
     @usages = RoomUsage.all
-    dummy_band_id=nil
+    dummy_band_id= nil
     dummy_band_id=Band.find_by(name:params[:band]).id  if Band.find_by(name:params[:band])
     period_ids = []
     Period.all.each do |p|
@@ -340,6 +340,7 @@ class SubmitController < ApplicationController
           band_id: dummy_band_id,
           user_id: @current_user.id,
           date: params[:date],
+          applicant: params[:band],
           period_id: p.to_i
           ))
     end

@@ -14,9 +14,25 @@
         <div class="signup-content">その他の情報</div>
         <div class="signup-content-small">SCSに入会した年度 <span>※必須</span></div>
         <input type="text" name="year" placeholder="半角数字 例)2016" value=<%=@user.year%>>
+        <div class="signup-content-small">セクション <span>※必須</span></div>
+        <select name="section" class = "section_select">
+            <option value="" selected disabled>選択してください</option>
+            <option value="舞台監督">舞台監督</option>
+            <option value="音響">音響</option>
+            <option value="照明">照明</option>
+            <option value="舞台美術">舞台美術</option>
+            <option value="インカム">インカム</option>
+            <option value="TK">TK</option>
+            <option value="会場">会場</option>
+            <option value="渉外">渉外</option>
+            <option value="広報">広報</option>
+            <option value="デザイン">デザイン</option>
+            <option value="記録">記録</option>
+            <option value="宴会">宴会</option>
+        </select>
         <div class="signup-content-small">大学名 <span>※必須</span></div>
         <input type="text" name="univ" placeholder="例)早稲田大学" value=<%=@user.univ%>>
-        <div class="signup-content">パスワード登録 </div>
+        <div class="signup-content">パスワード登録</div>
         <div class="signup-content-small">パスワード(6文字以上) <span>※必須</span></div>
         <input type="password" name="password" placeholder="パスワードを登録">
         <div class="signup-content-small">パスワード再入力 <span>※必須</span></div>

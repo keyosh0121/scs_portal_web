@@ -27,7 +27,7 @@
           <div class="left">
             <div class="period"><%= mic.period.name%>
               <% if mic.order %>
-                <%= "分割#{mic.order}番目" %>
+                <%= link_to "分割#{mic.order}番目", "/database/mic/split/time" %>
               <% end %>
               <% if mic.remark != "" && mic.remark %>
                 <div class="mic-remark">

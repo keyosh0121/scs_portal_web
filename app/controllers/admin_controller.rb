@@ -264,6 +264,9 @@ class AdminController < ApplicationController
     @mic = Mic.find(params[:id])
   end
 
+  def mic_split_time
+  end
+
   def practice_room
     @dates = RoomUsage.all.pluck('date').uniq.reverse
   end
