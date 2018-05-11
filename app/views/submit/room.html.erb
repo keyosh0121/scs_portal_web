@@ -64,7 +64,7 @@
     <input type="checkbox" class="room-radio" id="<%= period.name %>" name="period_<%= period.id %>" value="<%= period.id %>"><label for="<%= period.name %>"><%= period.name %></label>
   <% end %>
   </div>
-  <div class="room-content-title">利用者　※選択していない場合はセクションでの利用で申請されてしまいます</div>
+  <div class="room-content-title">利用者</div>
     <select name="band" class="band-select">
       <option value="" selected disabled>選択してください</option>
       <%= @current_user.bands.each do |band| %>
