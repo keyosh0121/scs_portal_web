@@ -67,7 +67,7 @@
   <div class="room-content-title">利用者</div>
     <select name="band" class="band-select">
       <option value="" selected disabled>選択してください</option>
-      <%= @current_user.bands.each do |band| %>
+      <%= @bands.each do |band| %>
         <option value="<%=band.name%>"><%= band.name %></option>
       <% end %>
       <option value="<%= @current_user.section %>">自分のセクション</option>

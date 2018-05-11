@@ -320,6 +320,7 @@ class SubmitController < ApplicationController
     @usages = RoomUsage.where(date: Date.today)
     @usage = RoomUsage.new()
     @periods = Period.all
+    @bands = @current_user.bands.where(band_type: 0)
     self.user_authentificate
   end
 
