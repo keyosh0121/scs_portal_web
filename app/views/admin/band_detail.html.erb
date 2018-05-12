@@ -2,7 +2,7 @@
   <div class="title">バンド詳細ページ</div>
   <%if @band%>
   <div class="name"><%= @band.name %></div>
-  <img src="/band-images/<%= @band.image%>" alt="">
+  <img src="<%= "/band-images/#{@band.image}" %>" alt="">
   <div class="subtitle">バンド紹介文</div>
   <div class="description"><%= @band.description %></div>
   <div class="subtitle">結成年</div>
