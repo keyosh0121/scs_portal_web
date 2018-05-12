@@ -10,6 +10,7 @@ class Band < ApplicationRecord
   validates :master_id, presence: {message: 'バンマスは必須項目です'}, if: :regular_band?
   validates :pa_id, presence: {message: 'PAは必須項目です'}, if: :regular_band?
   validates :description, presence: {message: 'バンドの説明は必須項目です'}, if: :regular_band?
+  validates :feature, presence: {message: 'バンドの特徴は必須項目です'}, if: :regular_band?
   def regular_band?
     self.band_type == 0
   end
