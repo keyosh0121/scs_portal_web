@@ -34,8 +34,10 @@
         <div class="entry-form-content">正規バンドを選択</div>
         <select name="regular_band">
           <option disabled selected>正規バンドを選択</option>
-          <% @current_user.bands.each do |band|%>
-          <option value="<%=band.id%>"><%=band.name%></option>
+          <% if @current_user.bands.where(band_type: 0).any? %>
+            <% @current_user.bands.where(band_type: 0).each do |band|%>
+              <option value="<%=band.id%>"><%= band.name %></option>
+            <% end %>
           <% end %>
         </select>
         <div class="entry-form-content">1曲目(右側曲尺)</div>
@@ -68,15 +70,19 @@
         <div class="entry-form-content">正規バンドを選択(企画エントリーの場合は入力しないでください)</div>
         <select name="regular_band" class="band-select-regular">
           <option disabled selected value=0>正規バンドを選択</option>
-          <% @current_user.bands.each do |band|%>
+          <% if @current_user.bands.any? %>
+          <% @current_user.bands.where(band_type: 0).each do |band|%>
           <option value="<%=band.id%>"><%=band.name%></option>
+          <% end %>
           <% end %>
         </select>
         <div class="entry-form-content">企画バンドを選択(正規バンドの場合は入力しないでください)</div>
         <select name="temporal_band" class="band-select-temporal">
           <option disabled selected value=0>企画バンドを選択</option>
-          <% @current_user.temporal_bands.each do |band|%>
-          <option value="<%=band.id%>"><%=band.name%></option>
+          <% if @current_user.bands.where(band_type: 1).any? %>
+            <% @current_user.temporal_bands.each do |band|%>
+              <option value="<%=band.id%>"><%=band.name%></option>
+            <% end %>
           <% end %>
         </select>
         <input type="submit" name="" value="エントリーする">
