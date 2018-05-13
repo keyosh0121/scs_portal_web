@@ -201,10 +201,23 @@ class SubmitController < ApplicationController
       description: params[:description],
       year: params[:year].to_i,
       image: "default-band.jpg",
+      website: params[:website],
+      feature: params[:feature],
       band_type: 0
     )
     member_names = [params[:member1],params[:member2],params[:member3],params[:member4],params[:member5],params[:member6],params[:member7],params[:member8]]
     @mem = member_names
+    error_counter = 0
+    8.times do |i|
+      key = ("member"+(i+1).to_s).to_sym
+      if params[key] != ""
+        if User.find_by(name:member_names[i])
+        else
+          error_counter += 1
+        end
+      else
+      end
+    end
     @pa = params[:pa]
     @master = params[:master]
     if params[:image]
@@ -212,7 +225,7 @@ class SubmitController < ApplicationController
       @band.image = "#{@band.name}.jpg"
       File.binwrite("public/band-images/#{@band.image}", image.read)
     end
-    if @band.save
+    if @band.save && error_counter == 0
       #member_names = [params[:member1],params[:member2],params[:member3],params[:member4],params[:member5],params[:member6],params[:member7],params[:member8]]
       8.times do |i|
         #TODO:例外処理
@@ -220,7 +233,10 @@ class SubmitController < ApplicationController
       end
       redirect_to("/user/#{@current_user.id}/show")
       flash[:notice] = "正規バンドの申請を受け付けました"
-
+    elsif error_counter > 0
+        @names = User.all.map(&:name)
+        flash[:notice] = "登録に失敗しました。#{error_counter}人の名前が登録されていません。"
+        render("submit/regular_band")
     else
       puts @band.errors.full_messages
       @names = User.all.map(&:name)
