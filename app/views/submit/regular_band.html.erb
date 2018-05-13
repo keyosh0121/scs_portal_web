@@ -47,7 +47,8 @@
       <div class="reg-form-content-small">バンドの特徴<span class="reg-caution"> ※必須</span></div>
       <input type="text" name="feature" placeholder="例：陽気なJazzを歌うバンド">
        <div class="reg-form-content-small">バンドの説明<span class="reg-caution"> ※必須</span></div>
-       <textarea name="description"><%=@band.description%></textarea>
+       <textarea name="description" placeholder="バンド紹介文を自由に書いてください。
+歌っている曲のジャンル、曲目、バンドの雰囲気などが伝わる自己紹介をお願いします！"><%=@band.description%></textarea>
        <div class="reg-form-content-small">バンド写真</div>
        <input type="file" name="image">
        <input type="submit" name="" value="正規バンドを申請" class="reg-submit">

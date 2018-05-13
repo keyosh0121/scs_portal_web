@@ -239,12 +239,12 @@ class AdminController < ApplicationController
     @mics.each do |mic|
       key=mic.period_id.to_s.to_sym
       if params[key] == "選択してください"
-      elsif params[key] == "cancel"
-        MicMailer.send_mic_room_cancel(mic).deliver
       elsif params[key]
         mic.update(room_id: params[key])
         if Room.find(params[key]).name == "キャンセル待ち"
           MicMailer.send_mic_room_wait(mic).deliver
+        elsif Room.find(params[key]).name == "空き部屋なし"
+          MicMailer.send_mic_room_cancel(mic).deliver
         else
           MicMailer.send_mic_room(mic).deliver
         end
