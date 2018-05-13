@@ -19,8 +19,4 @@ class Room < ApplicationRecord
     Room.create(name:"空き部屋なし", room_type:2)
   end
 
-  def self.create_temportal_method
-    Room.create(name:"空き部屋なし", room_type:2)
-  end
-
 end
