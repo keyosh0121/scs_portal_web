@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180512050953) do
+ActiveRecord::Schema.define(version: 20180518153023) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -80,6 +80,7 @@ ActiveRecord::Schema.define(version: 20180512050953) do
     t.text "message"
     t.string "musics"
     t.string "times"
+    t.text "remark"
   end
 
   create_table "event_contents", force: :cascade do |t|

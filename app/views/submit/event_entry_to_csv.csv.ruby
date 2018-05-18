@@ -2,7 +2,7 @@
 require 'csv'
 
 CSV.generate(encoding: Encoding::SJIS, row_sep: "\r\n", force_quotes: true) do |csv|
-  csv_column_names = ["エントリー送信者","送信者アドレス","送信者電話番号","バンド名","バンドメンバー","バンマス","曲名","曲尺","メッセージ"]
+  csv_column_names = ["エントリー送信者","送信者アドレス","送信者電話番号","バンド名","バンドメンバー","バンマス","曲名","曲尺","備考"]
   csv << csv_column_names
   @entries.each do |entry|
 	user = User.find(entry.user_id)
@@ -20,7 +20,7 @@ CSV.generate(encoding: Encoding::SJIS, row_sep: "\r\n", force_quotes: true) do |
 			master =nil
 		else
 			band = Band.find(entry.regular_band_id)
-			master = band.master
+			master = band.master.name
 		end
 	end
     csv_column_values = [
@@ -29,10 +29,10 @@ CSV.generate(encoding: Encoding::SJIS, row_sep: "\r\n", force_quotes: true) do |
       user.tel,
 			band.name,
 			band.members,
-			master,
+			band.master.name,
       entry.musics,
       entry.times,
-			entry.message
+			entry.remark
     ]
     csv << csv_column_values
   end

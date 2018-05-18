@@ -50,7 +50,6 @@
           </div>
         <div class="entry-form-content">3曲目</div>
           <div class="entry-form-content-wrap">
-
             <input type="text" name="music-3" placeholder="曲名を入力" class="input-music"><input type="time" name="time-3"  class="input-music-time">
           </div>
         <div class="entry-form-content">4曲目</div>
@@ -59,6 +58,9 @@
           </div>
         <div class="entry-form-content">MC総尺</div>
         <input type="time" name="mc-time" class="mc-time">
+        <div class="entry-form-content">備考</div>
+        <textarea name="remark", placeholder="備考などを入力"></textarea>
+
         <input type="submit" name="" value="エントリーする">
       </div>
     <% elsif @event.event_type == 2 %>

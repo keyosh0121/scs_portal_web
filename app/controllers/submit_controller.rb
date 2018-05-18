@@ -433,6 +433,11 @@ class SubmitController < ApplicationController
         times.push(params[:time4])
       end
     end
+    if params[:remark]
+      remark = params[:remark]
+    else
+      remark = nil
+    end
     @entry = Entry.new(
       user_id: @current_user.id,
       event_id: event.id,
@@ -441,7 +446,8 @@ class SubmitController < ApplicationController
       temporal_band_id: t_band_id,
       message: params[:message],
       musics: musics,
-      times: times
+      times: times,
+      remark: remark
       )
     if @entry.save
       flash[:notice] = "エントリーしました"
