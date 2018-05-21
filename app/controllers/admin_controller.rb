@@ -1,5 +1,5 @@
 class AdminController < ApplicationController
-  def top
+  def top # TODO 独立メソッド化(require_login)->before_actionにセット
     if @current_user
       if @current_user.authority != "admin"
         redirect_to("/user/#{@current_user.id}/show")
@@ -18,7 +18,7 @@ class AdminController < ApplicationController
   def band_detail
     @band = Band.find(params[:id])
   end
-  def band_destroy
+  def band_destroy #TODO CRUDアクションのメソッド化
     @band = Band.find(params[:id])
     if @band.destroy
       flash[:notice] = "#{@band.name}をデータベースから削除しました"
@@ -32,7 +32,7 @@ class AdminController < ApplicationController
     @bands = Band.where(registration: true)
   end
 
-  def register_band
+  def register_band #TODO CRUDアクションのメソッド化
     @band = Band.find_by(id: params[:id])
     @band.registration = true
     if @band.save
@@ -53,12 +53,14 @@ class AdminController < ApplicationController
 
   def user_authority_edit
     user = User.find_by(id: params[:id])
+    # authority = nil
+    # authority = params[:authority] if params[:authority] ===>5lines -> 2lines 
     if params[:authority] == "nil"
       authority = nil
     else
       authority = params[:authority]
     end
-    if user
+    if user #TODO CRUDアクションのメソッド化
       user.authority = authority
       if user.save
         flash[:notice] = "変更が完了しました"
@@ -76,7 +78,7 @@ class AdminController < ApplicationController
   def user_approve
     user = User.find_by(id: params[:user_id])
     user.approval = true
-    if user.save
+    if user.save #TODO CRUDアクションのメソッド化
       flash[:notice] = "ユーザーを承認しました"
 			UserMailer.user_approved_mail(user).deliver
       redirect_to('/database/users')
@@ -85,7 +87,7 @@ class AdminController < ApplicationController
       redirect_to('/database/users')
     end
   end
-  def user_reject
+  def user_reject #TODO CRUDアクションのメソッド化
     user = User.find_by(id: params[:user_id])
     user.delete
     if user.save
@@ -123,7 +125,7 @@ class AdminController < ApplicationController
 		end
 	end
 
-  def mic_delete
+  def mic_delete #TODO CRUDアクションのメソッド化
     @mic = Mic.find(params[:id])
     if @mic.delete
       flash[:notice] = "マイク練を削除しました"
@@ -152,7 +154,7 @@ class AdminController < ApplicationController
       time: Time.now
       )
     @notifications = Notification.all
-    if @notif.save
+    if @notif.save #TODO CRUDアクションのメソッド化
       redirect_to("/database/notifications")
       flash[:notice] = "お知らせを投稿しました"
     else
@@ -160,7 +162,7 @@ class AdminController < ApplicationController
       flash[:notice] = "お知らせを投稿できませんでした。再度試して下さい"
     end
   end
-  def delete_info
+  def delete_info #TODO CRUDアクションのメソッド化
     @notification = Notification.find(params[:id])
     if @notification.destroy
       flash[:notice] = "お知らせを削除しました"
@@ -194,7 +196,7 @@ class AdminController < ApplicationController
       event_type: params[:type].to_i
       )
 
-    if @event.save
+    if @event.save  #TODO CRUDアクションのメソッド化
       flash[:notice] = "イベントを登録しました"
       redirect_to("/database/show-event")
     else
@@ -205,7 +207,7 @@ class AdminController < ApplicationController
     puts string
     array = Array.new
     string.each do |str|
-      content = EventContent.new(name: str, event_id: @event.id)
+      content = EventContent.new(name: str, event_id: @event.id) # TODO CREATEアクションに変更
       content.save
     end
   end
