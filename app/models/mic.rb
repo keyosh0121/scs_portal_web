@@ -69,6 +69,6 @@ class Mic < ApplicationRecord
   end
 
   def overlapped_mics
-    Mic.select {|m| m.id != self.id && m.date == self.date && m.period_id == self.period_id}
+    Mic.order(:created_at).select {|m| m.id != self.id && m.date == self.date && m.period_id == self.period_id}
   end
 end
