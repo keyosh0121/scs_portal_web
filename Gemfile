@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-
+ruby "2.4.4"
 
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
@@ -39,6 +39,7 @@ gem 'jquery-turbolinks'
 gem 'rails-i18n'
 gem 'tod'
 gem 'gon'
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
