@@ -14,6 +14,7 @@ class User < ApplicationRecord
   validates :name, presence: true
   validates :password_digest, presence: true
   validates :section, presence: true
+  validates :univ, presence: true
   has_secure_password validations: false
 
   # def temporal_bands
@@ -25,6 +26,10 @@ class User < ApplicationRecord
   #   end
   #   return user_bands
   # end
+
+  def password_confirmation_failure
+      errors.add(:password, "が確認用と一致しません")
+  end
 
   def band_names
     user_bands_name = Array.new()

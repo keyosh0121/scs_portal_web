@@ -41,22 +41,29 @@ class UserController < ApplicationController
   end
 
   def register
+    if params[:year] == ""
+      year = nil
+    else
+      year = params[:year].to_i
+    end
     @user = User.new(name: params[:name],
       email: params[:email],
       tel: params[:tel],
-      year: params[:year].to_i,
+      year: year,
       univ: params[:univ],
       password: params[:password],
       section: params[:section])
-    if @user.save
+
+    if @user.save && params[:password] == params[:password_confirmation]
       session[:user_id] = @user.id
       redirect_to("/")
       flash[:notice] = "ログインしました"
       UserMailer.user_verification_mail(@user).deliver
       UserMailer.user_verification_mail_to_admin(@user).deliver
     else
-      @messages = Array.new()
-      @errors = @user.errors
+      if params[:password] != params[:password_confirmation]
+        @user.password_confirmation_failure
+      end
       flash[:notice] = "入力内容にエラーがあります"
       render("new")
     end

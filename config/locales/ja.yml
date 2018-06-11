@@ -1,12 +1,14 @@
 ja:
- activerecord:
- models:
- attributes:
- user:
- name: 名前
- email: メールアドレス
- password: パスワード
- tel: 電話番号
- year: 入会年度
- univ: 大学名
+  activerecord:
+  models:
+  attributes:
+    user:
+    name: 名前
+    email: メールアドレス
+    password: パスワード
+    password_digest: パスワード
+    tel: 電話番号
+    year: 入会年度
+    univ: 大学名
+    section: セクション
 
