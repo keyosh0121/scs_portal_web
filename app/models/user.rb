@@ -31,6 +31,15 @@ class User < ApplicationRecord
       errors.add(:password, "が確認用と一致しません")
   end
 
+  def name_space_validation
+    if self.name.include?(" ") || self.name.include?("　")
+      errors.add(:name, "にスペースが含まれています")
+      return false
+    else
+      return true
+    end
+  end
+
   def band_names
     user_bands_name = Array.new()
     self.bands.each do |band|

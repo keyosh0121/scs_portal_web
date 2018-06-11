@@ -53,8 +53,8 @@ class UserController < ApplicationController
       univ: params[:univ],
       password: params[:password],
       section: params[:section])
-
-    if @user.save && params[:password] == params[:password_confirmation]
+    @user.name_space_validation
+    if @user.save && params[:password] == params[:password_confirmation] && @user.name_space_validation
       session[:user_id] = @user.id
       redirect_to("/")
       flash[:notice] = "ログインしました"
@@ -64,6 +64,7 @@ class UserController < ApplicationController
       if params[:password] != params[:password_confirmation]
         @user.password_confirmation_failure
       end
+      @user.name_space_validation
       flash[:notice] = "入力内容にエラーがあります"
       render("new")
     end
