@@ -143,7 +143,7 @@
   padding: 10px;
   text-align: center;
 }
-.modal-select select{
+.modal-select :not(.mic-band)>select{
   width: 100%;
   height: 40px;
   background-color: #fff;
@@ -367,7 +367,7 @@
   border: none;
   -webkit-appearance: none;
 }
-.mic-approvedlist-content select{
+.mic-approvedlist-content :not(.mic-band)>select{
   width: 100%;
   height: 100%;
   float: left;
@@ -387,7 +387,7 @@
   position: relative;
 
 }
-.mic-approvedlist-content input,select{
+.mic-approvedlist-content input,:not(.mic-band)>select{
   margin: 8px 0;
 }
 .mic-approvedlist-description{
@@ -589,7 +589,7 @@
   overflow: auto;
   background-color: #ccc;
 }
-.event-add-wrap input:not(.event-submit-btn), select{
+.event-add-wrap input:not(.event-submit-btn), :not(.mic-band)>select{
   float: left;
   width: 100%;
   -webkit-appearance: none;
@@ -668,11 +668,35 @@
     th,td{border:dotted 1px #ddd;
     border-collapse: collapse;}
     th{font-size: 14px;font-weight: normal;}
-    span{font-size: 12px;}
-    select{background-color: #eee;}
+    span{font-size: 14px;}
+    .room-name{background-color: #eee;}
     .period{font-size: 12px;padding: 4px;text-align: right;}
   }
   input{height:50px;width:100%;background-color: salmon;margin-top: 24px;color: #fff;font-size:16px;border:none;}
+}
+.mic-band{
+  position: relative;
+  width: 100%;
+  height: 40px;
+  .band-name{
+    position: absolute;
+    top: 10px;
+  }
+}
+.order-select{
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border: 0;
+  outline-offset: -1px;
+  background-color: #BAD3FF;
+  width: 70px;
+  height:30px;
+  position: absolute;
+  right: 20px;
+  top: 5px;
+  font-size: 14px;
+  padding-left: 15px;
 }
 .room-buttons{
 	width: 100%;
@@ -719,7 +743,7 @@
   margin: 16px 0;
   margin-top: 32px;
 }
-.room-inner select{
+.room-inner :not(.mic-band)>select{
   padding: 8px;
   font-size: 15px;
   width: 100%;

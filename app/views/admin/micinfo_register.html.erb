@@ -1,0 +1,38 @@
+<div class="roomreg-wrap">
+  <div class="sub">部屋登録画面</div>
+  <div class="date"><%= @date.strftime("%Y年%m月%d日(#{%w(日 月 火 水 木 金 土)[@date.wday]})") %>
+  </div>
+	<%= form_tag('/database/micinfo/register/send') do %>
+  <table>
+    <thead>
+      <tr>
+        <th>時限</th>
+        <th>使用する部屋</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @mics.order(:period_id).map(&:period).uniq.each do |period|%>
+      <tr>
+        <td class="period"><%= period.name %></td>
+        <td>
+          <% @mics.where(period:period).each_with_index do |mic|%>
+          <div class="mic-band">
+            <span class="band-name"><%= mic.band.name %></span><br>
+            <% if @mics.where(period:period).length == 3 %>
+              <%= select_tag "order[#{mic.id}]", options_for_select([["１番目","1"], ["2番目","2"], ["3番目","3"]], selected: mic.order.to_s) ,class: "order-select"%>
+            <% elsif @mics.where(period:period).length == 2 %>
+              <%= select_tag "order[#{mic.id}]", options_for_select([["１番目","1"], ["2番目","2"]], selected: mic.order.to_s) ,class: "order-select"%>
+            <% else %>
+            <% end %>
+          </div>
+          <% end %>
+          <%= select_tag "#{period.id}", options_for_select(Room.where(room_type:2).map{|room| ["#{room.name}","#{room.id}"]}, selected: @mics.find_by(period:period).room_id.to_s) ,class: "room-name"%>
+        </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+	<input type="hidden" name="date" value="<%= @date %>">
+  <%= submit_tag '部屋を登録', :data => { :confirm => '部屋に間違いはないですか？' } %>
+	<% end %>
+</div>

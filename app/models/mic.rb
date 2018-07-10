@@ -68,6 +68,38 @@ class Mic < ApplicationRecord
     end
   end
 
+  def mic_room_text(room_id)
+    if room_id != "選択してください"
+      former_room_id = self.room_id
+      self.update(room_id: room_id)
+      if self.room.name == "キャンセル待ち"
+        return "只今キャンセル待ちとなっております。部屋が分かり次第追ってご連絡させていただきます。また、部屋が取れずマイク練ができないことも考えられますので、ご了承ください。\n"
+      elsif self.room.name == "空き部屋なし"
+        return "本日のマイク練ですが、空き部屋がないため、行うことができません。申し訳ありません。\n"
+      elsif former_room_id == nil
+        return "本日のマイク練は#{self.room.name}にて行います。\n"
+      elsif self.room_id != former_room_id
+        return "マイク練部屋に変更がありました。#{self.room.name}にて行います。\n"
+      else
+        return ""
+      end
+    else
+      return ""
+    end
+  end
+
+  def mic_split_order_text(order)
+    if order == nil
+      return ""
+    end
+    if self.order != order.to_i
+      self.update(order: order.to_i)
+      return "諸事情により、分割の順番が変更されました。#{self.band.name}さんは#{self.order}番目となります。\n"
+    else
+      return "本日の分割は#{self.order}番目です。\n"
+    end
+  end
+
   def overlapped_mics
     Mic.order(:created_at).select {|m| m.id != self.id && m.date == self.date && m.period_id == self.period_id}
   end

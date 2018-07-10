@@ -79,8 +79,8 @@ Rails.application.routes.draw do
   get "/database/mic-remark/:id" => "admin#mic_remark"
   get "/database/mic/split/time" => "admin#mic_split_time"
 
-   get '/database/microom/register' => "admin#microom_register"
-	post '/database/microom/register/send' => "admin#microom_register_send"
+   get '/database/micinfo/register' => "admin#micinfo_register"
+	post '/database/micinfo/register/send' => "admin#micinfo_register_send"
   post "/database/mic/room-register/weekly/send/:params" => "admin#microom_register"
   post "/database/mic/room-register/monthly/send" => "admin#room_monthly_send"
   post "/database/mic/room-register/send" => "admin#mic_room_register_send"

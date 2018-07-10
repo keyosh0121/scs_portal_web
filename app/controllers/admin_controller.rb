@@ -224,12 +224,12 @@ class AdminController < ApplicationController
     @hours = [1,2,3,8,4,5,6,7]
     @rooms = ["B101","B102","B103","B104","B105","B106","B123","B126"]
   end
-  def microom_register
+  def micinfo_register
     @date = Date.strptime(params[:date])
     @mics = Mic.where(date: @date)
   end
 
-	def microom_register_send
+	def micinfo_register_send
 		@date = Date.strptime(params[:date])
     @mics = Mic.where(date: @date)
 		# Period.all.each do |p|
@@ -237,18 +237,24 @@ class AdminController < ApplicationController
 		# 	MicRoom.create(date:@date,period_id:p.id,room_id:params[key]) if params[key]
 		# end
     @mics.each do |mic|
-      key=mic.period_id.to_s.to_sym
-      if params[key] == "選択してください"
-      elsif params[key]
-        mic.update(room_id: params[key])
-        if Room.find(params[key]).name == "キャンセル待ち"
-          MicMailer.send_mic_room_wait(mic).deliver
-        elsif Room.find(params[key]).name == "空き部屋なし"
-          MicMailer.send_mic_room_cancel(mic).deliver
-        else
-          MicMailer.send_mic_room(mic).deliver
-        end
-      else
+      key_1=mic.period_id.to_s.to_sym
+      # if params[key] == "選択してください"
+      # elsif params[key]
+      #   mic.update(room_id: params[key])
+      #   if Room.find(params[key]).name == "キャンセル待ち"
+      #     MicMailer.send_mic_room_wait(mic).deliver
+      #   elsif Room.find(params[key]).name == "空き部屋なし"
+      #     MicMailer.send_mic_room_cancel(mic).deliver
+      #   else
+      #     MicMailer.send_mic_room(mic).deliver
+      #   end
+      # else
+      # end
+      room_text = mic.mic_room_text(params[key_1])
+      key_2 = mic.id.to_s.to_sym
+      order_text = mic.mic_split_order_text(params[:order][key_2])
+      if (room_text != "") || (order_text != "")
+        MicMailer.send_mic_info(mic,room_text,order_text).deliver
       end
     end
 		flash[:notice] = "利用部屋を登録しました"

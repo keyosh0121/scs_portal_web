@@ -32,9 +32,9 @@
                 </div>
               <% end %>
               <% if mic.room %>
-                <%= link_to("#{mic.room.name}",database_microom_register_path(date:mic.date)) %>
+                <%= link_to("#{mic.room.name}",database_micinfo_register_path(date:mic.date)) %>
               <% else %>
-                <%= link_to("部屋を登録する",database_microom_register_path(date:mic.date)) %>
+                <%= link_to("部屋を登録する",database_micinfo_register_path(date:mic.date)) %>
               <% end %>
             </div>
 

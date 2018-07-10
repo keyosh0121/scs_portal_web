@@ -50,8 +50,10 @@ class MicMailer < ApplicationMailer
     end
   end
 
-  def send_mic_room(mic)
+  def send_mic_info(mic,room_text,order_text)
     @mic = mic
+    @room_text = room_text
+    @order_text = order_text
     master_email = @mic.band.master.email
     mail(
       subject: "本日のマイク練部屋",

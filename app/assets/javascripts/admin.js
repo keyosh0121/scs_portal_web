@@ -13,4 +13,5 @@ $(document).on('turbolinks:load', function() {
   $('.date').on('click', function(event) {
     $(this).next().slideToggle();
   });
+
 });
