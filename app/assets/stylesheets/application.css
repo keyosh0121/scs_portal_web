@@ -82,6 +82,8 @@ input :not(input[type="checkbox"]){
 .header-right{
   width: 80%;
 }
+
+/*サイドメニュー*/
 #sidemenu{
   position: fixed;
   overflow: auto;
@@ -172,32 +174,7 @@ input :not(input[type="checkbox"]){
     padding: 10px;
   }
 }
-.button-wrapper{
-  height: 50px;
-  width: 100%;
-  display: block;
-  float: left;
-}
-header .menu-button{
-  display: block;
-  margin:  0 10px;
-  padding: 0 0;
-  height: 100%;
-  font-size: 13px;
-  z-index: 10;
-}
-header .menu-button:hover{
-  background-color: lightseagreen;
-  transition: all 500ms;
-}
-header li {
-  display: block;
-  list-style: none;
-  float: left;
-  padding: 0px 14px;
-  height: 100%;
-  z-index: 9;
-}
+
 .header-end{
   float: right;
   display: block;
@@ -219,6 +196,8 @@ header .btn:hover{
   transition: all 500ms;
 }
 /*      ヘッダーここまで    */
+
+
 .flash-notice{
   float: top;
   margin-top: 50px;
@@ -230,6 +209,8 @@ header .btn:hover{
   padding: 8px;
 }
 
+
+/*フッター*/
 footer{
   height: 250px;
   background-color: #44444F;
@@ -259,3 +240,31 @@ footer{
   background-color: #ddf;
 }
 
+/*=============以下未使用くん==============*/
+
+.button-wrapper{
+  height: 50px;
+  width: 100%;
+  display: block;
+  float: left;
+}
+header .menu-button{
+  display: block;
+  margin:  0 10px;
+  padding: 0 0;
+  height: 100%;
+  font-size: 13px;
+  z-index: 10;
+}
+header .menu-button:hover{
+  background-color: lightseagreen;
+  transition: all 500ms;
+}
+header li {
+  display: block;
+  list-style: none;
+  float: left;
+  padding: 0px 14px;
+  height: 100%;
+  z-index: 9;
+}
