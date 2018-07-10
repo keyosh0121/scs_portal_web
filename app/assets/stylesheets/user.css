@@ -1,3 +1,4 @@
+/*新規登録画面*/
 .signup-wrapper{
   background-color: rgba(0, 0, 0, 0.8);
   background-size: cover;
@@ -70,7 +71,7 @@
 
 
 /* ここから show.html.erb */
-
+/*ログイン後のユーザー画面*/
 
 .user-show-wrapper{
   background-color: sandybrown;

@@ -1,4 +1,4 @@
-
+/*管理ホーム画面*/
 
 .main-wrapper-admin{
   padding-top: 50px;
@@ -110,6 +110,7 @@
   font-weight: normal;
   font-size: 13px;
 }
+/*user-editいらない？*/
 .user-edit{
   font-size: 11px;
   border: solid 1px ;
@@ -117,6 +118,7 @@
   background-color: lightgray;
   padding: 0px 10px;
 }
+
 .modal{
   position: absolute;
   height: 250px;
