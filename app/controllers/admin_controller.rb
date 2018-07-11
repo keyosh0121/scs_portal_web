@@ -252,7 +252,12 @@ class AdminController < ApplicationController
       # end
       room_text = mic.mic_room_text(params[key_1])
       key_2 = mic.id.to_s.to_sym
-      order_text = mic.mic_split_order_text(params[:order][key_2])
+      if params[:order]
+        order = params[:order][key_2]
+      else
+        order = nil
+      end
+      order_text = mic.mic_split_order_text(order)
       if (room_text != "") || (order_text != "")
         MicMailer.send_mic_info(mic,room_text,order_text).deliver
       end
