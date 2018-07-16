@@ -77,7 +77,6 @@ Rails.application.routes.draw do
   get "/database/mic-practice-approvedlist" => "admin#mic_approvedlist"
   get "/database/mic-band-detail/:id" => "admin#band_detail_mic"
   get "/database/mic-remark/:id" => "admin#mic_remark"
-  get "/database/mic/split/time" => "admin#mic_split_time"
 
    get '/database/micinfo/register' => "admin#micinfo_register"
 	post '/database/micinfo/register/send' => "admin#micinfo_register_send"
