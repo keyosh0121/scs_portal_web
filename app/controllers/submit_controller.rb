@@ -179,6 +179,7 @@ class SubmitController < ApplicationController
   end
   def all_comment_conf
     @conference = Event.find(params[:conf_id])
+    @contents = @conference.event_contents
     @comments = @conference.comments
   end
 

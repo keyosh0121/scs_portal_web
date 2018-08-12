@@ -12,8 +12,10 @@
     <div class="comment-main">
       <h1><%= @conference.name %>へのコメント</h1>
       <% if @comments.any? %>
-      <% @comments.each do |c| %>
-        <div class="sent-comment">
+      <% @contents.each do |con|%>
+        <div class="sent-comment-content"><%= con.name %></div>
+        <% con.comments.each do |c| %>
+          <div class="sent-comment">
           <div class="sent-comment-object"><%= c.atevent %>  <%= c.atcontent %>
             <% if c.sender == @current_user.name %>
              <%= link_to('コメントを削除','/submit/comment/list/destroy/' + c.id.to_s ,{:method => 'POST', data: {confirm: "本当に取り消しますか？"}})%>
@@ -36,7 +38,9 @@
             </div>
           <% end %>
         <% end %>
+        <% end %>
       <% end %>
+
       <% end %>
     </div>
   </div>
