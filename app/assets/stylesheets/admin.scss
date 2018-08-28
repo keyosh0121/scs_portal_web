@@ -292,6 +292,7 @@
       height: 40px;
       margin: 15px auto;
       padding: 10px 15px;
+      z-index: 100;
 		  .approve-btn{color:#282;border:1px solid #282;}
   		.delete-btn{color:#822;border:1px solid #822;}
       &.approved{
@@ -672,7 +673,14 @@
     th{font-size: 14px;font-weight: normal;}
     span{font-size: 14px;}
     .room-name{background-color: #eee;}
-    .period{font-size: 12px;padding: 4px;text-align: right;}
+    .period{
+      font-size: 12px;
+      position: relative;
+      .period-name{
+        position: absolute;
+        top: 0px;
+      }
+    }
   }
   input{height:50px;width:100%;background-color: salmon;margin-top: 24px;color: #fff;font-size:16px;border:none;}
 }

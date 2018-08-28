@@ -72,7 +72,9 @@ class Mic < ApplicationRecord
     if room_id != "選択してください"
       former_room_id = self.room_id
       self.update(room_id: room_id)
-      if self.room.name == "キャンセル待ち"
+      if self.room_id == former_room_id
+        return ""
+      elsif self.room.name == "キャンセル待ち"
         return "只今キャンセル待ちとなっております。部屋が分かり次第追ってご連絡させていただきます。また、部屋が取れずマイク練ができないことも考えられますので、ご了承ください。\n"
       elsif self.room.name == "空き部屋なし"
         return "本日のマイク練ですが、空き部屋がないため、行うことができません。申し訳ありません。\n"

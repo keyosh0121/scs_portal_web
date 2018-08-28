@@ -258,7 +258,7 @@ class AdminController < ApplicationController
         order = nil
       end
       order_text = mic.mic_split_order_text(order)
-      if (room_text != "") || (order_text != "")
+      if (room_text != "") || (order_text != "" && order_text != "本日の分割は#{mic.order}番目です。\n")
         MicMailer.send_mic_info(mic,room_text,order_text).deliver
       end
     end

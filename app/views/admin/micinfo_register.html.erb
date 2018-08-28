@@ -13,7 +13,9 @@
     <tbody>
       <% @mics.order(:period_id).map(&:period).uniq.each do |period|%>
       <tr>
-        <td class="period"><%= period.name %></td>
+        <td class="period">
+          <div class="period-name"><%= period.name %></div>
+        </td>
         <td>
           <% @mics.where(period:period).each_with_index do |mic|%>
           <div class="mic-band">
