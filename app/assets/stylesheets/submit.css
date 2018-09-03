@@ -459,6 +459,10 @@
   width: 100%;
   padding: 16px;
 }
+
+.com-cof-input input{
+  padding: 16px;
+}
 .textarea-comcof{
   height: 220px;
 }
@@ -469,6 +473,10 @@
 .sent-comment{
   border: dotted 1px;
   margin: 8px 0;
+}
+
+#com-check-publish{
+  margin: 8px;
 }
 
 #com-submit-btn{

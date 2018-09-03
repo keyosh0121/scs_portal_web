@@ -22,7 +22,10 @@
             <% end %>
             <%= link_to('コメント詳細/返信','/submit/comment/list/detail/' + c.id.to_s)%>
             </div>
-          <div class="sent-comment-content"><%= c.comment %></div>
+          <div class="sent-comment-content">
+            <%= c.comment if c.publish || c.user_id == @current_user.id %>
+            <span style="color:#777"><%= "※コメントは非公開です" unless c.publish%></span>
+          </div>
         </div>
         <% if ReplyToComment.where(comment_id: c.id).any?%>
           <% ReplyToComment.where(comment_id: c.id).each do |reply|%>

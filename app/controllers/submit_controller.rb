@@ -102,13 +102,20 @@ class SubmitController < ApplicationController
 
   def comment_conference_send
     content=EventContent.find_by(name: params[:atcontent])
+    @publish = true
+
+    @publish = false if params[:publish] == "on"
+    puts @publish
 	  @conferences = Event.where(category:"conference")
     @comment = Comment.new(
       user_id: @current_user.id,
       event_id: content.event_id,
       event_content_id: content.id,
-      comment: params[:comment]
+      comment: params[:comment],
+      publish: @publish
     )
+    puts @comment.publish
+    puts @comment.save
     if @comment.save
       flash[:notice] = "コメントが送信されました。"
       redirect_to('/submit/comment/list')
