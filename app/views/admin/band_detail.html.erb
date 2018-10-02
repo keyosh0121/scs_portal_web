@@ -5,6 +5,8 @@
   <img src="<%= "/band-images/#{@band.image}" %>" alt="">
   <div class="subtitle">バンド紹介文</div>
   <div class="description"><%= @band.description %></div>
+  <div class="subtitle">特徴</div>
+  <div class="description"><%= @band.feature if @band.feature%></div>
   <div class="subtitle">結成年</div>
   <div class="description"><%= @band.year %></div>
   <div class="subtitle">メンバー</div>
