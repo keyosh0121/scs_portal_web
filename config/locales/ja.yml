@@ -8,7 +8,10 @@ ja:
     password: パスワード
     password_digest: パスワード
     tel: 電話番号
-    year: 入会年度
+    year: 年
     univ: 大学名
     section: セクション
+    master_id: バンマス
+    description: バンドの説明
+    feature: バンドの特徴
 

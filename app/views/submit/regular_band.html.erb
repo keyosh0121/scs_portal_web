@@ -45,9 +45,10 @@
       <div class="reg-form-content-small">website</div>
       <input type="text" name="website" placeholder="">
       <div class="reg-form-content-small">バンドの特徴<span class="reg-caution"> ※必須</span></div>
-      <input type="text" name="feature" placeholder="例：陽気なJazzを歌うバンド">
+      <!-- <input type="text" name="feature" placeholder=""> -->
+      <textarea name="feature" placeholder="例：陽気なJazzを歌うバンド"><%=@band.feature%></textarea>
        <div class="reg-form-content-small">バンドの説明<span class="reg-caution"> ※必須</span></div>
-       <textarea name="description" placeholder="バンド紹介文を自由に書いてください。
+       <textarea class="band-description" name="description" placeholder="バンド紹介文を自由に書いてください。
 歌っている曲のジャンル、曲目、バンドの雰囲気などが伝わる自己紹介をお願いします！"><%=@band.description%></textarea>
        <div class="reg-form-content-small">バンド写真</div>
        <input type="file" name="image">

@@ -250,13 +250,13 @@
   border-bottom: dotted 1px gray;
   font-size: 13px;
 }
-.reg-form input,textarea{
+.reg-form input,.band-description{
   width: 100%;
   margin: 16px 0;
   padding: 8px;
   font-size: 14px;
 }
-.reg-form textarea{
+.reg-form .band-description{
   height: 150px;
 }
 .reg-form input[type="text"], input[type="file"]{

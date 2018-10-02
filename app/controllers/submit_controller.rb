@@ -201,13 +201,18 @@ class SubmitController < ApplicationController
   def regular_band_submit
     members = Array.new()
     master_id = User.find_by(name:params[:master]).id if User.find_by(name:params[:master])
+    if params[:year]
+      year = params[:year].to_i
+    else
+      year = nil
+    end
     pa_id = User.find_by(name:params[:pa]).id if User.find_by(name:params[:pa])
     @band = Band.new(
       name: params[:name],
       pa_id: pa_id,
       master_id: master_id,
       description: params[:description],
-      year: params[:year].to_i,
+      year: year,
       image: "default-band.jpg",
       website: params[:website],
       feature: params[:feature],
@@ -246,9 +251,9 @@ class SubmitController < ApplicationController
         flash[:notice] = "登録に失敗しました。#{error_counter}人の名前が登録されていません。"
         render("submit/regular_band")
     else
-      puts @band.errors.full_messages
+      # puts @band.errors.full_messages
       @names = User.all.map(&:name)
-      flash[:notice] = "保存に失敗しました。入力内容を確認してください。"
+      flash[:notice] = @band.errors.full_messages
       #redirect_to :action => "regular_band"
       render("submit/regular_band")
     end
