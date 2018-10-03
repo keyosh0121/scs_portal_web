@@ -1,0 +1,9 @@
+新しい正規バンドの申請がありました。
+      名前.....<%= @band.name %><br>
+      特徴.....<%= @band.feature %><br>
+      紹介文.....<%= @band.description %><br>
+      メンバー
+      <% @band.users.each do |user| %>
+        <%= user.name %>、
+      <% end %>
+承認または削除をし、承認の場合はホームページに載せてください。

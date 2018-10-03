@@ -244,6 +244,7 @@ class SubmitController < ApplicationController
         #TODO:例外処理
         BandMember.create(user_id: User.find_by(name: member_names[i]).id,band_id: @band.id,mic_number: i+1) if User.find_by(name: member_names[i])
       end
+      BandMailer.send_band_to_admin(@band).deliver
       redirect_to("/user/#{@current_user.id}/show")
       flash[:notice] = "正規バンドの申請を受け付けました"
     elsif error_counter > 0
