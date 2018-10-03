@@ -27,16 +27,15 @@ $(document).on('turbolinks:load', function() {
 
   var memberInput = $('.reg-member-input');
   memberInput.change(function(){
-    num = $(this).attr('class').split(" ")[1]
     inputName = $(this).val();
     if (gon.names.indexOf( inputName ) == -1) {
       $(this).css('border', 'solid 1px #822')
-      $('.reg-member-registration-' + num).css('color', '#822')
-      $('.reg-member-registration-' + num).text('登録が完了していない氏名です')
+      $(this).prev().css('color', '#822')
+      $(this).prev().text('登録が完了していない氏名です')
     } else {
       $(this).css('border', 'solid 1px #282')
-      $('.reg-member-registration-' + num).css('color', '#282')
-      $('.reg-member-registration-' + num).text('ポータル登録済み')
+      $(this).prev().css('color', '#282')
+      $(this).prev().text('ポータル登録済み')
     }
   });
 });
