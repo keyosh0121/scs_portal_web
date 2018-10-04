@@ -450,7 +450,16 @@
   img{width:100%;}
   .subtitle{font-size:10px;color:#aaa;border-bottom: solid 1px #aaa;}
   .title{font-size: 12px;}
-  .btn-wrap{width:100%;display:flex;justify-content:center;}
+}
+.btn-wrap{
+  width:100%;
+  display:flex;
+  justify-content:center;
+  margin: auto;
+  width: 100%;
+  padding:4px;
+  padding-top: 32px;
+  max-width: 600px;
   .btn{border:1px solid;width:48%;margin: 1%;height:40px;overflow:auto;padding:10px;border-radius:4px;}
   .approve{border-color: #2A2}
   .destroy{border-color: #A22}

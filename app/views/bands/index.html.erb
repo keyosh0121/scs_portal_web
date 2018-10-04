@@ -1,0 +1,11 @@
+<div class="band-show-wrapper">
+  <div class="band-show-inner">
+    <div class="band-show-title">正規バンド一覧</div>
+    <div class="submenu">登録されているバンド</div>
+    <div class="band-show-container">
+    <% @bands.each do |band|%>
+      <%= link_to(band.name,band_path(band),{class: "link"})%>
+    <% end %>
+    </div>
+  </div>
+</div>

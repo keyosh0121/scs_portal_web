@@ -1,23 +1,6 @@
-<div class="band-d-wrap">
-  <div class="title">バンド詳細ページ</div>
-  <%if @band%>
-  <div class="name"><%= @band.name %></div>
-  <img src="<%= "/band-images/#{@band.image}" %>" alt="">
-  <div class="subtitle">バンド紹介文</div>
-  <div class="description"><%= @band.description %></div>
-  <div class="subtitle">特徴</div>
-  <div class="description"><%= @band.feature if @band.feature%></div>
-  <div class="subtitle">結成年</div>
-  <div class="description"><%= @band.year %></div>
-  <div class="subtitle">メンバー</div>
-  <div class="description"><% @band.band_members.each do |m|%><%= m.user.name if m%>    マイク番号<%= m.mic_number if m%><br><%end%></div>
-  <div class="subtitle">バンマス,PA</div>
-  <div class="description">バンマス:<%= @band.master.name %><br>PA:<%= @band.pa.name %></div>
-  <div class="btn-wrap">
+<%= render @band %>
+<div class="btn-wrap">
     <%= link_to("削除","/database/bands/destroy/#{@band.id}",{:class => "btn destroy", :method => 'POST', :data =>{:confirm => "#{@band.name}をデータベースから削除してよろしいですか？"}})%>
     <%= link_to("承認","/database/bands/register/#{@band.id}",{:class => "btn approve",:method => 'POST',:data => {:confirm => "バンドを正規バンドとして登録します。"}}) unless @band.registration %>
     <%= link_to("承認済",'',{:class => "btn approved"}) if @band.registration %>
-  </div>
-  <%end%>
 </div>
-

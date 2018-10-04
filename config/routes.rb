@@ -15,6 +15,8 @@ Rails.application.routes.draw do
 
   resources :password_reset,     only: [:new, :create, :edit, :update]
 
+  resources :bands, only: [:index, :show]
+
   get "submit/mic" => "submit#mic"
   post "submit/mic/send" => "submit#mic_submit"
   post "submit/mic/destroy/:id" => "submit#mic_destroy"
