@@ -4,19 +4,19 @@ class BandMailer < ActionMailer::Base
 
   def send_band_to_admin(band)
     @band = band
-    mails = Array.new()
-    admins = User.where(authority:"admin")
-    admins.each do |admin|
-      mails.push(admin.email)
-    end
-    # addresses = User.where(authority:"mic").pluck('email')
-    # if addresses.empty?
-    #   user = User.find_by(authority:"admin")
-    #   addresses.push(user.email)
-    # end
     mail(
       subject: "新しいバンド申請：#{@band.name}",
-      to: 'mails') do |format|
+      to: 'arafubeatbox@gmail.com') do |format|
+      format.html
+      format.text
+    end
+  end
+
+  def send_band_information_change(band)
+    @band = band
+    mail(
+      subject: "バンド情報の変更：#{@band.name}",
+      to: 'arafubeatbox@gmail.com') do |format|
       format.html
       format.text
     end

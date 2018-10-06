@@ -1,1 +1,7 @@
 <%= render @band %>
+
+<% if @current_user.bands.include?(@band) %>
+  <div class = "btn-wrap">
+    <%= link_to("編集", edit_band_path(@band), {:class => "btn"}) %>
+  </div>
+<% end %>

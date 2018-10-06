@@ -4,3 +4,7 @@
     <%= link_to("承認","/database/bands/register/#{@band.id}",{:class => "btn approve",:method => 'POST',:data => {:confirm => "バンドを正規バンドとして登録します。"}}) unless @band.registration %>
     <%= link_to("承認済",'',{:class => "btn approved"}) if @band.registration %>
 </div>
+
+<div class = "btn-wrap">
+  <%= link_to("編集",edit_band_path(@band), {:class => "btn"}) %>
+</div>
