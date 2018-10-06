@@ -13,9 +13,9 @@ Rails.application.routes.draw do
   post 'user/edit/send' => 'user#edit_send'
   post "user/logout" => "user#logout"
 
-  resources :password_reset,     only: [:new, :create, :edit, :update]
+  resources :password_reset,     only: [:new, :create, :edit]
 
-  resources :bands, only: [:index, :show]
+  resources :bands
 
   get "submit/mic" => "submit#mic"
   post "submit/mic/send" => "submit#mic_submit"
@@ -42,8 +42,6 @@ Rails.application.routes.draw do
   get 'submit/entry/admin' => "submit#entry_admin"
   get 'submit/entry/admin/list/:id' => "submit#entry_admin_list"
 
-  post "submit/regular-band/send" => "submit#regular_band_submit"
-  get "submit/regular-band" => "submit#regular_band"
   post "submit/temporal-band/send" => "submit#temporal_band_submit"
   get "submit/temporal-band" => "submit#temporal_band"
   get "submit/room" => "submit#room"

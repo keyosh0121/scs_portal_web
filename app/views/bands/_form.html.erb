@@ -1,0 +1,39 @@
+<div class="reg-band-sub-form">
+  <div class="error-reg">
+    <% band.errors.full_messages do |message| %>
+      <%= message %><br>
+    <% end %>
+  </div>
+  <%= form_for band do |f| %>
+      <div class="reg-form">
+        <div class="reg-form-content">バンド名</div>
+        <%= f.text_field :name, placeholder: 'バンド名を入力して下さい' %>
+        <div class="reg-form-content">PA・メンバー</div>
+        <div class="reg-form-content-small">PA<span class="reg-caution"> ※必須</span></div>
+        <div class="reg-member-registration"></div>
+        <input class="reg-member-input" type="text" name="pa" placeholder="氏名を入力して下さい" list="nameList" value=<%= band.pa.name if band.pa %>>
+        <div>該当するマイク番号にメンバーの氏名を入力してください</div>
+        <% 8.times do |i|%>
+          <div class="reg-form-content-small">マイク番号<%= i + 1 %><span class="reg-caution"><%= "※必須" if i <= 2 %></span></div>
+          <div class="reg-member-registration"></div>
+          <input class="reg-member-input" type="text" name="member<%= i + 1 %>" placeholder="氏名を入力して下さい" list="nameList" value=<%= mem[i] %>>
+        <% end %>
+        <div class="reg-form-content-small">バンマス氏名<span class="reg-caution"> ※必須</span></div>
+        <div class="reg-member-registration"></div>
+        <input class="reg-member-input" type="text" name="master" placeholder="氏名を入力して下さい" list="nameList" value=<%=band.master.name if band.master%>>
+        <div class="reg-form-content">バンド情報</div>
+        <div class="reg-form-content-small">結成年<span class="reg-caution"> ※必須</span></div>
+        <%= select_tag "band[year]", options_for_select([["選択してください", ""], [Date.today.year-3,"#{Date.today.year-3}"], [Date.today.year-2,"#{Date.today.year-2}"], [Date.today.year-1,"#{Date.today.year-1}"], [Date.today.year,"#{Date.today.year}"]], selected: band.year.to_s) ,class: "year-selector"%>
+        <div class="reg-form-content-small">website</div>
+        <%= f.text_field :website %>
+        <div class="reg-form-content-small">バンドの特徴<span class="reg-caution"> ※必須</span></div>
+        <%= f.text_area :feature, placeholder: '例：陽気なJazzを歌うバンド' %>
+        <div class="reg-form-content-small">バンドの説明<span class="reg-caution"> ※必須</span></div>
+        <%= f.text_area :description, class: 'band-description', placeholder: 'バンド紹介文を自由に書いてください。
+  歌っている曲のジャンル、曲目、バンドの雰囲気などが伝わる自己紹介をお願いします！' %>
+        <div class="reg-form-content-small">バンド写真</div>
+        <%= f.file_field :image %>
+        <%= f.submit '申請', class: 'reg-submit' %>
+      </div>
+  <% end %>
+</div>

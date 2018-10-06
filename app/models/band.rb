@@ -57,6 +57,10 @@ class Band < ApplicationRecord
     return next_band_candidate
   end
 
+  def users_band(user)
+    return user.bands
+  end
+
 
 
 end
