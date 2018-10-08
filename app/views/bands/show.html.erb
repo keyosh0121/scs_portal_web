@@ -1,7 +1,7 @@
 <%= render @band %>
-
 <% if @current_user.bands.include?(@band) %>
   <div class = "btn-wrap">
-    <%= link_to("編集", edit_band_path(@band), {:class => "btn"}) %>
+    <%= link_to("削除", band_path(@band), {:class => "btn destroy", :method => 'DELETE', :data =>{:confirm => "#{@band.name}を正規バンドから外してよろしいですか？"}})%>
+    <%= link_to("編集", edit_band_path(@band), {:class => "btn", :data => {:confirm => "いたずらで編集を申請するのはやめてください。加えられた変更はwebマスターによってホームページに反映されます。"}}) %>
   </div>
 <% end %>

@@ -1,6 +1,6 @@
 <%= render @band %>
 <div class="btn-wrap">
-    <%= link_to("削除","/database/bands/destroy/#{@band.id}",{:class => "btn destroy", :method => 'POST', :data =>{:confirm => "#{@band.name}をデータベースから削除してよろしいですか？"}})%>
+    <%= link_to("削除", band_path(@band), {:class => "btn destroy", :method => 'DELETE', :data =>{:confirm => "#{@band.name}をデータベースから削除してよろしいですか？"}})%>
     <%= link_to("承認","/database/bands/register/#{@band.id}",{:class => "btn approve",:method => 'POST',:data => {:confirm => "バンドを正規バンドとして登録します。"}}) unless @band.registration %>
     <%= link_to("承認済",'',{:class => "btn approved"}) if @band.registration %>
 </div>

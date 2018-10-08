@@ -3,6 +3,8 @@ class BandsController < ApplicationController
 
   def index
     @bands = Band.where(registration: true)
+    @years = [Date.today.year, Date.today.year - 1, Date.today.year - 2, Date.today.year - 3]
+    @bands_by_year = [@bands.where(year: @years[0]), @bands.where(year: @years[1]), @bands.where(year: @years[2]), @bands.where(year: @years[3])]
   end
 
   def show
@@ -145,6 +147,19 @@ class BandsController < ApplicationController
       render :edit
     end
     # binding.pry
+  end
+
+  def destroy
+    @band = Band.find(params[:id])
+    @name = @band.name
+    if @band.destroy
+      flash[:notice] = "#{@band.name}をデータベースから削除しました"
+      BandMailer.send_band_destroy(@name).deliver
+      redirect_to("/user/#{@current_user.id}/show")
+    else
+      flash[:notice] = "削除に失敗しました。再度試してください"
+      redirect_to("/database/bands/detail/#{@band.id}")
+    end
   end
 
   private
