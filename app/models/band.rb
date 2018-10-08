@@ -11,7 +11,7 @@ class Band < ApplicationRecord
   validates :year, presence: {message: 'は必須項目です'}, if: :regular_band?
   validates :pa_id, presence: {message: 'は必須項目です'}, if: :regular_band?
   validates :description, presence: {message: 'は必須項目です'}, if: :regular_band?
-  validates :feature, presence: {message: 'は必須項目です'}, if: :regular_band?
+  # validates :feature, presence: {message: 'は必須項目です'}, if: :regular_band?
   def regular_band?
     self.band_type == 0
   end
