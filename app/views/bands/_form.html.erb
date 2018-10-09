@@ -31,8 +31,9 @@
         <div class="reg-form-content-small">バンドの説明<span class="reg-caution"> ※必須</span></div>
         <%= f.text_area :description, class: 'band-description', placeholder: 'バンド紹介文を自由に書いてください。
   歌っている曲のジャンル、曲目、バンドの雰囲気などが伝わる自己紹介をお願いします！' %>
-        <div class="reg-form-content-small">バンド写真</div>
-        <%= f.file_field :image %>
+        <div class="reg-form-content-small">バンド写真<span class="reg-caution"> ※必須</span></div>
+        <a href="mailto:arafubeatbox@gmail.com">ウェブマスターに写真を送信</a>
+        <!-- <%= f.file_field :image %> -->
         <%= f.submit '申請', class: 'reg-submit' %>
       </div>
   <% end %>
