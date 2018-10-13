@@ -11,16 +11,14 @@ class AdminController < ApplicationController
     end
   end
 
-  def show_bands
-    self.user_authentificate
-    @bands = Band.where(registration: false)
-  end
   def band_detail
     @band = Band.find(params[:id])
   end
 
   def show_registered_bands
     @bands = Band.where(registration: true)
+    @years = [Date.today.year, Date.today.year - 1, Date.today.year - 2, Date.today.year - 3]
+    @bands_by_year = [@bands.where(year: @years[0]), @bands.where(year: @years[1]), @bands.where(year: @years[2]), @bands.where(year: @years[3])]
   end
 
   def register_band
@@ -123,11 +121,6 @@ class AdminController < ApplicationController
       flash[:notice] = "削除に失敗しました。再度試してください。"
       render('show_mic')
     end
-  end
-
-  #音響掲示板
-  def mic_approvedlist
-    @mics = Mic.where(status:'1').order('date DESC,time').page(params[:page]).per(10)
   end
 
   def show_infos
@@ -256,11 +249,7 @@ class AdminController < ApplicationController
 		flash[:notice] = "利用部屋を登録しました"
 		redirect_to('/database/mic-practice')
 	end
-  def mic_list
-    @mic = Mic.all
-    @room = MicRoom.all
-    @date_mic_and_room = Mic.select("date").order(date: 'DESC').page(params[:page]).per(10)
-  end
+
 
   def mic_remark
     @mic = Mic.find(params[:id])

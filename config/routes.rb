@@ -51,7 +51,6 @@ Rails.application.routes.draw do
   get 'submit/contact' => 'submit#contact_top'
   post 'submit/contact/send' => 'submit#contact_send'
 
-  get "/database/bands" => "admin#show_bands"
   get "/database/bands/detail/:id" => "admin#band_detail"
   post "/database/bands/register/:id" => "admin#register_band"
   get "/database/registered-bands" => "admin#show_registered_bands"
@@ -69,20 +68,17 @@ Rails.application.routes.draw do
   post '/database/notifications/delete/:id' => "admin#delete_info"
   get '/database/room-usage' => 'admin#practice_room'
   #マイク練管理
-  get '/database/mic-practice/list' => "admin#mic_list"
   get "/database/mic-practice" => "admin#show_mic"
   get "/database/mic-practice/unapproved" => "admin#show_unregistered_mic"
 	post "/database/mic-practice/approve/:id" => "admin#mic_approve"
   post "/database/mic-practice/delete/:id" => "admin#mic_delete"
-  get "/database/mic-practice-approvedlist" => "admin#mic_approvedlist"
   get "/database/mic-band-detail/:id" => "admin#band_detail_mic"
   get "/database/mic-remark/:id" => "admin#mic_remark"
 
-   get '/database/micinfo/register' => "admin#micinfo_register"
+  get '/database/micinfo/register' => "admin#micinfo_register"
 	post '/database/micinfo/register/send' => "admin#micinfo_register_send"
   post "/database/mic/room-register/weekly/send/:params" => "admin#microom_register"
   post "/database/mic/room-register/monthly/send" => "admin#room_monthly_send"
-  post "/database/mic/room-register/send" => "admin#mic_room_register_send"
   get "/database" => "admin#top"
   get '/mic-order-registration/:id' => "admin#mic_order_register"
   post '/mic-order-registration/:id/:order' => "admin#mic_order_register_send"

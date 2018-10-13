@@ -10,9 +10,30 @@
     <% end %>
     <div class="submenu">登録されているバンド</div>
     <div class="band-show-container">
-    <% @bands.each do |band|%>
-      <%= link_to(band.name,"/database/bands/detail/#{band.id}",{class: "link"})%>
-    <% end %>
+      <div class="mic-admin-wrapper">
+        <% mics = Mic.order("date ASC, period_id ASC").select {|m| m.date >= Date.today} %>
+          <% 4.times do |i|%>
+            <div class="mic">
+            <div class="date"> <%= @years[i] %>
+            </div>
+            <div class="date-mics">
+            <% @bands_by_year[i].each do |band|%>
+              <div class="mic-admin-band">
+                <div class="left">
+                  <div class="band-pa"><%= link_to(band.name,band_path(band),{class: "band-name"})%></div>
+                </div>
+                <div class="right-delete">
+                  <%= link_to("削除", band_path(band), {:class => "delete-btn", :method => 'DELETE', :data =>{:confirm => "#{band.name}を正規バンドから外してよろしいですか？"}})%>
+                </div>
+                <div class="right-approve">
+                  <%= link_to("編集", edit_band_path(band), {:class => "approve-btn", :data => {:confirm => "webマスター権限で編集します。よろしいですか？"}}) %>
+                </div>
+              </div>
+            <% end %>
+            </div>
+            </div>
+          <% end %>
+      </div>
     </div>
   </div>
 </div>
