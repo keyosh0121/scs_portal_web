@@ -17,7 +17,7 @@
           <div class="period-name"><%= period.name %></div>
         </td>
         <td>
-          <% @mics.where(period:period).each_with_index do |mic|%>
+          <% @mics.where(period:period).order(:order).each_with_index do |mic|%>
           <div class="mic-band">
             <span class="band-name"><%= mic.band.name %></span><br>
             <% if @mics.where(period:period).length == 3 %>
