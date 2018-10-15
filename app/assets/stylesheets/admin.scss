@@ -706,7 +706,7 @@
   }
 }
 
-input ~ select{
+input ~ select:not(.year-selector, #mic-sub-form-content){
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
