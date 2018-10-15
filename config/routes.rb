@@ -14,13 +14,12 @@ Rails.application.routes.draw do
   post "user/logout" => "user#logout"
 
   resources :password_reset,     only: [:new, :create, :edit]
-
   resources :bands
 
   get "submit/mic" => "submit#mic"
   post "submit/mic/send" => "submit#mic_submit"
   post "submit/mic/destroy/:id" => "submit#mic_destroy"
-    get "submit/mic-list" => "submit#mic_list"
+  get "submit/mic-list" => "submit#mic_list"
   get "submit/comment" => "submit#comment"
   get "submit/comment/list" => "submit#comment_list"
   post "submit/comment/list/destroy/:id" => "submit#comment_destroy"

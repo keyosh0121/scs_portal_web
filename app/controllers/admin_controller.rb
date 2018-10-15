@@ -216,34 +216,22 @@ class AdminController < ApplicationController
 	def micinfo_register_send
 		@date = Date.strptime(params[:date])
     @mics = Mic.where(date: @date)
-		# Period.all.each do |p|
-		# 	key = p.id.to_s.to_sym
-		# 	MicRoom.create(date:@date,period_id:p.id,room_id:params[key]) if params[key]
-		# end
     @mics.each do |mic|
       key_1=mic.period_id.to_s.to_sym
-      # if params[key] == "選択してください"
-      # elsif params[key]
-      #   mic.update(room_id: params[key])
-      #   if Room.find(params[key]).name == "キャンセル待ち"
-      #     MicMailer.send_mic_room_wait(mic).deliver
-      #   elsif Room.find(params[key]).name == "空き部屋なし"
-      #     MicMailer.send_mic_room_cancel(mic).deliver
-      #   else
-      #     MicMailer.send_mic_room(mic).deliver
-      #   end
-      # else
-      # end
       room_text = mic.mic_room_text(params[key_1])
       key_2 = mic.id.to_s.to_sym
-      if params[:order]
+      if params[:order][key_2]
         order = params[:order][key_2]
+        start_time = (params[:start_time]["#{mic.id}(4i)"] + ":" + params[:start_time]["#{mic.id}(5i)"]).to_time
+        end_time = (params[:end_time]["#{mic.id}(4i)"] + ":" + params[:end_time]["#{mic.id}(5i)"]).to_time
+        order_text = mic.mic_split_order_text(order)
+        time_text = mic.mic_split_time_text(start_time, end_time)
+        split_text = order_text + time_text
       else
-        order = nil
+        split_text = ""
       end
-      order_text = mic.mic_split_order_text(order)
-      if (room_text != "") || (order_text != "" && order_text != "本日の分割は#{mic.order}番目です。\n")
-        MicMailer.send_mic_info(mic,room_text,order_text).deliver
+      if (room_text != "") || (split_text != "" && split_text != "本日の分割は#{mic.order}番目です。")
+        MicMailer.send_mic_info(mic,room_text,split_text).deliver
       end
     end
 		flash[:notice] = "利用部屋を登録しました"

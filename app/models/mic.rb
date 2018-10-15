@@ -91,14 +91,20 @@ class Mic < ApplicationRecord
   end
 
   def mic_split_order_text(order)
-    if order == nil
-      return ""
-    end
     if self.order != order.to_i
       self.update(order: order.to_i)
       return "諸事情により、分割の順番が変更されました。#{self.band.name}さんは#{self.order}番目となります。\n"
     else
-      return "本日の分割は#{self.order}番目です。\n"
+      return "本日の分割は#{self.order}番目です。"
+    end
+  end
+
+  def mic_split_time_text(start_time, end_time)
+    if (self.start_time.strftime("%H:%M") != start_time.strftime("%H:%M")) || (self.end_time.strftime("%H:%M") != end_time.strftime("%H:%M"))
+      self.update(start_time: start_time, end_time: end_time)
+      return "本日のマイク練の時間は\n #{self.start_time.strftime("%H:%M")}〜#{self.end_time.strftime("%H:%M")}です。"
+    else
+      return ""
     end
   end
 

@@ -16,28 +16,6 @@
             <% end %>
           </select>
         </div>
-
-        <!-- 以前の入力欄 -->
-        <!-- <div class="tem-form-content">メンバー</div>
-        <div class="tem-form-content-small">メンバー①</div>
-        <input type="text" name="member1" placeholder="氏名を入力して下さい">
-        <div class="tem-form-content-small">メンバー②</div>
-        <input type="text" name="member2" placeholder="氏名を入力して下さい">
-        <div class="tem-form-content-small">メンバー③</div>
-        <input type="text" name="member3" placeholder="氏名を入力して下さい">
-        <div class="tem-form-content-small">メンバー④</div>
-        <input type="text" name="member4" placeholder="氏名を入力して下さい">
-        <div class="tem-form-content-small">メンバー⑤</div>
-        <input type="text" name="member5" placeholder="氏名を入力して下さい">
-        <div class="tem-form-content-small">メンバー⑥</div>
-        <input type="text" name="member6" placeholder="氏名を入力して下さい">
-        <div class="tem-form-content-small">メンバー⑦</div>
-        <input type="text" name="member7" placeholder="氏名を入力して下さい">
-        <div class="tem-form-content-small">メンバー⑧</div>
-        <input type="text" name="member8" placeholder="氏名を入力して下さい"> -->
-
-
-      <!-- 正規バンド登録の入力欄丸パクリしました。portal登録判定の出し方がわかりません、、 -->
         <div>該当するマイク番号にメンバーの氏名を入力してください</div>
        <% 8.times do |i|%>
         <div class="reg-form-content-small">マイク番号<%= i + 1 %><span class="reg-caution"><%= "※必須" if i <= 2 %></span></div>
