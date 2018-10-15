@@ -14,7 +14,7 @@ class SubmitController < ApplicationController
     self.user_authentificate
     @mic = Mic.new()
     if @current_user
-      @mics = @current_user.bands.map{|band| band.mics.select {|m| m.date >= Date.today}}
+      @mics = @current_user.bands.map{|band| band.mics.order(:date).select{|m| m.date >= Date.today}}
     end
   end
 
@@ -58,6 +58,17 @@ class SubmitController < ApplicationController
       flash[:notice] = "処理に失敗しました。再度取消処理を行ってください"
       redirect_to('/submit/mic-list')
     end
+  end
+
+  def mic_pa_attendance_change
+    @mic = Mic.find(params[:id])
+    if @mic.paattendance == "不参加"
+      @mic.update(paattendance: "参加")
+    else
+      @mic.update(paattendance: "不参加")
+    end
+    flash[:notice] = "PAの出欠を変更しました。"
+    redirect_to('/submit/mic-list')
   end
 
   def comment

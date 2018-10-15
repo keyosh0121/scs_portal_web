@@ -9,12 +9,15 @@
     </div>
     <div class="mic-sub-main mic-main2">
       <h1>マイク練申請済みリスト</h1>
+      <p>PAの出欠を変更するには「PA参加/不参加」
+      を押してください。</p>
       <% @mics.each do |mic| %>
         <% mic.each do |m| %>
           <div class="mic-list-contents">
             <div class="mic-list-content mic-list-content-title"><%= m.band.name %></div>
             <div class="mic-list-content mic-list-content-date"><%= m.date %></div>
             <div class="mic-list-content mic-list-content-time"><%= m.period.name %></div>
+            <div class="mic-list-content mic-list-content-paattendance"><%= link_to("PA#{m.paattendance}", "/submit/mic/pa-change/#{m.id}", {:method => 'post' , data: {confirm: "PAの出欠を変更しますか？"}}) %></div>
             <div class="mic-list-content mic-list-content-status"><%= m.status_string %></div>
             <div class="mic-list-content mic-list-content-cancel"><%= link_to('申請取消','/submit/mic/destroy/' + m.id.to_s , {:method => 'post', data: {confirm: "本当に取り消しますか？"}})%></div>
           </div>

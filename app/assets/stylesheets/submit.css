@@ -181,6 +181,7 @@
   overflow: auto;
   box-shadow: 3px 3px 10px #666;
   margin: 15px 0;
+  position: relative;
 }
 .mic-list-content-title{
   width: 50%;
@@ -193,6 +194,11 @@
 .mic-list-content-title{
   font-size: 18px;
   font-weight: bold;
+}
+.mic-list-content-paattendance{
+  position: absolute;
+  left: 0px;
+  top: 45px;
 }
 @media only screen and (min-device-width:200px) and (max-device-width:700px){
   .mic-list-inner{

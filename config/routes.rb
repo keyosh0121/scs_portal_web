@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   post "submit/mic/send" => "submit#mic_submit"
   post "submit/mic/destroy/:id" => "submit#mic_destroy"
   get "submit/mic-list" => "submit#mic_list"
+  post "/submit/mic/pa-change/:id" => "submit#mic_pa_attendance_change"
   get "submit/comment" => "submit#comment"
   get "submit/comment/list" => "submit#comment_list"
   post "submit/comment/list/destroy/:id" => "submit#comment_destroy"
