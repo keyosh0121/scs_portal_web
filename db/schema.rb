@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180824103818) do
+ActiveRecord::Schema.define(version: 20180705130834) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -51,7 +51,6 @@ ActiveRecord::Schema.define(version: 20180824103818) do
     t.integer "reply_to"
     t.integer "user_id"
     t.integer "event_content_id"
-    t.boolean "publish"
   end
 
   create_table "conferences", force: :cascade do |t|
@@ -118,10 +117,10 @@ ActiveRecord::Schema.define(version: 20180824103818) do
     t.date "date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "status"
+    t.integer "status"
     t.integer "band_id"
-    t.integer "period_id"
     t.integer "user_id"
+    t.integer "period_id"
     t.integer "order"
     t.integer "room_id"
     t.text "remark"
