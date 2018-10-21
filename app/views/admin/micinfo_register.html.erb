@@ -21,11 +21,11 @@
           <div class="mic-band">
             <span class="band-name"><%= mic.band.name %></span><br>
             <% if @mics.where(period:period).length == 3 %>
-              <%= time_select("start_time","#{mic.id}", default: mic.start_time) %>~
+              <%= time_select("start_time","#{mic.id}", default: mic.start_time) %>~</br>
               <%= time_select("end_time", "#{mic.id}", default: mic.end_time) %>
               <%= select_tag "order[#{mic.id}]", options_for_select([["１番目","1"], ["2番目","2"], ["3番目","3"]], selected: mic.order.to_s) ,class: "order-select"%>
             <% elsif @mics.where(period:period).length == 2 %>
-              <%= time_select("start_time","#{mic.id}", default: mic.start_time) %>~
+              <%= time_select("start_time","#{mic.id}", default: mic.start_time) %>~</br>
               <%= time_select("end_time", "#{mic.id}", default: mic.end_time) %>
               <%= select_tag "order[#{mic.id}]", options_for_select([["１番目","1"], ["2番目","2"]], selected: mic.order.to_s) ,class: "order-select"%>
             <% else %>
