@@ -33,7 +33,9 @@ class SubmitController < ApplicationController
       period_id: params[:period_id],
       paattendance: attendance,
       status: 0,
-      remark: params[:remark]
+      remark: params[:remark],
+      start_time: Period.find(params[:period_id]).start.to_time,
+      end_time: Period.find(params[:period_id]).end.to_time
       )
     params[:paattendance]
     if @mic.save
