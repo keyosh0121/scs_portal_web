@@ -706,17 +706,17 @@
   }
 }
 
-input ~ select:not(.year-selector, #mic-sub-form-content){
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  border: 0;
-  outline-offset: -1px;
-  background-color: #F0F8FF;
-  width: 30px;
-  height:23px;
-  font-size: 13px;
-}
+// input ~ select:not(.year-selector, #mic-sub-form-content){
+//   -webkit-appearance: none;
+//   -moz-appearance: none;
+//   appearance: none;
+//   border: 0;
+//   outline-offset: -1px;
+//   background-color: #F0F8FF;
+//   width: 30px;
+//   height:23px;
+//   font-size: 13px;
+// }
 
 .order-select{
   -webkit-appearance: none;
