@@ -43,12 +43,8 @@ class BandsController < ApplicationController
     error_counter = 0
     8.times do |i|
       key = ("member"+(i+1).to_s).to_sym
-      if params[key] != ""
-        if User.find_by(name:member_names[i])
-        else
+      if params[key] != "" && !User.find_by(name:member_names[i])
           error_counter += 1
-        end
-      else
       end
     end
     if band_params[:image]
