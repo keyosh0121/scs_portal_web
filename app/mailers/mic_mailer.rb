@@ -56,7 +56,7 @@ class MicMailer < ApplicationMailer
     @split_text = split_text
     master_email = @mic.band.master.email
     mail(
-      subject: "本日のマイク練部屋",
+      subject: "本日のマイク練情報",
       to: master_email,
       reply_to: 'scsmikesmith@gmail.com') do |format|
       format.html
