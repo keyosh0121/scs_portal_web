@@ -220,8 +220,8 @@ class AdminController < ApplicationController
       key_1=mic.period_id.to_s.to_sym
       room_text = mic.mic_room_text(params[key_1])
       key_2 = mic.id.to_s.to_sym
-      if params[:order][key_2]
-        order = params[:order][key_2]
+      order = params[:order][key_2] if params[:order]
+      if order
         start_time = (params[:start_time]["#{mic.id}(4i)"] + ":" + params[:start_time]["#{mic.id}(5i)"]).to_time
         end_time = (params[:end_time]["#{mic.id}(4i)"] + ":" + params[:end_time]["#{mic.id}(5i)"]).to_time
         order_text = mic.mic_split_order_text(order)
