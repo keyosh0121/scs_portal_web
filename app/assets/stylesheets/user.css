@@ -119,7 +119,6 @@
   text-align: left;
 }
 .user-show-logout{
-  padding: 8px;
   margin-top: 8px;
   border: solid 5px darksalmon;
   font-size: 18px;
@@ -138,6 +137,7 @@
 .logout-link{
   color: #000;
   font-weight: bold;
+  padding: 8px;
 }
 .user-show-content-name{
   font-size: 20px;
