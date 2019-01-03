@@ -2,9 +2,19 @@ class BandsController < ApplicationController
   before_action :set_band, only: [:edit, :update]
 
   def index
+    @bands_by_year = {}
     @bands = Band.where(registration: true)
-    @years = [Date.today.year, Date.today.year - 1, Date.today.year - 2, Date.today.year - 3]
-    @bands_by_year = [@bands.where(year: @years[0]), @bands.where(year: @years[1]), @bands.where(year: @years[2]), @bands.where(year: @years[3])]
+    if Date.today.month > 3
+      @years = [Date.today.year, Date.today.year - 1, Date.today.year - 2, Date.today.year - 3]
+      @years.each do |year|
+        @bands_by_year[year.to_s.to_sym] = @bands.where(year: year)
+      end
+    else
+      @years = [Date.today.year, Date.today.year - 1, Date.today.year - 2, Date.today.year - 3, Date.today.year - 4]
+      @years.each do |year|
+        @bands_by_year[year.to_s.to_sym] = @bands.where(year: year)
+      end
+    end
   end
 
   def show

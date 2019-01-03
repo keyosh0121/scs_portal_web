@@ -8,13 +8,12 @@
     </div>
     <div class="band-show-container">
       <div class="mic-admin-wrapper">
-        <% mics = Mic.order("date ASC, period_id ASC").select {|m| m.date >= Date.today} %>
-          <% 4.times do |i|%>
+          <% @years.each do |year|%>
             <div class="mic">
-            <div class="date"> <%= @years[i] %>
+            <div class="date"> <%= year %>
             </div>
             <div class="date-mics">
-            <% @bands_by_year[i].each do |band|%>
+            <% @bands_by_year[year.to_s.to_sym].each do |band|%>
               <div class="mic-admin-band">
                 <div class="left">
                   <div class="band-pa"><%= link_to(band.name,band_path(band),{class: "band-name"})%></div>
