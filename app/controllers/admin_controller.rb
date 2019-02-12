@@ -213,12 +213,17 @@ class AdminController < ApplicationController
     @mics = Mic.where(date: @date)
   end
 
-	def micinfo_register_send
+	def micinfo_register_send_confirm
 		@date = Date.strptime(params[:date])
     @mics = Mic.where(date: @date)
-    @mics.each do |mic|
+    @mail_mics = []
+    @texts = []
+    @mics.each_with_index do |mic, index|
+      mic_hash = {}
+      mic_hash[:mic] = mic
       key_1=mic.period_id.to_s.to_sym
       room_text = mic.mic_room_text(params[key_1])
+      mic_hash[:room_id] = params[key_1]
       key_2 = mic.id.to_s.to_sym
       order = params[:order][key_2] if params[:order]
       if order
@@ -227,16 +232,57 @@ class AdminController < ApplicationController
         order_text = mic.mic_split_order_text(order)
         time_text = mic.mic_split_time_text(start_time, end_time)
         split_text = order_text + time_text
+        mic_hash[:order] = order
+        mic_hash[:start_time] = start_time
+        mic_hash[:end_time] = end_time
       else
         split_text = ""
       end
       if (room_text != "") || (split_text != "" && split_text != "本日の分割は#{mic.order}番目です。")
-        MicMailer.send_mic_info(mic,room_text,split_text).deliver
+        text = room_text + split_text
+        mic_hash[:room_text] = room_text
+        if Room.find(mic_hash[:room_id]).name != "空き部屋なし"
+          mic_hash[:split_text] = split_text
+        else
+          mic_hash[:split_text] = ""
+        end
+        @mail_mics << mic_hash
       end
     end
-		flash[:notice] = "利用部屋を登録しました"
-		redirect_to('/database/mic-practice')
+
+    if @mail_mics == []
+      flash[:notice] = "変更情報はありませんでした"
+      redirect_to('/database/mic-practice')
+    end
 	end
+
+  def micinfo_register_send
+    params[:num].to_i.times do |index|
+      param = params[:mic][index.to_s.to_sym]
+      mic = Mic.find(param[:mic_id])
+      room_text = param[:room_text]
+      split_text = param[:split_text]
+      room_id = param[:room_id]
+      start_time = param[:start_time]
+      end_time = param[:end_time]
+      order = param[:order]
+      MicMailer.send_mic_info(mic,room_text,split_text).deliver
+      if room_id != ""
+        mic.update(room_id: room_id)
+      end
+      if start_time != ""
+        mic.update(start_time: start_time)
+      end
+      if end_time != ""
+        mic.update(end_time: end_time)
+      end
+      if order != ""
+        mic.update(order: order)
+      end
+    end
+    flash[:notice] = "情報を登録しました"
+    redirect_to('/database/mic-practice')
+  end
 
 
   def mic_remark

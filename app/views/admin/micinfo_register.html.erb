@@ -2,7 +2,7 @@
   <div class="sub">部屋登録画面</div>
   <div class="date"><%= @date.strftime("%Y年%m月%d日(#{%w(日 月 火 水 木 金 土)[@date.wday]})") %>
   </div>
-	<%= form_tag('/database/micinfo/register/send') do %>
+	<%= form_tag('/database/micinfo/register/send/confirm') do %>
   <table>
     <thead>
       <tr>
@@ -47,6 +47,6 @@
     </tbody>
   </table>
 	<input type="hidden" name="date" value="<%= @date %>">
-  <%= submit_tag '部屋を登録', :data => { :confirm => '部屋に間違いはないですか？' } %>
+  <%= submit_tag '情報を登録', :data => { :confirm => '情報に間違いはないですか？' } %>
 	<% end %>
 </div>

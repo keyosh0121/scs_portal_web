@@ -1,0 +1,25 @@
+<div class="roomreg-wrap">
+<h1>送信されるメール一覧</h1>
+<%= form_tag('/database/micinfo/register/send') do %>
+  <% @mail_mics.each_with_index do |mic, index|%>
+    <h2><%= mic[:mic].band.name %></h2>
+    <p>お疲れ様です。</br>
+      <%= mic[:mic].date.strftime("%m月%d日" + "(#{%w(日 月 火 水 木 金 土)[mic[:mic].date.wday]})") %>の<%= mic[:mic].band.name %>さんのマイク練情報をお伝えします。
+    </p>
+    <p><%= mic[:room_text] %></p>
+    <p><%= mic[:split_text] %></p>
+    <input type="hidden" name="mic[<%=index%>][mic_id]" value="<%=  mic[:mic].id %>">
+    <input type="hidden" name="mic[<%=index%>][room_id]" value="<%=  mic[:room_id] %>">
+    <input type="hidden" name="mic[<%=index%>][order]" value="<%=  mic[:order] %>">
+    <input type="hidden" name="mic[<%=index%>][start_time]" value="<%=  mic[:start_time] %>">
+    <input type="hidden" name="mic[<%=index%>][end_time]" value="<%=  mic[:end_time] %>">
+    <input type="hidden" name="mic[<%=index%>][room_text]" value="<%=  mic[:room_text] %>">
+    <input type="hidden" name="mic[<%=index%>][split_text]" value="<%=  mic[:split_text] %>">
+  <% end %>
+  <input type="hidden" name="num" value="<%=  @mail_mics.length %>">
+  <div class="buttons">
+    <%= link_to("情報登録に戻る", :back, {class: "reset-box", data: {confirm: "恐れ入りますが、変更した情報を入力し直してください"}})%>
+    <%= submit_tag("送信を確定", {class: "confirm-box", data: {confirm: "送信します。よろしいですか？"}})%>
+  </div>
+<% end %>
+</div>

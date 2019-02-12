@@ -70,18 +70,22 @@ class Mic < ApplicationRecord
 
   def mic_room_text(room_id)
     if room_id != "選択してください"
-      former_room_id = self.room_id
-      self.update(room_id: room_id)
-      if self.room_id == former_room_id
+      former_room = self.room
+      new_room = Room.find(room_id)
+      cancel_wait_text = "只今キャンセル待ちとなっております。部屋が分かり次第追ってご連絡させていただきます。また、部屋が取れずマイク練ができないことも考えられますので、ご了承ください。\n"
+      cancel_text = "本日のマイク練ですが、空き部屋がないため、行うことができません。申し訳ありません。\n"
+      initial_room_text = "本日のマイク練は#{new_room.name}にて行います。\n"
+      room_change_text = "マイク練部屋に変更がありました。#{new_room.name}にて行います。\n"
+      if new_room == former_room
         return ""
-      elsif self.room.name == "キャンセル待ち"
-        return "只今キャンセル待ちとなっております。部屋が分かり次第追ってご連絡させていただきます。また、部屋が取れずマイク練ができないことも考えられますので、ご了承ください。\n"
-      elsif self.room.name == "空き部屋なし"
-        return "本日のマイク練ですが、空き部屋がないため、行うことができません。申し訳ありません。\n"
-      elsif former_room_id == nil
-        return "本日のマイク練は#{self.room.name}にて行います。\n"
-      elsif self.room_id != former_room_id
-        return "マイク練部屋に変更がありました。#{self.room.name}にて行います。\n"
+      elsif new_room.name == "キャンセル待ち"
+        return cancel_wait_text
+      elsif new_room.name == "空き部屋なし"
+        return cancel_text
+      elsif former_room == nil
+        return initial_room_text
+      elsif new_room != former_room
+        return room_change_text
       else
         return ""
       end
@@ -92,8 +96,7 @@ class Mic < ApplicationRecord
 
   def mic_split_order_text(order)
     if self.order != order.to_i
-      self.update(order: order.to_i)
-      return "諸事情により、分割の順番が変更されました。#{self.band.name}さんは#{self.order}番目となります。\n"
+      return "諸事情により、分割の順番が変更されました。#{self.band.name}さんは#{order.to_i}番目となります。\n"
     else
       return "本日の分割は#{self.order}番目です。"
     end
@@ -101,8 +104,7 @@ class Mic < ApplicationRecord
 
   def mic_split_time_text(start_time, end_time)
     if (self.start_time.strftime("%H:%M") != start_time.strftime("%H:%M")) || (self.end_time.strftime("%H:%M") != end_time.strftime("%H:%M"))
-      self.update(start_time: start_time, end_time: end_time)
-      return "本日のマイク練の時間は\n #{self.start_time.strftime("%H:%M")}〜#{self.end_time.strftime("%H:%M")}です。"
+      return "本日のマイク練の時間は\n #{start_time.strftime("%H:%M")}〜#{end_time.strftime("%H:%M")}です。"
     else
       return ""
     end

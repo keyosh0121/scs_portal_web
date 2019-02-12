@@ -75,7 +75,8 @@ Rails.application.routes.draw do
   get "/database/mic-remark/:id" => "admin#mic_remark"
 
   get '/database/micinfo/register' => "admin#micinfo_register"
-	post '/database/micinfo/register/send' => "admin#micinfo_register_send"
+	post '/database/micinfo/register/send/confirm' => "admin#micinfo_register_send_confirm"
+  post '/database/micinfo/register/send' => "admin#micinfo_register_send"
   post "/database/mic/room-register/weekly/send/:params" => "admin#microom_register"
   post "/database/mic/room-register/monthly/send" => "admin#room_monthly_send"
   get "/database" => "admin#top"
